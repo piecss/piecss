@@ -51,6 +51,9 @@
     @if unit($unit)=="%" {
         $value: percentage($value / $context);
     }
+    @elseif unit($unit)=="px" {
+        $value: $value;
+    }
     @else {
         $value: $value / $context * $unit;
     }

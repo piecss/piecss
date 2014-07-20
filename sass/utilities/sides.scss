@@ -37,10 +37,13 @@
 
 @function value-map($sides, $property: padding)
 {
-
     // SASS appends a comma to the $sides list,
     // don't know how to get around this but list the values
     $sides: nth($sides,1);
+
+    @if is-value-map($sides) {
+        @return $sides;
+    }
 
     // Create map to hold our spacing values;
     $spacing: ();
@@ -80,13 +83,39 @@
     @return $spacing;
 }
 
+// Function is-value-map
+// Takes a list of values and returns a spacing map
+// --------------------------------------------------------------------------
+// $sides:  a list of value arguments like CSS's normal padding (0 0 0 0)
+// $property:  the property
+// ==========================================================================
+
+@function is-value-map($values)
+{
+    // Inspect the $sides array, is it alreay a spacing map?
+    $is-map: false;
+    @if map-has-key($values, top)==true {
+        $is-map: true;
+    }
+    @elseif map-has-key($values, right)==true {
+        $is-map: true;
+    }
+    @elseif map-has-key($values, bottom)==true {
+        $is-map: true;
+    }
+    @elseif map-has-key($values, left)==true {
+        $is-map: true;
+    }
+
+    @return $is-map;
+}
 
 // 2. MIXINS
 // ==========================================================================
 
 // Mixin padding, placeholder for _unit-sides
 // --------------------------------------------------------------------------
-// $sides:  takes arguments like CSS's normal padding
+// $sides:  takes arguments like CSS's normal padding, or a value-map
 // ==========================================================================
 
 @mixin padding($sides...)
@@ -118,7 +147,7 @@
 
 // Mixin margin, placeholder for _unit-sides
 // --------------------------------------------------------------------------
-// $sides:  takes arguments like CSS's normal padding
+// $sides:  takes arguments like CSS's normal padding, or a value-map
 // ==========================================================================
 
 @mixin margin($sides...)
@@ -151,7 +180,7 @@
 // Mixin the property in the final unit of output
 // With rem fallback if the final unit is rem
 // --------------------------------------------------------------------------
-// $sides:  takes arguments like CSS's normal padding
+// $sides:  value-map
 // $property:  property to apply sides to
 // ==========================================================================
 
@@ -161,15 +190,24 @@
     $unit-values: ();
     $fallback-values: ();
 
-    @each $side in $sides {
-
-        $side: nth($side,1);
+    $keys: map-keys($sides);
+    @each $side in $keys {
 
         // Isolate the value
-        $value: map-get($sides, $side);
+        $value: nth(map-get($sides, $side), 1);
 
+        // Catch 0 values
         @if strip-unit($value)==0 {
             $value: 0px;
+        }
+        // Catch rhythm values
+        @if unitless($value) {
+            @if $side==top or $side==bottom {
+                $value: vrhythm($value);
+            }
+            @if $side==right or $side==left {
+                $value: hrhythm($value);
+            }
         }
 
         // Create new maps
@@ -221,7 +259,6 @@
         $left: map-get($sides, left);
         $left: if(abs($left)==0, 0, $left);
     }
-
 
     @if length($sides)==4 {
 

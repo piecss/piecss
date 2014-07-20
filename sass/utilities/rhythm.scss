@@ -1,4 +1,4 @@
-// /*
+ // /*
 //  * Copyright (C) 2014 Babs Gösgens.
 //  * Licensed under MIT; see LICENSE.txt
 //  */
@@ -44,9 +44,9 @@
 // $context: The context of the targeted element (for calculations to em)
 // ==========================================================================
 
-@function vrhythm($span: 1, $context: $default-font-size)
+@function vrhythm($span: 1)
 {
-    @return to-unit(($rhythm * $span), $unit, $context);
+    @return $rhythm * $span;
 }
 
 
@@ -93,7 +93,7 @@
         @return $fraction;
     }
 
-    @return to-unit(($fraction * $gutter-width), $unit, $context);
+    @return to-unit(($fraction * $gutter-width));
 }
 
 
@@ -120,7 +120,7 @@
         @if unit($unit)==rem {
             #{$property}: $span*$default-line-height;
         }
-        #{$property}: vrhythm($span, $context);
+        #{$property}: vrhythm($span);
     }
     
 }
