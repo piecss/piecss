@@ -31,7 +31,7 @@
 // ==========================================================================
 
 @mixin list-style-type($type) {
-	%#{$list-base-class}--#{$type} {
+	#{$selector-base}#{$list-selector}--#{$type} {
 		list-style-type: $type;
 	}
 }

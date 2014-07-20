@@ -33,29 +33,29 @@ Field base
  	- fieldsets
  	- radio and check buttons
  */
-.#{$input-base-class} {
+#{$selector-base}#{$field-selector} {
 
 	/*
 	 * Box-model treatments
 	 */
-	@include module-property($input-width, width);
+	@include module-property($field-width, width);
 	@include box-sizing(border-box);
 	@include inline-block(baseline);
-	@include module-margin($input-margin-top $input-margin-right $input-margin-bottom $input-margin-left);
-	@include module-padding($input-padding-top $input-padding-right $input-padding-bottom $input-padding-left);
-	@include module-border($input-border-width $input-border-style $input-border-color);
+	@include module-margin($field-margin-top $field-margin-right $field-margin-bottom $field-margin-left);
+	@include module-padding($field-padding-top $field-padding-right $field-padding-bottom $field-padding-left);
+	@include module-border($field-border-width $field-border-style $field-border-color);
 
 	/*
 	 * Font and text treatments
 	 */
-	@include module-type($input-type-type, $input-type-size, $input-type-rhythm);
-	@include module-property($input-text-color, color);
-	@include module-property($input-text-align, text-align);
-	@include module-property($input-text-decoration, text-decoration);
-	@include module-text-shadow($input-text-shadow);
+	@include module-type($field-font-type, $field-font-size, $field-font-rhythm);
+	@include module-property($field-text-color, color);
+	@include module-property($field-text-align, text-align);
+	@include module-property($field-text-decoration, text-decoration);
+	@include module-text-shadow($field-text-shadow);
 
 	&:focus {
-		@extend .#{$input-base-class}--state-focus;
+		@extend #{$selector-base}#{$field-selector}--state-focus;
 	}
 
 	@include placeholder() {
@@ -66,13 +66,13 @@ Field base
 /*
  * Field focus styles
  */
-.#{$input-base-class}--state-focus {
+.#{$field-selector}--state-focus {
 
-	@include module-border($input-focussed-border-width $input-focussed-border-style $input-focussed-border-color);
-	@include module-border-radius($input-focussed-border-radius);
-	@include module-background($input-focussed-background-color $button-background-image);
-	@include input-shadow(if($input-focussed-shadow-inner, $input-focussed-shadow-box, '') if($input-focussed-shadow-inner, $input-focussed-shadow-inner, ''));
-	@include module-outline($input-focussed-outline-border, $input-focussed-outline-offset);
+	@include module-border($field-focussed-border-width $field-focussed-border-style $field-focussed-border-color);
+	@include module-border-radius($field-focussed-border-radius);
+	@include module-background($field-focussed-background-color $button-background-image);
+	@include input-shadow(if($field-focussed-shadow-inner, $field-focussed-shadow-box, '') if($field-focussed-shadow-inner, $field-focussed-shadow-inner, ''));
+	@include module-outline($field-focussed-outline-border, $field-focussed-outline-offset);
 	// -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -83,12 +83,12 @@ Field base
 	-----------------------------------------------------------------------------
 	*/
 
-	.#{$input-base-class}-#{$input-field-class} {
-		@extend .#{$input-base-class};
-		@include module-background($input-background-color $input-background-image);
-		@include module-border-radius($input-border-radius);
-		@include input-shadow($input-shadow-box $input-shadow-inner);
-      	@include module-property($input-text-indent, text-indent);
+	.#{$field-selector}-#{$field-input-class} {
+		@extend .#{$field-selector};
+		@include module-background($field-background-color $field-background-image);
+		@include module-border-radius($field-border-radius);
+		@include input-shadow($field-shadow-box $field-shadow-inner);
+      	@include module-property($field-text-indent, text-indent);
 	}
 
 
@@ -98,11 +98,11 @@ Field base
 	-----------------------------------------------------------------------------
 	*/
 
-	.#{$input-base-class}-#{$input-field-class}--search {
+	.#{$field-selector}-#{$field-input-class}--search {
 		// Not sure why this needs to be repeated
 		@include box-sizing(border-box);
-		@if $input-search-border-radius != $input-border-radius {
-			@include border-radius($input-search-border-radius);
+		@if $field-search-border-radius != $field-border-radius {
+			@include border-radius($field-search-border-radius);
 		}
 	}
 
@@ -113,9 +113,9 @@ Field base
 	-----------------------------------------------------------------------------
 	*/
 
-	.#{$input-base-class}-#{$input-field-class}--color {
-		@if $input-color-width {
-			width: $input-color-width;
+	.#{$field-selector}-#{$field-input-class}--color {
+		@if $field-color-width {
+			width: $field-color-width;
 		}
 	}
 
@@ -126,9 +126,9 @@ Field base
 	-----------------------------------------------------------------------------
 	*/
 	
-	.#{$input-base-class}-#{$input-field-class}--range {
-		@if $input-range-width {
-			width: $input-range-width;
+	.#{$field-selector}-#{$field-input-class}--range {
+		@if $field-range-width {
+			width: $field-range-width;
 		}
 	}
 
@@ -139,10 +139,10 @@ Field base
 	-----------------------------------------------------------------------------
 	*/
 	
-	.#{$input-base-class}-#{$input-field-class}--color,
-	.#{$input-base-class}-#{$input-field-class}--range {
+	.#{$field-selector}-#{$field-input-class}--color,
+	.#{$field-selector}-#{$field-input-class}--range {
 		padding: 0;
-		height: vrhythm($input-type-rhythm) + $input-padding-top + $input-padding-bottom;
+		height: vrhythm($field-font-rhythm) + $field-padding-top + $field-padding-bottom;
 	}
 
 
@@ -152,10 +152,10 @@ Select and Datalists
 -----------------------------------------------------------------------------
 */
 
-.#{$input-base-class}-select {
+.#{$field-selector}-select {
 	optgroup,
 	option {
-		@include module-padding($input-padding-top $input-padding-right $input-padding-bottom $input-padding-left);
+		@include module-padding($field-padding-top $field-padding-right $field-padding-bottom $field-padding-left);
 		@include gutters;
 		font-weight: inherit;
 		font-style: inherit;
@@ -166,18 +166,18 @@ Select and Datalists
 	}
 }
 
-.#{$input-base-class}-select {
-	@extend .#{$input-base-class};
+.#{$field-selector}-select {
+	@extend .#{$field-selector};
 	@if $select-appearance-default {
 		@include reset-appearance(menulist);
-		height: vrhythm($input-type-rhythm) + $input-padding-top + $input-padding-bottom;
+		height: vrhythm($field-font-rhythm) + $field-padding-top + $field-padding-bottom;
 	}
 }
 
 @if $select-webkit {
 	.webkit {
-		.#{$input-base-class}-select {
-			background: $input-background-color url("/assets/images/icons/icon-sort.svg") no-repeat 1% center;
+		.#{$field-selector}-select {
+			background: $field-background-color url("/assets/images/icons/icon-sort.svg") no-repeat 1% center;
 			background-size: 10px auto;
 		}
 	}
@@ -190,11 +190,11 @@ Textarea
 -----------------------------------------------------------------------------
 */
 
-.#{$input-base-class}-textarea {
-	@extend .#{$input-base-class};
-	@include module-background($input-background-color $input-background-image);
-	@include module-border-radius($input-border-radius);
-	@include input-shadow($input-shadow-box $input-shadow-inner);
+.#{$field-selector}-textarea {
+	@extend .#{$field-selector};
+	@include module-background($field-background-color $field-background-image);
+	@include module-border-radius($field-border-radius);
+	@include input-shadow($field-shadow-box $field-shadow-inner);
 	&.large {
 		height: vrhythm(10);
 	}
@@ -213,7 +213,7 @@ Field Label
 -----------------------------------------------------------------------------
 */
 
-.#{$input-base-class}-#{$label-base-class} {
+.#{$field-selector}-#{$label-selector} {
 	@include inline-block(baseline);
 	@include module-property($label-width, "width");
 	@include inline-block(baseline);

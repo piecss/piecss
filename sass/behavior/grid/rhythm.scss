@@ -23,7 +23,7 @@ Debug helpers
     }
 }
 
-%rhythm-padding {
+#{$selector-base}rhythm-padding {
     @include vrhythm(1, padding-top);
     @include vrhythm(1, padding-bottom);
     &--top {
@@ -34,7 +34,7 @@ Debug helpers
     }
 }
 
-%rhythm-margin {
+#{$selector-base}rhythm-margin {
     @include vrhythm(0, margin-top);
     @include vrhythm(1, margin-bottom);
     &--top {
@@ -52,6 +52,6 @@ $single-direction-selector: '';
         $single-direction-selector: $single-direction-selector + $element + ',' !global;
     }
     #{$single-direction-selector} {
-        @extend %rhythm-margin;
+        @extend #{$selector-base}rhythm-margin;
     }
 }
