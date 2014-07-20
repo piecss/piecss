@@ -1,0 +1,50 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+
+@mixin old-ie() {
+    @if $legacy-support-for-ie {
+        @content;
+    }
+}
+@mixin old-mozilla() {
+    @if $legacy-support-for-mozilla {
+        @content;
+    }
+}
+@mixin inline-block($alignment) {
+    $alignment: unquote($alignment);
+
+    @include old-mozilla() {
+        display: -moz-inline-stack;
+    }
+
+    display: inline-block;
+    vertical-align: #{$alignment};
+
+    @include old-ie() {
+        zoom: 1;
+        display: inline;
+        vertical-align: #{$alignment};
+    }
+}
+@mixin opacity($opacity) {
+    @include old-ie() {
+        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+    }
+    opacity: $opacity;
+}
+
+
+
+@import "utilities/cache";
+@import "utilities/units";
+@import "utilities/sides";
+@import "utilities/rhythm";
+@import "utilities/breakpoints";
+@import "utilities/layout";
+@import "utilities/typography";
+@import "utilities/image";

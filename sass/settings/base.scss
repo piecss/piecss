@@ -1,0 +1,72 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ================================================================================================================================
+// Legacy settings
+// ================================================================================================================================
+
+$legacy-support-for-ie: false;
+$legacy-support-for-mozilla: true;
+
+
+// ================================================================================================================================
+// Unit settings
+// ================================================================================================================================
+
+// These are used for conversion of pixels into more responsive units
+
+$unit: 1em !default;
+$fallback-unit: 1px !default;
+$line-height-unit: 1% !default;
+
+
+// ================================================================================================================================
+// Typography settings
+// ================================================================================================================================
+
+// Chrome has issues when the base font size is smaller than 16px: https://code.google.com/p/chromium/issues/detail?id=320754
+// $base-font-size is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
+// By default, it translates to font-size: 100%;
+$base-font-size: 16px !default;
+
+$default-font-size: 16px !default;
+$default-line-height: 24px !default;
+
+$default-font: $sans-serif-regular !default;
+
+
+// ==========================================================================
+// Theme colors
+// ==========================================================================
+
+$color-background: $white !default;
+$color-body: $darkslategray !default;
+$color-theme: $lightgray !default;
+$color-primary: $blue !default;
+$color-attn-one: $cyan !default;
+$color-success: $green !default;
+$color-info: $yellow !default;
+$color-warning: $orange !default;
+$color-error: $red !default;
+
+$anchor-color: $color-primary !default;
+$anchor-color-hover: darken($anchor-color, 20%) !default;
+$anchor-color-active: lighten($anchor-color, 15%) !default;
+$anchor-color-visited: darken($anchor-color, 30%) !default;
+
+
+// ==========================================================================
+// Border Radius
+// ==========================================================================
+
+$corner-radius: 0 !default;
+
+
+// ==========================================================================
+// Quotes
+// ==========================================================================
+
+$base-quote-quotes: true !default;

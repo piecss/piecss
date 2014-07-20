@@ -1,0 +1,19 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+// ==========================================================================
+// Input base class
+// ==========================================================================
+
+	$input-base-class: "fld" !default;
+
+
+// ==========================================================================
+// Load individual settings file
+// ==========================================================================
+
+	@import "form/input";
+	@import "form/labels";
+	@import "form/forms";

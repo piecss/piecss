@@ -1,0 +1,383 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Functions
+//    percentage
+//    fraction-to-text
+// 2. Mixins
+//    2a. Columns
+//        column
+//        column-behavior
+//        column-width
+//        gutters
+//    2b. Containers
+//        root
+//        bleed
+//        container-behavior
+//    2c. Source Ordering
+//        move
+//        pull
+//        push
+//        reset-source-order
+
+
+// ==========================================================================
+//
+// 1. FUNCTIONS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Function percentage
+// --------------------------------------------------------------------------
+// Convert a fraction to a percentage
+// Deprecated
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@function fraction-to-percentage($fraction: 1/3)
+{
+    @return percentage($fraction);
+}
+
+
+// Function fraction-to-text
+// Convert a fraction to a word.
+// Use to build style rules based on column widths.
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@function fraction-to-text($fraction)
+{
+    @if $fraction ==  1/1  { @return "full"; }
+    @if $fraction ==  1/2  { @return "half"; }
+    @if $fraction ==  1/3  { @return "third"; }
+    @if $fraction ==  1/4  { @return "fourth"; }
+    @if $fraction ==  1/5  { @return "fifth"; }
+    @if $fraction ==  1/6  { @return "sixth"; }
+    @if $fraction ==  1/7  { @return "seventh"; }
+    @if $fraction ==  1/8  { @return "eighth"; }
+    @if $fraction ==  1/9  { @return "ninth"; }
+    @if $fraction ==  1/10 { @return "tenth"; }
+    @if $fraction ==  1/11 { @return "eleventh"; }
+    @if $fraction ==  1/12 { @return "twelfth"; }
+    @if $fraction ==  1/13 { @return "thirteenth"; }
+    @if $fraction ==  1/14 { @return "fourteenth"; }
+    @if $fraction ==  1/15 { @return "fifteenth"; }
+    @if $fraction ==  1/16 { @return "sixteenth"; }
+    @if $fraction ==  2/3  { @return "two-third"; }
+    @if $fraction ==  3/4  { @return "three-fourth"; }
+    @if $fraction ==  2/5  { @return "two-fifth"; }
+    @if $fraction ==  3/5  { @return "three-fifth"; }
+    @if $fraction ==  4/5  { @return "four-fifth"; }
+    @if $fraction ==  5/6  { @return "five-sixth"; }
+    @if $fraction ==  2/7  { @return "two-seventh"; }
+    @if $fraction ==  3/7  { @return "three-seventh"; }
+    @if $fraction ==  4/7  { @return "four-seventh"; }
+    @if $fraction ==  5/7  { @return "five-seventh"; }
+    @if $fraction ==  6/7  { @return "six-seventh"; }
+    @if $fraction ==  3/8  { @return "three-eighth"; }
+    @if $fraction ==  5/8  { @return "five-eighth"; }
+    @if $fraction ==  7/8  { @return "seven-eighth"; }
+    @if $fraction ==  2/9  { @return "two-ninth"; }
+    @if $fraction ==  4/9  { @return "four-ninth"; }
+    @if $fraction ==  5/9  { @return "five-ninth"; }
+    @if $fraction ==  7/9  { @return "seven-ninth"; }
+    @if $fraction ==  8/9  { @return "eight-ninth"; }
+    @if $fraction ==  3/10 { @return "three-tenth"; }
+    @if $fraction ==  7/10 { @return "seven-tenth"; }
+    @if $fraction ==  9/10 { @return "nine-tenth"; }
+    @if $fraction ==  2/11 { @return "two-eleventh"; }
+    @if $fraction ==  3/11 { @return "three-eleventh"; }
+    @if $fraction ==  4/11 { @return "four-eleventh"; }
+    @if $fraction ==  5/11 { @return "five-eleventh"; }
+    @if $fraction ==  6/11 { @return "six-eleventh"; }
+    @if $fraction ==  7/11 { @return "seven-eleventh"; }
+    @if $fraction ==  8/11 { @return "eight-eleventh"; }
+    @if $fraction ==  9/11 { @return "nine-eleventh"; }
+    @if $fraction == 10/11 { @return "ten-eleventh"; }
+    @if $fraction ==  5/12 { @return "five-twelfth"; }
+    @if $fraction ==  7/12 { @return "seven-twelfth"; }
+    @if $fraction ==  9/12 { @return "nine-twelfth"; }
+    @if $fraction == 11/12 { @return "eleven-twelfth"; }
+    @if $fraction ==  2/13 { @return "two-thirteenth"; }
+    @if $fraction ==  3/13 { @return "three-thirteenth"; }
+    @if $fraction ==  4/13 { @return "four-thirteenth"; }
+    @if $fraction ==  5/13 { @return "five-thirteenth"; }
+    @if $fraction ==  6/13 { @return "six-thirteenth"; }
+    @if $fraction ==  7/13 { @return "seven-thirteenth"; }
+    @if $fraction ==  8/13 { @return "eight-thirteenth"; }
+    @if $fraction ==  9/13 { @return "nine-thirteenth"; }
+    @if $fraction == 10/13 { @return "ten-thirteenth"; }
+    @if $fraction == 11/13 { @return "twelve-thirteenth"; }
+    @if $fraction == 12/13 { @return "thirteen-thirteenth"; }
+    @if $fraction ==  3/14 { @return "three-fourteenth"; }
+    @if $fraction ==  5/14 { @return "five-fourteenth"; }
+    @if $fraction ==  9/14 { @return "nine-fourteenth"; }
+    @if $fraction == 11/14 { @return "eleven-fourteenth"; }
+    @if $fraction == 13/14 { @return "thirteen-fourteenth"; }
+    @if $fraction ==  2/15 { @return "two-fifteenth"; }
+    @if $fraction ==  4/15 { @return "four-fifteenth"; }
+    @if $fraction ==  7/15 { @return "seven-fifteenth"; }
+    @if $fraction ==  8/15 { @return "eight-fifteenth"; }
+    @if $fraction == 11/15 { @return "eleven-fifteenth"; }
+    @if $fraction == 13/15 { @return "thirteen-fifteenth"; }
+    @if $fraction == 14/15 { @return "fourteen-fifteenth"; }
+    @if $fraction ==  3/16 { @return "three-sixteenth"; }
+    @if $fraction ==  5/16 { @return "five-sixteenth"; }
+    @if $fraction ==  7/16 { @return "seven-sixteenth"; }
+    @if $fraction ==  9/16 { @return "nine-sixteenth"; }
+    @if $fraction == 11/16 { @return "eleven-sixteenth"; }
+    @if $fraction == 13/16 { @return "thirteen-sixteenth"; }
+    @if $fraction == 15/16 { @return "sixteen-sixteenth"; }
+
+    @return false;
+}
+
+
+// ==========================================================================
+//
+// 2. MIXINS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Mixin column
+// --------------------------------------------------------------------------
+// Shorthand mixin for column
+// Uses padding by default, can be overridden to use margins instead,
+// this is especially helpful when assigning backgrounds or borders
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// @param (boolean) $apply-padding
+// @param (boolean) $apply-margin
+// ==========================================================================
+
+@mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false)
+{
+    @include column-behavior();
+    @include column-width($fraction);
+
+    @if $apply-padding {
+        @include gutters($apply-padding);            
+    }
+
+    @if $apply-margin {
+        @include gutters($apply-margin, true);           
+    }
+}
+
+
+// ==========================================================================
+// Mixin column-behavior
+// --------------------------------------------------------------------------
+// @param (boolean) $column-float
+// ==========================================================================
+
+@mixin column-behavior($column-float: $column-float)
+{
+    @if $column-float {
+        display: block;
+        float: left;
+    }
+    @else {
+        @include inline-block(top);
+        @if $negative-right-margin {
+            margin-right: $negative-right-margin !important;
+        }
+    }
+}
+
+
+// ==========================================================================
+// Mixin column-width
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// @param (boolean) $persistent
+// ==========================================================================
+
+@mixin column-width($fraction: $column-width-default)
+{
+    width: percentage($fraction);
+
+    // Remove negative margin on elements that span full width of their container
+    @if $fraction == 1/1 and $negative-right-margin {
+        margin-right: 0;
+    }
+}
+
+
+// ==========================================================================
+// Mixin column-spacing
+// --------------------------------------------------------------------------
+// Uses padding by default, can be overridden to use margins instead,
+// this is especially helpful when assigning backgrounds or borders
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// @param (boolean) $use-margin
+// ==========================================================================
+
+@mixin gutters($fraction: 1/2, $use-margin: false)
+{
+    $both: length($fraction);
+
+    $left: $fraction;
+    $right: $fraction;
+
+    @if $both > 1 {
+        $left: nth($fraction,1);
+        $right: nth($fraction,2);
+    }
+
+    @if ($use-margin) {
+        @if $left != false {
+            margin-left: hrhythm($left);
+        }
+        @if $right != false {
+            margin-right: hrhythm($right);
+        }
+    }
+    @else {
+        @if $left != false {
+            padding-left: hrhythm($left);
+        }
+        @if $right != false {
+            padding-right: hrhythm($right);
+        }
+    }
+}
+
+
+// ==========================================================================
+// Shorthand mixin for column
+// --------------------------------------------------------------------------
+// Fixes content width and aligns in viewport.
+// $root-position is defind in grid settings
+// --------------------------------------------------------------------------
+// @param (string) $root-max-width
+// @param (boolean) $set-display
+// ==========================================================================
+
+@mixin root($root-max-width: $root-max-width, $set-display: false)
+{
+    @if $set-display {
+        display: block;
+    }
+
+    @if $root-position==center {
+        margin: 0 auto;
+    }
+
+    max-width: $root-max-width;
+}
+
+
+// ==========================================================================
+// Mixin for column container
+// --------------------------------------------------------------------------
+// Use it to remove column spacing on columns
+// --------------------------------------------------------------------------
+// @param (boolean) $use-margin
+// ==========================================================================
+
+@mixin container-behavior($use-margin: false)
+{
+    @if $use-margin {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    @else {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+
+// ==========================================================================
+// Mixin bleed
+// --------------------------------------------------------------------------
+// Mixin to reverse padding on a container
+// Use it to remove padded column spacing on columns,
+// helpful when nesting columns
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@mixin bleed($fraction: -1/2)
+{
+    @include gutters($fraction, true);
+}
+
+
+// ==========================================================================
+// Mixin for soure ordering
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@mixin move($fraction)
+{
+    left: percentage($fraction);
+}
+
+
+// ==========================================================================
+// Mixin push
+// --------------------------------------------------------------------------
+// Alias for move
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+
+@mixin push($fraction)
+{
+    @include move($fraction);
+}
+
+
+// ==========================================================================
+// Mixin pull
+// --------------------------------------------------------------------------
+// Mixin for soure ordering
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@mixin pull($fraction)
+{
+    @include move(-1*$fraction);
+}
+
+
+// ==========================================================================
+// Mixin reset-source-order
+// --------------------------------------------------------------------------
+// Mixin for soure ordering
+// Will reset positioning for smallest breakpoint.
+// --------------------------------------------------------------------------
+// @param (string) $fraction
+// ==========================================================================
+
+@mixin reset-source-order()
+{
+    @if $column-breakpoint {
+        @include breakpoint( $column-breakpoint ) {
+            position: static;
+            position: initial;
+        }
+    }
+}

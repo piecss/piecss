@@ -1,0 +1,53 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ================================================================================================================================
+// Rhythm settings
+// ================================================================================================================================
+
+// Vertical measurements like line-height and %-top and %-bottom are factors of rhythm
+$rhythm: $default-line-height !default;
+
+
+$debug-rhythm: false !default;
+$single-direction-elements: (p,pre,table,hr,article) !default;
+
+
+// ================================================================================================================================
+// Column settings
+// ================================================================================================================================
+// Set a max width on a root container of your choice, the content will not stretch beyond this width.
+// The root container can be positioned left or center, for alternate position you can provide your own behavior.
+
+$column-selector: ".column" !default;
+$column-widths: (
+    $small_handheld: (small-1-2: 1/2, small-1-3: 1/3, small-2-3: 2/3),
+    $medium_handheld: (medium-1-2: 1/2, medium-1-3: 1/3, medium-1-4: 1/4, medium-2-3: 2/3, medium-3-4: 3/4),
+    $medium_desktop: (default-1-2: 1/2, default-1-3: 1/3, default-1-4: 1/4, default-2-3: 2/3, default-3-4: 3/4),
+) !default;
+
+$column-width-default: 1/1 !default;
+$column-breakpoint: false !default;
+$column-float: false !default; // If you prefer floated columns instead of inline-blocks, set to true.
+
+$gutter-width: 2*$rhythm !default;
+$gutter-width-unit: $unit !default;
+$gutter-width-persistent: false !default;
+
+// If you cannot minify your markup, you can assign a negative right margin to close gaps between columns to make tem fit
+// This is a hack and not nescessary when your html (or column markup) is minimized.
+$negative-right-margin: false !default;
+
+
+// ================================================================================================================================
+// Root settings
+// ================================================================================================================================
+// Set a max width on a root container of your choice, the content will not stretch beyond this width.
+// The root container can be positioned left or center, for alternate position you can provide your own behavior.
+
+$root-selector: ".root" !default;
+$root-max-width: 72em !default;
+$root-position: center !default;

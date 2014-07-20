@@ -1,0 +1,255 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ==========================================================================
+// CONTENT
+//
+// 1. Functions
+//    value-map
+// 2. Mixins
+//    padding
+//    padding-top
+//    padding-right
+//    padding-bottom
+//    padding-left
+//    margin
+//    margin-top
+//    margin-right
+//    margin-bottom
+//    margin-left
+//    _unit-sides
+//    _sides
+
+
+// 1. FUNCTIONS
+// ==========================================================================
+
+
+// Function value-map
+// Takes a list of values and returns a spacing map
+// --------------------------------------------------------------------------
+// $sides:  a list of value arguments like CSS's normal padding (0 0 0 0)
+// $property:  the property
+// ==========================================================================
+
+@function value-map($sides, $property: padding)
+{
+
+    // SASS appends a comma to the $sides list,
+    // don't know how to get around this but list the values
+    $sides: nth($sides,1);
+
+    // Create map to hold our spacing values;
+    $spacing: ();
+
+    @if $property==padding or $property==margin {
+        $length: length($sides);
+        @if $length==1 {
+            $spacing: (top:$sides,right:$sides,bottom:$sides,left:$sides);
+        }
+        @elseif $length==2 {
+            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,1),left:nth($sides,2));
+        }
+        @elseif $length==3 {
+            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,3),left:nth($sides,2));
+        }
+        @else {
+            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,3),left:nth($sides,4));
+        }
+    }
+
+    @elseif str-index($property, top) {
+        $spacing: (top: $sides);
+    }
+
+    @elseif str-index($property, right) {
+        $spacing: (right: $sides);
+    }
+
+    @elseif str-index($property, bottom) {
+        $spacing: (bottom: $sides);
+    }
+
+    @elseif str-index($property, left) {
+        $spacing: (left: $sides);
+    }
+
+    @return $spacing;
+}
+
+
+// 2. MIXINS
+// ==========================================================================
+
+// Mixin padding, placeholder for _unit-sides
+// --------------------------------------------------------------------------
+// $sides:  takes arguments like CSS's normal padding
+// ==========================================================================
+
+@mixin padding($sides...)
+{
+    $sides: value-map($sides, padding);
+    @include _unit-sides($sides, padding);
+}
+    @mixin padding-top($value)
+    {
+        $sides: value-map($value, padding-top);
+        @include _unit-sides($sides, padding);
+    }
+    @mixin padding-right($value)
+    {
+        $sides: value-map($value, padding-right);
+        @include _unit-sides($sides, padding);
+    }
+    @mixin padding-bottom($value)
+    {
+        $sides: value-map($value, padding-bottom);
+        @include _unit-sides($sides, padding);
+    }
+    @mixin padding-left($value)
+    {
+        $sides: value-map($value, padding-left);
+        @include _unit-sides($sides, padding);
+    }
+
+
+// Mixin margin, placeholder for _unit-sides
+// --------------------------------------------------------------------------
+// $sides:  takes arguments like CSS's normal padding
+// ==========================================================================
+
+@mixin margin($sides...)
+{
+    $sides: value-map($sides, margin);
+    @include _unit-sides($sides, margin);
+}
+    @mixin margin-top($value)
+    {
+        $sides: value-map($value, margin-top);
+        @include _unit-sides($sides, margin);
+    }
+    @mixin margin-right($value)
+    {
+        $sides: value-map($value, margin-right);
+        @include _unit-sides($sides, margin);
+    }
+    @mixin margin-bottom($value)
+    {
+        $sides: value-map($value, margin-bottom);
+        @include _unit-sides($sides, margin);
+    }
+    @mixin margin-left($value)
+    {
+        $sides: value-map($value, margin-left);
+        @include _unit-sides($sides, margin);
+    }
+
+// Mixin _unit-sides
+// Mixin the property in the final unit of output
+// With rem fallback if the final unit is rem
+// --------------------------------------------------------------------------
+// $sides:  takes arguments like CSS's normal padding
+// $property:  property to apply sides to
+// ==========================================================================
+
+@mixin _unit-sides($sides, $property: padding)
+{    
+    // Convert the values into the final unit of output
+    $unit-values: ();
+    $fallback-values: ();
+
+    @each $side in $sides {
+
+        $side: nth($side,1);
+
+        // Isolate the value
+        $value: map-get($sides, $side);
+
+        @if strip-unit($value)==0 {
+            $value: 0px;
+        }
+
+        // Create new maps
+        @if unit($unit)==rem {
+            $fallback-values: map-merge($fallback-values, ($side: to-unit($value, $fallback-values)) );
+        }
+        $unit-values: map-merge($unit-values, ($side: to-unit($value)) )
+    }
+
+
+    // Now, render the property and include rem fallback if needed
+    @if unit($unit)==rem {
+        @include _sides($fallback-values, $property);
+    }
+    @include _sides($unit-values, $property);
+}
+
+
+// Mixin _sides
+// --------------------------------------------------------------------------
+// $sides [map]: A spacing map in final values (top:0,right:0,bottom:0,left:0)
+// $property: Padding or margin
+// ==========================================================================
+
+@mixin _sides($sides, $property: padding)
+{
+    // Initialize some variables
+    $top: '';
+    $right: '';
+    $bottom: '';
+    $left: '';
+
+    @if map-has-key($sides, top) {
+        $top: map-get($sides, top);
+        $top: if(abs($top)==0, 0, $top);
+    }
+
+    @if map-has-key($sides, right) {
+        $right: map-get($sides, right);
+        $right: if(abs($right)==0, 0, $right);
+    }
+
+    @if map-has-key($sides, bottom) {
+        $bottom: map-get($sides, bottom);
+        $bottom: if(abs($bottom)==0, 0, $bottom);
+    }
+
+    @if map-has-key($sides, left) {
+        $left: map-get($sides, left);
+        $left: if(abs($left)==0, 0, $left);
+    }
+
+
+    @if length($sides)==4 {
+
+        @if ($top==$bottom and $right==$left and $top==$right) {
+            #{$property}: #{$top};
+        }
+        @elseif ($top==$bottom and $right==$left) {
+            #{$property}: #{$top} #{$right};
+        }
+        @else {
+            #{$property}: #{$top} #{$right} #{$bottom} #{$left};
+        }
+
+    }
+    @else {
+
+        @if $top {
+            #{$property}-top: #{$top};
+        }
+        @if $right {
+            #{$property}-right: #{$right};
+        }
+        @if $bottom {
+            #{$property}-bottom: #{$bottom};
+        }
+        @if $left {
+            #{$property}-left: #{$left};
+        }
+
+    }
+}

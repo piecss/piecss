@@ -1,0 +1,117 @@
+// /*
+// * @copyright    Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * @license      GNU General Public License version 2 or later; see LICENSE.txt
+// */
+
+
+// ==========================================================================
+// CONTENT
+//
+// 1. Functions:
+//    strip-unit
+//    to-unit
+//    to-px
+// 2. Mixins:
+//    rem
+
+
+// 1. FUNCTIONS
+// ==========================================================================
+
+
+// Accepts a value and returns it without a value
+// Courtesy Hugo: http://hugogiraudel.com/2013/08/12/sass-functions/
+// --------------------------------------------------------------------------
+// $value  a value in any unit (px, rem, em, %, pt)
+// ==========================================================================
+
+@function strip-unit($value)
+{
+    @if $value==0 {
+        @return $value;
+    }
+    @return $value / ($value * 0 + 1);
+}
+
+
+// Convert a px value to a new unit, within the context of it's containing element
+// --------------------------------------------------------------------------
+// $target-px: the final size in px
+// $context:   the context of the targeted element (for calculations to em)
+// $unit:      the final unit to which $target-px is converted (px, rem, em, %)
+// ==========================================================================
+
+@function to-unit($value, $unit: $unit, $context: $default-font-size)
+{
+    @if unit($value) != px {
+        /* Convert the value to px first */
+        $value: to-px($value);
+    }
+
+    @if unit($unit)=="%" {
+        $value: percentage($value / $context);
+    }
+    @else {
+        $value: $value / $context * $unit;
+    }
+
+    @return $value;
+}
+
+// Convert to a px value
+// --------------------------------------------------------------------------
+// $value: the value in rem, em or %
+// ==========================================================================
+
+@function to-px($value, $context: $default-font-size)
+{
+    @if unit($value)=="px" {
+        @debug $value;
+    }
+    @elseif unit($value)=="rem" {
+        $value: rem-to-px($value);
+    }
+    @elseif unit($value)=="em" {
+        $value: em-to-px($value, $context);
+    }
+    @elseif unit($value)=="%" {
+        $value: percentage-to-px($value);
+    }
+
+    @return $value;
+
+}
+
+@function rem-to-px($value)
+{
+    @return $default-font-size * strip-unit($value);
+}
+
+@function em-to-px($value, $context: $default-font-size)
+{
+    @return $context * strip-unit($value);
+}
+
+@function percentage-to-px($value)
+{
+    @return $value/10% + 0px;
+}
+
+
+// 2. MIXINS
+// ==========================================================================
+
+
+// Mixin a property in rem and the fallback in another unit
+// --------------------------------------------------------------------------
+// $value  a value in px
+// $property: the property to be set
+// $fallback-unit: the unit in which the fallback measurement is to be set
+// $context: the context of the targeted element (for calculations to em)
+// ==========================================================================
+
+@mixin rem($target-px, $property, $unit: $fallback-unit, $context: $default-font-size)
+{
+    #{$property}: to-unit($target-px, $context, $fallback-unit);
+    #{$property}: to-unit($target-px, $default-font-size, 1rem);
+}

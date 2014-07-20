@@ -1,0 +1,173 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Placeholders
+//    %root
+//    %column
+//    %gutters
+//    %gutters--right
+//    %gutters--left
+//    %bleed
+//    %bleed--right
+//    %bleed--left
+// 2. Selectors
+//    Column widths
+
+
+// ==========================================================================
+//
+// 1. PLACEHOLDERS
+//
+// ==========================================================================
+//
+// Example usage of a placeholder:
+// .root {
+//     @extend %root;
+// }
+//
+// --------------------------------------------------------------------------
+
+
+// ==========================================================================
+// Placeholder %root
+// --------------------------------------------------------------------------
+// Sets a maximum width on a container
+// ==========================================================================
+
+%root {
+	@include root();
+}
+
+// ==========================================================================
+// Placeholder %column
+// --------------------------------------------------------------------------
+// Column or region, but excluding gutters (padding or margin)
+// ==========================================================================
+
+%column {
+	@include column-behavior();
+	@include column-width();
+}
+
+
+// ==========================================================================
+// Placeholder %gutters
+// --------------------------------------------------------------------------
+// Adds responsive padding left and right
+// ==========================================================================
+
+%gutters {
+	@include gutters();
+}
+
+// ==========================================================================
+// Placeholder %gutters--right
+// --------------------------------------------------------------------------
+// Adds responsive padding right
+// ==========================================================================
+
+%gutters-right {
+	@include gutters((false 1/2));
+}
+
+// ==========================================================================
+// Placeholder %gutters--left
+// --------------------------------------------------------------------------
+// Adds responsive padding left
+// ==========================================================================
+
+%gutters-left {
+	@include gutters((1/2 false));
+}
+
+// ==========================================================================
+// Placeholder %bleed
+// --------------------------------------------------------------------------
+// Responsive bleed padding left and right
+// ==========================================================================
+
+%bleed {
+	@include bleed(); 
+}
+
+// ==========================================================================
+// Placeholder %bleed--right
+// --------------------------------------------------------------------------
+// Responsive bleed padding right
+// ==========================================================================
+
+%bleed--right {
+	@include bleed((false 1/2)); 
+}
+
+// ==========================================================================
+// Placeholder %bleed--left
+// --------------------------------------------------------------------------
+// Responsive bleed padding left
+// ==========================================================================
+
+%bleed-left {
+	@include bleed((1/2 false)); 
+}
+
+
+// ==========================================================================
+//
+// 2. SELECTORS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Column widths
+// --------------------------------------------------------------------------
+//
+// Outputs columns for different breakpoints.
+// Columns and breakpoints can be set from your project's settings:
+//
+// $small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
+// $small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;
+//
+// $column-widths: (
+//     $small_handheld: (main: 1/1, side: 1/1),
+//     $small_desktop: (main: 2/3, side: 1/3) );
+//
+// Will output:
+//
+// @media only screen and (max-width: 30em) {
+//   .main {
+//     width: 100%; }
+//   .side {
+//     width: 100%; } }
+// @media only screen and (min-width: 64em) {
+//   .main {
+//     width: 66.66667%; }
+//   .side {
+//     width: 33.33333%; } }
+//
+// ==========================================================================
+
+@each $breakpoint in map-keys($column-widths) {
+	$widths: map-get($column-widths, $breakpoint);
+	@each $selector in map-keys($widths){
+	    .#{$selector} {
+	        @extend %column;
+	    }
+	}
+	@include breakpoint($breakpoint) {
+	    @each $selector in map-keys($widths){
+	        .#{$selector} {
+	            @include column-width( map-get($widths, $selector) );
+	        }
+	    }
+	}
+}

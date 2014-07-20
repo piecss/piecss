@@ -1,0 +1,72 @@
+// /*
+// * Copyright (C) 2013 Crossing Hippos - Babs Gösgens. All rights reserved.
+// * Licensed under MIT; see LICENSE.txt
+// */
+
+
+// ==========================================================================
+// CONTENT
+//
+// 1. Globals
+//    smart-cache
+// 2. Functions
+//    smart-cache
+
+
+// 1. GLOBALS
+// A SASS map
+// ==========================================================================
+$smart-cache: ();
+
+
+// 2. FUNCTIONS
+// ==========================================================================
+
+
+// Function smart-cache
+// Takes a list of values and returns a spacing map
+//
+// Call like:
+// %inline-block {
+//   @include smart-cache((
+//     display: inline-block
+//   ));
+// }
+// %no-padding {
+//   @include smart-cache((
+//     padding: 0
+//   ));
+// }
+// %no-margin {
+//   @include smart-cache((
+//     margin: 0,
+//   ));
+// }
+//
+// --------------------------------------------------------------------------
+// $sides:  a list of value arguments like CSS's normal padding (0 0 0 0)
+// $property:  the property
+// ==========================================================================
+
+@mixin smart-cache($declarations) {
+
+  // Looping through all properties/values from map
+  @each $property, $value in $declarations {
+    // Get the stored values for the current property
+    $stored-values: map-get($smart-cache, $property);
+ 
+    // If the value doesn't exist in stored values
+    @if not index($stored-values, $value) {
+      // Add it
+      $smart-cache: map-merge($smart-cache, ($property: append($stored-values or (), $value))) !global;
+      // And create a placeholder at root level
+      @at-root %#{$property}-#{length(map-get($smart-cache, $property))} {
+        #{$property}: $value;
+      }
+    }
+ 
+    // Extend the placeholder
+    @extend %#{$property}-#{index(map-get($smart-cache, $property), $value)};
+  }
+
+}
