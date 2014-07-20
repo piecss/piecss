@@ -1,2 +1,4 @@
 .sass-cache
-templates
+templates/*
+!templates/piecss
+templates/piecss/_settings.scss
