@@ -1,9 +1,5 @@
 @charset "UTF-8";
-/* http://piecss.com
-v1.0 | 20140720
-Copyright: Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
-License: MIT; see LICENSE.txt
-*/
+/*! piecss.scss v0.1 | MIT License | git.io/piecss/piecss */
 
 
 // ==========================================================================
@@ -63,7 +59,7 @@ $debug-rhythm: true;
 //
 // ==========================================================================
 
-@import "../sass/utilities";
+@import "../../sass/utilities";
 
 
 // ==========================================================================
@@ -75,7 +71,7 @@ $debug-rhythm: true;
 //
 // ==========================================================================
 
-@import "../sass/settings";
+@import "../../sass/settings";
 @import "./settings";
 
 
@@ -88,12 +84,13 @@ $debug-rhythm: true;
 //
 // ==========================================================================
 
-@import "../sass/behavior";
+@import "../../sass/behavior";
 
 // Or import individually
-// @import "../sass/base";
+// @import "../../sass/base";
 // @import "../sass/grid";
+// @import "../../sass/list";
 
 .test {
-    @extend %gutters;
+    @extend %gutters !optional;
 }

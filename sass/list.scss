@@ -3,56 +3,129 @@
 //  * Licensed under MIT; see LICENSE.txt
 //  */
 
-/*
------------------------------------------------------------------------------
-Lists
------------------------------------------------------------------------------
-*/
 
-@if $reset-list-style {
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Reset
+// 2. Placeholders
+//    %list--incognito
+//    %list--inline
+//    %list--outside
+//    %list--inside
+//    %list--{type}
+
+
+// ==========================================================================
+//
+// 1. RESET
+//
+// ==========================================================================
+//
+// If $reset-list-style equals true (see settings/list) all lists are reset.
+// Applying a class of list to a ul or ol will restore the default behavior.
+//
+// 1. Remove default list behavior
+// 2. Restore default list behavior when a class of list is applied
+// 3. Ensure list items inherit from their parent list 
+//
+// --------------------------------------------------------------------------
+
+@if $reset-list {
 	ol,ul {
-		list-style-type: none;
+		@extend %#{$list-base-class}--incognito !optional; /* 1 */
+	}
+	ol {
+		 /* 2 */
+		&.#{$list-base-class} {
+			@extend %#{$list-base-class}--#{$list-ol-default} !optional;
+		}
+		@extend %#{$list-base-class}--inside;
+	}
+	ul {
+		 /* 2 */
+		&.#{$list-base-class} {
+			@extend %#{$list-base-class}--#{$list-ul-default} !optional;
+		}
+		@extend %#{$list-base-class}--inside;
+	}
+	/* 3 */
+	li {
+		list-style-type: inherit;
+		list-style-position: inherit;
+		list-style-image: inherit;
 	}
 }
 
-ol {
-	&.#{$list-base-class} {
-		@extend .#{$list-base-class}--#{$list-ol-default} !optional;
-	}
-}
-ul {
-	&.#{$list-base-class} {
-		@extend .#{$list-base-class}--#{$list-ul-default} !optional;
-	}
-}
-li {
-	list-style-type: inherit;
-	list-style-position: inherit;
-	list-style-image: inherit;
+
+// ==========================================================================
+//
+// 2. PLACEHOLDERS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Placeholder %list--incognito
+// --------------------------------------------------------------------------
+// Remove default list behavior
+// ==========================================================================
+
+%#{$list-base-class}--incognito {
+	padding: 0;
+	list-style-type: none;
 }
 
-.#{$list-base-class}--inline {
+
+// ==========================================================================
+// Placeholder %list--inline
+// --------------------------------------------------------------------------
+// List all items inline
+// ==========================================================================
+
+%#{$list-base-class}--inline {
 	&>li {
 		display: inline;
 	}
 }
 
-.#{$list-base-class}--outside {
+
+// ==========================================================================
+// Placeholder %list--outside
+// --------------------------------------------------------------------------
+// Moves bullets outside of the left text margin
+// ==========================================================================
+
+%#{$list-base-class}--outside {
 	list-style-position: outside;
 }
 
-.#{$list-base-class}--inside {
+
+// ==========================================================================
+// Placeholder %list--incognito
+// --------------------------------------------------------------------------
+// Moves bullets inside of the left text margin
+// ==========================================================================
+
+%#{$list-base-class}--inside {
 	list-style-position: inside;
 	padding-left: 1em;
 	text-indent: -1em;
 }
 
 
-/*
------------------------------------------------------------------------------
-List bullet types
------------------------------------------------------------------------------
-*/
+// ==========================================================================
+// List bullet types
+// --------------------------------------------------------------------------
+// All bullet types:
+// %list--circle,
+// %list--decimal,
+// %list--lower-alpha,
+// etc.
+// ==========================================================================
 
 @if $list-style-type-armenian {
 	@include list-style-type(armenian);
