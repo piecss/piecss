@@ -34,7 +34,7 @@
 // $debug-rhythm - If true, will show vertical rhythm
 // ==========================================================================
 
-$debug-rhythm: true;
+$debug-rhythm: false;
 
 
 // ==========================================================================
@@ -47,7 +47,7 @@ $debug-rhythm: true;
 //
 // ==========================================================================
 
-// @import "Compass";
+@import "Compass";
 
 
 // ==========================================================================
@@ -89,8 +89,29 @@ $debug-rhythm: true;
 // Or import individually
 // @import "../../sass/base";
 // @import "../../sass/grid";
+// @import "../../sass/form";
 // @import "../../sass/list";
 
 .test {
     @extend %gutters !optional;
+}
+
+
+select,
+textarea,
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="url"],
+input[type="week"] {
+    @extend %field-base !optional;
+    @extend %field !optional;
 }
