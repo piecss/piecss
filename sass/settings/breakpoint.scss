@@ -1,0 +1,25 @@
+// /*
+//  * Copyright (C) 2014 Babs Gösgens.
+//  * Licensed under MIT; see LICENSE.txt
+//  */
+
+
+// ==========================================================================
+// Breakpoints
+// ==========================================================================
+
+$small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
+$small_handheld--tall: "#{$small_handheld} and (orientation: portrait)" !default;
+$small_handheld--wide: "(min-width: #{to-unit(640px,$unit,$default-font-size)}) and (orientation: landscape)" !default;
+
+$medium_handheld: "(min-width #{to-unit(481px,$unit,$default-font-size)}) and (max-width #{to-unit(1024px,$unit,$default-font-size)})" !default;
+$medium_handheld--tall: "#{$medium_handheld} and (orientation: portrait)" !default;
+$medium_handheld--wide: "(min-width: #{to-unit(1024px,$unit,$default-font-size)}) and (orientation: landscape)" !default;
+
+$large_handheld: $medium_handheld;
+$large_handheld--tall: $medium_handheld--tall;
+$large_handheld--wide: $medium_handheld--wide;
+
+$small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;
+$medium_desktop: "(min-width: #{to-unit(1280px,$unit,$default-font-size)})" !default;
+$large_desktop: "(min-width: #{to-unit(1680px,$unit,$default-font-size)})" !default;

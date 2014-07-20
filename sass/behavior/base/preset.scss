@@ -1,0 +1,60 @@
+// /*
+//  * Copyright (C) 2014 Babs Gösgens.
+//  * Licensed under MIT; see LICENSE.txt
+//  */
+
+
+/*
+-----------------------------------------------------------------------------
+Miscellaneous - consider movin to reset
+-----------------------------------------------------------------------------
+*/
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+hr {
+    height: 0;
+}
+code,
+kbd,
+pre,
+samp {
+    @include font-family($monospace-regular);
+    @include font-size($default-font-size);
+}
+pre {
+    white-space: pre-wrap;
+}
+small {
+    font-size: 80%;
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+
+@if $base-quote-quotes
+{
+    /*
+     * Set consistent quote types.
+     */
+
+    q {
+        quotes: "\201C" "\201D" "\2018" "\2019";
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
