@@ -15,80 +15,65 @@
 //    2a. Shared settings
 //        Default
 //        Focus
-//    2b. Color settings
-//    2c. Range settings
-//    2d. Search settings
+//    2b. Color input
+//    2b. Range input
+//    2d. Search input
 //    2e. Checkbox/Radio settings
 //    2f. Textarea settings
 //    2g. Select settings
 // 3. Label settings
+// 4. Elements
 
 
 // ==========================================================================
 //
-// 2. SELECTOR SETTINGS
+// SELECTOR SETTINGS
 //
 // ==========================================================================
 
-$field-selector: "field" !default;
-$form-selector: "form" !default;
-$legend-selector: "legend" !default;
-$label-selector: "label" !default;
+$form-form-selector: "%form" !default;
+$form-fieldset-selector: "%fieldset" !default;
+$form-legend-selector: "%legend" !default;
+$form-field-base-selector: "%field-base" !default;
+$form-field-base-selector--focus: "%field-base--focus" !default;
+$form-field-selector: "%field" !default;
+$form-field-color-selector: "%field--color" !default;
+$form-field-range-selector: "%field--range" !default;
+$form-field-search-selector: "%field--search" !default;
+$form-checkbox-selector: "%checkbox" !default;
+$form-radio-selector: "%radio" !default;
+$form-textarea-selector: "%textarea" !default;
+$form-select-selector: "%select" !default;
+$form-select-dropdown-selector: "%select--dropdown" !default;
+$form-select-box-selector: "%select--box" !default;
+$form-select-multiple-selector: "%select--multiple" !default;
+$form-label-selector: "%label" !default;
 
+// Start collection of element-maps
+$form-elements: ();
 
 // ==========================================================================
 //
-// 2. FIELD SETTINGS
-//
-// ==========================================================================
-//
-// 2a. SHARED SETTINGS - DEFAULT
+// FIELD SETTINGS
 //
 // ==========================================================================
 
-$field-width: 100%;
-$field-height: $default-line-height;
 
-
-// -----------------------------------------------------------------------
-// Input margin (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
-$field-margin-top: 0 !default;
-$field-margin-right: 0 !default;
-$field-margin-bottom: 0 !default;
-$field-margin-left: 0 !default;
-
-// -----------------------------------------------------------------------
-// Input padding (top, right, left, bottom)
-// -----------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// SHARED SETTINGS - DEFAULT
+// --------------------------------------------------------------------------
 
 $field-padding-top: vrhythm(.25) !default;
-$field-padding-right: false !default;
+$field-padding-right: .5em;
 $field-padding-bottom: vrhythm(.25) !default;
-$field-padding-left: false !default;
-
-
-// -----------------------------------------------------------------------
-// Input background (background-color, background-image)
-// -----------------------------------------------------------------------
+$field-padding-left: .5em;
 
 $field-background-color: $color-background !default;
 $field-background-image: false !default;
 
-
-// -----------------------------------------------------------------------
-// Input border (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
 $field-border-width: 1px !default;
 $field-border-style: solid !default;
 $field-border-color: darken($color-background, 30%) !default;
-
-
-// -----------------------------------------------------------------------
-// Input corner (top-left, top-right, bottom-left, bottom-right)
-// -----------------------------------------------------------------------
 
 $field-border-radius-top-left: $corner-radius !default;
 $field-border-radius-top-right: $corner-radius !default;
@@ -96,90 +81,51 @@ $field-border-radius-bottom-right: $corner-radius !default;
 $field-border-radius-bottom-left: $corner-radius !default;
 $field-border-radius: $corner-radius !default;
 
+$field-box-sizing: border-box;
+$field-width: 100%;
+$field-height: $default-line-height + 2*$field-border-width + $field-padding-top + $field-padding-bottom;
+$field-line-height: $default-line-height;
 
-// -----------------------------------------------------------------------
-// Input shadow (box-shadow, inner-shadow)
-// -----------------------------------------------------------------------
+$field-shadow: mix($black, $field-background-color, 10%) 1px 1px 1px 0 inset !default;
 
-$field-shadow-box: $color-body 1px 1px 2px 0 !default;
-$field-shadow-inner: darken($field-background-color, 10%) 1px 1px 1px 0 inset !default;
-
-
-// -----------------------------------------------------------------------
-// Input text (color, shadow, align, decoration, indent)
-// -----------------------------------------------------------------------
-
-$field-text-color: $color-body !default;
-$field-text-shadow: false !default;
-$field-text-align: left !default;
-$field-text-decoration: none !default;
-$field-text-indent: $gutter-width !default;
-
-
-// -----------------------------------------------------------------------
-// Input type (type, size, leading)
-// -----------------------------------------------------------------------
-
-$field-font-family: $default-font !default;
-$field-font-size: $default-font-size !default;
-$field-font-rhythm: 1 !default;
+$form-elements: add-properties(
+    (
+        box-sizing: $field-box-sizing, // The search box needs this, weirdly
+        height: $field-height,
+        width: $field-width,
+        padding: (top: $field-padding-top, right: $field-padding-right, bottom: $field-padding-bottom, left: $field-padding-left),
+        background: $field-background-color if($field-background-image, url(#{$field-background-image}), none),
+        border: $field-border-width $field-border-style $field-border-color,
+        border-radius: $field-border-radius,
+        line-height: $field-line-height,
+        box-shadow: $field-shadow, 
+    ),
+    $form-field-base-selector,
+    $form-elements
+);
 
 
-// ==========================================================================
-//
-// 2a. SHARED SETTINGS - FOCUS
-//
-// ==========================================================================
-
-
-// -----------------------------------------------------------------------
-// Input background (background-color, background-image)
-// -----------------------------------------------------------------------
+// --------------------------------------------------------------------------
+// SHARED SETTINGS - FOCUS
+// --------------------------------------------------------------------------
 
 $field-focussed-background-color: $whitesmoke !default;
-$field-focussed-background-image: linear-gradient(lighten($field-focussed-background-color,5), darken($field-focussed-background-color,5)) !default;
 
+$field-focussed-outline-width: 1px !default;
+$field-focussed-outline-style: solid !default;
+$field-focussed-outline-color: mix($field-border-color, $field-focussed-background-color, 0) !default;
 
-// -----------------------------------------------------------------------
-// Input border (top, right, left, bottom)
-// -----------------------------------------------------------------------
+$field-focussed-outline-offset: -1*( $field-focussed-outline-width + 3*$field-border-width) !default; 
 
-$field-focussed-border-width: false !default; // Inherit
-$field-focussed-border-style: false !default; // Inherit
-$field-focussed-border-color: $color-primary !default;
-
-
-// -----------------------------------------------------------------------
-// Input outline (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
-$field-focussed-outline-border: none !default;
-$field-focussed-outline-offset: if($field-focussed-outline-border==none, false, 0) !default; // disable Safari's default - we're using box-shadows cross-browser
-
-// -----------------------------------------------------------------------
-// Input corner (top-left, top-right, bottom-left, bottom-right)
-// -----------------------------------------------------------------------
-
-$field-focussed-border-radius: false !default;
-
-
-// -----------------------------------------------------------------------
-// Input shadow (box-shadow, inner-shadow)
-// -----------------------------------------------------------------------
-
-$field-focussed-shadow-box: 0 0 4px $field-focussed-border-color !default;
-$field-focussed-shadow-inner: false !default;
-
-
-// -----------------------------------------------------------------------
-// Input text (color, shadow, align, decoration)
-// -----------------------------------------------------------------------
-
-$field-focussed-text-color: $color-body !default;
-$field-focussed-text-shadow: false !default;
-$field-focussed-text-align: left !default;
-$field-focussed-text-decoration: none !default;
-
+$form-elements: add-properties(
+    (
+        background-color: $field-focussed-background-color,
+        outline: $field-focussed-outline-width $field-focussed-outline-style $field-focussed-outline-color,
+        outline-offset: $field-focussed-outline-offset,
+    ),
+    $form-field-base-selector--focus,
+    $form-elements
+);
 
 
 // ==========================================================================
@@ -188,151 +134,118 @@ $field-focussed-text-decoration: none !default;
 //
 // ==========================================================================
 
-$field-color-class: $field-selector + '-color' !default;
-$field-color-width: false;
+$form-elements: add-properties(
+    (
+        // border: $field-border-width $field-border-style $field-border-color,
+        border-radius: $field-border-radius,
+    ),
+    $form-field-color-selector,
+    $form-elements
+);
 
 
 // ==========================================================================
 //
-// 2c. Input Range properties
+// 2b. Input Range properties
 //
 // ==========================================================================
 
-$field-range-class: $field-selector + '-range' !default;
-$field-range-width: 100%;
+$field-range-width: $field-width;
+
+$form-elements: add-properties(
+    (
+        width: $field-range-width,
+    ),
+    $form-field-range-selector,
+    $form-elements
+);
 
 
-// ==========================================================================
+// --------------------------------------------------------------------------
 //
-// 2d. Input Search properties
+// Input Search properties
 //
-// ==========================================================================
+// --------------------------------------------------------------------------
 
-$field-search-class: $field-selector + '-search' !default;
 $field-search-border-radius: $field-border-radius;
+$field-search-outline-offset: 0;
+
+$form-elements: add-properties(
+    (
+        // border-radius: $field-search-border-radius,
+        // outline-offset: $field-search-outline-offset,
+    ),
+    $form-field-search-selector,
+    $form-elements
+);
 
 
-// ==========================================================================
+// --------------------------------------------------------------------------
 //
-// 2e. Input Checkbox/Radio properties
+// Select properties
 //
-// ==========================================================================
-
-$field-check-class: $field-selector + '-check' !default;
-
-
-// ==========================================================================
-//
-// 2f. Textarea properties
-//
-// ==========================================================================
-
-$textarea-class: $field-selector + '-textarea' !default;
-
-
-// ==========================================================================
-//
-// 2g. Select properties
-//
-// ==========================================================================
-
-$select-dropdown-class: $field-selector + '-dropdown' !default;
-$select-multiple-class: $field-selector + '-selectbox' !default;
+// --------------------------------------------------------------------------
 
 $select-appearance-default: true;
+$select-height: $field-height; // This is used for select elements
 $select-webkit: false;
 
+$form-elements: add-properties(
+    (
+        height: $select-height,
+    ),
+    $form-select-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: auto,
+    ),
+    $form-select-box-selector,
+    $form-elements
+);
+
+
+// --------------------------------------------------------------------------
+//
+// Textarea properties
+//
+// --------------------------------------------------------------------------
+
+$textarea-height: auto;
+
+$textarea-height-medium: vrhythm(5) - 2*$field-border-width;
+$textarea-height-large: vrhythm(10) - 2*$field-border-width;
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height,
+    ),
+    $form-textarea-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height-medium,
+    ),
+    #{$form-textarea-selector}--medium,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height-large,
+    ),
+    #{$form-textarea-selector}--large,
+    $form-elements
+);
 
 // ==========================================================================
 //
-// 2. LABEL SETTINGS
+// LABEL SETTINGS
 //
 // ==========================================================================
 
 
-// -----------------------------------------------------------------------
-// Label default properties
-// -----------------------------------------------------------------------
-
-$label-width: false;
-
-
-// -----------------------------------------------------------------------
-// Label margin (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
-$label-margin: $field-margin-top $field-margin-right $field-margin-bottom $field-margin-left;
-
-
-// -----------------------------------------------------------------------
-// Label padding (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
-$label-padding-top: 0 !default;
-$label-padding-right: 0 !default;
-$label-padding-bottom: 0 !default;
-$label-padding-left: 0 !default;
-$label-padding: 
-    $label-padding-top 
-    $label-padding-right 
-    $label-padding-bottom 
-    $label-padding-left 
-    !default;
-
-
-// -----------------------------------------------------------------------
-// Label background (background-color, background-image)
-// -----------------------------------------------------------------------
-
-$label-background: false !default;
-
-
-// -----------------------------------------------------------------------
-// Label border (top, right, left, bottom)
-// -----------------------------------------------------------------------
-
-$label-border: false !default;
-
-
-// -----------------------------------------------------------------------
-// Label corner (top-left, top-right, bottom-left, bottom-right)
-// -----------------------------------------------------------------------
-
-$label-border-radius: false !default;
-
-
-// -----------------------------------------------------------------------
-// Label shadow (box-shadow, inner-shadow)
-// -----------------------------------------------------------------------
-
-$label-shadow: false !default;
-
-
-// -----------------------------------------------------------------------
-// Label text (color, shadow, align, decoration)
-// -----------------------------------------------------------------------
-
-$label-text-color: $color-body !default;
-$label-text-shadow: false !default;
-$label-text-align: left !default;
-$label-text-decoration: none !default;
-$label-text: 
-    $label-text-color
-    $label-text-shadow
-    $label-text-align
-    $label-text-decoration
-    !default;
-
-
-// -----------------------------------------------------------------------
-// Label type (type, size, leading)
-// -----------------------------------------------------------------------
-
-$label-font-font: $default-font !default;
-$label-font-size: $default-font-size !default;
-$label-font-rhythm: 1 !default;
-$label-font:
-    $label-font-font
-    $label-font-size
-    $label-font-rhythm
-    !default;
