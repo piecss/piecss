@@ -5,40 +5,6 @@
 
 
 
-@mixin old-ie() {
-    @if $legacy-support-for-ie {
-        @content;
-    }
-}
-@mixin old-mozilla() {
-    @if $legacy-support-for-mozilla {
-        @content;
-    }
-}
-@mixin inline-block($alignment) {
-    $alignment: unquote($alignment);
-
-    @include old-mozilla() {
-        display: -moz-inline-stack;
-    }
-
-    display: inline-block;
-    vertical-align: #{$alignment};
-
-    @include old-ie() {
-        zoom: 1;
-        display: inline;
-        vertical-align: #{$alignment};
-    }
-}
-@mixin opacity($opacity) {
-    @include old-ie() {
-        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
-    }
-    opacity: $opacity;
-}
-
-
 
 @import "utilities/cache";
 @import "utilities/units";
@@ -47,5 +13,7 @@
 @import "utilities/breakpoint";
 @import "utilities/layout";
 @import "utilities/typography";
+@import "utilities/elements";
 @import "utilities/image";
 @import "utilities/list";
+@import "utilities/miscellaneous";

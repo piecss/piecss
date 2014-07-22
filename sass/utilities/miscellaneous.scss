@@ -1,0 +1,129 @@
+// /*
+//  * Copyright (C) 2014 Babs Gösgens.
+//  * Licensed under MIT; see LICENSE.txt
+//  */
+
+
+// ==========================================================================
+// CONTENT
+//
+// 1. Functions
+//    value-map
+// 2. Mixins
+//    padding
+//    padding-top
+//    padding-right
+//    padding-bottom
+//    padding-left
+//    margin
+//    margin-top
+//    margin-right
+//    margin-bottom
+//    margin-left
+//    _unit-sides
+//    _sides
+
+
+// 1. FUNCTIONS
+// ==========================================================================
+
+
+@mixin property($property, $value)
+{
+    @if to-bool($value) {
+        #{$property}: $value;
+    }
+}
+
+@function to-bool($value) {
+  @if not $value or $value == "" or $value == 0 {
+    @return false;
+  }
+  @return true;
+}
+
+@mixin outline($attributes)
+{
+    @include border($attributes, true);
+}
+
+@mixin border($attributes, $outline: false)
+{
+    $property: if($outline, outline, border);
+
+    @if type-of($attributes)=="list" {
+        $map: ();
+        @each $attribute in $attributes {
+            @if type-of($attribute)==number {
+                $map: append($map, width, space);
+            }
+            @else if type-of($attribute)==color {
+                $map: append($map, color, space);
+            }
+            @elseif type-of($attribute)==string {
+                $map: append($map, style, space);
+            }
+        }
+        @include border( list-to-map( zip($map, $attributes) ), $outline);
+    }
+    @elseif type-of($attributes)=="string" {
+        #{$property}: $attributes;
+    }
+    @elseif type-of($attributes)=="map" {
+
+        @if map-has-key($attributes, width) and map-has-key($attributes, style) and map-has-key($attributes, color) {
+            #{$property}: map-get($attributes, width) map-get($attributes, style) map-get($attributes, color);
+        }
+        @else {
+            $keys: map-keys($attributes);
+            @each $key in $keys {
+                #{$property}-#{$key}: map-get($attributes, $key);
+            }
+        }
+    }
+}
+
+
+@function list-to-map($properties)
+{
+    $map: ();
+    @each $property in $properties {
+        $map: map-merge($map, ( nth($property,1): nth($property,2) ) );
+    }
+
+    @return $map;
+}
+
+
+@mixin old-ie() {
+    @if $legacy-support-for-ie {
+        @content;
+    }
+}
+@mixin old-mozilla() {
+    @if $legacy-support-for-mozilla {
+        @content;
+    }
+}
+@mixin inline-block($alignment) {
+    $alignment: unquote($alignment);
+
+    @include old-mozilla() {
+        display: -moz-inline-stack;
+    }
+
+    display: inline-block;
+    vertical-align: #{$alignment};
+
+    @include old-ie() {
+        zoom: 1;
+        display: inline;
+        vertical-align: #{$alignment};
+    }
+}
+@mixin opacity($opacity) {
+    @include old-ie() {
+        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+    }
+    opacity: $opacity;
+}
