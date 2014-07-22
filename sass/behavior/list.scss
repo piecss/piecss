@@ -36,23 +36,20 @@
 
 @if $reset-list {
 	ol,ul {
-		@extend #{$selector-base}#{$list-selector}--incognito !optional; /* 1 */
+		@extend #{$selector-base}#{$list-selector}--incognito !optional;
 	}
 	ol {
-		 /* 2 */
 		&.#{$list-selector} {
 			@extend #{$selector-base}#{$list-selector}--#{$list-ol-default} !optional;
 		}
 		@extend #{$selector-base}#{$list-selector}--inside;
 	}
 	ul {
-		 /* 2 */
 		&.#{$list-selector} {
 			@extend #{$selector-base}#{$list-selector}--#{$list-ul-default} !optional;
 		}
 		@extend #{$selector-base}#{$list-selector}--inside;
 	}
-	/* 3 */
 	li {
 		list-style-type: inherit;
 		list-style-position: inherit;
