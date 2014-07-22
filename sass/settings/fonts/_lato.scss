@@ -23,13 +23,13 @@
 	$lato-family						: ($lato-fontface, $lato-fallback);
 
 	// style, variant, weight, family
-	$lato-ultra-light 					: normal, normal, 100, $lato-family;
-	$lato-book 							: normal, normal, 300, $lato-family;
-	$lato-regular 						: normal, normal, 400, $lato-family;
-	$lato-bold 							: normal, normal, 700, $lato-family;
-	$lato-heavy 						: normal, normal, 900, $lato-family;
-	$lato-ultra-light-italic			: italic, normal, 100, $lato-family;
-	$lato-book-italic					: italic, normal, 300, $lato-family;
-	$lato-regular-italic				: italic, normal, 400, $lato-family;
-	$lato-bold-italic					: italic, normal, 700, $lato-family;
-	$lato-heavy-italic					: italic, normal, 900, $lato-family;
+	$lato-ultra-light 					: normal normal 100 $lato-family;
+	$lato-book 							: normal normal 300 $lato-family;
+	$lato-regular 						: normal normal 400 $lato-family;
+	$lato-bold 							: normal normal 700 $lato-family;
+	$lato-heavy 						: normal normal 900 $lato-family;
+	$lato-ultra-light-italic			: italic normal 100 $lato-family;
+	$lato-book-italic					: italic normal 300 $lato-family;
+	$lato-regular-italic				: italic normal 400 $lato-family;
+	$lato-bold-italic					: italic normal 700 $lato-family;
+	$lato-heavy-italic					: italic normal 900 $lato-family;

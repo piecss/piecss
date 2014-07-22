@@ -23,15 +23,15 @@
 	$roboto-family							: ($roboto-fontface, $roboto-fallback);
 
 	// style, variant, weight, family
-	$roboto-ultra-light 					: normal, normal, 100, $roboto-family;
-	$roboto-ultra-light-italic				: italic, normal, 100, $roboto-family;
-	$roboto-book 							: normal, normal, 300, $roboto-family;
-	$roboto-book-italic						: italic, normal, 300, $roboto-family;
-	$roboto-regular 						: normal, normal, 400, $roboto-family;
-	$roboto-regular-italic					: italic, normal, 400, $roboto-family;
-	$roboto-medium 							: normal, normal, 500, $roboto-family;
-	$roboto-medium-italic					: italic, normal, 500, $roboto-family;
-	$roboto-bold 							: normal, normal, 700, $roboto-family;
-	$roboto-bold-italic						: italic, normal, 700, $roboto-family;
-	$roboto-heavy 							: normal, normal, 900, $roboto-family;
-	$roboto-heavy-italic					: italic, normal, 900, $roboto-family;
+	$roboto-ultra-light 					: normal normal 100 $roboto-family;
+	$roboto-ultra-light-italic				: italic normal 100 $roboto-family;
+	$roboto-book 							: normal normal 300 $roboto-family;
+	$roboto-book-italic						: italic normal 300 $roboto-family;
+	$roboto-regular 						: normal normal 400 $roboto-family;
+	$roboto-regular-italic					: italic normal 400 $roboto-family;
+	$roboto-medium 							: normal normal 500 $roboto-family;
+	$roboto-medium-italic					: italic normal 500 $roboto-family;
+	$roboto-bold 							: normal normal 700 $roboto-family;
+	$roboto-bold-italic						: italic normal 700 $roboto-family;
+	$roboto-heavy 							: normal normal 900 $roboto-family;
+	$roboto-heavy-italic					: italic normal 900 $roboto-family;
