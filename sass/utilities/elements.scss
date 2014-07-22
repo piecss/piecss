@@ -1,0 +1,184 @@
+// /*
+//  * Copyright (C) 2014 Babs Gösgens.
+//  * Licensed under MIT; see LICENSE.txt
+//  */
+
+
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Functions
+// 2. Mixins
+//    element
+//    elements
+
+
+// ==========================================================================
+//
+// 1. FUNCTIONS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Function add-element
+// --------------------------------------------------------------------------
+// Mixes in a new namespace (selector) properties into a selector namespace
+// to add element to an element-collection on the fly
+// map-merge will complain if you try to merge with an unexisting namespace
+// --------------------------------------------------------------------------
+// @param (map) $elements
+// @param (string) $selector
+// @param (map) $properties
+// ==========================================================================
+
+@function add-element($elements, $selector, $properties: ())
+{
+    $_: (
+        #{$selector}: $properties
+    );
+    $elements: map-merge($elements, $_);
+    @return $elements;
+}
+
+// ==========================================================================
+// Function add-properties
+// Function add-props (placeholder for add-properties)
+// Function merge-properties (placeholder for add-properties)
+// Function merge-props (placeholder for add-properties)
+// --------------------------------------------------------------------------
+// Mixes in properties into a selector namespace
+// --------------------------------------------------------------------------
+// @param (map) $properties
+// @param (string) $selector
+// @param (map) $elements
+// ==========================================================================
+
+@function add-properties($properties, $selector, $elements)
+{
+
+    @if not map-has-key($elements, $selector) {
+        $elements: add-element($elements, $selector);
+    }
+
+    // Merge the nested property-map first
+    $element: map-get($elements, $selector);
+    $element: map-merge($element, $properties);
+
+    // Merge the property-map with the element collection
+    $_: (
+        #{$selector}: $element
+    );
+    $elements: map-merge($elements, $_);
+
+    @return $elements;
+}
+
+@function add-props($properties, $selector, $elements)
+{
+    $elements: add-properties($properties, $selector, $elements);
+    @return $elements;
+}
+
+@function merge-properties($properties, $selector, $elements)
+{
+    $elements: add-properties($properties, $selector, $elements);
+    @return $elements;
+}
+
+@function merge-props($properties, $selector, $elements)
+{
+    $elements: add-properties($properties, $selector, $elements);
+    @return $elements;
+}
+
+
+// ==========================================================================
+//
+// 2. MIXINS
+//
+// ==========================================================================
+
+
+// ==========================================================================
+// Mixin element
+// --------------------------------------------------------------------------
+// Mixes in properties for a single element from a property-map
+// --------------------------------------------------------------------------
+// @param (map) $element
+// ==========================================================================
+
+@mixin element($element)
+{
+    // Lift out properties that have their own mixins
+    @if map-has-key($element, margin) {
+        $value: map-get($element, margin);
+        $element: map-remove($element, margin);
+        @include margin($value);
+    }
+    @if map-has-key($element, padding) {
+        $value: map-get($element, padding);
+        $element: map-remove($element, padding);
+        @include padding($value);
+    }
+    @if map-has-key($element, border-radius) {
+        $value: map-get($element, border-radius);
+        $element: map-remove($element, border-radius);
+        @include border-radius($value);
+    }
+    @if map-has-key($element, box-shadow) {
+        $value: map-get($element, box-shadow);
+        $element: map-remove($element, box-shadow);
+        @include box-shadow($value);
+    }
+    @if map-has-key($element, font-type) {
+        $value: ();
+        $value: append( $value, map-get($element, font-type));
+        @if map-has-key($element, font-size) {
+            $value: append( ($value), map-get($element, font-size));
+        }
+        @if map-has-key($element, line-height) {
+            $value: append($value, map-get($element, line-height));
+        }
+        $element: map-remove($element, font-family);
+        $element: map-remove($element, font-size);
+        $element: map-remove($element, line-height);
+        $element: map-remove($element, font);
+
+        @include font(nth($value,1), nth($value,2), nth($value,3));
+    }
+    @if map-has-key($element, font) {
+        $value: map-get($element, font);
+        $element: map-remove($element, font);
+        @include font(nth($value,1), nth($value,2), nth($value,3));
+    }
+    
+    $properties: map-keys($element);
+
+    @each $property in $properties {
+        #{$property}: map-get($element, $property);
+    }
+}
+
+
+// ==========================================================================
+// Mixin elements
+// --------------------------------------------------------------------------
+// Mixes in properties for multiple elements from a property-map
+// --------------------------------------------------------------------------
+// @param (map) $elements
+// ==========================================================================
+
+@mixin elements($elements) {
+    $selectors: map-keys($elements);
+
+    @each $selector in $selectors {
+        #{$selector} {
+            $element: map-get($elements, $selector);
+            @include element($element);
+        }
+    }
+}
