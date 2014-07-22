@@ -12,7 +12,8 @@
 *:after {
     -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
     margin: 0;
-    vertical-align: bottom;
+    vertical-align: baseline;
+    // vertical-align: bottom; this conflicts with radio buttons
 }
 
 /*
@@ -386,9 +387,9 @@ input[type="number"]::-webkit-outer-spin-button {
 
 input[type="search"] {
   -webkit-appearance: textfield; /* 1 */
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box; /* 2 */
-  box-sizing: content-box;
+  // -moz-box-sizing: content-box;
+  // -webkit-box-sizing: content-box; /* 2 */
+  // box-sizing: content-box;
 }
 
 /*
