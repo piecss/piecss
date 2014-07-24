@@ -1,7 +1,4 @@
-// /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
 // select,
@@ -91,7 +88,17 @@ input[type="search"] {
 
 select:not([size]) {
     @extend #{$form-select-dropdown-selector} !optional;
+    @if to-bool($select-appearance) {
+        @include reset-appearance($select-appearance);
+    }
+    @if $select-webkit {
+        @at-root .webkit {
+            // background: $input-background-color url("/assets/images/icons/icon-sort.svg") no-repeat 1% center;
+            // background-size: 10px auto;
+        }
+    }
 }
+
 select[size] {
     @extend #{$form-select-box-selector} !optional;
 }

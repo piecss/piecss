@@ -10,7 +10,7 @@ Anchors
 -----------------------------------------------------------------------------
 */
 
-// @include anchor("#{$anchor-base-selector}", $anchor-color, $anchor-color-hover, $anchor-color-active, $anchor-color-visited, $anchor-mixin-states);
+// @include anchor("#{$anchor-base-selector}", $color-anchor, $color-anchor--hover, $color-anchor--active, $color-anchor--visited, $anchor-mixin-states);
 
 %anchor {
     text-decoration: none;
@@ -25,6 +25,6 @@ Anchors
 a {
     @extend %anchor !optional;
     &:hover {
-        color: $anchor-color-hover;
+        color: $color-anchor--hover;
     }
 }

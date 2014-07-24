@@ -214,3 +214,47 @@
     }
     opacity: $opacity;
 }
+
+/**
+ * Accepts a string which a valid appearance
+ *
+ * @since 0.1
+ *
+ * @param {String} $appearance
+ */
+
+@mixin reset-appearance($appearance)
+{
+    @include reset-webkit-appearance($appearance);
+    @include reset-mozilla-appearance($appearance);
+}
+
+
+
+
+/**
+ * Accepts a string which a valid appearance
+ *
+ * @since 0.1
+ *
+ * @param {String} $appearance
+ */
+
+@mixin reset-webkit-appearance($appearance)
+{
+    -webkit-appearance: $appearance; /* mobile firefox too! */
+}
+
+
+/**
+ * Accepts a string which a valid appearance
+ *
+ * @since 0.1
+ *
+ * @param {String} $appearance
+ */
+
+@mixin reset-mozilla-appearance($appearance)
+{
+    -moz-appearance: $appearance; /* mobile firefox too! */
+}
