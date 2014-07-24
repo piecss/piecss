@@ -55,7 +55,7 @@
     $line-height: $span * $rhythm;
 
     @if $font-size >= $line-height {
-         * call line-height again, but increase span with increment
+        // call line-height again, but increase span with increment
         @return vrhythm-units($font-size, $span + $increment, $increment);
     }
 
@@ -83,7 +83,7 @@
 
 @function hrhythm($fraction: 1/2, $context: $default-font-size)
 {
-     * Cannot multiply with 0
+    // Cannot multiply with 0
     @if $fraction == 0 {
         @return $fraction;
     }

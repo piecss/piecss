@@ -48,8 +48,7 @@
  * For values up to #/16.
  *
  * @example scss
- *  $classname: fraction-to-text(1/2);
- *  .#{$classname} {
+ *  .#{fraction-to-text(1/2)} {
  *      // Column properties }
  *  // Output:
  *  .half {

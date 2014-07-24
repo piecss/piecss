@@ -2,7 +2,7 @@
 
 
 // Content:
-// 1. MIXINS
+// 1. Functions
 //    breakpoint
 
 
@@ -13,7 +13,7 @@
  * A collection of pre-defined breakpoints are defined in [settings/breakpoints](*). Override and add breakpoints in your project's settings file.
  *
  * @example scss
- *  $small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})";
+ *  $small_handheld: "(max-width: #{to-unit(480px,1em,16px)})";
  *  @include breakpoint($small_handheld);
  * 
  * @access public

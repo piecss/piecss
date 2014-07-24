@@ -139,7 +139,7 @@
  * @return {Number} - The value in px
  */
 
-s@function percentage-to-px($value, $context: $default-font-size1)
+@function percentage-to-px($value, $context: $default-font-size1)
 {
     @return $value/10% + 0px;
 }

@@ -91,7 +91,7 @@
 
 @function is-value-map($values)
 {
-     * Inspect the $sides array, is it alreay a spacing map?
+    // Inspect the $sides array, is it alreay a spacing map?
     $is-map: false;
     @if map-has-key($values, top)==true {
         $is-map: true;
@@ -265,21 +265,21 @@
 
 @mixin -unit-sides($sides, $property: padding)
 {    
-     * Convert the values into the final unit of output
+    // Convert the values into the final unit of output
     $unit-values: ();
     $fallback-values: ();
 
     $keys: map-keys($sides);
     @each $side in $keys {
 
-         * Isolate the value
+        // Isolate the value
         $value: nth(map-get($sides, $side), 1);
 
-         * Catch 0 values
+        // Catch 0 values
         @if strip-unit($value)==0 {
             $value: 0px;
         }
-         * Catch rhythm values
+        // Catch rhythm values
         @if unitless($value) {
             @if $side==top or $side==bottom {
                 $value: vrhythm($value);
@@ -289,7 +289,7 @@
             }
         }
 
-         * Create new maps
+        // Create new maps
         @if unit($unit)==rem {
             $fallback-values: map-merge($fallback-values, ($side: to-unit($value, $fallback-values)) );
         }
@@ -297,7 +297,7 @@
     }
 
 
-     * Now, render the property and include rem fallback if needed
+    // Now, render the property and include rem fallback if needed
     @if unit($unit)==rem {
         @include -sides($fallback-values, $property);
     }
@@ -318,7 +318,7 @@
 
 @mixin -sides($sides, $property: padding)
 {
-     * Initialize some variables
+    // Initialize some variables
     $top: '';
     $right: '';
     $bottom: '';

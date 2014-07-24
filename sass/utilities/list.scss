@@ -20,7 +20,7 @@
  */
 
 @mixin list-style-type($type) {
-	#{$selector-base}#{$list-selector}--#{$type} {
+	%#{$list-selector}--#{$type} {
 		list-style-type: $type;
 	}
 }

@@ -55,11 +55,11 @@
         $elements: add-element($elements, $selector);
     }
 
-     * Merge the nested property-map first
+    // Merge the nested property-map first
     $element: map-get($elements, $selector);
     $element: map-merge($element, $properties);
 
-     * Merge the property-map with the element collection
+    // Merge the property-map with the element collection
     $_: (
         #{$selector}: $element
     );
@@ -105,12 +105,12 @@
  * @access public
  * @since 0.1
  *
- * @param {Map} $properties - Map of CSS properties
+ * @param {Map} $element - Map of CSS properties
  */
 
-@mixin properties($properties)
+@mixin properties($element)
 {
-     * Lift out properties that have their own mixins
+    // Lift out properties that have their own mixins
     @if map-has-key($element, margin) {
         $value: map-get($element, margin);
         $element: map-remove($element, margin);
