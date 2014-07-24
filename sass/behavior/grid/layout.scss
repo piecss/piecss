@@ -43,7 +43,7 @@
 // Sets a maximum width on a container
 // ==========================================================================
 
-#{$selector-base}root {
+%root {
 	@include root();
 }
 
@@ -53,7 +53,7 @@
 // Column or region, but excluding gutters (padding or margin)
 // ==========================================================================
 
-#{$selector-base}column {
+%column {
 	@include column-behavior();
 	@include column-width();
 }
@@ -65,7 +65,7 @@
 // Adds responsive padding left and right
 // ==========================================================================
 
-#{$selector-base}gutters {
+%gutters {
 	@include gutters();
 }
 
@@ -75,7 +75,7 @@
 // Adds responsive padding right
 // ==========================================================================
 
-#{$selector-base}gutters-right {
+%gutters-right {
 	@include gutters((false 1/2));
 }
 
@@ -85,7 +85,7 @@
 // Adds responsive padding left
 // ==========================================================================
 
-#{$selector-base}gutters-left {
+%gutters-left {
 	@include gutters((1/2 false));
 }
 
@@ -95,7 +95,7 @@
 // Responsive bleed padding left and right
 // ==========================================================================
 
-#{$selector-base}bleed {
+%bleed {
 	@include bleed(); 
 }
 
@@ -105,7 +105,7 @@
 // Responsive bleed padding right
 // ==========================================================================
 
-#{$selector-base}bleed--right {
+%bleed--right {
 	@include bleed((false 1/2)); 
 }
 
@@ -115,7 +115,7 @@
 // Responsive bleed padding left
 // ==========================================================================
 
-#{$selector-base}bleed-left {
+%bleed-left {
 	@include bleed((1/2 false)); 
 }
 
@@ -159,13 +159,13 @@
 @each $breakpoint in map-keys($column-widths) {
 	$widths: map-get($column-widths, $breakpoint);
 	@each $selector in map-keys($widths){
-	    #{$selector-base}#{$selector} {
-	        @extend #{$selector-base}column;
+	    %#{$selector} {
+	        @extend %column;
 	    }
 	}
 	@include breakpoint($breakpoint) {
 	    @each $selector in map-keys($widths){
-	        #{$selector-base}#{$selector} {
+	        %#{$selector} {
 	            @include column-width( map-get($widths, $selector) );
 	        }
 	    }

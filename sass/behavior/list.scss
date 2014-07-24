@@ -36,19 +36,19 @@
 
 @if $reset-list {
 	ol,ul {
-		@extend #{$selector-base}#{$list-selector}--incognito !optional;
+		@extend %#{$list-selector}--incognito !optional;
 	}
 	ol {
 		&.#{$list-selector} {
-			@extend #{$selector-base}#{$list-selector}--#{$list-ol-default} !optional;
+			@extend %#{$list-selector}--#{$list-ol-default} !optional;
 		}
-		@extend #{$selector-base}#{$list-selector}--inside;
+		@extend %#{$list-selector}--inside;
 	}
 	ul {
 		&.#{$list-selector} {
-			@extend #{$selector-base}#{$list-selector}--#{$list-ul-default} !optional;
+			@extend %#{$list-selector}--#{$list-ul-default} !optional;
 		}
-		@extend #{$selector-base}#{$list-selector}--inside;
+		@extend %#{$list-selector}--inside;
 	}
 	li {
 		list-style-type: inherit;
@@ -71,7 +71,7 @@
 // Remove default list behavior
 // ==========================================================================
 
-#{$selector-base}#{$list-selector}--incognito {
+%#{$list-selector}--incognito {
 	padding: 0;
 	list-style-type: none;
 }
@@ -83,7 +83,7 @@
 // List all items inline
 // ==========================================================================
 
-#{$selector-base}#{$list-selector}--inline {
+%#{$list-selector}--inline {
 	&>li {
 		display: inline;
 	}
@@ -96,7 +96,7 @@
 // Moves bullets outside of the left text margin
 // ==========================================================================
 
-#{$selector-base}#{$list-selector}--outside {
+%#{$list-selector}--outside {
 	list-style-position: outside;
 }
 
@@ -107,7 +107,7 @@
 // Moves bullets inside of the left text margin
 // ==========================================================================
 
-#{$selector-base}#{$list-selector}--inside {
+%#{$list-selector}--inside {
 	list-style-position: inside;
 	padding-left: 1em;
 	text-indent: -1em;
