@@ -1,34 +1,23 @@
-// /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// ==========================================================================
-//
-// CONTENT
-//
-// ==========================================================================
-//
-// 1. Mxins
+// Content:
+// 1. Mixins
 //    list-style-type
 
 
-// ==========================================================================
-//
-// 1. MIXINS
-//
-// ==========================================================================
+// 1. Mixins
 
 
-// ==========================================================================
-// Mixin list-style-type
-// --------------------------------------------------------------------------
-// Mixin a list-style-type
-// Call like @include list-style-type(bullet);
-// --------------------------------------------------------------------------
-// @param (string) $type
-// ==========================================================================
+/**
+ * Mixin a list-style-type
+ * @example scss
+ *  @include list-style-type(bullet);
+ *
+ * @since 0.1
+ *
+ * @param {String} $type
+ */
 
 @mixin list-style-type($type) {
 	#{$selector-base}#{$list-selector}--#{$type} {

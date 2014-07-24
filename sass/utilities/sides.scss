@@ -1,12 +1,7 @@
-// /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// ==========================================================================
-// CONTENT
-//
+// Content
 // 1. Functions
 //    value-map
 // 2. Mixins
@@ -20,20 +15,21 @@
 //    margin-right
 //    margin-bottom
 //    margin-left
-//    _unit-sides
-//    _sides
+//    -unit-sides
+//    -sides
 
 
 // 1. FUNCTIONS
-// ==========================================================================
 
 
-// Function value-map
-// Takes a list of values and returns a spacing map
-// --------------------------------------------------------------------------
-// $sides:  a list of value arguments like CSS's normal padding (0 0 0 0)
-// $property:  the property
-// ==========================================================================
+/**
+ * Takes a list of values and returns a spacing map
+ *
+ * @since 0.1
+ *
+ * @param {*} $sides - A list of value arguments like CSS's normal padding (0 0 0 0)
+ * @param {String} $property (padding) - The property to which the values should be applied
+ */
 
 @function value-map($sides, $property: padding)
 {
@@ -83,16 +79,19 @@
     @return $spacing;
 }
 
-// Function is-value-map
-// Takes a list of values and returns a spacing map
-// --------------------------------------------------------------------------
-// $sides:  a list of value arguments like CSS's normal padding (0 0 0 0)
-// $property:  the property
-// ==========================================================================
+/**
+ * Checks if a Map is a proper value-map (side:value).
+ *
+ * @since 0.1
+ *
+ * @param {Map} - A value map
+ *
+ * @return {Bool}
+ */
 
 @function is-value-map($values)
 {
-    // Inspect the $sides array, is it alreay a spacing map?
+     * Inspect the $sides array, is it alreay a spacing map?
     $is-map: false;
     @if map-has-key($values, top)==true {
         $is-map: true;
@@ -110,97 +109,177 @@
     @return $is-map;
 }
 
-// 2. MIXINS
-// ==========================================================================
 
-// Mixin padding, placeholder for _unit-sides
-// --------------------------------------------------------------------------
-// $sides:  takes arguments like CSS's normal padding, or a value-map
-// ==========================================================================
+// 2. MIXINS
+
+
+/**
+ * Mixin padding for any or all sides, in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+ * 
+ * @since 0.1
+ * 
+ * @param {Map} $sides - A spacing map in px (top:0,right:0,bottom:0,left:0)
+ */
 
 @mixin padding($sides...)
 {
     $sides: value-map($sides, padding);
-    @include _unit-sides($sides, padding);
+    @include -unit-sides($sides, padding);
 }
+    /**
+     * Mixin top padding in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin padding-top($value)
     {
         $sides: value-map($value, padding-top);
-        @include _unit-sides($sides, padding);
+        @include -unit-sides($sides, padding);
     }
+
+    /**
+     * Mixin right padding in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin padding-right($value)
     {
         $sides: value-map($value, padding-right);
-        @include _unit-sides($sides, padding);
+        @include -unit-sides($sides, padding);
     }
+
+    /**
+     * Mixin bottom padding in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin padding-bottom($value)
     {
         $sides: value-map($value, padding-bottom);
-        @include _unit-sides($sides, padding);
+        @include -unit-sides($sides, padding);
     }
+
+    /**
+     * Mixin left padding in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin padding-left($value)
     {
         $sides: value-map($value, padding-left);
-        @include _unit-sides($sides, padding);
+        @include -unit-sides($sides, padding);
     }
 
 
-// Mixin margin, placeholder for _unit-sides
-// --------------------------------------------------------------------------
-// $sides:  takes arguments like CSS's normal padding, or a value-map
-// ==========================================================================
+/**
+ * Mixin margin for any or all sides, in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+ * 
+ * @since 0.1
+ * 
+ * @param {Map} $sides - A spacing map in px (top:0,right:0,bottom:0,left:0)
+ */
 
 @mixin margin($sides...)
 {
     $sides: value-map($sides, margin);
-    @include _unit-sides($sides, margin);
+    @include -unit-sides($sides, margin);
 }
+    /**
+     * Mixin top margin in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin margin-top($value)
     {
         $sides: value-map($value, margin-top);
-        @include _unit-sides($sides, margin);
+        @include -unit-sides($sides, margin);
     }
+
+    /**
+     * Mixin right margin in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin margin-right($value)
     {
         $sides: value-map($value, margin-right);
-        @include _unit-sides($sides, margin);
+        @include -unit-sides($sides, margin);
     }
+
+    /**
+     * Mixin bottom margin in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin margin-bottom($value)
     {
         $sides: value-map($value, margin-bottom);
-        @include _unit-sides($sides, margin);
+        @include -unit-sides($sides, margin);
     }
+
+    /**
+     * Mixin right margin in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
+     * 
+     * @since 0.1
+     * 
+     * @param {Number} $value - A value in px
+     */
+
     @mixin margin-left($value)
     {
         $sides: value-map($value, margin-left);
-        @include _unit-sides($sides, margin);
+        @include -unit-sides($sides, margin);
     }
 
-// Mixin _unit-sides
-// Mixin the property in the final unit of output
-// With rem fallback if the final unit is rem
-// --------------------------------------------------------------------------
-// $sides:  value-map
-// $property:  property to apply sides to
-// ==========================================================================
+/**
+ * Like [-sides](./#mixin--sides), but with rem fallback if the final unit is rem
+ *
+ * @access private
+ *
+ * @since 0.1
+ *
+ * @param {Map} $sides - A spacing map in final values (top:0,right:0,bottom:0,left:0)
+ * @param {String} $property - The property to apply the values to (padding, margin)
+ */
 
-@mixin _unit-sides($sides, $property: padding)
+@mixin -unit-sides($sides, $property: padding)
 {    
-    // Convert the values into the final unit of output
+     * Convert the values into the final unit of output
     $unit-values: ();
     $fallback-values: ();
 
     $keys: map-keys($sides);
     @each $side in $keys {
 
-        // Isolate the value
+         * Isolate the value
         $value: nth(map-get($sides, $side), 1);
 
-        // Catch 0 values
+         * Catch 0 values
         @if strip-unit($value)==0 {
             $value: 0px;
         }
-        // Catch rhythm values
+         * Catch rhythm values
         @if unitless($value) {
             @if $side==top or $side==bottom {
                 $value: vrhythm($value);
@@ -210,7 +289,7 @@
             }
         }
 
-        // Create new maps
+         * Create new maps
         @if unit($unit)==rem {
             $fallback-values: map-merge($fallback-values, ($side: to-unit($value, $fallback-values)) );
         }
@@ -218,23 +297,28 @@
     }
 
 
-    // Now, render the property and include rem fallback if needed
+     * Now, render the property and include rem fallback if needed
     @if unit($unit)==rem {
-        @include _sides($fallback-values, $property);
+        @include -sides($fallback-values, $property);
     }
-    @include _sides($unit-values, $property);
+    @include -sides($unit-values, $property);
 }
 
 
-// Mixin _sides
-// --------------------------------------------------------------------------
-// $sides [map]: A spacing map in final values (top:0,right:0,bottom:0,left:0)
-// $property: Padding or margin
-// ==========================================================================
+/**
+ * Mixin the value for any or all sides for padding or margin. The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used.
+ * 
+ * @access private
+ * 
+ * @since 0.1
+ * 
+ * @param {Map} $sides - A spacing map in final values (top:0,right:0,bottom:0,left:0)
+ * @param {String} $property - The property to apply the values to (padding, margin)
+ */
 
-@mixin _sides($sides, $property: padding)
+@mixin -sides($sides, $property: padding)
 {
-    // Initialize some variables
+     * Initialize some variables
     $top: '';
     $right: '';
     $bottom: '';

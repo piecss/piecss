@@ -1,14 +1,7 @@
-// /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// ==========================================================================
-//
-// CONTENT
-//
-// ==========================================================================
+// Content
 //
 // 1. Functions
 //    percentage
@@ -30,21 +23,18 @@
 //        reset-source-order
 
 
-// ==========================================================================
-//
 // 1. FUNCTIONS
-//
-// ==========================================================================
 
 
-// ==========================================================================
-// Function percentage
-// --------------------------------------------------------------------------
-// Convert a fraction to a percentage
-// Deprecated
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * Convert a fraction to a percentage.
+ *
+ * @deprecated
+ *
+ * @param {Number} $fraction (1/3) - A fraction, e.g. 1/2
+ *
+ * @return {Number} - The resulting percentage value
+ */
 
 @function fraction-to-percentage($fraction: 1/3)
 {
@@ -52,12 +42,25 @@
 }
 
 
-// Function fraction-to-text
-// Convert a fraction to a word.
-// Use to build style rules based on column widths.
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * Convert a fraction to a word.
+ * Used to build style rules based on column widths.
+ * For values up to #/16.
+ *
+ * @example scss
+ *  $classname: fraction-to-text(1/2);
+ *  .#{$classname} {
+ *      // Column properties }
+ *  // Output:
+ *  .half {
+ *     // Column properties }
+ *
+ * @since 0.1
+ *
+ * @param {Number} $fraction - A fraction, e.g. 1/2
+ *
+ * @return {String}
+ */
 
 @function fraction-to-text($fraction)
 {
@@ -147,24 +150,19 @@
 }
 
 
-// ==========================================================================
-//
 // 2. MIXINS
-//
-// ==========================================================================
 
 
-// ==========================================================================
-// Mixin column
-// --------------------------------------------------------------------------
-// Shorthand mixin for column
-// Uses padding by default, can be overridden to use margins instead,
-// this is especially helpful when assigning backgrounds or borders
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// @param (boolean) $apply-padding
-// @param (boolean) $apply-margin
-// ==========================================================================
+/**
+ * Shorthand mixin for column.
+ * Uses padding by default, can be overridden to use margins instead which is especially helpful when assigning backgrounds or borders.
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
+ * @param {Number | Bool} $apply-padding (1/2) - A fraction, e.g. 1/2, or false
+ * @param {Number | Bool} $apply-margin (false) - A fraction, e.g. 1/2, or false
+ */
 
 @mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false)
 {
@@ -181,13 +179,16 @@
 }
 
 
-// ==========================================================================
-// Mixin column-behavior
-// --------------------------------------------------------------------------
-// @param (boolean) $column-float
-// ==========================================================================
+/**
+ * Mixin column-behavior: prepares an element to behave as a column. Widths must be set separately with [column-width](./#mixin-column-width).
+ *
+ * @since 0.1
+ * 
+ * @param {Bool} $column-float (false) - If true, render columns as left floated block element. If false, render as inline-blocks.
+ * @param {Bool | Number} $negative-right-margin (false) - If set, applies a negative right margin to force inline-blocks to render without gaps. Only use this if you cannot minify your markup.
+ */
 
-@mixin column-behavior($column-float: $column-float)
+@mixin column-behavior($column-float: $column-float, $negative-right-margin: $negative-right-margin)
 {
     @if $column-float {
         display: block;
@@ -202,12 +203,13 @@
 }
 
 
-// ==========================================================================
-// Mixin column-width
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// @param (boolean) $persistent
-// ==========================================================================
+/**
+ * Mixin column-width. If [$negative-right-margin]() is set, it will automatically remove if from columns that span the full width of their containers.
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
+ */
 
 @mixin column-width($fraction: $column-width-default)
 {
@@ -220,15 +222,14 @@
 }
 
 
-// ==========================================================================
-// Mixin column-spacing
-// --------------------------------------------------------------------------
-// Uses padding by default, can be overridden to use margins instead,
-// this is especially helpful when assigning backgrounds or borders
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// @param (boolean) $use-margin
-// ==========================================================================
+/**
+ * Mixes in gutter properties. Gutters are declared inside the column (padding) by default, on both sides. Can be overridden to use margins instead, which is helpful when assigning backgrounds or borders
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
+ * @param {Bool} $use-margin (false) - If true, will render gutters outside the column using margins
+ */
 
 @mixin gutters($fraction: 1/2, $use-margin: false)
 {
@@ -261,22 +262,16 @@
 }
 
 
-// ==========================================================================
-// Shorthand mixin for column
-// --------------------------------------------------------------------------
-// Fixes content width and aligns in viewport.
-// $root-position is defind in grid settings
-// --------------------------------------------------------------------------
-// @param (string) $root-max-width
-// @param (boolean) $set-display
-// ==========================================================================
+/**
+ * Fixes content width and aligns in viewport. [$root-position](./#variable-root-position) is defind in grid settings. Centers content inside the viewport by default.
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $root-max-width (72em) - The maximum width of your content
+ */
 
 @mixin root($root-max-width: $root-max-width, $set-display: false)
 {
-    @if $set-display {
-        display: block;
-    }
-
     @if $root-position==center {
         margin: 0 auto;
     }
@@ -285,13 +280,13 @@
 }
 
 
-// ==========================================================================
-// Mixin for column container
-// --------------------------------------------------------------------------
-// Use it to remove column spacing on columns
-// --------------------------------------------------------------------------
-// @param (boolean) $use-margin
-// ==========================================================================
+/**
+ * Use it to remove column spacing on columns
+ *
+ * @since 0.1
+ * 
+ * @param {Bool} $use-margin (false)
+ */
 
 @mixin container-behavior($use-margin: false)
 {
@@ -306,15 +301,14 @@
 }
 
 
-// ==========================================================================
-// Mixin bleed
-// --------------------------------------------------------------------------
-// Mixin to reverse padding on a container
-// Use it to remove padded column spacing on columns,
-// helpful when nesting columns
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * Mixin to reverse padding on a container.
+ * Use it to remove padded column spacing on columns, helpful when nesting columns and when applying backgrounds.
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
+ */
 
 @mixin bleed($fraction: -1/2)
 {
@@ -322,11 +316,13 @@
 }
 
 
-// ==========================================================================
-// Mixin for soure ordering
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * Mixin for soure ordering
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
+ */
 
 @mixin move($fraction)
 {
@@ -334,14 +330,9 @@
 }
 
 
-// ==========================================================================
-// Mixin push
-// --------------------------------------------------------------------------
-// Alias for move
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
-
+/**
+ * @alias move
+ */
 
 @mixin push($fraction)
 {
@@ -349,13 +340,9 @@
 }
 
 
-// ==========================================================================
-// Mixin pull
-// --------------------------------------------------------------------------
-// Mixin for soure ordering
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * @alias move
+ */
 
 @mixin pull($fraction)
 {
@@ -363,14 +350,12 @@
 }
 
 
-// ==========================================================================
-// Mixin reset-source-order
-// --------------------------------------------------------------------------
-// Mixin for soure ordering
-// Will reset positioning for smallest breakpoint.
-// --------------------------------------------------------------------------
-// @param (string) $fraction
-// ==========================================================================
+/**
+ * Mixin for soure ordering.
+ * Will reset positioning for smallest breakpoint.
+ *
+ * @since 0.1
+ */
 
 @mixin reset-source-order()
 {

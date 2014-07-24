@@ -1,15 +1,7 @@
- // /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// ==========================================================================
-//
-// CONTENT
-//
-// ==========================================================================
-//
+// Content:
 // 1. Functions
 //    1a. Vertical Rhythm:
 //        vrhythm
@@ -24,25 +16,19 @@
 //        hrhythm
 //    2c. Miscellaneaous;
 //        debug-rhythm
+ 
 
+// 1. Functions
 
-// ==========================================================================
-//
-// 1. FUNCTIONS
-//
-// 1A. VERTICAL RYHTHM
-//
-// ==========================================================================
-
-
-// ==========================================================================
-// Function vrhythm
-// --------------------------------------------------------------------------
-// Calculates a value based on the $rhythm
-// --------------------------------------------------------------------------
-// $span: The number of rhythm-units (whole or fraction) to span
-// $context: The context of the targeted element (for calculations to em)
-// ==========================================================================
+/**
+ * Calculates a value based on the [$rhythm](./#variable-rhythm).
+ * 
+ * @since 0.1
+ *
+ * @param {Int | Fraction} $span (1) - The number of rhythm-units (whole or fraction) to span
+ *
+ * @return {Number} - The calculated span in px
+ */
 
 @function vrhythm($span: 1)
 {
@@ -50,23 +36,26 @@
 }
 
 
-// Find the optimal rhythm units for a given font-size.
-// If the specified span is too small for the font-size, find the next best one 
-// based on the specified increment.
-//
-// @return rhythm units
-// --------------------------------------------------------------------------
-// $font-size: the font-size in px
-// $span: the desired line-height in rhythm-units, 1 equals 1 $rhythm
-// $increment: the increment in rhythm-units
-// ==========================================================================
+/**
+ * Find the optimal rhythm units for a given font-size.
+ * If the specified span is too small for the font-size, find the next best one 
+ * based on a specified increment.
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $font-size (16px) - The font-size in px
+ * @param {Number} (1) $span - The number of rhythm units to span, 1 equals 1 $rhythm
+ * @param {Number} (1) $increment - The increment in rhythm-units
+ *
+ * @return {Number} - The calculated span in px
+ */
 
 @function vrhythm-units($font-size: $default-font-size, $span: 1, $increment: 1)
 {
     $line-height: $span * $rhythm;
 
     @if $font-size >= $line-height {
-        // call line-height again, but increase span with increment
+         * call line-height again, but increase span with increment
         @return vrhythm-units($font-size, $span + $increment, $increment);
     }
 
@@ -74,42 +63,50 @@
 }
 
 
-// 1. FUNCTIONS
-// ==========================================================================
-// 1B. HORIZONTAL RYHTHM
-// ==========================================================================
-
-
-// Calculates a value based on the $gutter-width as declared in the Layout settings
-// --------------------------------------------------------------------------
-// $fraction: the fraction of the column measurement
-
-// ==========================================================================
+/**
+ * Calculates a value based on the [$gutter-width](./#variable-gutter-width) as declared in the Layout settings
+ *
+ * @example
+ *  padding: hrhythm(.5);
+ *  padding: to-unit( hrhythm(.5) );
+ *  // Output:
+ *  padding: 8px;
+ *  padding: .5em;
+ *
+ * @since 0.1
+ * 
+ * @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
+ * @param {Value} $context (16px) - The font-size context, defaults to [$default-font-size](./#variable-default-font-size).
+ *
+ * @return {Number} - The calculated span in px
+ */
 
 @function hrhythm($fraction: 1/2, $context: $default-font-size)
 {
-    // Cannot multiply with 0
+     * Cannot multiply with 0
     @if $fraction == 0 {
         @return $fraction;
     }
 
-    @return to-unit(($fraction * $gutter-width));
+    @return $fraction * $gutter-width;
 }
 
 
 // 2. MIXINS
-// ==========================================================================
-// 2A. VERTICAL RYHTHM
-// ==========================================================================
 
 
-// Use for top and bottom margins and paddings
-// Declare like: @include vrhythm(1, padding-top);
-// --------------------------------------------------------------------------
-// $span: The number of rhythm-units (whole or fraction) to span
-// $property: The property to be set
-// $context: The context of the targeted element (for calculations to em)
-// ==========================================================================
+/**
+ * Use for top and bottom margins and paddings.
+ *
+ * @example
+ *  @include vrhythm(1, padding-top);
+ *
+ * @since 0.1
+ *
+ * @param {Number} $span - The number of rhythm-units - whole or fraction - to span
+ * @param {String} $property - The property to be set, e.g. padding, margin-top
+ * @param {Value} $context (16px) - The font-size context
+ */
 
 @mixin vrhythm($span, $property, $context: $default-font-size) 
 {
@@ -126,20 +123,18 @@
 }
 
 
-// 2. MIXINS
-// ==========================================================================
-// 2B. HORIZONTAL RYHTHM
-// ==========================================================================
-
-
-// Use for left and right margins and paddings
-// Declare like: @include hrhythm(1, padding-top);
-// Uses the project's $gutter-width variable as declared in the Persistent Grid module settings
-// --------------------------------------------------------------------------
-// $fraction: the fraction of the gutter measurement
-// $property: The property to be set
-// $context: The context of the targeted element (for calculations to em)
-// ==========================================================================
+/**
+ * Use for left and right margins and paddings. Uses  [$gutter-width](./#variable-gutter-width) declared in grid settings
+ *
+ * @example
+ *  @include hrhythm(1, padding-left);
+ * 
+ * @since 0.1
+ *
+ * @param {Number} $fraction - The fraction of the gutter measurement
+ * @param {String} $property - The property to be set, e.g. padding, margin-left
+ * @param {Number} $context (16px) - The font-size context
+ */
 
 @mixin hrhythm($fraction, $property, $context: $default-font-size) 
 {
@@ -153,13 +148,11 @@
 }
 
 
-// 2C. MISCELLANEOUS
-// ==========================================================================
-
-
-// Renders the rhythm pattern in the background and outlines all elements.
-// Use it to check or debug the rhythm.
-// ==========================================================================
+/**
+ * Reveals the document's vertical rhythm. Will automatically be mixed in when [$debug-rhythm](./#variable-debug-rhythm) is set to true.
+ *
+ * @since 0.1
+ */
 
 @mixin debug-rhythm()
 {

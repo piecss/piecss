@@ -1,7 +1,26 @@
-// /*
-//  * Copyright (C) 2014 Babs Gösgens.
-//  * Licensed under MIT; see LICENSE.txt
-//  */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// Content:
+// 1. Functions
+//    proportion
+//    orientation
+
+
+// 1. FUNCTIONS
+
+
+/**
+ * Calculates the proportions of an element based on its width and height 
+ *
+ * @since 0.1
+ *
+ * @todo: do something when numbers are not the same units
+ *
+ * @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
+ *
+ * @return {Number} 
+ */
 
 @function proportion($size)
 {
@@ -11,11 +30,18 @@
     @return $width / $height;
 }
 
+/**
+ * Returns a string for horizontal, portrait or square proportions
+ *
+ * @since 0.1
+ *
+ * @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
+ *
+ * @return {String} 
+ */
+
 @function orientation($size)
 {
-    $width: map-get($size, width);
-    $height: map-get($size, height);
-
     $proportion: proportion($size);
 
     @if $proportion > 1 {
