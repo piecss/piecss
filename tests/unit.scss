@@ -1,0 +1,28 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+@include test-module("Unit") {
+
+    $a: 16px;
+    $b: 2.4rem;
+    $c: 1em;
+    $d: 50%;
+    $e: 1.5;
+
+    @include test("Unit is stripped") {
+
+        $ra: strip-unit($a);
+        $rb: strip-unit($b);
+        $rc: strip-unit($c);
+        $rd: strip-unit($d);
+        $re: strip-unit($e);
+
+        @include assert-equal( $ra, 16, "#{$ra} should equal 16" );
+        @include assert-equal( $rb, 2.4, "#{$rb} should equal 2.4" );
+        @include assert-equal( $rc, 1, "#{$rc} should equal 1" );
+        @include assert-equal( $rd, 50, "#{$rd} should equal 5" );
+        @include assert-equal( $re, 1.5, "#{$rd} should equal 1.5" );
+    }
+}

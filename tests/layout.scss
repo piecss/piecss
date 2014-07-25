@@ -1,0 +1,33 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+@include test-module("Fractions") {
+    $a: 1/2;
+    $b: 2/4;
+    $c: "1/2";
+    $d: "2/4";
+
+    @include test("Fraction gets converted to text") {
+
+        $ra: fraction-to-text($a);
+        $rb: fraction-to-text($b);
+        // $rc: fraction-to-text($c);
+        // $rd: fraction-to-text($d);
+
+        @include assert-true( $ra==half, "#{$a} should be named half" );
+        @include assert-true( $rb==half, "#{$b} should be named half" );
+        // @include assert-true( $rc==full, "#{$c} should be named full" );
+        // @include assert-false( $rd==half, "#{$d} should be named full" );
+    }
+
+    @include test("Fraction gets converted to percentage") {
+
+        $ra: fraction-to-percentage($a);
+        $rb: fraction-to-percentage($b);
+
+        @include assert-true( $ra==50%, "#{$a} should be 50%" );
+        @include assert-true( $rb==50%, "#{$b} should be 50%" );
+    }
+}
