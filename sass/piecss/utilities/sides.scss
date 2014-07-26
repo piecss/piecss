@@ -4,17 +4,8 @@
 // Content
 // 1. Functions
 //    value-map
+//    is-value-map
 // 2. Mixins
-//    padding
-//    padding-top
-//    padding-right
-//    padding-bottom
-//    padding-left
-//    margin
-//    margin-top
-//    margin-right
-//    margin-bottom
-//    margin-left
 //    -unit-sides
 //    -sides
 
@@ -23,90 +14,124 @@
 
 
 /**
- * Takes a list of values and returns a spacing map
+ * Takes a list of values and keys and returns a spacing map.
  *
  * @since 0.1
  *
- * @param {*} $sides - A list of value arguments like CSS's normal padding (0 0 0 0)
+ * @param {List} $values - A list of value arguments like CSS's normal padding (0 0 0 0)
  * @param {String} $property (padding) - The property to which the values should be applied
  */
 
-@function value-map($sides, $property: padding)
+@function value-map($values, $keys: $keys-side)
 {
-    // SASS appends a comma to the $sides list,
-    // don't know how to get around this but list the values
-    $sides: nth($sides,1);
-
-    @if is-value-map($sides) {
-        @return $sides;
+    @if is-value-map($values, $keys) {
+        @return $values;
+    }
+    
+    // Convert if the argument is of type arglist
+    @if type-of($values)==arglist {
+        $values: zip($values);   
     }
 
-    // Create map to hold our spacing values;
-    $spacing: ();
+    $_list: zip( $keys, $values );
 
-    @if $property==padding or $property==margin {
-        $length: length($sides);
-        @if $length==1 {
-            $spacing: (top:$sides,right:$sides,bottom:$sides,left:$sides);
-        }
-        @elseif $length==2 {
-            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,1),left:nth($sides,2));
-        }
-        @elseif $length==3 {
-            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,3),left:nth($sides,2));
-        }
-        @else {
-            $spacing: (top:nth($sides,1),right:nth($sides,2),bottom:nth($sides,3),left:nth($sides,4));
-        }
+    $map: ();
+    @each $pair in $_list {
+        $map: map-merge($map, (nth($pair,1): nth($pair,2)));
     }
 
-    @elseif str-index($property, top) {
-        $spacing: (top: $sides);
-    }
-
-    @elseif str-index($property, right) {
-        $spacing: (right: $sides);
-    }
-
-    @elseif str-index($property, bottom) {
-        $spacing: (bottom: $sides);
-    }
-
-    @elseif str-index($property, left) {
-        $spacing: (left: $sides);
-    }
-
-    @return $spacing;
+    @return $map;
 }
 
 /**
- * Checks if a Map is a proper value-map (side:value).
+ * Checks if a Map is a proper value-map by checking for specific keys.
  *
  * @since 0.1
  *
- * @param {Map} - A value map
+ * @param {List} $values - The value to test, can be a single number or a list
+ * @param {List} $keys ($keys-side) - A list of keys to match
  *
  * @return {Bool}
  */
 
-@function is-value-map($values)
+@function is-value-map($values, $keys: $keys-side)
 {
-    // Inspect the $sides array, is it alreay a spacing map?
+    // Start by assuming $values is not a map
     $is-map: false;
-    @if map-has-key($values, top)==true {
-        $is-map: true;
-    }
-    @elseif map-has-key($values, right)==true {
-        $is-map: true;
-    }
-    @elseif map-has-key($values, bottom)==true {
-        $is-map: true;
-    }
-    @elseif map-has-key($values, left)==true {
-        $is-map: true;
+
+    // Simple test for a match to $keys, passes if there is a single match
+    @if type-of($values)==map {
+        @each $key in $keys {
+            @if map-has-key($values, $key)==true {
+                $is-map: true;
+            }
+        }
     }
 
     @return $is-map;
+}
+
+/**
+ * Converts values in a (one-dimensional) map to the specified unit.
+ *
+ * @since 0.1
+ *
+ * @throws Argument $map needs to be a map.
+ *
+ * @param {List} $values - The value to test, can be a single number or a list
+ * @param {Number} $unit ($unit) - A list of keys to match
+ *
+ * @return {Map}
+ */
+
+@function value-map-to-unit($map, $unit: $unit)
+{
+    @if not( type-of($map)==map ) {
+        @warn "Argument $map needs to be a map.";
+        @return $map;
+    }
+
+    // Convert to units
+    @each $key, $value in $values {
+        $values: map-merge($values, ($key: to-unit($value, $unit)));
+    }    
+}
+
+/**
+ * This function takes a space separated list of padding or margin values and converts it into a value map.
+ *
+ * @since 0.1
+ * @access private
+ *
+ * @throws Argument $values needs to be a list.
+ *
+ * @param {List} $values - The value to test, can be a single number or a list
+ *
+ * @return {List}
+ */
+@function -sides($values)
+{
+        // This mixin needs a value-map to work, so convert argument if it is not a value-map;
+    @if not(type-of($values)==map) {
+        @warn "Argument $values needs to be a list.";
+        @return $values;
+    }
+    // Check for the number of values and convert to a value map
+    $length: length($values);
+    @if $length==1 {
+        $values: $values $values $values $values;
+    }
+    @elseif $length==2 {
+        $values: nth($values,1) nth($values,2) nth($values,1) nth($values,2);
+    }
+    @elseif $length==3 {
+        $values: nth($values,1) nth($values,2) nth($values,3) nth($values,2);
+    }
+    @elseif $length==4 {
+        $values: nth($values,1) nth($values,2) nth($values,3) nth($values,4);
+    }
+
+    @return $values;
 }
 
 
@@ -121,10 +146,9 @@
  * @param {Map} $sides - A spacing map in px (top:0,right:0,bottom:0,left:0)
  */
 
-@mixin padding($sides...)
+@mixin padding($values)
 {
-    $sides: value-map($sides, padding);
-    @include -unit-sides($sides, padding);
+    @include -unit-sides($values, padding);
 }
     /**
      * Mixin top padding in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
@@ -136,8 +160,7 @@
 
     @mixin padding-top($value)
     {
-        $sides: value-map($value, padding-top);
-        @include -unit-sides($sides, padding);
+        @include -unit-sides((top: $value), padding);
     }
 
     /**
@@ -150,8 +173,7 @@
 
     @mixin padding-right($value)
     {
-        $sides: value-map($value, padding-right);
-        @include -unit-sides($sides, padding);
+        @include -unit-sides((right: $value), padding);
     }
 
     /**
@@ -164,8 +186,7 @@
 
     @mixin padding-bottom($value)
     {
-        $sides: value-map($value, padding-bottom);
-        @include -unit-sides($sides, padding);
+        @include -unit-sides((bottom: $value), padding);
     }
 
     /**
@@ -178,8 +199,7 @@
 
     @mixin padding-left($value)
     {
-        $sides: value-map($value, padding-left);
-        @include -unit-sides($sides, padding);
+        @include -unit-sides((left: $value), padding);
     }
 
 
@@ -191,10 +211,9 @@
  * @param {Map} $sides - A spacing map in px (top:0,right:0,bottom:0,left:0)
  */
 
-@mixin margin($sides...)
+@mixin margin($values)
 {
-    $sides: value-map($sides, margin);
-    @include -unit-sides($sides, margin);
+    @include -unit-sides($values, margin);
 }
     /**
      * Mixin top margin in final unit (defaults to em). The mixin will determine if the shorthand notation, or a single side (...-top, ...-right, ...-bottom, --left) should be used. With rem fallback if the final unit of output is rem.
@@ -206,8 +225,7 @@
 
     @mixin margin-top($value)
     {
-        $sides: value-map($value, margin-top);
-        @include -unit-sides($sides, margin);
+        @include -unit-sides((top: $value), margin);
     }
 
     /**
@@ -220,8 +238,7 @@
 
     @mixin margin-right($value)
     {
-        $sides: value-map($value, margin-right);
-        @include -unit-sides($sides, margin);
+        @include -unit-sides((right: $value), margin);
     }
 
     /**
@@ -234,8 +251,7 @@
 
     @mixin margin-bottom($value)
     {
-        $sides: value-map($value, margin-bottom);
-        @include -unit-sides($sides, margin);
+        @include -unit-sides((bottom: $value), margin);
     }
 
     /**
@@ -248,9 +264,9 @@
 
     @mixin margin-left($value)
     {
-        $sides: value-map($value, margin-left);
-        @include -unit-sides($sides, margin);
+        @include -unit-sides((left: $value), margin);
     }
+
 
 /**
  * Like [-sides](./#mixin--sides), but with rem fallback if the final unit is rem
@@ -261,45 +277,25 @@
  *
  * @param {Map} $sides - A spacing map in final values (top:0,right:0,bottom:0,left:0)
  * @param {String} $property - The property to apply the values to (padding, margin)
+ * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. px, rem, em, %
  */
 
-@mixin -unit-sides($sides, $property: padding)
-{    
-    // Convert the values into the final unit of output
-    $unit-values: ();
-    $fallback-values: ();
-
-    $keys: map-keys($sides);
-    @each $side in $keys {
-
-        // Isolate the value
-        $value: nth(map-get($sides, $side), 1);
-
-        // Catch 0 values
-        @if strip-unit($value)==0 {
-            $value: 0px;
-        }
-        // Catch rhythm values
-        @if unitless($value) {
-            @if $side==top or $side==bottom {
-                $value: vrhythm($value);
-            }
-            @if $side==right or $side==left {
-                $value: hrhythm($value);
-            }
-        }
-
-        // Create new maps
-        @if unit($unit)==rem {
-            $fallback-values: map-merge($fallback-values, ($side: to-unit($value, $fallback-values)) );
-        }
-        $unit-values: map-merge($unit-values, ($side: to-unit($value)) )
+@mixin -unit-sides($values, $property: padding, $unit: $unit)
+{
+    // This mixin needs a value-map to work, so convert argument if it is not a value-map;
+    @if not(is-value-map($values, $keys-side)) {
+        $values: value-map( -sides($values), $keys-side);
     }
 
+    // now, Convert to units
+    $unit-values: ();
+    @each $key, $value in $values {
+        $unit-values: map-merge($unit-values, ($key: to-unit($value, $unit)));
+    }
 
     // Now, render the property and include rem fallback if needed
     @if unit($unit)==rem {
-        @include -sides($fallback-values, $property);
+        @include -sides($values, $property);
     }
     @include -sides($unit-values, $property);
 }
@@ -311,66 +307,71 @@
  * @access private
  * 
  * @since 0.1
+ *
+ * @throws "Argument $map needs to be a value map of four side (top, right, bottom, left) values. Mixin -sides aborted.";
  * 
  * @param {Map} $sides - A spacing map in final values (top:0,right:0,bottom:0,left:0)
  * @param {String} $property - The property to apply the values to (padding, margin)
  */
 
-@mixin -sides($sides, $property: padding)
+@mixin -sides($values, $property: padding)
 {
-    // Initialize some variables
-    $top: '';
-    $right: '';
-    $bottom: '';
-    $left: '';
-
-    @if map-has-key($sides, top) {
-        $top: map-get($sides, top);
-        $top: if(abs($top)==0, 0, $top);
+    @if not(is-value-map($values, $keys-side)) {
+        @warn "Argument $map needs to be a value map of four side (top, right, bottom, left) values. Mixin -sides aborted.";
     }
 
-    @if map-has-key($sides, right) {
-        $right: map-get($sides, right);
-        $right: if(abs($right)==0, 0, $right);
-    }
-
-    @if map-has-key($sides, bottom) {
-        $bottom: map-get($sides, bottom);
-        $bottom: if(abs($bottom)==0, 0, $bottom);
-    }
-
-    @if map-has-key($sides, left) {
-        $left: map-get($sides, left);
-        $left: if(abs($left)==0, 0, $left);
-    }
-
-    @if length($sides)==4 {
-
-        @if ($top==$bottom and $right==$left and $top==$right) {
-            #{$property}: #{$top};
-        }
-        @elseif ($top==$bottom and $right==$left) {
-            #{$property}: #{$top} #{$right};
-        }
-        @else {
-            #{$property}: #{$top} #{$right} #{$bottom} #{$left};
-        }
-
-    }
     @else {
 
-        @if $top {
-            #{$property}-top: #{$top};
-        }
-        @if $right {
-            #{$property}-right: #{$right};
-        }
-        @if $bottom {
-            #{$property}-bottom: #{$bottom};
-        }
-        @if $left {
-            #{$property}-left: #{$left};
+        // Initialize some variables
+        $top: null;
+        $right: null;
+        $bottom: null;
+        $left: null;
+
+        @if map-has-key($values, top) {
+            $top: map-get($values, top);
         }
 
+        @if map-has-key($values, right) {
+            $right: map-get($values, right);
+        }
+
+        @if map-has-key($values, bottom) {
+            $bottom: map-get($values, bottom);
+        }
+
+        @if map-has-key($values, left) {
+            $left: map-get($values, left);
+        }
+
+        @if length($values)==4 {
+
+            @if ($top==$bottom and $right==$left and $top==$right) {
+                #{$property}: #{$top};
+            }
+            @elseif ($top==$bottom and $right==$left) {
+                #{$property}: #{$top} #{$right};
+            }
+            @else {
+                #{$property}: #{$top} #{$right} #{$bottom} #{$left};
+            }
+
+        }
+        @else {
+
+            @if $top {
+                #{$property}-top: #{$top};
+            }
+            @if $right {
+                #{$property}-right: #{$right};
+            }
+            @if $bottom {
+                #{$property}-bottom: #{$bottom};
+            }
+            @if $left {
+                #{$property}-left: #{$left};
+            }
+
+        }
     }
 }

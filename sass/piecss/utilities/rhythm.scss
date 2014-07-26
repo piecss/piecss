@@ -30,9 +30,25 @@
  * @return {Number} - The calculated span in px
  */
 
-@function vrhythm($span: 1)
+@function rhythm($span: 1)
 {
     @return $rhythm * $span;
+}
+
+/**
+ * Calculates a value based on the [$rhythm](./#variable-rhythm).
+ * 
+ * @since 0.1
+ * @deprecated
+ *
+ * @param {Int | Fraction} $span (1) - The number of rhythm-units (whole or fraction) to span
+ *
+ * @return {Number} - The calculated span in px
+ */
+
+@function vrhythm($span: 1)
+{
+    @return rhythm($span);
 }
 
 

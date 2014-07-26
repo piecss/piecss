@@ -353,7 +353,7 @@ $field-width: 100% !default;
  * @type {Number}
  */
 
-$field-height: $default-line-height + 2*$field-border-width + $field-padding-top + $field-padding-bottom !default;
+$field-height: $default-line-height + 2 * $field-border-width + $field-padding-top + $field-padding-bottom !default;
 
 /**
  * Field line-height, relevant for text-area.

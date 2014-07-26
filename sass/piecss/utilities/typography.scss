@@ -112,19 +112,19 @@
  * @since 0.1
  *
  * @param {Number} $font-size - the font-size in px
- * @param {Number} $span (1) - the desired line-height in rhythm-units, 1 equals 1 $rhythm
+ * @param {Number} $number (1) - the desired line-height in rhythm-units, 1 equals 1 $rhythm
  * @param {Number} $increment (1) - the increment in rhythm-units
  *
  * @return {Number} - line-height in px
  */
 
-@function line-height($font-size: $default-font-size, $span: 1, $increment: 1)
+@function line-height($font-size: $default-font-size, $number: 1, $increment: 1)
 {
-    $line-height: $span * $rhythm;
+    $line-height: $number * $rhythm;
 
     @if $font-size >= $line-height {
         // call line-height again, but increase span with increment
-        @return line-height($font-size, $span + $increment, $increment);
+        @return line-height($font-size, $number + $increment, $increment);
     }
 
     @return $line-height;
@@ -161,6 +161,10 @@
 }
 
 
+
+
+
+
 // 2. MIXINS
 
 
@@ -176,6 +180,9 @@
  * @param {Number} $font-size ($default-font-size) - font-size in the final unit of output
  * @param {Number} $line-height ($default-line-height) - line-height in the final unit of output
  */
+
+
+   // font: font-style font-variant font-weight font-size/line-height font-family;
 
 @mixin font($type, $font-size:$default-font-size, $line-height:$default-line-height)
 {
@@ -278,18 +285,20 @@
  *
  * @since 0.1
  *
- * @param {Number} $span - The number of rhythm-units - whole or fraction - to span
+ * @param {Number} $number - The number of rhythm-units - whole or fraction - to span
  * @param {Value} $context ($default-font-size) - The font-size context
  * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
  */
 
-@mixin line-height($span, $context: $default-font-size, $line-height-unit: $line-height-unit)
+@mixin line-height($number, $context: $default-font-size, $line-height-unit: $line-height-unit)
 {
 
     @if unit($line-height-unit) == "%" {
-        line-height: $span * $default-line-height / $context * 100%;
+        line-height: $number * $default-line-height / $context * 100%;
     }
-    @else {
-        @include vrhythm($span, 'line-height', $context);
+    @if unitless($number) {
+        $number: rhythm($number);
     }
+
+    line-height: to-unit($number);
 }

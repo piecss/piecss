@@ -23,9 +23,6 @@
 
 @function strip-unit($value)
 {
-    @if $value==0 {
-        @return $value;
-    }
     @return $value / ($value * 0 + 1);
 }
 
@@ -34,6 +31,8 @@
  * Convert a px value to a new unit, within the context of it's containing element
  *
  * @since 0.1
+ *
+ * @throws Argument $number needs to be a number.
  *
  * @param {Number} $target-px - The final size in px
  * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. px, rem, em, %
@@ -44,7 +43,13 @@
 
 @function to-unit($number, $unit: $unit, $context: $default-font-size)
 {
+    @if not( type-of($number)==number ) {
+        @warn "Argument $number needs to be a number.";
+        @return $number;
+    }
+
     @if strip-unit($number)==0 {
+        @debug strip-unit($number);
         @return strip-unit($number);
     }
 

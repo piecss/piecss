@@ -63,6 +63,67 @@
 
 
 /**
+ * Mixin for border properties
+ * 
+ * @since 0.1
+ *
+ * @param {String | Map | List | Numner} $values - The border (or outline) properties
+ * @param {Bool} $outline - If true, will render the values as outline properties
+ */
+
+@mixin border($values, $outline: false)
+{
+    // This mixin needs a value-map to work, so convert argument if it is not a value-map;
+    @if not(is-value-map($values, $keys-border)) {
+        $values: value-map($values, $keys-border);
+    }
+
+    $property: if($outline, outline, border);
+
+    // Rem fallback
+    $width: map-get($values, width);
+    @if type-of($width)==number and unit($width)==rem {
+        #{$property}-width: to-px($width);
+    }
+
+    @if map-has-key($values, width) and map-has-key($values, style) and map-has-key($values, color) {
+        #{$property}: map-get($values, width) map-get($values, style) map-get($values, color);
+    }
+    @else {
+        @each $key, $value in $values {
+            #{$property}-#{$key}: $value;
+        }
+    }
+
+}
+
+/**
+ * @alias border
+ */
+
+@mixin outline($attributes)
+{
+    @include border($attributes, true);
+}
+
+
+/**
+ * Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
+ * 
+ * @since 0.1
+ *
+ * @param {Number} $opacity - A number between 0 and 1, where 0 is transparent and 1 is opaque.
+ */
+
+@mixin opacity($opacity) {
+    @include old-ie() {
+        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+    }
+    opacity: $opacity;
+}
+
+
+/**
  * Conditional mixin of property
  * 
  * @since 0.1
@@ -75,68 +136,9 @@
 @mixin property($property, $value)
 {
     @if to-bool($value) {
-        #{$property}: $value;
+        $property: $value;
     }
 }
-
-/**
- * 
- * @alias border
- * Mixin for outline properties.
- */
-
-@mixin outline($attributes)
-{
-    @include border($attributes, true);
-}
-
-/**
- * Mixin for border properties
- * 
- * @since 0.1
- *
- * @todo Provide examples
- *
- * @param {String | Map | List | Numner} $values - The border (or outline) properties
- * @param {Bool} $outline - If true, will render the values as outline properties
- */
-
-@mixin border($values, $outline: false)
-{
-    $property: if($outline, outline, border);
-
-    @if type-of($values)=="list" {
-        $map: ();
-        @each $value in $values {
-            @if type-of($value)==number {
-                $map: append($map, width, space);
-            }
-            @else if type-of($value)==color {
-                $map: append($map, color, space);
-            }
-            @elseif type-of($value)==string {
-                $map: append($map, style, space);
-            }
-        }
-        @include border( list-to-map( zip($map, $values) ), $outline);
-    }
-    @elseif type-of($values)=="string" {
-        #{$property}: $values;
-    }
-    @elseif type-of($values)=="map" {
-
-        @if map-has-key($values, width) and map-has-key($values, style) and map-has-key($values, color) {
-            #{$property}: map-get($values, width) map-get($values, style) map-get($values, color);
-        }
-        @else {
-            $keys: map-keys($values);
-            @each $key in $keys {
-                #{$property}-#{$key}: map-get($values, $key);
-            }
-        }
-    }
-}
-
 
 /**
  * Support for old-mozilla, cuse it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
@@ -199,20 +201,6 @@
         display: inline;
         vertical-align: #{$vertical-alignment};
     }
-}
-/**
- * Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
- * 
- * @since 0.1
- *
- * @param {Number} $opacity - A number between 0 and 1, where 0 is transparent and 1 is opaque.
- */
-
-@mixin opacity($opacity) {
-    @include old-ie() {
-        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
-    }
-    opacity: $opacity;
 }
 
 /**

@@ -3,6 +3,12 @@
 
 $browser-default-font-size: 16px;
 
+$keys-side: top bottom right left;
+$keys-padding: $keys-side;
+$keys-margin: $keys-side;
+$keys-border: width style color;
+$keys-corner: top-left top-right right-bottom left-bottom;
+
 
 $aliceblue: #f0f8ff;
 $antiquewhite: #faebd7;
