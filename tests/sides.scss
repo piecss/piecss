@@ -1,0 +1,66 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+@include test-module("Sides") {
+
+    $a: 0;
+    $b: 0px;
+    $c: 1 .5;
+    $d: 16px 24px;
+    $e: 16px 24px 24px;
+    $f: 16px 24px 32px 46px;
+    $g: 1em 1em 1em 1em;
+    $h: (top: 0, left: 0);
+
+    @include test("Complete a list to four sides") {
+
+        $ra: -sides($a);
+        $rb: -sides($b);
+        $rc: -sides($c);
+        $rd: -sides($d);
+        $re: -sides($e);
+        $rf: -sides($f);
+        $rg: -sides($g);
+        $rh: -sides($h);
+
+        @include assert-equal( $ra, 0 0 0 0, "#{$a} should equal 0 0 0 0" );
+        @include assert-equal( $rb, 0px 0px 0px 0px, "#{$b} should equal 0px 0px 0px 0px" );
+        @include assert-equal( $rc, 1 .5 1 .5, "#{$c} should equal 1 .5 1 .5" );
+        @include assert-equal( $rd, 16px 24px 16px 24px, "#{$d} should equal 16px 24px 16px 24px" );
+        @include assert-equal( $re, 16px 24px 24px 24px, "#{$e} should equal 16px 24px 24px 24px" );
+        @include assert-equal( $rf, 16px 24px 32px 46px, "#{$d} should equal 16px 24px 32px 46px" );
+        @include assert-equal( $rg, 1em 1em 1em 1em, "#{$d} should equal 1em 1em 1em 1em" );
+        @include assert-equal( $rh, (top: 0, left: 0), "#{$d} should equal (top: 0, left: 0)" );
+    }
+
+    @include test("Check if the argument is a value-map") {
+
+        $ra: is-value-map($a);
+        $rb: is-value-map($b);
+        $rc: is-value-map($c);
+        $rd: is-value-map($d);
+        $re: is-value-map($e);
+        $rf: is-value-map($f);
+        $rg: is-value-map($g);
+        $rh: is-value-map($h);
+
+        @include assert-false( $ra, "#{$a} is not a value map" );
+        @include assert-false( $rb, "#{$b} is not a value map" );
+        @include assert-false( $rc, "#{$c} is not a value map" );
+        @include assert-false( $rd, "#{$d} is not a value map" );
+        @include assert-false( $re, "#{$e} is not a value map" );
+        @include assert-false( $rf, "#{$f} is not a value map" );
+        @include assert-false( $rg, "#{$g} is not a value map" );
+        // @include assert-true( $rh, "#{$h} is a value map" );
+    }
+
+    // @include test("Convert argument to value-map") {
+
+    //     $ra: value-map($a);
+
+    //     @include assert-equal( $ra, (top: 0, right: 0, bottom: 0, left: 0), "#{$a} should convert to (top: 0, right: 0, bottom: 0, left: 0)" );
+    // }
+
+}

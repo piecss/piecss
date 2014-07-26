@@ -24,7 +24,7 @@
 
 @function value-map($values, $keys: $keys-side)
 {
-    @if is-value-map($values, $keys) {
+    @if is-value-map( $values, $keys ) {
         @return $values;
     }
     
@@ -61,6 +61,7 @@
 
     // Simple test for a match to $keys, passes if there is a single match
     @if type-of($values)==map {
+
         @each $key in $keys {
             @if map-has-key($values, $key)==true {
                 $is-map: true;
@@ -98,7 +99,7 @@
 }
 
 /**
- * This function takes a space separated list of padding or margin values and converts it into a value map.
+ * This function takes a space separated list of padding or margin values and completes it into a list of four side values.
  *
  * @since 0.1
  * @access private
@@ -111,11 +112,11 @@
  */
 @function -sides($values)
 {
-        // This mixin needs a value-map to work, so convert argument if it is not a value-map;
-    @if not(type-of($values)==map) {
-        @warn "Argument $values needs to be a list.";
+    @if type-of($values)==map {
+        @warn "Argument $values needs to be a list, or a single value.";
         @return $values;
     }
+
     // Check for the number of values and convert to a value map
     $length: length($values);
     @if $length==1 {

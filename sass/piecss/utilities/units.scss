@@ -49,7 +49,6 @@
     }
 
     @if strip-unit($number)==0 {
-        @debug strip-unit($number);
         @return strip-unit($number);
     }
 
@@ -67,6 +66,9 @@
     }
     @elseif unit($unit)=="%" {
         $number: percentage($number / $context);
+    }
+    @elseif unit($unit)=="rem" {
+        $number: $number / $default-font-size * $unit;
     }
     @else {
         $number: $number / $context * $unit;
@@ -149,7 +151,7 @@
  * @return {Number} - The value in px
  */
 
-@function percentage-to-px($value, $context: $default-font-size1)
+@function percentage-to-px($value, $context: $default-font-size)
 {
-    @return $value/10% + 0px;
+    @return $value/100% * $context;
 }
