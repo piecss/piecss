@@ -4,3 +4,4 @@ templates/*
 templates/piecss/_settings.scss
 TODO.md
 stylesheets
+docs
