@@ -6,8 +6,6 @@
 //    strip-unit
 //    to-unit
 //    to-px
-// 2. Mixins:
-//    rem
 
 
 // 1. FUNCTIONS
@@ -44,26 +42,33 @@
  * @return {Number} - The value in the requested unit
  */
 
-@function to-unit($value, $unit: $unit, $context: $default-font-size)
+@function to-unit($number, $unit: $unit, $context: $default-font-size)
 {
-    @if unit($value) != px {
-        /* Convert the value to px first */
-        $value: to-px($value);
+    @if strip-unit($number)==0 {
+        @return strip-unit($number);
     }
 
-    @if unit($unit)=="%" {
-        $value: percentage($value / $context);
+    @if unitless($number) and not($number==0) {
+        /* We're dealing with a rhythm number, convert to px */
+        $number: rhythm($number);
     }
-    @elseif unit($unit)=="px" {
-        $value: $value;
+
+    @if unit($number) != px {
+        /* Convert the value to px first */
+        $number: to-px($number);
+    }
+
+    @if unit($unit)=="px" {
+    }
+    @elseif unit($unit)=="%" {
+        $number: percentage($number / $context);
     }
     @else {
-        $value: $value / $context * $unit;
+        $number: $number / $context * $unit;
     }
 
-    @return $value;
+    @return $number;
 }
-
 
 /**
  * Convert any unit to a px value, within the context of it's containing element
@@ -142,25 +147,4 @@
 @function percentage-to-px($value, $context: $default-font-size1)
 {
     @return $value/10% + 0px;
-}
-
-
-// 2. MIXINS
-
-
-/**
- * Mixin a property in rem and the fallback in another unit
- *
- * @since 0.1
- *
- * @param {Number} $target-px - The targeted size in px
- * @param {String} $property - The property-name
- * @param {Number} $unit ($rem-fallback-unit) - The fallback unit to use
- * @param {Number} $context-px ($default-font-size) - The context of the targeted element
- */
-
-@mixin rem($target-px, $property, $unit: $rem-fallback-unit, $context: $default-font-size)
-{
-    #{$property}: to-unit($target-px, $context, $rem-fallback-unit);
-    #{$property}: to-unit($target-px, $default-font-size, 1rem);
 }
