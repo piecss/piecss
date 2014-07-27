@@ -1,0 +1,133 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+// Relies on settings/fonts
+@include test-module("Typography") {
+
+    @include test("[function] extract-type-style() | Extract the type-variant property") {
+
+        $regular: extract-type-style( $sans-serif-regular);
+        $medium: extract-type-style( $sans-serif-medium);
+        $bold: extract-type-style( $sans-serif-bold);
+        $regular-italic: extract-type-style( $sans-serif-regular-italic);
+
+        @include assert-equal( $regular, "normal", "Should return normal" );
+        @include assert-equal( $medium, "normal", "Should return normal" );
+        @include assert-equal( $bold, "normal", "Should return normal" );
+        @include assert-equal( $regular-italic, "italic", "Should return italic" );
+    }
+
+    @include test("[function] extract-type-variant() | Extract the type-style property") {
+
+        $regular: extract-type-variant( $sans-serif-regular);
+        $medium: extract-type-variant( $sans-serif-medium);
+        $bold: extract-type-variant( $sans-serif-bold);
+        $regular-italic: extract-type-variant( $sans-serif-regular-italic);
+
+        @include assert-equal( $regular, "normal", "Should return normal" );
+        @include assert-equal( $medium, "normal", "Should return normal" );
+        @include assert-equal( $bold, "normal", "Should return normal" );
+        @include assert-equal( $regular-italic, "normal", "Should return normal" );
+    }
+
+    @include test("[function] extract-type-weight() | Extract the type-weight property") {
+
+        $regular: extract-type-weight( $sans-serif-regular);
+        $medium: extract-type-weight( $sans-serif-medium);
+        $bold: extract-type-weight( $sans-serif-bold);
+        $regular-italic: extract-type-weight( $sans-serif-regular-italic);
+
+        @include assert-equal( $regular, 400, "Should return 400" );
+        @include assert-equal( $medium, 600, "Should return 600" );
+        @include assert-equal( $bold, 600, "Should return 600" );
+        @include assert-equal( $regular-italic, 400, "Should return 400" );
+    }
+
+    @include test("[function] extract-type-family() | Extract the type-family property") {
+
+        $regular: extract-type-family( $sans-serif-regular);
+        $medium: extract-type-family( $sans-serif-medium);
+        $bold: extract-type-family( $sans-serif-bold);
+        $regular-italic: extract-type-family( $sans-serif-regular-italic);
+
+        @include assert-equal( $regular, $sans-serif-family, "Should return #{$sans-serif-family}" );
+        @include assert-equal( $medium, $sans-serif-family, "Should return #{$sans-serif-family}" );
+        @include assert-equal( $bold, $sans-serif-family, "Should return #{$sans-serif-family}" );
+        @include assert-equal( $regular-italic, $sans-serif-family, "Should return #{$sans-serif-family}" );
+    }
+
+    @include test("[function] weight-number-to-string() | Convert a weight number to a string") {
+
+        // Weight reference:
+        // 100 ultra-light
+        // 200 light
+        // 300 book
+        // 400 regular, or normal
+        // 500 medium
+        // 600 semi-bold
+        // 700 bold
+        // 800 extra-bold
+        // 900 heavy, or ultra-bold
+
+        @include assert-equal(
+            weight-number-to-string(100), 
+            "ultra-light", "Should return ultra-light" );
+        @include assert-equal(
+            weight-number-to-string(400), 
+            "regular", "Should return regular" );
+        @include assert-equal(
+            weight-number-to-string(900), 
+            "heavy", "Should return heavy" );
+    }
+
+    @include test("[function] font-size() | Convert a font-size in px to a unit") {
+
+        @include assert-equal(
+            font-size(16px), 
+            1em, "Should return 1em" );
+
+        @include assert-equal(
+            font-size(16px, 1em), 
+            1em, "Should return 1em" );
+
+        @include assert-equal(
+            font-size(16px, 1em, 10px), 
+            1.6em, "Should return 1.6em" );
+
+        @include assert-equal(
+            font-size(16px, 1em, 32px), 
+            .5em, "Should return .5em" );
+
+        @include assert-equal(
+            font-size(16px, 1rem), 
+            1rem, "Should return 1rem" );
+
+        @include assert-equal(
+            font-size(16px, 1rem, 10px), 
+            1rem, "Should return 1rem" );
+
+        @include assert-equal(
+            font-size(16px, 1%), 
+            100%, "Should return 100%" );
+    }
+
+    @include test("[function] line-height() | Calculate the best line-height for a given font-size in px") {
+
+        $case1: line-height(16px);
+        $case2: line-height(24px);
+        $case3: line-height(8px);
+        $case4: line-height(32px);
+        $case5: line-height(16px, 2);
+        $case6: line-height(24px, 1, .5);
+
+        @include assert-equal($case1, 24px, "Should return 24px");
+        @include assert-equal($case2, 48px, "Should return 48px");
+        @include assert-equal($case3, 24px, "Should return 24px");
+        @include assert-equal($case4, 48px, "Should return 48px");
+        @include assert-equal($case5, 48px, "Should return 48px");
+        @include assert-equal($case6, 36px, "Should return 36px");
+    }
+
+}
