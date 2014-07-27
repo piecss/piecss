@@ -21,8 +21,7 @@
  * @return {Number} - The value stripped of its unit
  */
 
-@function strip-unit($value)
-{
+@function strip-unit($value) {
     @return $value / ($value * 0 + 1);
 }
 
@@ -41,10 +40,9 @@
  * @return {Number} - The value in the requested unit
  */
 
-@function to-unit($number, $unit: $unit, $context: $default-font-size)
-{
-    @if not( type-of($number)==number ) {
-        @warn "Argument $number needs to be a number.";
+@function to-unit($number, $unit: $unit, $context: $default-font-size) {
+    @if not(type-of($number)==number) {
+        @warn 'Argument $number needs to be a number.';
         @return $number;
     }
 
@@ -62,15 +60,12 @@
         $number: to-px($number);
     }
 
-    @if unit($unit)=="px" {
-    }
-    @elseif unit($unit)=="%" {
+    @if unit($unit)=='px' {
+    } @elseif unit($unit)=='%' {
         $number: percentage($number / $context);
-    }
-    @elseif unit($unit)=="rem" {
+    } @elseif unit($unit)=='rem' {
         $number: $number / $default-font-size * $unit;
-    }
-    @else {
+    } @else {
         $number: $number / $context * $unit;
     }
 
@@ -88,18 +83,13 @@
  * @return {Number} - The value in px
  */
 
-@function to-px($value, $context: $default-font-size)
-{
-    @if unit($value)=="px" {
-        @debug $value;
-    }
-    @elseif unit($value)=="rem" {
+@function to-px($value, $context: $default-font-size) {
+    @if unit($value)=='px' {
+    } @elseif unit($value)=='rem' {
         $value: rem-to-px($value);
-    }
-    @elseif unit($value)=="em" {
+    } @elseif unit($value)=='em' {
         $value: em-to-px($value, $context);
-    }
-    @elseif unit($value)=="%" {
+    } @elseif unit($value)=='%' {
         $value: percentage-to-px($value);
     }
 
@@ -117,8 +107,7 @@
  * @return {Number} - The value in px
  */
 
-@function rem-to-px($value)
-{
+@function rem-to-px($value) {
     @return $default-font-size * strip-unit($value);
 }
 
@@ -133,8 +122,7 @@
  * @return {Number} - The value in px
  */
 
-@function em-to-px($value, $context: $default-font-size)
-{
+@function em-to-px($value, $context: $default-font-size) {
     @return $context * strip-unit($value);
 }
 
@@ -151,7 +139,6 @@
  * @return {Number} - The value in px
  */
 
-@function percentage-to-px($value, $context: $default-font-size)
-{
+@function percentage-to-px($value, $context: $default-font-size) {
     @return $value/100% * $context;
 }

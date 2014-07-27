@@ -13,7 +13,7 @@
     $f: 0px;
     $g: 0;
 
-    @include test("Strip unit") {
+    @include test("[function] strip-unit() | Strip unit") {
 
         $ra: strip-unit($a);
         $rb: strip-unit($b);
@@ -32,7 +32,7 @@
         @include assert-equal( $rg, 0, "#{$rg} should equal 0" );
     }
 
-    @include test("Convert to preset unit") {
+    @include test("[function] to-unit() | Convert to preset unit") {
 
         $unit: 1em !global;
 
@@ -53,7 +53,7 @@
         @include assert-equal($rg, "", "#{$rg} should be empty string");
     }
 
-    @include test("Convert to em") {
+    @include test("[function] to-unit() | Convert to em") {
 
         $ra: to-unit($a, 1em);
         $rb: to-unit($b, 1em);
@@ -80,7 +80,7 @@
         @include assert-equal( $rg, 0, "#{$ra} should equal 0");
     }
 
-    @include test("Convert to em in a context of 10px") {
+    @include test("[function] to-unit() | Convert to em in a context of 10px") {
 
         $ra: to-unit($a, 1em, 10px);
         $rb: to-unit($b, 1em, 10px);
@@ -99,7 +99,7 @@
         @include assert-equal( $rg, 0, "#{$rg} should equal 0");
     }
 
-    @include test("Convert to em in a context of 20px") {
+    @include test("[function] to-unit() | Convert to em in a context of 20px") {
 
         $ra: to-unit($a, 1em, 20px);
         $rb: to-unit($b, 1em, 20px);
@@ -118,7 +118,7 @@
         @include assert-equal( $rg, 0, "#{$rg} should equal 0");
     }
 
-    @include test("Convert to px") {
+    @include test("[function] to-unit() | Convert to px") {
 
         $ra: to-unit($a, 1px);
         $rb: to-unit($b, 1px);
@@ -145,7 +145,7 @@
         @include assert-equal( $rg, 0, "#{$ra} should equal 0");
     }
 
-    @include test("Convert to rem") {
+    @include test("[function] to-unit() | Convert to rem") {
 
         $ra: to-unit($a, 1rem);
         $rb: to-unit($b, 1rem);
@@ -172,7 +172,7 @@
         @include assert-equal( $rg, 0, "#{$ra} should equal 0");
     }
 
-    @include test("Convert to rem in a context of 10px") {
+    @include test("[function] to-unit() | Convert to rem in a context of 10px") {
 
         $ra: to-unit($a, 1rem, 10px);
         $rb: to-unit($b, 1rem, 10px);
@@ -191,7 +191,7 @@
         @include assert-equal( $rg, 0, "#{$ra} should equal 0");
     }
 
-    @include test("Convert to rem in a context of 20px") {
+    @include test("[function] to-unit() | Convert to rem in a context of 20px") {
 
         $ra: to-unit($a, 1rem, 20px);
         $rb: to-unit($b, 1rem, 20px);
