@@ -34,7 +34,7 @@
  * @throws Argument $number needs to be a number.
  *
  * @param {Number} $target-px - The final size in px
- * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. px, rem, em, %
+ * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1%
  * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
  *
  * @return {Number} - The value in the requested unit

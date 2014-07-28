@@ -270,7 +270,7 @@
  *
  * @param {Map} $sides - A spacing map in final values (top:0,right:0,bottom:0,left:0)
  * @param {String} $property - The property to apply the values to (padding, margin)
- * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. px, rem, em, %
+ * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1%
  */
 
 @mixin -unit-sides($values, $property: padding, $unit: $unit) {

@@ -106,21 +106,25 @@
 
 
 /**
- * Find the optimal line-height for a given font-size.
- * If the specified span is too small for the font-size, find the next best one based on the specified increment.
+ * Convert a px value to a new unit, within the context of it's containing element
  *
  * @since 0.1
  *
- * @param {Number} $font-size - the font-size in px
- * @param {Number} $number (1) - the desired line-height in -rhythm-units, 1 equals 1 $rhythm
- * @param {Number} $increment (1) - the increment in -rhythm-units
+ * @param {Number} $target-px - the line-height in px
+ * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+ * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
  *
  * @return {Number} - line-height in px
  */
 
-@function line-height($font-size: $default-font-size, $number: 1, $increment: 1)
+@function line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
 {
-    @return rhythm($font-size, $number, $increment);
+
+    @if unitless($unit) {
+        @return strip-unit($target-px/$context);
+    } @else  {
+        @return to-unit($target-px, $unit, $context);
+    }
 }
 
 

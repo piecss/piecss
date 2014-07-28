@@ -113,21 +113,15 @@
             100%, "Should return 100%" );
     }
 
-    @include test("[function] line-height() | Calculate the best line-height for a given font-size in px") {
+    @include test("[function] line-height() | Convert a line-heigh in px to the line-height unit") {
 
         $case1: line-height(16px);
-        $case2: line-height(24px);
-        $case3: line-height(8px);
-        $case4: line-height(32px);
-        $case5: line-height(16px, 2);
-        $case6: line-height(24px, 1, .5);
+        $case2: line-height(24px, 10px, 1em);
+        $case3: line-height(24px, 10px, 1);
 
-        @include assert-equal($case1, 24px, "Should return 24px");
-        @include assert-equal($case2, 48px, "Should return 48px");
-        @include assert-equal($case3, 24px, "Should return 24px");
-        @include assert-equal($case4, 48px, "Should return 48px");
-        @include assert-equal($case5, 48px, "Should return 48px");
-        @include assert-equal($case6, 36px, "Should return 36px");
+        @include assert-equal($case1, 100%, "Should return 100%");
+        @include assert-equal($case2, 2.4em, "Should return 2.4em");
+        @include assert-equal($case3, 2.4, "Should return 2.4");
     }
 
 }
