@@ -32,7 +32,7 @@ html {
   $font-family: extract-type-family($default-font);
 
   $font-size: to-unit($default-font-size, 1%, $base-font-size);
-  $line-height: to-unit($default-line-height, 1%, $base-font-size);
+  $line-height: line-height($default-line-height, $base-font-size, $line-height-unit);
 
   font: #{$font-style} #{$font-variant} #{$font-weight} #{$font-size}/#{$line-height} #{$font-family};
 

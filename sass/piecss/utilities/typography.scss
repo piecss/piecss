@@ -266,32 +266,25 @@
 @mixin font-size($target-px, $unit: $unit, $context: $default-font-size)
 {
     @if unit($unit) == rem {
-        font-size: $target-px;
+        font-size: to-unit($target-px, $rem-fallback-unit, $context);
     }
     font-size: to-unit($target-px, $unit, $context);
 }
 
 /**
- * Takes the font-size as an argument and calculates the best possible line-height for it.
- * If the $line-height-unit equals to 1%, it is used to calculate the line-height instead.
- * More info: [$default-font-size](./#variable-default-font-size), [$line-height-unit](./#variable-line-height-unit)
+ * Mixin for line-height, automatically converts the value to a new unit, within the context of it's containing element
  *
  * @since 0.1
  *
- * @param {Number} $number - The number of -rhythm-units - whole or fraction - to span
- * @param {Value} $context ($default-font-size) - The font-size context
- * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
+ * @param {Number} $target-px - the line-height in px
+ * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+ * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
  */
 
-@mixin line-height($number, $context: $default-font-size, $line-height-unit: $line-height-unit)
+@mixin line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
 {
-
-    @if unit($line-height-unit) == "%" {
-        line-height: $number * $default-line-height / $context * 100%;
-    }
-    @if unitless($number) {
-        $number: -rhythm-units($number);
-    }
-
-    line-height: to-unit($number);
+    @if unit($unit)==rem {
+        line-height: line-height($target-px, $context, $unit: $rem-fallback-unit);
+    }    
+    line-height: line-height($target-px, $context, $unit);
 }
