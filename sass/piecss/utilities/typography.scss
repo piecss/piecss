@@ -112,22 +112,15 @@
  * @since 0.1
  *
  * @param {Number} $font-size - the font-size in px
- * @param {Number} $number (1) - the desired line-height in rhythm-units, 1 equals 1 $rhythm
- * @param {Number} $increment (1) - the increment in rhythm-units
+ * @param {Number} $number (1) - the desired line-height in -rhythm-units, 1 equals 1 $rhythm
+ * @param {Number} $increment (1) - the increment in -rhythm-units
  *
  * @return {Number} - line-height in px
  */
 
 @function line-height($font-size: $default-font-size, $number: 1, $increment: 1)
 {
-    $line-height: $number * $rhythm;
-
-    @if $font-size >= $line-height {
-        // call line-height again, but increase span with increment
-        @return line-height($font-size, $number + $increment, $increment);
-    }
-
-    @return $line-height;
+    @return rhythm($font-size, $number, $increment);
 }
 
 
@@ -281,7 +274,7 @@
  *
  * @since 0.1
  *
- * @param {Number} $number - The number of rhythm-units - whole or fraction - to span
+ * @param {Number} $number - The number of -rhythm-units - whole or fraction - to span
  * @param {Value} $context ($default-font-size) - The font-size context
  * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
  */
@@ -293,7 +286,7 @@
         line-height: $number * $default-line-height / $context * 100%;
     }
     @if unitless($number) {
-        $number: rhythm($number);
+        $number: -rhythm-units($number);
     }
 
     line-height: to-unit($number);

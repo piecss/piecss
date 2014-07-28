@@ -52,7 +52,7 @@
 
     @if unitless($number) and not($number==0) {
         /* We're dealing with a rhythm number, convert to px */
-        $number: rhythm($number);
+        $number: -rhythm-units($number);
     }
 
     @if unit($number) != px {

@@ -233,7 +233,7 @@ $form-elements: ();
  * @type {Number}
  */
 
-$field-padding-top: vrhythm(.25) !default;
+$field-padding-top: rhythm(.25) !default;
 
 /**
  * Field right-padding.
@@ -253,7 +253,7 @@ $field-padding-right: .5em !default;
  * @type {Number}
  */
 
-$field-padding-bottom: vrhythm(.25) !default;
+$field-padding-bottom: rhythm(.25) !default;
 
 /**
  * Field left-padding.
@@ -619,7 +619,7 @@ $textarea-height: auto !default;
  * @type {Number | String}
  */
 
-$textarea-height-medium: vrhythm(5) - 2*$field-border-width !default;
+$textarea-height-medium: rhythm(5) - 2*$field-border-width !default;
 
 /**
  * Alternate height of textarea element, large.
@@ -629,7 +629,7 @@ $textarea-height-medium: vrhythm(5) - 2*$field-border-width !default;
  * @type {Number | String}
  */
 
-$textarea-height-large: vrhythm(10) - 2*$field-border-width !default;
+$textarea-height-large: rhythm(10) - 2*$field-border-width !default;
 
 $form-elements: add-properties(
     (

@@ -5,5 +5,38 @@
 
 @include test-module("Rhythm") {
 
+    @include test("[function] -rhythm-units() | Calculate a height in px based on [$rhythm](./#variable-rhythm) which defaults to #{$rhythm}.") {
+
+        $u1: -rhythm-units(2);
+        $u2: -rhythm-units(-2);
+        $u3: -rhythm-units(1/3);
+
+        @include assert-equal($u1, 48px, "Should return 48px");
+        @include assert-equal($u2, 48px, "Should return 48px");
+        @include assert-equal($u3, 8px, "Should return 8px");
+    }
+
+    @include test("[function] rhythm() | Find the optimal rhythm units for a given font-size.") {
+
+        $r1: rhythm(.5);
+        $r2: rhythm(.5, 8px, .5);
+        $r3: rhythm(1, 24px);
+        $r4: rhythm(24px);
+        $r5: rhythm(16px, 2);
+
+        @include assert-equal($r1, 12px, "Should return 12px");
+        @include assert-equal($r2, 12px, "Should return 12px");
+        @include assert-equal($r3, 48px, "Should return 48px");
+        @include assert-equal($r4, 48px, "Should return 48px");
+        @include assert-equal($r5, 48px, "Should return 48px");
+
+        $u1: rhythm(2);
+        $u2: rhythm(-2);
+        $u3: rhythm(1/3);
+
+        @include assert-equal($u1, 48px, "Should return 48px");
+        @include assert-equal($u2, 48px, "Should return 48px");
+        @include assert-equal($u3, 8px, "Should return 8px");
+    }
 
 }

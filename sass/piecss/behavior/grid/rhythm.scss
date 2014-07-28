@@ -19,36 +19,3 @@ Debug helpers
         @extend %debug;         
     }
 }
-
-%rhythm-padding {
-    @include vrhythm(1, padding-top);
-    @include vrhythm(1, padding-bottom);
-    &--top {
-        @include vrhythm(1, padding-top);
-    }
-    &--bottom {
-        @include vrhythm(1, padding-bottom);
-    }
-}
-
-%rhythm-margin {
-    @include vrhythm(0, margin-top);
-    @include vrhythm(1, margin-bottom);
-    &--top {
-        @include vrhythm(1, margin-top);
-    }
-    &--bottom {
-        @include vrhythm(1, margin-bottom);
-    }
-}
-
-$single-direction-selector: '';
-@if length($single-direction-elements) > 0 and $single-direction-elements != '' {
-    @each $element in $single-direction-elements {
-        // This leaves the last element with a comma, but the compiler will strip that out anyway so leave for now and revisit later
-        $single-direction-selector: $single-direction-selector + $element + ',' !global;
-    }
-    #{$single-direction-selector} {
-        @extend %rhythm-margin;
-    }
-}

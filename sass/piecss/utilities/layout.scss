@@ -248,18 +248,18 @@
 
     @if ($use-margin) {
         @if $left != false {
-            margin-left: hrhythm($left);
+            margin-left: rhythm($left);
         }
         @if $right != false {
-            margin-right: hrhythm($right);
+            margin-right: rhythm($right);
         }
     }
     @else {
         @if $left != false {
-            padding-left: hrhythm($left);
+            padding-left: rhythm($left);
         }
         @if $right != false {
-            padding-right: hrhythm($right);
+            padding-right: rhythm($right);
         }
     }
 }
