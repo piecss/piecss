@@ -5,5 +5,48 @@
 
 @include test-module("Elements") {
 
+    $collection: ();
+    
+    @include test("[function] add-element() | Add an element to an existing element collection") {
+        $collection: add-element($collection, ".selector", (width: 100%));
 
+        @include assert-true(map-has-key($collection, ".selector"), "Element should be added");
+    }
+
+    @include test("[function] add-properties() | Add a properties to an existing element collection") {
+
+        $collection: add-properties(
+            (
+                width: 50%,
+                color: #FFF,
+            ),
+            ".selector",
+            $collection
+        );
+
+        $properties: map-get($collection, ".selector");
+
+        $test: map-has-key($properties, color);
+        $test2: map-get($properties, width);
+
+        @include assert-true($test, "Property should be added");
+        @include assert-equal($test2, 50%, "Property should be changed");
+    }
+
+    @include test("[function] add-properties() | Add a new selector and properties to an existing element collection") {
+
+        $collection: add-properties(
+            (
+                position: absolute,
+            ),
+            "%placeholder",
+            $collection
+        );
+
+        $properties: map-get($collection, "%placeholder");
+
+        $test: map-has-key($collection, "%placeholder");
+
+        @include assert-true($test, "Element should be added");
+    }
 }
