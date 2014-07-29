@@ -37,7 +37,7 @@
  * Converts a list of property values to a property map. Use to convert 'old-style' associative arrays to SASS's new Map type.
  * 
  * @example
- *  @include list-to-map(color #FFF, text-align left)
+ * list-to-map((color #FFF, text-align left))
  *  // Output:
  *  (color: #FFF, text-align: left)
  *
