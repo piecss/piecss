@@ -1,0 +1,25 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+@include test-module("Image") {
+
+    $landscape: (width: 400px, height: 200px);
+    $portrait: (width: 200, height: 400);
+    $square: (width: 400, height: 400);
+
+    @include test("[function] proportion() | Get image proportions") {
+
+        @include assert-true( proportion($landscape) > 1, "Should be greater than 1" );
+        @include assert-true( proportion($portrait) < 1, "Should be smaller than 1" );
+        @include assert-true( proportion($square) == 1, "Should be equal to 1" );
+    }
+
+    @include test("[function] orientation() | Get image orientation") {
+
+        @include assert-equal(orientation($landscape), landscape, "Should return landscape");
+        @include assert-equal(orientation($portrait), portrait, "Should return portrait");
+        @include assert-equal(orientation($square), square, "Should return square");
+    }
+}

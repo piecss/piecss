@@ -9,7 +9,7 @@
     $c: "1/2";
     $d: "2/4";
 
-    @include test("[function] fraction-to-text | Convert fraction to text") {
+    @include test("[function] fraction-to-text() | Convert fraction to text") {
 
         $ra: fraction-to-text($a);
         $rb: fraction-to-text($b);
@@ -22,7 +22,7 @@
         // @include assert-false( $rd==half, "#{$d} should be named full" );
     }
 
-    @include test("[function] fraction-to-percentage | Convert fraction to percentage") {
+    @include test("[function] fraction-to-percentage() | Convert fraction to percentage") {
 
         $ra: fraction-to-percentage($a);
         $rb: fraction-to-percentage($b);
