@@ -1,6 +1,8 @@
+directory 'sass/elements'
 stylesheet 'screen.scss', :media => 'screen, projection'
 stylesheet '_settings.scss'
-
+stylesheet '_elements.scss'
+stylesheet 'elements/_form.scss'
 html 'examples.html'
 
 help %Q{
