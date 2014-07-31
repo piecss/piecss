@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Piecss</title>
+	<link href="./stylesheets/piecss.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+
+<div class="main">
+
+	<h2>Layout</h2>
+
+	Please refer to the reference guide on http://www.piecss.com/docs.
+You can also find tutorials on http://www.piecss.com/tutorials.
+
+
+	<div class="column">1</div><!--
+	--><div class="column column--half">2</div><!--
+	--><div class="column column--half">3</div><!--
+	--><div class="column column--half">4</div><!--
+	--><div class="column column--half">5</div><!--
+	--><div class="column column--half">
+		<div class="column column--half">7</div><!--
+	--><div class="column column--half">8</div><!--
+	--></div>
+
+
+	<h2>Type</h2>
+
+	<h1>Heading 1</h1>
+	<h2>Heading 2</h2>
+	<h3>Heading 3</h3>
+	<h4>Heading 4</h4>
+	<h5>Heading 5</h5>
+	<h6>Heading 6</h6>
+
+	<p class="column">Sweet <a href="#cantgothere">gingerbread</a> tiramisu cotton candy sweet roll. Sugar plum sweet sugar plum. Tiramisu bear claw pie tiramisu. Donut candy canes chocolate cake icing gummies. Tiramisu gummi bears danish chocolate cake halvah jelly cake. Marzipan unerdwear.com bonbon apple pie wafer tart cookie. Liquorice cookie jelly-o marzipan muffin. Chocolate bar jujubes ice cream muffin tiramisu pudding. Dragée dessert dessert. Soufflé tiramisu sweet biscuit cheesecake donut. Wafer toffee dessert bonbon muffin toffee. Apple pie marzipan dessert icing gummies tart marshmallow. Biscuit gingerbread cupcake cake cupcake tootsie roll. Brownie cheesecake cupcake halvah.</p>
+
+
+	<h2>Lists</h2>
+
+	<ul>
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+	</ul>
+
+	<ol>
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+	</ol>
+
+	<ul class="list">
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy
+			<ol class="list">
+				<li>Gingerbread</li>
+				<li>Tiramisu</li>
+				<li>Cotton candy
+					<ol class="list list--outside">
+						<li>Gingerbread</li>
+						<li>Tiramisu</li>
+						<li>Cotton candy</li>
+					</ol>
+				</li>
+			</ol>
+
+			<ul class="list">
+				<li>Gingerbread</li>
+				<li>Tiramisu</li>
+				<li>Cotton candy</li>
+			</ul>
+		</li>
+	</ul>
+
+	<ol class="list">
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+		<li>Gingerbread</li>
+		<li>Tiramisu</li>
+		<li>Cotton candy</li>
+	</ol>
+
+
+	<h2>Tables</h2>
+
+	<table>
+		<caption>Recipees</caption>
+		<colgroup>
+			<col class="name" title="Name">
+			<col class="ingredients" title="Ingredients">
+			<col class="time" title="Cooking Time">
+		</colgroup>
+		<tbody>
+			<tr>
+				<td>Candy sweet roll</td>
+				<td>
+					<ul>
+						<li>Sugar</li>
+						<li>Flour</li>
+						<li>Butter</li>
+					</ul>
+				</td>
+				<td>20 minutes</td>
+			</tr>
+		</tbody>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Ingredients</th>
+				<th>Cooking Time</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<td id="3">Sugar is bad for you.</td>
+			</tr>
+		</tfoot>
+	</table>
+
+
+	<h2>Forms</h2>
+
+	<form>
+	<fieldset>
+		<legend>Recipe</legend>
+		<fieldset>
+			<legend>Ingredients</legend>
+			<div>
+				<label for="text">Type</label>
+				<input class="" id="text" type="text" value="">
+			</div>
+			<div>
+				<label for="search">Search</label>
+				<input class="" id="text" type="search" value="">
+			</div>
+			<div>
+				<label for="color">Color</label>
+				<input class="" id="text" type="color" value="">
+			</div>
+			<div>
+				<label for="range">Range</label>
+				<input class="" id="text" type="range" value="">
+			</div>
+			<div>
+				<label for="select1">Select</label>
+				<select name="select1">
+					<option>Pick one</option>
+					<optgroup label="Group">
+						<option>High in calories</option>
+						<option>Low in calories</option>
+					</optgroup>
+				</select>
+			</div>
+			<div>
+				<label for="select2">Select</label>
+				<select name="select2" size="5" multiple="multiple">
+					<option>Pick many</option>
+					<optgroup label="Group">
+						<option>High in calories</option>
+						<option>Low in calories</option>
+					</optgroup>
+				</select>
+			</div>
+			<fieldset>
+				<legend>Choose</legend>
+				<div>
+					<label for="radio1">High in calories</label>
+					<input class="" id="radio1" type="radio" name="radio" value="">
+				</div>
+				<div>
+					<label for="radio2">Low in calories</label>
+					<input class="" id="radio2" type="radio" name="radio" value="">
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend>Check</legend>
+				<div>
+					<label for="check1">High in calories</label>
+					<input class="" id="check1" type="checkbox" name="checkbox" value="">
+				</div>
+				<div>
+					<label for="check2">Low in calories</label>
+					<input class="" id="check2" type="checkbox" name="checkbox" value="">
+				</div>
+			</fieldset>
+		</fieldset>
+		<fieldset>
+			<legend>Preparation</legend>
+			<div>
+				<label for="textarea">Name</label>
+				<textarea class="" id="textarea"></textarea>
+			</div>
+			<div>
+				<label for="textarea">Name</label>
+				<textarea class="editor--medium" id="textarea"></textarea>
+			</div>
+			<div>
+				<label for="textarea">Name</label>
+				<textarea class="editor--large" id="textarea"></textarea>
+			</div>
+		</fieldset>
+	</fieldset>
+	</form>
+
+</div><!--
+--><div class="side">
+	<p class="column">Sweet <a href="#cantgothere">gingerbread</a> tiramisu cotton candy sweet roll. Sugar plum sweet sugar plum. Tiramisu bear claw pie tiramisu. Donut candy canes chocolate cake icing gummies. Tiramisu gummi bears danish chocolate cake halvah jelly cake. Marzipan unerdwear.com bonbon apple pie wafer tart cookie. Liquorice cookie jelly-o marzipan muffin. Chocolate bar jujubes ice cream muffin tiramisu pudding. Dragée dessert dessert. Soufflé tiramisu sweet biscuit cheesecake donut. Wafer toffee dessert bonbon muffin toffee. Apple pie marzipan dessert icing gummies tart marshmallow. Biscuit gingerbread cupcake cake cupcake tootsie roll. Brownie cheesecake cupcake halvah.</p>
+</div>
+
+
+</body>
+</html>

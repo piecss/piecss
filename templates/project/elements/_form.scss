@@ -1,0 +1,115 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+// $form-form-selector: "%form" !default;
+// $form-fieldset-selector: "%fieldset" !default;
+// $form-legend-selector: "%legend" !default;
+// $form-field-base-selector: "%field-base" !default;
+// $form-field-base-selector--focus: "%field-base--focus" !default;
+// $form-field-selector: "%field" !default;
+// $form-field-color-selector: "%field--color" !default;
+// $form-field-range-selector: "%field--range" !default;
+// $form-field-search-selector: "%field--search" !default;
+// $form-checkbox-selector: "%checkbox" !default;
+// $form-radio-selector: "%radio" !default;
+// $form-textarea-selector: "%textarea" !default;
+// $form-select-selector: "%select" !default;
+// $form-select-dropdown-selector: "%select--dropdown" !default;
+// $form-select-box-selector: "%select--box" !default;
+// $form-select-multiple-selector: "%select--multiple" !default;
+// $form-label-selector: "%label" !default;
+
+$form-elements: add-properties(
+    (
+        box-sizing: $field-box-sizing, // The search box needs this, weirdly
+        height: $field-height,
+        width: $field-width,
+        padding: (top: $field-padding-top, right: $field-padding-right, bottom: $field-padding-bottom, left: $field-padding-left),
+        background: $field-background-color if($field-background-image, url(#{$field-background-image}), none),
+        border: $field-border-width $field-border-style $field-border-color,
+        border-radius: $field-border-radius,
+        line-height: $field-line-height,
+        box-shadow: $field-shadow, 
+    ),
+    $form-field-base-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        background-color: $field-focussed-background-color,
+        outline: $field-focussed-outline-width $field-focussed-outline-style $field-focussed-outline-color,
+        outline-offset: $field-focussed-outline-offset,
+    ),
+    $form-field-base-selector--focus,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        // border: $field-border-width $field-border-style $field-border-color,
+        border-radius: $field-border-radius,
+    ),
+    $form-field-color-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        width: $field-range-width,
+    ),
+    $form-field-range-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        // border-radius: $field-search-border-radius,
+        // outline-offset: $field-search-outline-offset,
+    ),
+    $form-field-search-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: $select-height,
+    ),
+    $form-select-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: auto,
+    ),
+    $form-select-box-selector,
+    $form-elements
+);
+
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height,
+    ),
+    $form-textarea-selector,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height-medium,
+    ),
+    #{$form-textarea-selector}--medium,
+    $form-elements
+);
+
+$form-elements: add-properties(
+    (
+        height: $textarea-height-large,
+    ),
+    #{$form-textarea-selector}--large,
+    $form-elements
+);

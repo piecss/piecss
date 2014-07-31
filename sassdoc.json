@@ -1,6 +1,6 @@
 {
   "display": {
-    "access": ["public", "private"],
+    "access": ["public"],
     "alias": true,
     "watermark": true
    },
