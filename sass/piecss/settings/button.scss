@@ -1,0 +1,262 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Selector settings
+// 2. Button settings
+// 3. Elements
+
+
+// ==========================================================================
+//
+// SELECTOR SETTINGS
+//
+// ==========================================================================
+
+
+/**
+ * Seletor for button elements
+ *
+ * @since 0.1
+ *
+ * @type {String}
+ */
+
+$button-selector: "%btn" !default;
+
+
+// ==========================================================================
+//
+// BUTTON ELEMENT COLLECTION
+//
+// ==========================================================================
+
+
+/**
+ * Collection of button selectors and property maps. For each selector, the corrresponding properties are rendered by the button behavior. 
+ * You can override button behavior by a) overriding any of the button settings, or by b) replacing the selector entry in this element collection map.
+ *
+ * @since 0.1
+ *
+ * @type {Map}
+ */
+
+$button-elements: ();
+
+
+// ==========================================================================
+//
+// BUTTON SETTINGS
+//
+// ==========================================================================
+
+
+// --------------------------------------------------------------------------
+//
+// BUTTON SETTINGS - DEFAULT
+//
+// --------------------------------------------------------------------------
+
+/**
+ * button top-padding. Defaults to a quarter rhythm unit.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-padding-top: rhythm(.25) !default;
+
+/**
+ * button right-padding.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-padding-right: .5em !default;
+
+/**
+ * button bottom-padding. Defaults to a quarter rhythm unit.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-padding-bottom: rhythm(.25) !default;
+
+/**
+ * button left-padding.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-padding-left: .5em !default;
+
+/**
+ * button background-color, defaults to the default background color.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-background-color: $color-primary !default;
+
+/**
+ * button background-image, false will not render an image.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-background-image: false !default;
+
+/**
+ * button border width.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-border-width: 0 !default;
+
+/**
+ * button border style.
+ *
+ * @since 0.1
+ *
+ * @type {String}
+ */
+
+$button-border-style: solid !default;
+
+/**
+ * button border color.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-border-color: mix($color-shadow, $button-background-color, 20%) !default;
+
+/**
+ * button border radius.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-border-radius: $corner-radius !default;
+
+/**
+ * button box sizing, set to border-box if you want consistent heights and widths accross form elements.
+ *
+ * @since 0.1
+ *
+ * @type {String}
+ */
+
+$button-box-sizing: border-box !default;
+
+/**
+ * button shadow, simple inset shadow by default.
+ *
+ * @since 0.1
+ *
+ * @type {List}
+ */
+
+$button-shadow: mix($color-highlight, $button-background-color, 20%) 1px 1px 1px 0 inset, mix($color-shadow, $button-background-color, 20%) -1px -1px 1px 0 inset !default;
+
+
+// --------------------------------------------------------------------------
+//
+// BUTTON SETTINGS - ACTIVE
+//
+// --------------------------------------------------------------------------
+
+
+/**
+ * Background color of a button with active state.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-focussed-background-color: mix($color-shadow, $button-background-color, 20%) !default;
+
+/**
+ * button background-image of a button with active state. False will not render an image.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-focussed-background-image: false !default;
+
+/**
+ * button shadow, simple inset shadow by default.
+ *
+ * @since 0.1
+ *
+ * @type {List}
+ */
+
+$button-focussed-shadow: mix($color-highlight, $button-focussed-background-color, 20%) 1px 1px 1px 0 inset, mix($color-shadow, $button-focussed-background-color, 20%) -1px -1px 1px 0 inset !default;
+
+/**
+ * Outline width of a button with focus state.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-focussed-outline-width: 1px !default;
+
+/**
+ * Outline style of a button with focus state.
+ *
+ * @since 0.1
+ *
+ * @type {String}
+ */
+
+$button-focussed-outline-style: solid !default;
+
+/**
+ * Outline color of a button with focus state.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$button-focussed-outline-color: mix($button-border-color, $button-focussed-background-color, 0) !default;
+
+/**
+ * Outline offset of a button with focus state. In this setting, the outline is rendered inside the button against the button background.
+ * Be aware that this property can have a negative impact on a form's accessibility. Alter with care.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$button-focussed-outline-offset: -1*( $button-focussed-outline-width + 3*$button-border-width) !default;
