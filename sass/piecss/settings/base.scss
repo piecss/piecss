@@ -116,6 +116,52 @@ $color-background: $white !default;
 $color-body: $darkslategray !default;
 
 /**
+ * The primary color for UI elements.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$color-primary: $orange !default;
+
+/**
+ * The secondary color for UI elements.
+ *
+ * @since 0.1
+ *
+ * @type {Color}
+ */
+
+$color-secondary: $salmon !default;
+
+/**
+ * The color with which to darken other colors.
+ *
+ * @since 0.1
+ *
+ * @example
+ * mix($color-shadow, $color-primary, 20%);
+ *
+ * @type {Color}
+ */
+
+$color-shadow: $black !default;
+
+/**
+ * The color with which to lighten other colors.
+ *
+ * @since 0.1
+ *
+ * @example
+ * mix($color-highlight, $color-primary, 20%);
+ *
+ * @type {Color}
+ */
+
+$color-highlight: $black !default;
+
+/**
  * The default color for anchors.
  *
  * @since 0.1

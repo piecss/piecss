@@ -19,7 +19,6 @@
 //    2f. Textarea settings
 //    2g. Select settings
 // 3. Label settings
-// 4. Elements
 
 
 // ==========================================================================
@@ -313,7 +312,7 @@ $field-border-style: solid !default;
  * @type {Color}
  */
 
-$field-border-color: darken($color-background, 30%) !default;
+$field-border-color: mix($color-shadow, $field-background-color, 20%) !default;
 
 /**
  * Field border radius.
