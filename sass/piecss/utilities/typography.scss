@@ -177,22 +177,46 @@
 
    // font: font-style font-variant font-weight font-size/line-height font-family;
 
-@mixin font($type, $font-size:$default-font-size, $line-height:$default-line-height)
+@mixin font($arguments...)
 {
-    @if unit($unit)==rem {
-        @include font-size($font-size, 1px);
+    $type: null;
+    $font-size: null;
+    $line-height: null;
+
+    @each $argument in $arguments {
+
+        @if type-of($argument)==list {
+            $type: $argument;
+        } @else {
+            @if not($font-size) {
+                $font-size: $argument;
+            } @elseif not($line-height) {
+                $line-height: $argument;
+            }
+        }
     }
 
-    @if $type {
-        $font-style     :   extract-type-style($type);
-        $font-variant   :   extract-type-variant($type);
-        $font-weight    :   extract-type-weight($type);
-        $font-family    :   extract-type-family($type);
+    @if not(not($type)) {
 
-        font: #{$font-style} #{$font-variant} #{$font-weight} #{$font-size}/#{$line-height} #{$font-family};
-    }
-    @else {
-        font: #{$font-size}/#{$line-height};
+        $font-style: extract-type-style($type);
+        $font-variant: extract-type-variant($type);
+        $font-weight: extract-type-weight($type);
+        $font-family: extract-type-family($type);
+
+        @if $font-size and unit($unit)==rem {
+            @include font-size($font-size, 1px);
+        }
+
+        // Build font arguments
+        $font: #{$font-style} #{$font-variant} #{$font-weight};
+        @if $font-size and $line-height {
+            $font: append($font, #{$font-size}/#{$line-height});
+        } @elseif $font-size {
+            $font: append($font, #{$font-size});
+        }
+        $font: append($font, #{$font-family});
+
+        font: #{$font};
     }
 }
 
