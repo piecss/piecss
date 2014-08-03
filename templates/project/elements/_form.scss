@@ -29,7 +29,7 @@ $form-elements: add-properties(
         padding: (top: $field-padding-top, right: $field-padding-right, bottom: $field-padding-bottom, left: $field-padding-left),
         background: $field-background-color if($field-background-image, url(#{$field-background-image}), none),
         border: $field-border-width $field-border-style $field-border-color,
-        border-radius: $field-border-radius,
+        border-radius: $field-corner-radius,
         line-height: $field-line-height,
         box-shadow: $field-shadow, 
     ),
@@ -50,7 +50,7 @@ $form-elements: add-properties(
 $form-elements: add-properties(
     (
         // border: $field-border-width $field-border-style $field-border-color,
-        border-radius: $field-border-radius,
+        border-radius: $field-corner-radius,
     ),
     $form-field-color-selector,
     $form-elements
