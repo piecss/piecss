@@ -323,7 +323,7 @@ $field-border-color: darken($color-background, 30%) !default;
  * @type {Number}
  */
 
-$field-border-radius: $corner-radius !default;
+$field-corner-radius: $corner-radius !default;
 
 /**
  * Field box sizing, set to border-box if you want consistent heights and widths accross form elements.
@@ -476,7 +476,7 @@ $field-range-width: $field-width !default;
  * @type {Number}
  */
 
-$field-search-border-radius: $field-border-radius !default;
+$field-search-border-radius: $field-corner-radius !default;
 
 /**
  * Outline offset override for search fields.
