@@ -1,0 +1,29 @@
+/*
+ * Copyright (C) 2014 Crossing Hippos - Babs Gösgens. All rights reserved.
+ * Licensed under MIT; see LICENSE.txt
+ */
+
+$button-elements: add-properties(
+    (
+        box-sizing: $button-box-sizing, // The search box needs this, weirdly
+        height: $button-height,
+        width: $button-width,
+        padding: (top: $button-padding-top, right: $button-padding-right, bottom: $button-padding-bottom, left: $button-padding-left),
+        background: $button-background-color if($button-background-image, url(#{$button-background-image}), none),
+        border: $button-border-width $button-border-style $button-border-color,
+        border-radius: $button-border-radius,
+        line-height: $button-line-height,
+        box-shadow: $button-shadow, 
+    ),
+    $button-selector,
+    $button-elements
+);
+
+$button-elements: add-properties(
+    (
+        background: $button-focussed-background-color if($button-focussed-background-image, url(#{$button-focussed-background-image}), none),
+        box-shadow: $button-focussed-shadow, 
+    ),
+    #{$button-selector}--active,
+    $button-elements
+);
