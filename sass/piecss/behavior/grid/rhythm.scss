@@ -19,3 +19,7 @@ Debug helpers
         @extend %debug;         
     }
 }
+
+body.debug {
+    @extend %debug;         
+}
