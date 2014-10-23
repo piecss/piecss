@@ -38,14 +38,14 @@
 	ol {
 		&.#{$list-selector} {
 			@extend %#{$list-selector}--#{$list-ol-default} !optional;
+			@extend %#{$list-selector}--inside;
 		}
-		@extend %#{$list-selector}--inside;
 	}
 	ul {
 		&.#{$list-selector} {
 			@extend %#{$list-selector}--#{$list-ul-default} !optional;
+			@extend %#{$list-selector}--inside;
 		}
-		@extend %#{$list-selector}--inside;
 	}
 	li {
 		list-style-type: inherit;
@@ -99,7 +99,7 @@
 
 
 // ==========================================================================
-// Placeholder %list--incognito
+// Placeholder %list--inside
 // --------------------------------------------------------------------------
 // Moves bullets inside of the left text margin
 // ==========================================================================

@@ -38,34 +38,6 @@ Field base
     @extend #{$form-field-base-selector} !optional;
 }
 
-select,
-textarea,
-input[type="date"],
-input[type="datetime"],
-input[type="datetime-local"],
-input[type="email"],
-input[type="month"],
-input[type="number"],
-input[type="password"],
-input[type="search"],
-input[type="tel"],
-input[type="text"],
-input[type="time"],
-input[type="url"],
-input[type="week"] {
-    @extend #{$form-field-selector} !optional;
-}
-
-input[type="color"] {
-    @extend #{$form-field-color-selector} !optional;
-}
-input[type="range"] {
-    @extend #{$form-field-range-selector} !optional;
-}
-input[type="search"] {
-    @extend #{$form-field-search-selector} !optional;
-}
-
 select:not([size]) {
     @extend #{$form-select-dropdown-selector} !optional;
     @if to-bool($select-appearance) {
@@ -86,15 +58,3 @@ select[multiple] {
     @extend #{$form-select-box-selector} !optional;
     @extend #{$form-select-multiple-selector} !optional;
 }
-
-.editor--small,
-textarea {
-    @extend #{$form-textarea-selector} !optional;
-    @at-root .editor--medium {
-        @extend #{$form-textarea-selector}--medium !optional;
-    }
-    @at-root .editor--large {
-        @extend #{$form-textarea-selector}--large !optional;
-    }
-}
-

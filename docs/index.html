@@ -94,15 +94,15 @@
   
     
       
-    
-  
-    
-      
       
     
   
     
       
+      
+    
+  
+    
       
     
   
@@ -1245,6 +1245,26 @@
         
 
           
+          <li class="sidebar__item  js-sassdoc__item" data-name="rhythm" data-type="mixin">
+            <a class="sidebar__link" href="#mixin-rhythm">rhythm
+            
+            
+            </a>
+          </li>
+
+        
+
+          
+          <li class="sidebar__item  js-sassdoc__item" data-name="debug-rhythm" data-type="mixin">
+            <a class="sidebar__link" href="#mixin-debug-rhythm">debug-rhythm
+            
+            
+            </a>
+          </li>
+
+        
+
+          
           <li class="sidebar__item  js-sassdoc__item" data-name="border" data-type="mixin">
             <a class="sidebar__link" href="#mixin-border">border
             
@@ -1327,26 +1347,6 @@
           
           <li class="sidebar__item  js-sassdoc__item" data-name="reset-mozilla-appearance" data-type="mixin">
             <a class="sidebar__link" href="#mixin-reset-mozilla-appearance">reset-mozilla-appearance
-            
-            
-            </a>
-          </li>
-
-        
-
-          
-          <li class="sidebar__item  js-sassdoc__item" data-name="rhythm" data-type="mixin">
-            <a class="sidebar__link" href="#mixin-rhythm">rhythm
-            
-            
-            </a>
-          </li>
-
-        
-
-          
-          <li class="sidebar__item  js-sassdoc__item" data-name="debug-rhythm" data-type="mixin">
-            <a class="sidebar__link" href="#mixin-debug-rhythm">debug-rhythm
             
             
             </a>
@@ -2955,26 +2955,6 @@
         
 
           
-          <li class="sidebar__item  js-sassdoc__item" data-name="to-bool" data-type="function">
-            <a class="sidebar__link" href="#function-to-bool">to-bool
-            
-            
-            </a>
-          </li>
-
-        
-
-          
-          <li class="sidebar__item  js-sassdoc__item" data-name="list-to-map" data-type="function">
-            <a class="sidebar__link" href="#function-list-to-map">list-to-map
-            
-            
-            </a>
-          </li>
-
-        
-
-          
           <li class="sidebar__item  js-sassdoc__item" data-name="-rhythm-units" data-type="function">
             <a class="sidebar__link" href="#function--rhythm-units">-rhythm-units
             <span class="sidebar__annotation  sidebar__annotation--private">private</span>
@@ -2987,6 +2967,26 @@
           
           <li class="sidebar__item  js-sassdoc__item" data-name="rhythm" data-type="function">
             <a class="sidebar__link" href="#function-rhythm">rhythm
+            
+            
+            </a>
+          </li>
+
+        
+
+          
+          <li class="sidebar__item  js-sassdoc__item" data-name="to-bool" data-type="function">
+            <a class="sidebar__link" href="#function-to-bool">to-bool
+            
+            
+            </a>
+          </li>
+
+        
+
+          
+          <li class="sidebar__item  js-sassdoc__item" data-name="list-to-map" data-type="function">
+            <a class="sidebar__link" href="#function-list-to-map">list-to-map
             
             
             </a>
@@ -5039,6 +5039,267 @@
             
             
             
+            <section class="main__item  item" id="mixin-rhythm">
+              <h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-rhythm">rhythm</a>
+
+  
+
+  
+
+  
+    <span class="item__since">Since 0.1</span>
+  
+</h3>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code  language-scss"><code>@mixin rhythm($units, $property, $context: 16px) { ... }</code></pre>
+
+
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Use for left and right margins and paddings. Uses  <a href="./#variable-gutter-width">$gutter-width</a> declared in grid settings</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$units</code></th>
+          <td data-label="desc"><p>The fraction of the gutter measurement</p></td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$property</code></th>
+          <td data-label="desc"><p>The property to be set, e.g. padding, margin-left</p></td>
+          <td data-label="type">
+          
+            String
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$context</code></th>
+          <td data-label="desc"><p>The font-size context</p></td>
+          <td data-label="type">
+          
+            Number
+          
+          </td>
+          <td data-label="default">
+          
+            <code>16px</code>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+
+  
+  <h3 class="item__sub-heading">Example</h3>
+
+  
+    <pre class="item__example"><code class="language-scss"> @include rhythm(1, padding-left);</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>sass/sass/piecss/utilities/rhythm.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="mixin-debug-rhythm">
+              <h3 class="item__heading">
+  
+
+  <a class="item__name" href="#mixin-debug-rhythm">debug-rhythm</a>
+
+  
+
+  
+
+  
+    <span class="item__since">Since 0.1</span>
+  
+</h3>
+
+
+
+
+
+<pre class="item__code  language-scss"><code>@mixin debug-rhythm() { ... }</code></pre>
+
+
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Reveals the document&#39;s vertical rhythm. Will automatically be mixed in when <a href="./#variable-debug-rhythm">$debug-rhythm</a> is set to true.</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <p>None.</p>
+
+
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>sass/sass/piecss/utilities/rhythm.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
             <section class="main__item  item" id="mixin-border">
               <h3 class="item__heading">
   
@@ -6106,267 +6367,6 @@
   <h3 class="item__sub-heading">Found at</h3>
 
   <p><code>sass/sass/piecss/utilities/miscellaneous.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="mixin-rhythm">
-              <h3 class="item__heading">
-  
-
-  <a class="item__name" href="#mixin-rhythm">rhythm</a>
-
-  
-
-  
-
-  
-    <span class="item__since">Since 0.1</span>
-  
-</h3>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-    
-  
-
-  
-
-  
-    
-  
-
-<pre class="item__code  language-scss"><code>@mixin rhythm($units, $property, $context: 16px) { ... }</code></pre>
-
-
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Use for left and right margins and paddings. Uses  <a href="./#variable-gutter-width">$gutter-width</a> declared in grid settings</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$units</code></th>
-          <td data-label="desc"><p>The fraction of the gutter measurement</p></td>
-          <td data-label="type">
-          
-            Number
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$property</code></th>
-          <td data-label="desc"><p>The property to be set, e.g. padding, margin-left</p></td>
-          <td data-label="type">
-          
-            String
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$context</code></th>
-          <td data-label="desc"><p>The font-size context</p></td>
-          <td data-label="type">
-          
-            Number
-          
-          </td>
-          <td data-label="default">
-          
-            <code>16px</code>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-
-  
-  <h3 class="item__sub-heading">Example</h3>
-
-  
-    <pre class="item__example"><code class="language-scss"> @include rhythm(1, padding-left);</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>sass/sass/piecss/utilities/rhythm.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="mixin-debug-rhythm">
-              <h3 class="item__heading">
-  
-
-  <a class="item__name" href="#mixin-debug-rhythm">debug-rhythm</a>
-
-  
-
-  
-
-  
-    <span class="item__since">Since 0.1</span>
-  
-</h3>
-
-
-
-
-
-<pre class="item__code  language-scss"><code>@mixin debug-rhythm() { ... }</code></pre>
-
-
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Reveals the document&#39;s vertical rhythm. Will automatically be mixed in when <a href="./#variable-debug-rhythm">$debug-rhythm</a> is set to true.</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <p>None.</p>
-
-
-
-  
-
-  
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>sass/sass/piecss/utilities/rhythm.scss</code></p>
 
 
 
@@ -19971,268 +19971,6 @@
             
             
             
-            <section class="main__item  item" id="function-to-bool">
-              <h3 class="item__heading">
-  
-
-  <a class="item__name" href="#function-to-bool">to-bool</a>
-
-  
-
-  
-
-  
-    <span class="item__since">Since 0.1</span>
-  
-</h3>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="item__code  language-scss"><code>@function to-bool($value) { ... }</code></pre>
-
-
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Converts a value to a proper boolean value</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$value</code></th>
-          <td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td>
-          <td data-label="type">
-          
-            Any
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3 class="item__sub-heading">Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Bool
-  
-  </p>
-
-
-  
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>sass/sass/piecss/utilities/miscellaneous.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
-            <section class="main__item  item" id="function-list-to-map">
-              <h3 class="item__heading">
-  
-
-  <a class="item__name" href="#function-list-to-map">list-to-map</a>
-
-  
-
-  
-
-  
-    <span class="item__since">Since 0.1</span>
-  
-</h3>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-    
-  
-
-<pre class="item__code  language-scss"><code>@function list-to-map($properties) { ... }</code></pre>
-
-
-
-  
-  <h3 class="item__sub-heading">Description</h3>
-  
-  <div class="item__description"><p>Converts a list of property values to a property map. Use to convert &#39;old-style&#39; associative arrays to SASS&#39;s new Map type.</p></div>
-
-
-  <h3 class="item__sub-heading">Parameters</h3>
-
-
-
-  <table class="item__parameters">
-    <thead>
-      <tr>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
-        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr class="item__parameter">
-          <th scope="row" data-label="name"><code>$properties</code></th>
-          <td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td>
-          <td data-label="type">
-          
-            List
-          
-          </td>
-          <td data-label="default">
-          
-            &mdash;<span class="visually-hidden"> none</span>
-          
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-
-
-
-  
-  <h3 class="item__sub-heading">Returns</h3>
-  <p class="sassdoc__item-description">
-  
-    Map
-  
-  </p>
-
-
-  
-  <h3 class="item__sub-heading">Example</h3>
-
-  
-    <pre class="item__example"><code class="language-scss">list-to-map((color #FFF, text-align left))
- // Output:
- (color: #FFF, text-align: left)</code></pre>
-  
-
-
-  
-
-  
-
-
-
-
-
-  
-
-
-
-
-
-
-  
-
-
-
-
-
-  	
-
-  
-
-  
-
-  
-  <h3 class="item__sub-heading">Found at</h3>
-
-  <p><code>sass/sass/piecss/utilities/miscellaneous.scss</code></p>
-
-
-
-
-            </section>
-
-          
-
-            
-            
-            
             <section class="main__item  item" id="function--rhythm-units">
               <h3 class="item__heading">
   
@@ -20530,6 +20268,268 @@
   <h3 class="item__sub-heading">Found at</h3>
 
   <p><code>sass/sass/piecss/utilities/rhythm.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="function-to-bool">
+              <h3 class="item__heading">
+  
+
+  <a class="item__name" href="#function-to-bool">to-bool</a>
+
+  
+
+  
+
+  
+    <span class="item__since">Since 0.1</span>
+  
+</h3>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code  language-scss"><code>@function to-bool($value) { ... }</code></pre>
+
+
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Converts a value to a proper boolean value</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$value</code></th>
+          <td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td>
+          <td data-label="type">
+          
+            Any
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3 class="item__sub-heading">Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Bool
+  
+  </p>
+
+
+  
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>sass/sass/piecss/utilities/miscellaneous.scss</code></p>
+
+
+
+
+            </section>
+
+          
+
+            
+            
+            
+            <section class="main__item  item" id="function-list-to-map">
+              <h3 class="item__heading">
+  
+
+  <a class="item__name" href="#function-list-to-map">list-to-map</a>
+
+  
+
+  
+
+  
+    <span class="item__since">Since 0.1</span>
+  
+</h3>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+<pre class="item__code  language-scss"><code>@function list-to-map($properties) { ... }</code></pre>
+
+
+
+  
+  <h3 class="item__sub-heading">Description</h3>
+  
+  <div class="item__description"><p>Converts a list of property values to a property map. Use to convert &#39;old-style&#39; associative arrays to SASS&#39;s new Map type.</p></div>
+
+
+  <h3 class="item__sub-heading">Parameters</h3>
+
+
+
+  <table class="item__parameters">
+    <thead>
+      <tr>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Name</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Description</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Type</th>
+        <th scope="col"><span class="visually-hidden"> parameter </span>Default value</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr class="item__parameter">
+          <th scope="row" data-label="name"><code>$properties</code></th>
+          <td data-label="desc">&mdash;<span class="visually-hidden"> none</span></td>
+          <td data-label="type">
+          
+            List
+          
+          </td>
+          <td data-label="default">
+          
+            &mdash;<span class="visually-hidden"> none</span>
+          
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+
+
+
+  
+  <h3 class="item__sub-heading">Returns</h3>
+  <p class="sassdoc__item-description">
+  
+    Map
+  
+  </p>
+
+
+  
+  <h3 class="item__sub-heading">Example</h3>
+
+  
+    <pre class="item__example"><code class="language-scss">list-to-map((color #FFF, text-align left))
+ // Output:
+ (color: #FFF, text-align: left)</code></pre>
+  
+
+
+  
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  	
+
+  
+
+  
+
+  
+  <h3 class="item__sub-heading">Found at</h3>
+
+  <p><code>sass/sass/piecss/utilities/miscellaneous.scss</code></p>
 
 
 
