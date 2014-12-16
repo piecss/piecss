@@ -15,7 +15,7 @@ Debug helpers
 }
 
 @if $debug-rhythm {
-    body {
+    body.debug-rhythm {
         @extend %debug;         
     }
 }
