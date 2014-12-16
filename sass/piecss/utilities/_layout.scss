@@ -248,18 +248,18 @@
 
     @if ($use-margin) {
         @if $left != false {
-            margin-left: rhythm($left);
+            margin-left: $gutter-width * $left;
         }
         @if $right != false {
-            margin-right: rhythm($right);
+            margin-right: $gutter-width * $right;
         }
     }
     @else {
         @if $left != false {
-            padding-left: rhythm($left);
+            padding-left: $gutter-width * $left;
         }
         @if $right != false {
-            padding-right: rhythm($right);
+            padding-right: $gutter-width * $right;
         }
     }
 }
