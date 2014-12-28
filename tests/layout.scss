@@ -9,6 +9,25 @@
     $c: "1/2";
     $d: "2/4";
 
+    $layouts: (
+        $small_handheld: (
+            columns: 4,
+            color: $orange,
+            pages: (),
+        ),
+        $medium_handheld: (
+            columns: 8,
+            color: $cyan,
+            pages: (),
+        ),
+        $small_desktop: (
+            columns: 12,
+            color: $becca,
+            pages: (),
+        )
+    );
+
+
     @include test("[function] fraction-to-text() | Convert fraction to text") {
 
         $ra: fraction-to-text($a);
@@ -29,5 +48,16 @@
 
         @include assert-true( $ra==50%, "#{$a} should be 50%" );
         @include assert-true( $rb==50%, "#{$b} should be 50%" );
+    }
+
+    @include test("[function] get-layout() | Get layout settings from a layout map") {
+
+        $layout: get-layout($small_handheld);
+        
+        $color: map-get($layout, color);
+        $columns: map-get($layout, columns);
+
+        @include assert-true( $color==$orange, "#{$color} should be $orange" );
+        @include assert-true( $columns==4, "#{$columns} should be 4" );
     }
 }

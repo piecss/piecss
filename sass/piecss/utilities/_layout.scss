@@ -153,6 +153,25 @@
 }
 
 
+/**
+ * Get layout settings from a layout map
+ *
+ *
+ * @param {String} $breakpoints - A valid breakpoint
+ * @param {Map} $page - An optional page layout
+ *
+ * @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
+ */
+
+@function get-layout($breakpoint, $page: null) {
+    $layout: map-get($layouts, $breakpoint);
+    @if $page {
+        $layout: map-get($layout, $page);
+    }
+    @return  $layout;
+}
+
+
 // 2. MIXINS
 
 
@@ -369,3 +388,36 @@
         }
     }
 }
+
+
+/**
+ * Reveals the document's horizontal rhythm. Will automatically be mixed in when [$debug-layout](./#variable-debug-layout) is set to true.
+ *
+ * @since 0.1
+ */
+
+@mixin debug-layout($columns: $columns, $color: #000, $gutter-width: $gutter-width)
+{
+    background-size: percentage(1 / $columns) 100%;
+    background-image: 
+        linear-gradient(to right, 
+            rgba($color,.1) 0,
+            rgba($color,.1) $gutter-width / 2,
+            transparent $gutter-width / 2,
+            transparent percentage($columns / $columns)
+        ),
+        linear-gradient(to left, 
+            rgba($color,.1) 0,
+            rgba($color,.1) $gutter-width / 2,
+            transparent $gutter-width / 2,
+            transparent percentage($columns / $columns)
+        ),
+        linear-gradient(to left, 
+            transparent 0%,
+            rgba(0,0,0,.5) 1px,
+            transparent 1px,
+            transparent  percentage($columns / $columns)
+        )
+    ;
+}
+

@@ -26,6 +26,16 @@ $rhythm: $default-line-height !default;
 $debug-rhythm: false !default;
 
 /**
+ * If true,reveals the document's horizontal rhythm. Also see: [mixin $debug-layout](./#mixin-debug-layout).
+ *
+ * @since 0.1
+ *
+ * @type {Bool}
+ */
+
+$debug-layout: false !default;
+
+/**
  * Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
  *
  * @since 0.1
@@ -155,3 +165,14 @@ $root-max-width: 72em !default;
  */
 
 $root-position: center !default;
+
+/**
+ * The page's default number of columns. Used in debug-layout to visualize column layout.
+ *
+ * @since 0.1
+ *
+ * @type {Number}
+ */
+
+$columns: 4 !default;
+

@@ -7,7 +7,7 @@ Debug helpers
 -----------------------------------------------------------------------------
 */
 
-%debug {
+%debug-rhythm {
     /*
      * Mixin debug-rhythm to display the vertical rhythm units
      */
@@ -15,7 +15,7 @@ Debug helpers
 }
 
 @if $debug-rhythm {
-    body.debug-rhythm {
-        @extend %debug;         
+    .debug-rhythm {
+        @extend %debug-rhythm;         
     }
 }
