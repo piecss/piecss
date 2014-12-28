@@ -176,3 +176,28 @@ $root-position: center !default;
 
 $columns: 4 !default;
 
+/**
+ * Totally arbitrary default breakpoint layouts.
+ *
+ * @since 0.1
+ *
+ * @type {Map}
+ */
+
+$layouts: (
+    $small_handheld: (
+        columns: 4,
+        color: $orange,
+        pages: (),
+    ),
+    $medium_handheld: (
+        columns: 8,
+        color: $cyan,
+        pages: (),
+    ),
+    $small_desktop: (
+        columns: 12,
+        color: $becca,
+        pages: (),
+    )
+);
