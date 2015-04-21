@@ -13,18 +13,18 @@
 // 1. FUNCTIONS
 
 
-/**
- * Mixes in a new namespace (selector) and css properties into an elements collection.
- *
- * @access public
- * @since 0.1
- *
- * @param {Map} $elements - Map, a collection of $selector: $property pairs
- * @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
- * @param {Map} $properties (()) - Map of CSS properties
- *
- * @return {Map}
- */
+///
+/// Mixes in a new namespace (selector) and css properties into an elements collection.
+///
+/// @access public
+/// @since 0.1
+///
+/// @param {Map} $elements - Map, a collection of $selector: $property pairs
+/// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
+/// @param {Map} $properties (()) - Map of CSS properties
+///
+/// @return {Map}
+///
 
 @function add-element($elements, $selector, $properties: ())
 {
@@ -35,18 +35,18 @@
     @return $elements;
 }
 
-/**
- * Mixes in properties into a selector namespace
- *
- * @access public
- * @since 0.1
- *
- * @param {Map} $properties - Map of CSS properties
- * @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
- * @param {Map} $elements - Map, a collection of $selector: $property pairs
- *
- * @return {Map}
- */
+///
+/// Mixes in properties into a selector namespace
+///
+/// @access public
+/// @since 0.1
+///
+/// @param {Map} $properties - Map of CSS properties
+/// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
+/// @param {Map} $elements - Map, a collection of $selector: $property pairs
+///
+/// @return {Map}
+///
 
 @function add-properties($properties, $selector, $elements)
 {
@@ -68,27 +68,27 @@
     @return $elements;
 }
 
-/**
- * @alias add-properties
- */
+///
+/// @alias add-properties
+///
 @function add-props($properties, $selector, $elements)
 {
     $elements: add-properties($properties, $selector, $elements);
     @return $elements;
 }
 
-/**
- * @alias add-properties
- */
+///
+/// @alias add-properties
+///
 @function merge-properties($properties, $selector, $elements)
 {
     $elements: add-properties($properties, $selector, $elements);
     @return $elements;
 }
 
-/**
- * @alias add-properties
- */
+///
+/// @alias add-properties
+///
 @function merge-props($properties, $selector, $elements)
 {
     $elements: add-properties($properties, $selector, $elements);
@@ -99,14 +99,14 @@
 // 2. MIXINS
 
 
-/**
- * Mixes in properties
- *
- * @access public
- * @since 0.1
- *
- * @param {Map} $element - Map of CSS properties
- */
+///
+/// Mixes in properties
+///
+/// @access public
+/// @since 0.1
+///
+/// @param {Map} $element - Map of CSS properties
+///
 
 @mixin properties($element)
 {
@@ -161,14 +161,14 @@
 }
 
 
-/**
- * Mixes in all elements from an element collection
- *
- * @access public
- * @since 0.1
- *
- * @param {Map} $elements - Map, a collection of $selector: $property pairs
- */
+///
+/// Mixes in all elements from an element collection
+///
+/// @access public
+/// @since 0.1
+///
+/// @param {Map} $elements - Map, a collection of $selector: $property pairs
+///
 
 @mixin elements($elements) {
     $selectors: map-keys($elements);

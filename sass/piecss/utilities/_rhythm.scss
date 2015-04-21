@@ -16,16 +16,16 @@
 
 // 1. Functions
 
-/**
- * Calculates a value based on the [$rhythm](./#variable-rhythm).
- * 
- * @since 0.1
- * @access private
- *
- * @param {Int | Fraction} $units (1) - The number of -rhythm-units (whole or fraction) to span
- *
- * @return {Number} - The calculated span in px
- */
+///
+/// Calculates a value based on the [$rhythm](./#variable-rhythm).
+/// 
+/// @since 0.1
+/// @access private
+///
+/// @param {Int | Fraction} $units (1) - The number of -rhythm-units (whole or fraction) to span
+///
+/// @return {Number} - The calculated span in px
+///
 
 @function -rhythm-units($units: 1)
 {
@@ -33,19 +33,19 @@
 }
 
 
-/**
- * Find the optimal rhythm units for a given size in px.
- * If the specified span is too small for the size, find the next best one 
- * based on a specified increment.
- *
- * @since 0.1
- * 
- * @param {Number} $units - The number of rhythm units to span (whole or fraction), 1 equals 1 $rhythm
- * @param {Number} $size-px - The size in px
- * @param {Number} $increment - The increment in rhythm-units (whole or fraction)
- *
- * @return {Number} - The calculated span in px
- */
+///
+/// Find the optimal rhythm units for a given size in px.
+/// If the specified span is too small for the size, find the next best one 
+/// based on a specified increment.
+///
+/// @since 0.1
+/// 
+/// @param {Number} $units - The number of rhythm units to span (whole or fraction), 1 equals 1 $rhythm
+/// @param {Number} $size-px - The size in px
+/// @param {Number} $increment - The increment in rhythm-units (whole or fraction)
+///
+/// @return {Number} - The calculated span in px
+///
 
 @function rhythm($args...)
 {
@@ -84,18 +84,18 @@
 
 // 2. MIXINS
 
-/**
- * Use for left and right margins and paddings. Uses  [$gutter-width](./#variable-gutter-width) declared in grid settings
- *
- * @example
- *  @include rhythm(1, padding-left);
- * 
- * @since 0.1
- *
- * @param {Number} $units - The fraction of the gutter measurement
- * @param {String} $property - The property to be set, e.g. padding, margin-left
- * @param {Number} $context (16px) - The font-size context
- */
+///
+/// Use for left and right margins and paddings. Uses  [$gutter-width](./#variable-gutter-width) declared in grid settings
+///
+/// @example
+///  @include rhythm(1, padding-left);
+/// 
+/// @since 0.1
+///
+/// @param {Number} $units - The fraction of the gutter measurement
+/// @param {String} $property - The property to be set, e.g. padding, margin-left
+/// @param {Number} $context (16px) - The font-size context
+///
 
 @mixin rhythm($units, $property, $context: $default-font-size) 
 {
@@ -109,11 +109,11 @@
 }
 
 
-/**
- * Reveals the document's vertical rhythm. Will automatically be mixed in when [$debug-rhythm](./#variable-debug-rhythm) is set to true.
- *
- * @since 0.1
- */
+///
+/// Reveals the document's vertical rhythm. Will automatically be mixed in when [$debug-rhythm](./#variable-debug-rhythm) is set to true.
+///
+/// @since 0.1
+///
 
 @mixin debug-rhythm()
 {
@@ -124,7 +124,7 @@
     background-image: linear-gradient($from 50%, $to 50%);
     background-size: 2*$default-line-height 2*$default-line-height;
 
-    * {
+/// {
         background-color: transparent !important;
         background-image: none !important;
         outline: rgba(255,0,255,.1) dotted 1px;

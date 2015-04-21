@@ -23,34 +23,34 @@
 // 1. FUNCTIONS
 
 
-/**
- * Extract the style property from a type array
- *
- * @since 0.1
- *
- * @todo parameter should either be a space separated list, or property map
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- *
- * @return {String} - font-type property
- */
+///
+/// Extract the style property from a type array
+///
+/// @since 0.1
+///
+/// @todo parameter should either be a space separated list, or property map
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
+/// @return {String} - font-type property
+///
 
 @function extract-type-style($type) {
     @return nth($type, 1);
 }
 
 
-/**
- * Extract the variant property from a type array
- *
- * @since 0.1
- *
- * @todo parameter should either be a space separated list, or property map
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- *
- * @return {String} - font-variant property
- */
+///
+/// Extract the variant property from a type array
+///
+/// @since 0.1
+///
+/// @todo parameter should either be a space separated list, or property map
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
+/// @return {String} - font-variant property
+///
 
 @function extract-type-variant($type)
 {
@@ -58,17 +58,17 @@
 }
 
 
-/**
- * Extract the weight property from a type array
- *
- * @since 0.1
- *
- * @todo parameter should either be a space separated list, or property map
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- *
- * @return {String} - font-weight property
- */
+///
+/// Extract the weight property from a type array
+///
+/// @since 0.1
+///
+/// @todo parameter should either be a space separated list, or property map
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
+/// @return {String} - font-weight property
+///
 
 @function extract-type-weight($type)
 {
@@ -76,17 +76,17 @@
 }
 
 
-/**
- * Extract the family property from a type array
- *
- * @since 0.1
- *
- * @todo parameter should either be a space separated list, or property map
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- *
- * @return {String} - font-family property
- */
+///
+/// Extract the family property from a type array
+///
+/// @since 0.1
+///
+/// @todo parameter should either be a space separated list, or property map
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
+/// @return {String} - font-family property
+///
 
 @function extract-type-family($type)
 {
@@ -94,10 +94,10 @@
 }
 
 
-/**
- * @alias to-unit
- * @deprecated
- */
+///
+/// @alias to-unit
+/// @deprecated
+///
 
 @function font-size($target-px, $unit: $unit, $context: $default-font-size)
 {
@@ -105,17 +105,17 @@
 }
 
 
-/**
- * Convert a px value to a new unit, within the context of it's containing element
- *
- * @since 0.1
- *
- * @param {Number} $target-px - the line-height in px
- * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
- * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
- *
- * @return {Number} - line-height in px
- */
+///
+/// Convert a px value to a new unit, within the context of it's containing element
+///
+/// @since 0.1
+///
+/// @param {Number} $target-px - the line-height in px
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+/// @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
+///
+/// @return {Number} - line-height in px
+///
 
 @function line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
 {
@@ -128,17 +128,17 @@
 }
 
 
-/**
- * Returns the correct typographic weight corresponding to the weight number
- *
- * @since 0.1
- *
- * @throws Not a valid weight
- *
- * @param {Number} $weight (400) - a valid weight number: 100 | ... | 900
- *
- * @return {String} - weight, defaults to 'regular'
- */
+///
+/// Returns the correct typographic weight corresponding to the weight number
+///
+/// @since 0.1
+///
+/// @throws Not a valid weight
+///
+/// @param {Number} $weight (400) - a valid weight number: 100 | ... | 900
+///
+/// @return {String} - weight, defaults to 'regular'
+///
 
 @function weight-number-to-string($weight: regular)
 {
@@ -161,21 +161,18 @@
 // 2. MIXINS
 
 
-/**
- * Mixes in the shorthand font tag. This is the only mixin that takes the font-size and line-height in their final unit of output.
- * More info: [$default-font-size](./#variable-default-font-size), [$default-line-height](./#variable-default-line-height)
- *
- * @since 0.1
- *
- * @todo Accept properties in the same way as the default CSS font implementation
- * 
- * @param {List | Bool} $type - a valid type array ($style, $variant, $weight, $family) or false to only output font-size and line-height
- * @param {Number} $font-size ($default-font-size) - font-size in the final unit of output
- * @param {Number} $line-height ($default-line-height) - line-height in the final unit of output
- */
-
-
-   // font: font-style font-variant font-weight font-size/line-height font-family;
+///
+/// Mixes in the shorthand font tag. This is the only mixin that takes the font-size and line-height in their final unit of output.
+/// More info: [$default-font-size](./#variable-default-font-size), [$default-line-height](./#variable-default-line-height)
+///
+/// @since 0.1
+///
+/// @todo Accept properties in the same way as the default CSS font implementation
+/// 
+/// @param {List | Bool} $type - a valid type array ($style, $variant, $weight, $family) or false to only output font-size and line-height
+/// @param {Number} $font-size ($default-font-size) - font-size in the final unit of output
+/// @param {Number} $line-height ($default-line-height) - line-height in the final unit of output
+///
 
 @mixin font($arguments...)
 {
@@ -221,13 +218,13 @@
 }
 
 
-/**
- * Extracts the style from a type array and mixes in font-style
- *
- * @since 0.1
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- */
+///
+/// Extracts the style from a type array and mixes in font-style
+///
+/// @since 0.1
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
 
 @mixin font-style($type)
 {
@@ -235,13 +232,13 @@
 }
 
 
-/**
- * Extracts the variant from a type array and mixes in font-variant
- *
- * @since 0.1
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- */
+///
+/// Extracts the variant from a type array and mixes in font-variant
+///
+/// @since 0.1
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
 
 @mixin font-variant($type)
 {
@@ -249,13 +246,13 @@
 }
 
 
-/**
- * Extracts the weight from a type array and mixes in font-weight
- *
- * @since 0.1
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- */
+///
+/// Extracts the weight from a type array and mixes in font-weight
+///
+/// @since 0.1
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
 
 @mixin font-weight($type)
 {
@@ -263,13 +260,13 @@
 }
 
 
-/**
- * Extracts the family from a type array and mixes in font-family
- *
- * @since 0.1
- *
- * @param {List} $type: a valid type list ($style, $variant, $weight, $family)
- */
+///
+/// Extracts the family from a type array and mixes in font-family
+///
+/// @since 0.1
+///
+/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
+///
 
 @mixin font-family($type)
 {
@@ -277,15 +274,15 @@
 }
 
 
-/**
- * Takes a size in px and calculates it back to the final font-unit. Provides fallback if the final output is in rem.
- *
- * @since 0.1
- *
- * @param {Number} $target-px - The font-size in px
- * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
- * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em or %
- */
+///
+/// Takes a size in px and calculates it back to the final font-unit. Provides fallback if the final output is in rem.
+///
+/// @since 0.1
+///
+/// @param {Number} $target-px - The font-size in px
+/// @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em or %
+///
 
 @mixin font-size($target-px, $unit: $unit, $context: $default-font-size)
 {
@@ -295,15 +292,15 @@
     font-size: to-unit($target-px, $unit, $context);
 }
 
-/**
- * Mixin for line-height, automatically converts the value to a new unit, within the context of it's containing element
- *
- * @since 0.1
- *
- * @param {Number} $target-px - the line-height in px
- * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
- * @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
- */
+///
+/// Mixin for line-height, automatically converts the value to a new unit, within the context of it's containing element
+///
+/// @since 0.1
+///
+/// @param {Number} $target-px - the line-height in px
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+/// @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
+///
 
 @mixin line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
 {

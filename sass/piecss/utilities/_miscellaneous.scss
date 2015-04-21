@@ -16,15 +16,15 @@
 // 1. Functions
 
 
-/**
- * Converts a value to a proper boolean value
- * 
- * @since 0.1
- *
- * @param {*} $value
- *
- * @return {Bool}
- */
+///
+/// Converts a value to a proper boolean value
+/// 
+/// @since 0.1
+///
+/// @param {*} $value
+///
+/// @return {Bool}
+///
 
 @function to-bool($value) {
   @if not $value or $value == "" or $value == 0 {
@@ -33,20 +33,20 @@
   @return true;
 }
 
-/**
- * Converts a list of property values to a property map. Use to convert 'old-style' associative arrays to SASS's new Map type.
- * 
- * @example
- * list-to-map((color #FFF, text-align left))
- *  // Output:
- *  (color: #FFF, text-align: left)
- *
- * @since 0.1
- *
- * @param {List} $properties
- *
- * @return {Map}
- */
+///
+/// Converts a list of property values to a property map. Use to convert 'old-style' associative arrays to SASS's new Map type.
+/// 
+/// @example
+/// list-to-map((color #FFF, text-align left))
+///  // Output:
+///  (color: #FFF, text-align: left)
+///
+/// @since 0.1
+///
+/// @param {List} $properties
+///
+/// @return {Map}
+///
 
 @function list-to-map($properties)
 {
@@ -62,14 +62,14 @@
 // 2. Mixins
 
 
-/**
- * Mixin for border properties
- * 
- * @since 0.1
- *
- * @param {String | Map | List | Numner} $values - The border (or outline) properties
- * @param {Bool} $outline - If true, will render the values as outline properties
- */
+///
+/// Mixin for border properties
+/// 
+/// @since 0.1
+///
+/// @param {String | Map | List | Numner} $values - The border (or outline) properties
+/// @param {Bool} $outline - If true, will render the values as outline properties
+///
 
 @mixin border($values, $outline: false)
 {
@@ -97,9 +97,9 @@
 
 }
 
-/**
- * @alias border
- */
+///
+/// @alias border
+///
 
 @mixin outline($attributes)
 {
@@ -107,13 +107,13 @@
 }
 
 
-/**
- * Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
- * 
- * @since 0.1
- *
- * @param {Number} $opacity - A number between 0 and 1, where 0 is transparent and 1 is opaque.
- */
+///
+/// Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
+/// 
+/// @since 0.1
+///
+/// @param {Number} $opacity - A number between 0 and 1, where 0 is transparent and 1 is opaque.
+///
 
 @mixin opacity($opacity) {
     @include old-ie() {
@@ -123,15 +123,15 @@
 }
 
 
-/**
- * Conditional mixin of property
- * 
- * @since 0.1
- * @deprecated
- *
- * @param {String} $property - A CSS property
- * @param {Bool | *} $value - A value for the property, or false if the property should not be rendered.
- */
+///
+/// Conditional mixin of property
+/// 
+/// @since 0.1
+/// @deprecated
+///
+/// @param {String} $property - A CSS property
+/// @param {Bool | *} $value - A value for the property, or false if the property should not be rendered.
+///
 
 @mixin property($property, $value)
 {
@@ -140,14 +140,14 @@
     }
 }
 
-/**
- * Support for old-mozilla, cuse it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
- * 
- * @since 0.1
- *
- * @example
- *  @include old-ie() { // properties }
- */
+///
+/// Support for old-mozilla, cuse it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
+/// 
+/// @since 0.1
+///
+/// @example
+///  @include old-ie() { // properties }
+///
 
 @mixin old-ie() {
     @if $legacy-support-for-ie {
@@ -156,14 +156,14 @@
 }
 
 
-/**
- * Support for old-mozilla, cuse it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
- * 
- * @since 0.1
- *
- * @example
- *  @include old-mozilla() { // properties }
- */
+///
+/// Support for old-mozilla, cuse it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
+/// 
+/// @since 0.1
+///
+/// @example
+///  @include old-mozilla() { // properties }
+///
 
 @mixin old-mozilla() {
     @if $legacy-support-for-mozilla {
@@ -172,17 +172,17 @@
 }
 
 
-/**
- * Provides a cross-browser method to implement display: inline-block;. This replaces [Compass's](http://compass-style.org/reference/compass/css3/inline_block/) mixin by the same name with a more accessible implementation.
- * See for valid property values: [http://www.w3schools.com/cssref/pr_pos_vertical-align.asp](http://www.w3schools.com/cssref/pr_pos_vertical-align.asp)
- * 
- * @since 0.1
- *
- * @example
- *  @include inline-block(baseline); 
- *
- * @param {String} $vertical-alignment (baseline) - Set $inline-block-alignment to none or false to disable the output of a vertical-align property in the inline-block mixin. Or set it to a legal value for vertical-align to change the default.
- */
+///
+/// Provides a cross-browser method to implement display: inline-block;. This replaces [Compass's](http://compass-style.org/reference/compass/css3/inline_block/) mixin by the same name with a more accessible implementation.
+/// See for valid property values: [http://www.w3schools.com/cssref/pr_pos_vertical-align.asp](http://www.w3schools.com/cssref/pr_pos_vertical-align.asp)
+/// 
+/// @since 0.1
+///
+/// @example
+///  @include inline-block(baseline); 
+///
+/// @param {String} $vertical-alignment (baseline) - Set $inline-block-alignment to none or false to disable the output of a vertical-align property in the inline-block mixin. Or set it to a legal value for vertical-align to change the default.
+///
 
 @mixin inline-block($vertical-alignment: baseline) {
     $vertical-alignment: unquote($vertical-alignment);
@@ -203,13 +203,13 @@
     }
 }
 
-/**
- * Accepts a string which a valid appearance
- *
- * @since 0.1
- *
- * @param {String} $appearance
- */
+///
+/// Accepts a string which a valid appearance
+///
+/// @since 0.1
+///
+/// @param {String} $appearance
+///
 
 @mixin reset-appearance($appearance)
 {
@@ -220,13 +220,13 @@
 
 
 
-/**
- * Accepts a string which a valid appearance
- *
- * @since 0.1
- *
- * @param {String} $appearance
- */
+///
+/// Accepts a string which a valid appearance
+///
+/// @since 0.1
+///
+/// @param {String} $appearance
+///
 
 @mixin reset-webkit-appearance($appearance)
 {
@@ -234,13 +234,13 @@
 }
 
 
-/**
- * Accepts a string which a valid appearance
- *
- * @since 0.1
- *
- * @param {String} $appearance
- */
+///
+/// Accepts a string which a valid appearance
+///
+/// @since 0.1
+///
+/// @param {String} $appearance
+///
 
 @mixin reset-mozilla-appearance($appearance)
 {

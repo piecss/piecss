@@ -1,223 +1,223 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-/**
- * Compass has deprecated this value. Piecss is still using it.
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// Compass has deprecated this value. Piecss is still using it.
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $legacy-support-for-ie: false;
 
-/**
- * Compass has deprecated this value. Piecss is still using it.
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// Compass has deprecated this value. Piecss is still using it.
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $legacy-support-for-mozilla: true;
 
-/**
- * The unit to which to-unit() will convert px values. Used in various functions and mixins.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The unit to which to-unit() will convert px values. Used in various functions and mixins.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $unit: 1em !default;
 
-/**
- * If $unit is set to rem, the fallback will be implemented using this unit.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// If $unit is set to rem, the fallback will be implemented using this unit.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $rem-fallback-unit: 1px !default;
 
-/**
- * The unit line-heights will be expressed in.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The unit line-heights will be expressed in.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $line-height-unit: 1% !default;
 
-/**
- * Is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
- * Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px. 
- * 
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
+/// Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px. 
+/// 
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $base-font-size: 16px !default;
 
-/**
- * The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $default-font-size: 16px !default;
 
-/**
- * The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $default-line-height: 24px !default;
 
-/**
- * The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
- * A font-type is a comma separated list of font-type, font-variant, font-weight and font-family.
- *
- * @todo the comma separated list will be changed to a space separated list, and a Map (both will apply)
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
+/// A font-type is a comma separated list of font-type, font-variant, font-weight and font-family.
+///
+/// @todo the comma separated list will be changed to a space separated list, and a Map (both will apply)
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $default-font: $sans-serif-regular !default;
 
-/**
- * The default color for the HTML background.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for the HTML background.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-background: $white !default;
 
-/**
- * The default color for text.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for text.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-body: $darkslategray !default;
 
-/**
- * The primary color for UI elements.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The primary color for UI elements.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-primary: $orange !default;
 
-/**
- * The secondary color for UI elements.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The secondary color for UI elements.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-secondary: $salmon !default;
 
-/**
- * The color with which to darken other colors.
- *
- * @since 0.1
- *
- * @example
- * mix($color-shadow, $color-primary, 20%);
- *
- * @type {Color}
- */
+///
+/// The color with which to darken other colors.
+///
+/// @since 0.1
+///
+/// @example
+/// mix($color-shadow, $color-primary, 20%);
+///
+/// @type {Color}
+///
 
 $color-shadow: $black !default;
 
-/**
- * The color with which to lighten other colors.
- *
- * @since 0.1
- *
- * @example
- * mix($color-highlight, $color-primary, 20%);
- *
- * @type {Color}
- */
+///
+/// The color with which to lighten other colors.
+///
+/// @since 0.1
+///
+/// @example
+/// mix($color-highlight, $color-primary, 20%);
+///
+/// @type {Color}
+///
 
 $color-highlight: $black !default;
 
-/**
- * The default color for anchors.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for anchors.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-anchor: $blue !default;
 
-/**
- * The default color for anchor hover state.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for anchor hover state.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-anchor--hover: darken($color-anchor, 20%) !default;
 
-/**
- * The default color for anchor active state.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for anchor active state.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-anchor--active: lighten($color-anchor, 15%) !default;
 
-/**
- * The default color for anchor visited state.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// The default color for anchor visited state.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $color-anchor--visited: darken($color-anchor, 30%) !default;
 
-/**
- * The default border-radius. Is used for example by the button and form modules for rounder corners.
- * This ensures that the same border-radius is used accross your project.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The default border-radius. Is used for example by the button and form modules for rounder corners.
+/// This ensures that the same border-radius is used accross your project.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $corner-radius: 0 !default;
 
-/**
- * If true, consistent quote types will be set.
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// If true, consistent quote types will be set.
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $base-quote-quotes: true !default;

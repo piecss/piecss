@@ -10,7 +10,7 @@ $classPrefix: "foundicon-";
 
 @mixin ie-class($name,$pua) {
   .#{$classPrefix}#{$name} { 
-    *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = "&#xf#{$pua};"); 
+///zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = "&#xf#{$pua};"); 
   }
 }
 

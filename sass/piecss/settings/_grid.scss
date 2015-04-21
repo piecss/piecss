@@ -5,54 +5,54 @@
 
 // Vertical measurements like line-height and %-top and %-bottom are factors of rhythm
 
-/**
- * This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $default-line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $default-line-height.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $default-line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $default-line-height.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $rhythm: $default-line-height !default;
 
-/**
- * If true,reveals the document's vertical rhythm. Also see: [mixin $debug-rhythm](./#mixin-debug-rhythm).
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// If true,reveals the document's vertical rhythm. Also see: [mixin $debug-rhythm](./#mixin-debug-rhythm).
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $debug-rhythm: false !default;
 
-/**
- * If true,reveals the document's horizontal rhythm. Also see: [mixin $debug-layout](./#mixin-debug-layout).
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// If true,reveals the document's horizontal rhythm. Also see: [mixin $debug-layout](./#mixin-debug-layout).
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $debug-layout: false !default;
 
-/**
- * Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
- *
- * @since 0.1
- *
- * @type {List}
- */
+///
+/// Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
+///
+/// @since 0.1
+///
+/// @type {List}
+///
 
 $single-direction-elements: (p,pre,table,hr,article) !default;
 
-/**
- * Column classes are rendered from this map. The first level of each item has a breakpoint string as a key, the value is another Map of classnames/column widths pairs. Column widths are expressed as factors.
- * Piecss will render these columns by default, unless you override this Map from your project settings.
- *
- * @since 0.1
- *
- * @type {Map}
- */
+///
+/// Column classes are rendered from this map. The first level of each item has a breakpoint string as a key, the value is another Map of classnames/column widths pairs. Column widths are expressed as factors.
+/// Piecss will render these columns by default, unless you override this Map from your project settings.
+///
+/// @since 0.1
+///
+/// @type {Map}
+///
 
 $column-widths: (
     $small_handheld: (small-1-2: 1/2, small-1-3: 1/3, small-2-3: 2/3),
@@ -60,79 +60,79 @@ $column-widths: (
     $small_desktop: (default-1-2: 1/2, default-1-3: 1/3, default-1-4: 1/4, default-2-3: 2/3, default-3-4: 3/4),
 ) !default;
 
-/**
- * Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $column-width-default: 1/1 !default;
 
-/**
- * If set to true, the [column() mixin](./#mixin-column) will mixin a reset of all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld). If you are developing mobile-first, leave this setting to false.
- *
- * @deprecated
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld). If you are developing mobile-first, leave this setting to false.
+///
+/// @deprecated
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $column-breakpoint: false !default;
 
-/**
- * By default, columns are rendered as inline-blocks. Inline-block elements are much easier to implement than floating elements, but require the invisible space between elements to be minified or obscured.
- * If you can't minify your markup, then floated columns (or [negative right margin](./#variable-negative-right-margin)) will be helpful. You will have to implement your own clearfix method though.
- *
- * @since 0.1
- *
- * @type {Bool}
- */
+///
+/// By default, columns are rendered as inline-blocks. Inline-block elements are much easier to implement than floating elements, but require the invisible space between elements to be minified or obscured.
+/// If you can't minify your markup, then floated columns (or [negative right margin](./#variable-negative-right-margin)) will be helpful. You will have to implement your own clearfix method though.
+///
+/// @since 0.1
+///
+/// @type {Bool}
+///
 
 $column-float: false !default; // If you prefer floated columns instead of inline-blocks, set to true.
 
-/**
- * Gutter widths are based on the vertical [rhythm](./#variable-rhythm) and default to 2*$rhythm. Gutters are implemented using the [gutter mixin](./#mixin-gutters) and are expressed in factors of this measure (usually 1/2).
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Gutter widths are based on the vertical [rhythm](./#variable-rhythm) and default to 2*$rhythm. Gutters are implemented using the [gutter mixin](./#mixin-gutters) and are expressed in factors of this measure (usually 1/2).
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $gutter-width: 2*$rhythm !default;
 
-/**
- * The final unit of output in which gutter widths are rendered
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The final unit of output in which gutter widths are rendered
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $gutter-width-unit: $unit !default;
 
-/**
- * If false, gutter widths will be halved below the smallest breakpoint.
- *
- * @deprecated
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// If false, gutter widths will be halved below the smallest breakpoint.
+///
+/// @deprecated
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $gutter-width-persistent: false !default;
 
-/**
- * If you cannot minify your markup, you can assign a negative right margin to close gaps between columns to make them fit.
- * You can also set [$column-float](./#variable-column-float) to true to render your columns as floated blocks.  You will have to implement your own clearfix method though.
- * This is a hack and not necessary when your html (or column markup) is minimized.
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// If you cannot minify your markup, you can assign a negative right margin to close gaps between columns to make them fit.
+/// You can also set [$column-float](./#variable-column-float) to true to render your columns as floated blocks.  You will have to implement your own clearfix method though.
+/// This is a hack and not necessary when your html (or column markup) is minimized.
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $negative-right-margin: false !default;
 
@@ -142,47 +142,47 @@ $negative-right-margin: false !default;
 // The root container can be positioned left or center, for alternate position you can provide your own behavior.
 
 
-/**
- * Fixes content maximum width, 72em is 1152px at a 16px [$default-font-size](./#variable-default-font-size). It is used by the [root mixin](./#mixin-root).
- *
- * @deprecated
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Fixes content maximum width, 72em is 1152px at a 16px [$default-font-size](./#variable-default-font-size). It is used by the [root mixin](./#mixin-root).
+///
+/// @deprecated
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $root-max-width: 72em !default;
 
-/**
- * Aligns content inside the viewport, center by default. Used by the [root mixin](./#mixin-root).
- *
- * @deprecated
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Aligns content inside the viewport, center by default. Used by the [root mixin](./#mixin-root).
+///
+/// @deprecated
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $root-position: center !default;
 
-/**
- * The page's default number of columns. Used in debug-layout to visualize column layout.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// The page's default number of columns. Used in debug-layout to visualize column layout.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $columns: 4 !default;
 
-/**
- * Totally arbitrary default breakpoint layouts.
- *
- * @since 0.1
- *
- * @type {Map}
- */
+///
+/// Totally arbitrary default breakpoint layouts.
+///
+/// @since 0.1
+///
+/// @type {Map}
+///
 
 $layouts: (
     $small_handheld: (

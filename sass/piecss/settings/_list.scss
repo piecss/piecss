@@ -1,35 +1,35 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-/**
- * If true, the default behavior of lists will be reset (remove padding and list-style-type none).
- *
- * @type {Bool}
- */
+///
+/// If true, the default behavior of lists will be reset (remove padding and list-style-type none).
+///
+/// @type {Bool}
+///
 
 $reset-list: false;
 
-/**
- * The namespace for the list placeholders
- *
- * @type {String}
- */
+///
+/// The namespace for the list placeholders
+///
+/// @type {String}
+///
 
 $list-selector: "list" !default;
 
-/**
- * The default list-style-type for ul lists
- *
- * @type {String}
- */
+///
+/// The default list-style-type for ul lists
+///
+/// @type {String}
+///
 
 $list-ul-default: disc !default;
 
-/**
- * The default list-style-type for ol lists
- *
- * @type {String}
- */
+///
+/// The default list-style-type for ol lists
+///
+/// @type {String}
+///
 
 $list-ol-default: decimal !default;
 
@@ -39,178 +39,178 @@ $list-ol-default: decimal !default;
 // See: http://www.w3schools.com/cssref/pr_list-style-type.asp
 // ==========================================================================
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--armenian)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--armenian)
+///
+/// @type {Bool}
+///
 
 $list-style-type-armenian: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--circle)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--circle)
+///
+/// @type {Bool}
+///
 
 $list-style-type-circle: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--cjk-ideographic)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--cjk-ideographic)
+///
+/// @type {Bool}
+///
 
 $list-style-type-cjk-ideographic: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--decimal)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--decimal)
+///
+/// @type {Bool}
+///
 
 $list-style-type-decimal: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--decimal-leading-zero)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--decimal-leading-zero)
+///
+/// @type {Bool}
+///
 
 $list-style-type-decimal-leading-zero: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--disc)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--disc)
+///
+/// @type {Bool}
+///
 
 $list-style-type-disc: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--georgian)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--georgian)
+///
+/// @type {Bool}
+///
 
 $list-style-type-georgian: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--hebrew)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--hebrew)
+///
+/// @type {Bool}
+///
 
 $list-style-type-hebrew: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--hiragana)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--hiragana)
+///
+/// @type {Bool}
+///
 
 $list-style-type-hiragana: false;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--hiragana-iroha)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--hiragana-iroha)
+///
+/// @type {Bool}
+///
 
 $list-style-type-hiragana-iroha: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--inherit)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--inherit)
+///
+/// @type {Bool}
+///
 
 $list-style-type-inherit: true !default;    
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--katakana)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--katakana)
+///
+/// @type {Bool}
+///
 
 $list-style-type-katakana: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--katakana-iroha)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--katakana-iroha)
+///
+/// @type {Bool}
+///
 
 $list-style-type-katakana-iroha: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--lower-alpha)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--lower-alpha)
+///
+/// @type {Bool}
+///
 
 $list-style-type-lower-alpha: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--lower-greek)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--lower-greek)
+///
+/// @type {Bool}
+///
 
 $list-style-type-lower-greek: false !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--lower-latin)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--lower-latin)
+///
+/// @type {Bool}
+///
 
 $list-style-type-lower-latin: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--lower-roman)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--lower-roman)
+///
+/// @type {Bool}
+///
 
 $list-style-type-lower-roman: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--none)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--none)
+///
+/// @type {Bool}
+///
 
 $list-style-type-none: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--square)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--square)
+///
+/// @type {Bool}
+///
 
 $list-style-type-square: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--upper-alpha)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--upper-alpha)
+///
+/// @type {Bool}
+///
 
 $list-style-type-upper-alpha: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--upper-latin)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--upper-latin)
+///
+/// @type {Bool}
+///
 
 $list-style-type-upper-latin: true !default;
 
-/**
- * If true, Piecss will render a placeholder for this list-style-type (%list--upper-roman)
- *
- * @type {Bool}
- */
+///
+/// If true, Piecss will render a placeholder for this list-style-type (%list--upper-roman)
+///
+/// @type {Bool}
+///
 
 $list-style-type-upper-roman: true !default;

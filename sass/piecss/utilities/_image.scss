@@ -10,17 +10,17 @@
 // 1. FUNCTIONS
 
 
-/**
- * Calculates the proportions of an element based on its width and height 
- *
- * @since 0.1
- *
- * @todo: do something when numbers are not the same units
- *
- * @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
- *
- * @return {Number} 
- */
+///
+/// Calculates the proportions of an element based on its width and height 
+///
+/// @since 0.1
+///
+/// @todo: do something when numbers are not the same units
+///
+/// @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
+///
+/// @return {Number} 
+///
 
 @function proportion($size)
 {
@@ -30,15 +30,15 @@
     @return $width / $height;
 }
 
-/**
- * Returns a string for horizontal, portrait or square proportions
- *
- * @since 0.1
- *
- * @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
- *
- * @return {String} 
- */
+///
+/// Returns a string for horizontal, portrait or square proportions
+///
+/// @since 0.1
+///
+/// @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
+///
+/// @return {String} 
+///
 
 @function orientation($size)
 {

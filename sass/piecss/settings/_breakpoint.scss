@@ -1,32 +1,32 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-/**
- * Breakpoint for smallest handheld devices (phones). Overwrite and augment breakpoint presets as you see fit.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Breakpoint for smallest handheld devices (phones). Overwrite and augment breakpoint presets as you see fit.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
 
-/**
- * Breakpoint for medium handheld devices (tablets). Overwrite and augment breakpoint presets as you see fit.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Breakpoint for medium handheld devices (tablets). Overwrite and augment breakpoint presets as you see fit.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $medium_handheld: "(min-width #{to-unit(481px,$unit,$default-font-size)}) and (max-width #{to-unit(1024px,$unit,$default-font-size)})" !default;
 
-/**
- * Breakpoint for small desktop devices. Overwrite and augment breakpoint presets as you see fit.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Breakpoint for small desktop devices. Overwrite and augment breakpoint presets as you see fit.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;

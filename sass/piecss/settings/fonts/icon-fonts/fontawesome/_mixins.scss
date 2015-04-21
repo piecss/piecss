@@ -12,7 +12,7 @@
   font-style: normal;
   text-decoration: inherit;
   -webkit-font-smoothing: antialiased;
-  *margin-right: .3em; // fixes ie7 issues
+///margin-right: .3em; // fixes ie7 issues
 }
 
 // @mixin border-radius($radius) {
@@ -38,11 +38,11 @@
       height: 100%;
       font-size: $top-font-size;
       line-height: inherit;
-      *line-height: $height;
+///line-height: $height;
     }
     .icon-stack-base {
       font-size: $base-font-size;
-      *line-height: #{$height / $base-font-size}em;
+///line-height: #{$height / $base-font-size}em;
     }
   }
 }

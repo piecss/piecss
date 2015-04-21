@@ -28,186 +28,186 @@
 // ==========================================================================
 
 
-/**
- * Seletor for form elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Seletor for form elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-form-selector: "%form" !default;
 
-/**
- * Selector for fieldset elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for fieldset elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-fieldset-selector: "%fieldset" !default;
 
-/**
- * Selector for legend elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for legend elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-legend-selector: "%legend" !default;
 
-/**
- * Selector for field base
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for field base
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-base-selector: "%field-base" !default;
 
-/**
- * Selector for focus state of form elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for focus state of form elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-base-selector--focus: "%field-base--focus" !default;
 
-/**
- * Selector for most field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for most field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-selector: "%field" !default;
 
-/**
- * Selector for color field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for color field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-color-selector: "%field--color" !default;
 
-/**
- * Selector for range field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for range field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-range-selector: "%field--range" !default;
 
-/**
- * Selector for search field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for search field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-field-search-selector: "%field--search" !default;
 
-/**
- * Selector for checkbox field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for checkbox field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-checkbox-selector: "%checkbox" !default;
 
-/**
- * Selector for radio field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for radio field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-radio-selector: "%radio" !default;
 
-/**
- * Selector for textarea field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for textarea field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-textarea-selector: "%textarea" !default;
 
-/**
- * Selector for select field base
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for select field base
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-select-selector: "%select" !default;
 
-/**
- * Selector for select field elements that behave like dropdowns
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for select field elements that behave like dropdowns
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-select-dropdown-selector: "%select--dropdown" !default;
 
-/**
- * Selector for scrollable select field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for scrollable select field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-select-box-selector: "%select--box" !default;
 
-/**
- * Selector for scrollable select field elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for scrollable select field elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-select-multiple-selector: "%select--multiple" !default;
 
-/**
- * Selector for scrollable labe; elements
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Selector for scrollable labe; elements
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $form-label-selector: "%label" !default;
 
 // Start collection of element-maps
 
-/**
- * Collection of form selectors and property maps. For each selector, the corrresponding properties are rendered by the form behavior. 
- * You can override form behavior by a) overriding any of the field settings, or by b) replacing the selector entry in this element collection map.
- *
- * @since 0.1
- *
- * @type {Map}
- */
+///
+/// Collection of form selectors and property maps. For each selector, the corrresponding properties are rendered by the form behavior. 
+/// You can override form behavior by a) overriding any of the field settings, or by b) replacing the selector entry in this element collection map.
+///
+/// @since 0.1
+///
+/// @type {Map}
+///
 
 $form-elements: ();
 
@@ -224,153 +224,153 @@ $form-elements: ();
 //
 // --------------------------------------------------------------------------
 
-/**
- * Field top-padding. Defaults to a quarter rhythm unit.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field top-padding. Defaults to a quarter rhythm unit.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-padding-top: rhythm(.25) !default;
 
-/**
- * Field right-padding.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field right-padding.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-padding-right: .5em !default;
 
-/**
- * Field bottom-padding. Defaults to a quarter rhythm unit.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field bottom-padding. Defaults to a quarter rhythm unit.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-padding-bottom: rhythm(.25) !default;
 
-/**
- * Field left-padding.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field left-padding.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-padding-left: .5em !default;
 
-/**
- * Field background-color, defaults to the default background color.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// Field background-color, defaults to the default background color.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $field-background-color: $color-background !default;
 
-/**
- * Field background-image, false will not render an image.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// Field background-image, false will not render an image.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $field-background-image: false !default;
 
-/**
- * Field border width.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field border width.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-border-width: 1px !default;
 
-/**
- * Field border style.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Field border style.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $field-border-style: solid !default;
 
-/**
- * Field border color.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// Field border color.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $field-border-color: mix($color-shadow, $field-background-color, 20%) !default;
 
-/**
- * Field border radius.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field border radius.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-corner-radius: $corner-radius !default;
 
-/**
- * Field box sizing, set to border-box if you want consistent heights and widths accross form elements.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Field box sizing, set to border-box if you want consistent heights and widths accross form elements.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $field-box-sizing: border-box !default;
 
-/**
- * Field width, set to 100%. Width will be set on the field's (parent) container.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field width, set to 100%. Width will be set on the field's (parent) container.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-width: 100% !default;
 
-/**
- * Field height computes to line-heigh plus border-width + plus padding and is used by select (dropdown) form elements.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field height computes to line-heigh plus border-width + plus padding and is used by select (dropdown) form elements.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-height: $default-line-height + 2 * $field-border-width + $field-padding-top + $field-padding-bottom !default;
 
-/**
- * Field line-height, relevant for text-area.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Field line-height, relevant for text-area.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-line-height: $default-line-height !default;
 
-/**
- * Field shadow, simple inset shadow by default.
- *
- * @since 0.1
- *
- * @type {List}
- */
+///
+/// Field shadow, simple inset shadow by default.
+///
+/// @since 0.1
+///
+/// @type {List}
+///
 
 $field-shadow: mix($black, $field-background-color, 10%) 1px 1px 1px 0 inset !default;
 
@@ -382,54 +382,54 @@ $field-shadow: mix($black, $field-background-color, 10%) 1px 1px 1px 0 inset !de
 // --------------------------------------------------------------------------
 
 
-/**
- * Background color of a field with focus state.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// Background color of a field with focus state.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $field-focussed-background-color: $whitesmoke !default;
 
-/**
- * Outline width of a field with focus state.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Outline width of a field with focus state.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-focussed-outline-width: 1px !default;
 
-/**
- * Outline style of a field with focus state.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Outline style of a field with focus state.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $field-focussed-outline-style: solid !default;
 
-/**
- * Outline color of a field with focus state.
- *
- * @since 0.1
- *
- * @type {Color}
- */
+///
+/// Outline color of a field with focus state.
+///
+/// @since 0.1
+///
+/// @type {Color}
+///
 
 $field-focussed-outline-color: mix($field-border-color, $field-focussed-background-color, 0) !default;
 
-/**
- * Outline offset of a field with focus state. In this setting, the outline is rendered inside the field against the field background.
- * Be aware that this property can have a negative impact on a form's accessibility. Alter with care.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Outline offset of a field with focus state. In this setting, the outline is rendered inside the field against the field background.
+/// Be aware that this property can have a negative impact on a form's accessibility. Alter with care.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-focussed-outline-offset: -1*( $field-focussed-outline-width + 3*$field-border-width) !default; 
 
@@ -449,13 +449,13 @@ $field-focussed-outline-offset: -1*( $field-focussed-outline-width + 3*$field-bo
 // ==========================================================================
 
 
-/**
- * Width of range input field.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Width of range input field.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-range-width: $field-width !default;
 
@@ -467,23 +467,23 @@ $field-range-width: $field-width !default;
 // --------------------------------------------------------------------------
 
 
-/**
- * Border radius for search fields.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Border radius for search fields.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-search-border-radius: $field-corner-radius !default;
 
-/**
- * Outline offset override for search fields.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Outline offset override for search fields.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $field-search-outline-offset: 0 !default;
 
@@ -495,34 +495,34 @@ $field-search-outline-offset: 0 !default;
 // --------------------------------------------------------------------------
 
 
-/**
- * Height of select element.
- *
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Height of select element.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $select-height: $field-height !default; // This is used for select elements
 
-/**
- * Experimental setting.
- *
- * @since 0.1
- *
- * @type {String}
- */
+///
+/// Experimental setting.
+///
+/// @since 0.1
+///
+/// @type {String}
+///
 
 $select-appearance: menulist !default;
 
-/**
- * Experimental setting. Allows overriding of default behavior. Will require JavaScript.
- *
- * @todo define behavior, does not do anything at the moment
- * @since 0.1
- *
- * @type {Number}
- */
+///
+/// Experimental setting. Allows overriding of default behavior. Will require JavaScript.
+///
+/// @todo define behavior, does not do anything at the moment
+/// @since 0.1
+///
+/// @type {Number}
+///
 
 $select-webkit: false !default;
 
@@ -534,33 +534,33 @@ $select-webkit: false !default;
 // --------------------------------------------------------------------------
 
 
-/**
- * Height of textarea element.
- *
- * @since 0.1
- *
- * @type {Number | String}
- */
+///
+/// Height of textarea element.
+///
+/// @since 0.1
+///
+/// @type {Number | String}
+///
 
 $textarea-height: auto !default;
 
-/**
- * Alternate height of textarea element, medium.
- *
- * @since 0.1
- *
- * @type {Number | String}
- */
+///
+/// Alternate height of textarea element, medium.
+///
+/// @since 0.1
+///
+/// @type {Number | String}
+///
 
 $textarea-height-medium: rhythm(5) - 2*$field-border-width !default;
 
-/**
- * Alternate height of textarea element, large.
- *
- * @since 0.1
- *
- * @type {Number | String}
- */
+///
+/// Alternate height of textarea element, large.
+///
+/// @since 0.1
+///
+/// @type {Number | String}
+///
 
 $textarea-height-large: rhythm(10) - 2*$field-border-width !default;
 

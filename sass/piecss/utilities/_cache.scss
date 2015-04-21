@@ -11,11 +11,11 @@
 // 1. Variables
 
 
-/**
- * This is where we collect the properties and their selectors
- *
- * @type {Map}
- */
+///
+/// This is where we collect the properties and their selectors
+///
+/// @type {Map}
+///
 
 $smart-cache: ();
 
@@ -23,32 +23,32 @@ $smart-cache: ();
 // 1. Functions
 
 
-/**
- * Function smart-cache
- *
- * @example scss
- * %inline-block {
- *   @include smart-cache((
- *     display: inline-block
- *   ));
- * }
- * %no-padding {
- *   @include smart-cache((
- *     padding: 0
- *   ));
- * }
- * %no-margin {
- *   @include smart-cache((
- *     margin: 0,
- *   ));
- * }
- *
- * @todo This mixin is under construction and experimental - do not use yet
- *
- * @since 0.1
- *
- * @param {Map} $properties - Map of CSS properties
- */
+///
+/// Function smart-cache
+///
+/// @example scss
+/// %inline-block {
+///   @include smart-cache((
+///     display: inline-block
+///   ));
+/// }
+/// %no-padding {
+///   @include smart-cache((
+///     padding: 0
+///   ));
+/// }
+/// %no-margin {
+///   @include smart-cache((
+///     margin: 0,
+///   ));
+/// }
+///
+/// @todo This mixin is under construction and experimental - do not use yet
+///
+/// @since 0.1
+///
+/// @param {Map} $properties - Map of CSS properties
+///
 
 @mixin smart-cache($properties) {
 

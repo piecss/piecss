@@ -10,35 +10,37 @@
 
 // 1. FUNCTIONS
 
-/**
- * Accepts a value and returns it without a value.
- * @link http://hugogiraudel.com/2013/08/12/sass-functions/ Courtesy Hugo Giraudel
- *
- * @since 0.1
- *
- * @param {Number} $value - A value in any unit (px, rem, em, %, pt)
- *
- * @return {Number} - The value stripped of its unit
- */
+
+
+///
+/// Accepts a value and returns it without a value.
+/// @link http://hugogiraudel.com/2013/08/12/sass-functions/ Courtesy Hugo Giraudel
+///
+/// @since 0.1
+///
+/// @param {Number} $value - A value in any unit (px, rem, em, %, pt)
+///
+/// @return {Number} - The value stripped of its unit
+///
 
 @function strip-unit($value) {
     @return $value / ($value * 0 + 1);
 }
 
 
-/**
- * Convert a px value to a new unit, within the context of it's containing element
- *
- * @since 0.1
- *
- * @throws Argument $number needs to be a number.
- *
- * @param {Number} $target-px - The final size in px
- * @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1%
- * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
- *
- * @return {Number} - The value in the requested unit
- */
+///
+/// Convert a px value to a new unit, within the context of it's containing element
+///
+/// @since 0.1
+///
+/// @throws Argument $number needs to be a number.
+///
+/// @param {Number} $target-px - The final size in px
+/// @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1%
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+///
+/// @return {Number} - The value in the requested unit
+///
 
 @function to-unit($number, $unit: $unit, $context: $default-font-size) {
     @if not(type-of($number)==number) {
@@ -72,16 +74,16 @@
     @return $number;
 }
 
-/**
- * Convert any unit to a px value, within the context of it's containing element
- *
- * @since 0.1
- *
- * @param {Number} $value - The value to convert, in any unit
- * @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
- * 
- * @return {Number} - The value in px
- */
+///
+/// Convert any unit to a px value, within the context of it's containing element
+///
+/// @since 0.1
+///
+/// @param {Number} $value - The value to convert, in any unit
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+/// 
+/// @return {Number} - The value in px
+///
 
 @function to-px($value, $context: $default-font-size) {
     @if unit($value)=='px' {
@@ -97,47 +99,47 @@
 
 }
 
-/**
- * Convert a value in rem to a px value
- *
- * @since 0.1
- *
- * @param {Number} $value - The value to convert
- * 
- * @return {Number} - The value in px
- */
+///
+/// Convert a value in rem to a px value
+///
+/// @since 0.1
+///
+/// @param {Number} $value - The value to convert
+/// 
+/// @return {Number} - The value in px
+///
 
 @function rem-to-px($value) {
     @return $default-font-size * strip-unit($value);
 }
 
-/**
- * Convert a value in em to a px value
- *
- * @since 0.1
- *
- * @param {Number} $value - The value to convert
- * @param {Number} $context ($default-font-size) - The context of the targeted element
- * 
- * @return {Number} - The value in px
- */
+///
+/// Convert a value in em to a px value
+///
+/// @since 0.1
+///
+/// @param {Number} $value - The value to convert
+/// @param {Number} $context ($default-font-size) - The context of the targeted element
+/// 
+/// @return {Number} - The value in px
+///
 
 @function em-to-px($value, $context: $default-font-size) {
     @return $context * strip-unit($value);
 }
 
-/**
- * Convert a value in em to a px value
- *
- * @since 0.1
- *
- * @todo Needs to take into account the context
- *
- * @param {Number} $value - The value to convert
- * @param {Number} $context ($default-font-size) - The context of the targeted element
- * 
- * @return {Number} - The value in px
- */
+///
+/// Convert a value in em to a px value
+///
+/// @since 0.1
+///
+/// @todo Needs to take into account the context
+///
+/// @param {Number} $value - The value to convert
+/// @param {Number} $context ($default-font-size) - The context of the targeted element
+/// 
+/// @return {Number} - The value in px
+///
 
 @function percentage-to-px($value, $context: $default-font-size) {
     @return $value/100% * $context;

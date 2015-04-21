@@ -9,15 +9,15 @@
 // 1. Mixins
 
 
-/**
- * Mixin a list-style-type
- * @example scss
- *  @include list-style-type(bullet);
- *
- * @since 0.1
- *
- * @param {String} $type
- */
+///
+/// Mixin a list-style-type
+/// @example scss
+///  @include list-style-type(bullet);
+///
+/// @since 0.1
+///
+/// @param {String} $type
+///
 
 @mixin list-style-type($type) {
 	%#{$list-selector}--#{$type} {
