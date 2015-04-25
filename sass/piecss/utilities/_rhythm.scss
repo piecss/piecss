@@ -124,7 +124,7 @@
     background-image: linear-gradient($from 50%, $to 50%);
     background-size: 2*$default-line-height 2*$default-line-height;
 
-/// {
+* {
         background-color: transparent !important;
         background-image: none !important;
         outline: rgba(255,0,255,.1) dotted 1px;
