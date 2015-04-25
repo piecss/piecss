@@ -24,23 +24,22 @@
 ///
 @mixin breakpoint($breakpoints, $media: "only screen")
 {
-    $breakpoints: unquote($breakpoints);
-    $query: ();
+  $breakpoints: unquote($breakpoints);
 
-    @if list-separator($breakpoints)=="comma" {
-
-        @each $breakpoint in $breakpoints {
-            $breakpoint: unquote($breakpoint);
-            $query: append($query, $breakpoint, comma);
-        }
+  $query: ();
+  @if list-separator($breakpoints)=="comma" {
+    @each $breakpoint in $breakpoints {
+      $breakpoint: unquote($breakpoint);
+      $query: append($query, $breakpoint, comma);
     }
-    @else {
-        $query: append($query, $breakpoints, comma);
-    }
+  }
+  @else {
+    $query: append($query, $breakpoints, comma);
+  }
 
-    $query: "#{unquote($media)} and #{unquote($query)}";
+  $q: "#{$media} and #{$query}";
 
-    @media #{$query} {
-        @content;
-    }
+  @media #{$q} {
+    @content;
+  }
 }
