@@ -36,10 +36,11 @@ html {
 
   font: #{$font-style} #{$font-variant} #{$font-weight} #{$font-size}/#{$line-height} #{$font-family};
 
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  width: 100%;
-  background: $color-background;
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+  width: 100%; /* 3 */
+  
+  background: $color-background; /* 4 */
 }
 
 /*
