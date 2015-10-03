@@ -114,15 +114,17 @@
 ///
 /// @since 0.1
 ///
+/// @param {Number} $rhythm - The rhythm height
+///
 
-@mixin debug-rhythm()
+@mixin debug-rhythm($rhythm: $rhythm)
 {
     $to: transparent;
     $from: rgba(226, 255, 255, .5);
 
     background-image: -webkit-linear-gradient($from 50%, $to 50%);
     background-image: linear-gradient($from 50%, $to 50%);
-    background-size: 2*$default-line-height 2*$default-line-height;
+    background-size: 2*$rhythm 2*$rhythm;
 
 * {
         background-color: transparent !important;
