@@ -34,10 +34,6 @@ Field base
     }
 }
 
-#{$form-field-selector} {
-    @extend #{$form-field-base-selector} !optional;
-}
-
 select:not([size]) {
     @extend #{$form-select-dropdown-selector} !optional;
     @if to-bool($select-appearance) {

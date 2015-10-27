@@ -141,7 +141,7 @@
 }
 
 ///
-/// Support for old-mozilla, cuse it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
+/// Support for old-mozilla, use it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
 /// 
 /// @since 0.1
 ///
@@ -157,7 +157,7 @@
 
 
 ///
-/// Support for old-mozilla, cuse it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
+/// Support for old-mozilla, use it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
 /// 
 /// @since 0.1
 ///
@@ -203,6 +203,7 @@
     }
 }
 
+
 ///
 /// Accepts a string which a valid appearance
 ///
@@ -213,36 +214,32 @@
 
 @mixin reset-appearance($appearance)
 {
-    @include reset-webkit-appearance($appearance);
-    @include reset-mozilla-appearance($appearance);
+    @include -reset-webkit-appearance($appearance);
+    @include -reset-mozilla-appearance($appearance);
 }
 
+    ///
+    /// Accepts a string which a valid appearance
+    ///
+    /// @since 0.1
+    ///
+    /// @param {String} $appearance
+    ///
 
+    @mixin -reset-webkit-appearance($appearance)
+    {
+        -webkit-appearance: $appearance;
+    }
 
+    ///
+    /// Accepts a string which a valid appearance
+    ///
+    /// @since 0.1
+    ///
+    /// @param {String} $appearance
+    ///
 
-///
-/// Accepts a string which a valid appearance
-///
-/// @since 0.1
-///
-/// @param {String} $appearance
-///
-
-@mixin reset-webkit-appearance($appearance)
-{
-    -webkit-appearance: $appearance; /* mobile firefox too! */
-}
-
-
-///
-/// Accepts a string which a valid appearance
-///
-/// @since 0.1
-///
-/// @param {String} $appearance
-///
-
-@mixin reset-mozilla-appearance($appearance)
-{
-    -moz-appearance: $appearance; /* mobile firefox too! */
-}
+    @mixin -reset-mozilla-appearance($appearance)
+    {
+        -moz-appearance: $appearance;
+    }

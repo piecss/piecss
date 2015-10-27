@@ -160,7 +160,7 @@ $button-border-color: mix($color-shadow, $button-background-color, 20%) !default
 /// @type {Number}
 ///
 
-$button-border-radius: $corner-radius !default;
+$button-border-radius: $border-radius !default;
 
 ///
 /// button box sizing, set to border-box if you want consistent heights and widths accross form elements.

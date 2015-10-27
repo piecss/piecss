@@ -121,16 +121,17 @@
         $element: map-remove($element, padding);
         @include padding($value);
     }
-    @if map-has-key($element, border-radius) {
-        $value: map-get($element, border-radius);
-        $element: map-remove($element, border-radius);
-        @include border-radius($value);
-    }
-    @if map-has-key($element, box-shadow) {
-        $value: map-get($element, box-shadow);
-        $element: map-remove($element, box-shadow);
-        @include box-shadow($value);
-    }
+    /* Using Autoprefix now */
+    // @if map-has-key($element, border-radius) {
+    //     $value: map-get($element, border-radius);
+    //     $element: map-remove($element, border-radius);
+    //     @include border-radius($value);
+    // }
+    // @if map-has-key($element, box-shadow) {
+    //     $value: map-get($element, box-shadow);
+    //     $element: map-remove($element, box-shadow);
+    //     @include box-shadow($value);
+    // }
     @if map-has-key($element, font-type) {
         $value: ();
         $value: append( $value, map-get($element, font-type));

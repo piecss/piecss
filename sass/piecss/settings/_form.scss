@@ -48,6 +48,10 @@ $form-form-selector: "%form" !default;
 
 $form-fieldset-selector: "%fieldset" !default;
 
+.fieldset {
+	@extend #{$form-fieldset-selector} !optional;
+}
+
 ///
 /// Selector for legend elements
 ///
@@ -66,7 +70,7 @@ $form-legend-selector: "%legend" !default;
 /// @type {String}
 ///
 
-$form-field-base-selector: "%field-base" !default;
+$form-field-base-selector: "%field" !default;
 
 ///
 /// Selector for focus state of form elements
@@ -76,17 +80,7 @@ $form-field-base-selector: "%field-base" !default;
 /// @type {String}
 ///
 
-$form-field-base-selector--focus: "%field-base--focus" !default;
-
-///
-/// Selector for most field elements
-///
-/// @since 0.1
-///
-/// @type {String}
-///
-
-$form-field-selector: "%field" !default;
+$form-field-base-selector--focus: "%field--focus" !default;
 
 ///
 /// Selector for color field elements
@@ -96,7 +90,7 @@ $form-field-selector: "%field" !default;
 /// @type {String}
 ///
 
-$form-field-color-selector: "%field--color" !default;
+$form-field-color-selector: "%field-color" !default;
 
 ///
 /// Selector for range field elements
@@ -106,7 +100,7 @@ $form-field-color-selector: "%field--color" !default;
 /// @type {String}
 ///
 
-$form-field-range-selector: "%field--range" !default;
+$form-field-range-selector: "%field-range" !default;
 
 ///
 /// Selector for search field elements
@@ -116,7 +110,7 @@ $form-field-range-selector: "%field--range" !default;
 /// @type {String}
 ///
 
-$form-field-search-selector: "%field--search" !default;
+$form-field-search-selector: "%field-search" !default;
 
 ///
 /// Selector for checkbox field elements
@@ -126,7 +120,7 @@ $form-field-search-selector: "%field--search" !default;
 /// @type {String}
 ///
 
-$form-checkbox-selector: "%checkbox" !default;
+$form-checkbox-selector: "%field-checkbox" !default;
 
 ///
 /// Selector for radio field elements
@@ -136,7 +130,7 @@ $form-checkbox-selector: "%checkbox" !default;
 /// @type {String}
 ///
 
-$form-radio-selector: "%radio" !default;
+$form-radio-selector: "%field-radio" !default;
 
 ///
 /// Selector for textarea field elements
@@ -146,7 +140,7 @@ $form-radio-selector: "%radio" !default;
 /// @type {String}
 ///
 
-$form-textarea-selector: "%textarea" !default;
+$form-textarea-selector: "%field-textarea" !default;
 
 ///
 /// Selector for select field base
@@ -156,7 +150,7 @@ $form-textarea-selector: "%textarea" !default;
 /// @type {String}
 ///
 
-$form-select-selector: "%select" !default;
+$form-select-selector: "%field-select" !default;
 
 ///
 /// Selector for select field elements that behave like dropdowns
@@ -166,7 +160,7 @@ $form-select-selector: "%select" !default;
 /// @type {String}
 ///
 
-$form-select-dropdown-selector: "%select--dropdown" !default;
+$form-select-dropdown-selector: "%field-select--dropdown" !default;
 
 ///
 /// Selector for scrollable select field elements
@@ -176,7 +170,7 @@ $form-select-dropdown-selector: "%select--dropdown" !default;
 /// @type {String}
 ///
 
-$form-select-box-selector: "%select--box" !default;
+$form-select-box-selector: "%field-select--box" !default;
 
 ///
 /// Selector for scrollable select field elements
@@ -186,7 +180,7 @@ $form-select-box-selector: "%select--box" !default;
 /// @type {String}
 ///
 
-$form-select-multiple-selector: "%select--multiple" !default;
+$form-select-multiple-selector: "%field-select--multiple" !default;
 
 ///
 /// Selector for scrollable labe; elements
@@ -196,7 +190,7 @@ $form-select-multiple-selector: "%select--multiple" !default;
 /// @type {String}
 ///
 
-$form-label-selector: "%label" !default;
+$form-label-selector: "%field-label" !default;
 
 // Start collection of element-maps
 
@@ -322,7 +316,7 @@ $field-border-color: mix($color-shadow, $field-background-color, 20%) !default;
 /// @type {Number}
 ///
 
-$field-corner-radius: $corner-radius !default;
+$field-border-radius: $border-radius !default;
 
 ///
 /// Field box sizing, set to border-box if you want consistent heights and widths accross form elements.
@@ -475,7 +469,7 @@ $field-range-width: $field-width !default;
 /// @type {Number}
 ///
 
-$field-search-border-radius: $field-corner-radius !default;
+$field-search-border-radius: $field-border-radius !default;
 
 ///
 /// Outline offset override for search fields.
