@@ -1,0 +1,29 @@
+{
+  "name": "piecss",
+  "version": "0.2.0",
+  "description": "SASS Framework for modular design systems.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:piecss/piecss.git"
+  },
+  "keywords": [
+    "sass",
+    "sc5",
+    "atomic",
+    "responsive"
+  ],
+  "author": "Babs Gösgens <babsgosgens@gmail.com (https://teemr.com/babsgosgens)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/piecss/piecss/issues"
+  },
+  "homepage": "https://github.com/piecss/piecss"
+}
