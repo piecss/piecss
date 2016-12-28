@@ -11,6 +11,7 @@
 //    old-ie
 //    old-mozilla
 //    inline-block
+//    pseudo-element
 
 
 // 1. Functions
@@ -18,7 +19,7 @@
 
 ///
 /// Converts a value to a proper boolean value
-/// 
+///
 /// @since 0.1
 ///
 /// @param {*} $value
@@ -27,19 +28,21 @@
 ///
 
 @function to-bool($value) {
+
   @if not $value or $value == "" or $value == 0 {
     @return false;
   }
+
   @return true;
 }
 
 ///
 /// Converts a list of property values to a property map. Use to convert 'old-style' associative arrays to SASS's new Map type.
-/// 
+///
 /// @example
-/// list-to-map((color #FFF, text-align left))
+/// list-to-map((color $white, text-align left))
 ///  // Output:
-///  (color: #FFF, text-align: left)
+///  (color: $white, text-align: left)
 ///
 /// @since 0.1
 ///
@@ -48,14 +51,14 @@
 /// @return {Map}
 ///
 
-@function list-to-map($properties)
-{
-    $map: ();
-    @each $property in $properties {
-        $map: map-merge($map, ( nth($property,1): nth($property,2) ) );
-    }
+@function list-to-map($properties) {
 
-    @return $map;
+  $map: ();
+  @each $property in $properties {
+    $map: map-merge($map, (nth($property, 1): nth($property, 2)));
+  }
+
+  @return $map;
 }
 
 
@@ -64,68 +67,70 @@
 
 ///
 /// Mixin for border properties
-/// 
+///
+/// @todo: fix line 96: #{$property}-#{$key}
+///
 /// @since 0.1
 ///
-/// @param {String | Map | List | Numner} $values - The border (or outline) properties
+/// @param {String | Map | List | Number} $values - The border (or outline) properties
 /// @param {Bool} $outline - If true, will render the values as outline properties
 ///
 
-@mixin border($values, $outline: false)
-{
-    // This mixin needs a value-map to work, so convert argument if it is not a value-map;
-    @if not(is-value-map($values, $keys-border)) {
-        $values: value-map($values, $keys-border);
-    }
+@mixin border($values, $outline: false) {
 
-    $property: if($outline, outline, border);
+  // This mixin needs a value-map to work, so convert argument if it is not a value-map;
+  @if not(is-value-map($values, $keys-border)) {
+    $values: value-map($values, $keys-border);
+  }
 
-    // Rem fallback
-    $width: map-get($values, width);
-    @if type-of($width)==number and unit($width)==rem {
-        #{$property}-width: to-px($width);
-    }
+  $property: if($outline, outline, border);
 
-    @if map-has-key($values, width) and map-has-key($values, style) and map-has-key($values, color) {
-        #{$property}: map-get($values, width) map-get($values, style) map-get($values, color);
-    }
-    @else {
-        @each $key, $value in $values {
-            #{$property}-#{$key}: $value;
-        }
-    }
+  // Rem fallback
+  $width: map-get($values, width);
+  @if type-of($width) == number and unit($width) == rem {
+    #{$property}-width: to-px($width);
+  }
 
+  @if map-has-key($values, width) and map-has-key($values, style) and map-has-key($values, color) {
+    #{$property}: map-get($values, width) map-get($values, style) map-get($values, color);
+  }
+@else {
+    @each $key, $value in $values {
+      // styleguide:ignore:start
+      #{$property}-#{$key}: $value;
+      // styleguide:ignore:end
+    }
+  }
 }
 
 ///
 /// @alias border
 ///
 
-@mixin outline($attributes)
-{
-    @include border($attributes, true);
+@mixin outline($attributes) {
+  @include border($attributes, true);
 }
 
 
 ///
 /// Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
-/// 
+///
 /// @since 0.1
 ///
 /// @param {Number} $opacity - A number between 0 and 1, where 0 is transparent and 1 is opaque.
 ///
 
 @mixin opacity($opacity) {
-    @include old-ie() {
-        filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
-    }
-    opacity: $opacity;
+  @include old-ie() {
+    filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+  }
+  opacity: $opacity;
 }
 
 
 ///
 /// Conditional mixin of property
-/// 
+///
 /// @since 0.1
 /// @deprecated
 ///
@@ -133,16 +138,15 @@
 /// @param {Bool | *} $value - A value for the property, or false if the property should not be rendered.
 ///
 
-@mixin property($property, $value)
-{
-    @if to-bool($value) {
-        $property: $value;
-    }
+@mixin property($property, $value) {
+  @if to-bool($value) {
+    $property: $value;
+  }
 }
 
 ///
-/// Support for old-mozilla, use it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
-/// 
+/// Support for old-ie, use it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
+///
 /// @since 0.1
 ///
 /// @example
@@ -150,15 +154,15 @@
 ///
 
 @mixin old-ie() {
-    @if $legacy-support-for-ie {
-        @content;
-    }
+  @if $legacy-support-for-ie {
+    @content;
+  }
 }
 
 
 ///
-/// Support for old-mozilla, use it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr). 
-/// 
+/// Support for old-mozilla, use it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
+///
 /// @since 0.1
 ///
 /// @example
@@ -166,80 +170,138 @@
 ///
 
 @mixin old-mozilla() {
-    @if $legacy-support-for-mozilla {
-        @content;
-    }
+  @if $legacy-support-for-mozilla {
+    @content;
+  }
 }
 
 
 ///
 /// Provides a cross-browser method to implement display: inline-block;. This replaces [Compass's](http://compass-style.org/reference/compass/css3/inline_block/) mixin by the same name with a more accessible implementation.
 /// See for valid property values: [http://www.w3schools.com/cssref/pr_pos_vertical-align.asp](http://www.w3schools.com/cssref/pr_pos_vertical-align.asp)
-/// 
+///
 /// @since 0.1
 ///
 /// @example
-///  @include inline-block(baseline); 
+/// @include inline-block(baseline);
 ///
 /// @param {String} $vertical-alignment (baseline) - Set $inline-block-alignment to none or false to disable the output of a vertical-align property in the inline-block mixin. Or set it to a legal value for vertical-align to change the default.
 ///
 
 @mixin inline-block($vertical-alignment: baseline) {
-    $vertical-alignment: unquote($vertical-alignment);
+  $vertical-alignment: unquote($vertical-alignment);
 
-    @include old-mozilla() {
-        display: -moz-inline-stack;
-    }
+  @include old-mozilla() {
+    display: -moz-inline-stack;
+  }
 
-    display: inline-block;
-    @if to-bool($vertical-alignment) {
-        vertical-align: #{$vertical-alignment};
-    }
+  display: inline-block;
+  @if to-bool($vertical-alignment) {
+    vertical-align: #{$vertical-alignment};
+  }
 
-    @include old-ie() {
-        zoom: 1;
-        display: inline;
-        vertical-align: #{$vertical-alignment};
-    }
+  @include old-ie() {
+    zoom: 1;
+    display: inline;
+    vertical-align: #{$vertical-alignment};
+  }
 }
 
 
 ///
-/// Accepts a string which a valid appearance
+/// Accepts a string with a valid appearance
 ///
 /// @since 0.1
 ///
 /// @param {String} $appearance
 ///
 
-@mixin reset-appearance($appearance)
-{
-    @include -reset-webkit-appearance($appearance);
-    @include -reset-mozilla-appearance($appearance);
+@mixin reset-appearance($appearance) {
+  appearance: $appearance;
 }
 
-    ///
-    /// Accepts a string which a valid appearance
-    ///
-    /// @since 0.1
-    ///
-    /// @param {String} $appearance
-    ///
 
-    @mixin -reset-webkit-appearance($appearance)
-    {
-        -webkit-appearance: $appearance;
+///
+///  Mixin to clear floats
+///
+/// @since 1.0
+///
+
+@mixin clearfix {
+  @include pseudo-element("before""after") {
+    content: " ";
+    display: table;
+  }
+  @include pseudo-element("after") {
+    clear: both;
+  }
+ /**
+  * For IE 6/7 only
+  */
+  // scss-lint:disable UnnecessaryParentReference PropertySpelling PseudoElement
+  @include old-ie() {
+    & {
+      // styleguide:ignore:start
+      *zoom: 1;
+      // styleguide:ignore:end
     }
+  }
+  // scss-lint:enable UnnecessaryParentReference PropertySpelling PseudoElement
+}
 
-    ///
-    /// Accepts a string which a valid appearance
-    ///
-    /// @since 0.1
-    ///
-    /// @param {String} $appearance
-    ///
 
-    @mixin -reset-mozilla-appearance($appearance)
-    {
-        -moz-appearance: $appearance;
+///
+/// Accessible hide mixin
+///
+/// @since 1.0
+///
+
+@mixin hide() {
+  position: absolute;
+  left: -9999em;
+}
+
+
+///
+/// Old IE does not process the double colon standard for pseudo-elements.
+/// This mixin adds a single-colon fallback when ``$legacy-support-for-ie` is true.
+///
+/// @since 1.0
+///
+/// @todo Check if selector is a valid placement and handle accordingly
+///
+/// @param {String} $selector (&) - The selector to append the pseudo-element to
+/// @param {List | String} $placement (before) - The pseudo-element(s)
+///
+/// @return {Bool}
+///
+
+@mixin pseudo-element($placements: "before", $selectors: "&") {
+
+  $_placements: ("before", "after", "first-line", "first-letter");
+
+  // Create the selector
+  $_selectors: ();
+  @each $selector in $selectors {
+    @each $placement in $placements {
+      $_selectors: append($_selectors, "#{$selector}::#{$placement}");
     }
+  }
+  #{implode($_selectors, ", ")} {
+    @content;
+  }
+  @include old-ie() {
+    // Create the selector
+    $_selectors: ();
+    @each $selector in $selectors {
+      @each $placement in $placements {
+        $_selectors: append($_selectors, "#{$selector}:#{$placement}");
+      }
+    }
+    // scss-lint:disable PseudoElement
+    #{implode($_selectors, ", ")} {
+      @content;
+    }
+    // scss-lint:enable PseudoElement
+  }
+}

@@ -1,65 +1,159 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-///
-/// Breakpoint for smallest handheld devices (phones). Overwrite and augment breakpoint presets as you see fit.
-///
-/// @since 0.1
-///
-/// @type {String}
-///
+// ==========================================================================
+//
+// CONTENT
+//
+// ==========================================================================
+//
+// 1. Breakpoint settings
 
-$small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
 
-///
-/// Breakpoint for medium handheld devices (tablets). Overwrite and augment breakpoint presets as you see fit.
-///
-/// @since 0.1
-///
-/// @type {String}
-///
-
-$medium_handheld: "(min-width #{to-unit(481px,$unit,$default-font-size)}) and (max-width #{to-unit(1024px,$unit,$default-font-size)})" !default;
-
-///
-/// Breakpoint for small desktop devices. Overwrite and augment breakpoint presets as you see fit.
-///
-/// @since 0.1
-///
-/// @type {String}
-///
-
-$small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;
-
+// ==========================================================================
+//
+// BREAKPOINT SETTINGS
+//
+// ==========================================================================
 
 
 ///
-/// Breakpoint for small sized handheld devices. Overwrite and augment breakpoint presets as you see fit.
-///
-/// @since 1.0
-///
-/// @type {String}
-///
-$lt-small: "(max-width: #{to-unit(479px,$unit,$default-font-size)})" !default;
-$gt-small: "(min-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
-
-///
-/// Breakpoint for medium sized handheld and small desktop devices. Overwrite and augment breakpoint presets as you see fit.
-///
-/// @since 1.0
-///
-/// @type {String}
-///
-$lt-medium: "(max-width: #{to-unit(767px,$unit,$default-font-size)})" !default;
-$gt-medium: "(min-width: #{to-unit(768px,$unit,$default-font-size)})" !default;
-
-///
-/// Breakpoint for larger (desktop) devices. Overwrite and augment breakpoint presets as you see fit.
+/// Breakpoint selector: smaller than handheld
 ///
 /// @since 1.0
 ///
 /// @type {String}
 ///
 
-$lt-large: "(max-width: #{to-unit(1439px,$unit,$default-font-size)})" !default;
-$gt-large: "(min-width: #{to-unit(1440px,$unit,$default-font-size)})" !default;
+$lt-small-handheld: "(max-width: #{to-unit(319px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than handheld
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-small-handheld: "(min-width: #{to-unit(320px, $unit, $default-font-size)})" !default;
+
+
+///
+/// Breakpoint selector: smaller than medium-sized handheld
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$lt-medium-handheld: "(max-width: #{to-unit(519px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than medium-sized handheld
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-medium-handheld: "(min-width: #{to-unit(520px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: smaller than large-sized handheld
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$lt-large-handheld: "(max-width: #{to-unit(767px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than large-sized handheld
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-large-handheld: "(min-width: #{to-unit(768px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: smaller than small desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$lt-small-desktop: "(max-width: #{to-unit(1023px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than small desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-small-desktop: "(min-width: #{to-unit(1024px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: smaller than medium-sized desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$lt-medium-desktop: "(max-width: #{to-unit(1259px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than medium-sized desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-medium-desktop: "(min-width: #{to-unit(1260px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: smaller than large-sized desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$lt-large-desktop: "(max-width: #{to-unit(1439px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: larger than large-sized desktop
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$gt-large-desktop: "(min-width: #{to-unit(1440px, $unit, $default-font-size)})" !default;
+
+///
+/// Breakpoint selector: orientation portrait
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$portrait: "(orientation: portrait)" !default;
+
+///
+/// Breakpoint selector: orientation landscape
+///
+/// @since 1.0
+///
+/// @type {String}
+///
+
+$landscape: "(orientation: landscape)" !default;

@@ -6,6 +6,7 @@
 // 1. Functions
 //    percentage
 //    fraction-to-text
+//    gutters
 // 2. Mixins
 //    2a. Columns
 //        column
@@ -36,10 +37,11 @@
 /// @return {Number} - The resulting percentage value
 ///
 
-@function fraction-to-percentage($fraction: 1/3)
-{
-    @return percentage($fraction);
+// scss-lint:disable SpaceAroundOperator
+@function fraction-to-percentage($fraction: 1/3) {
+  @return percentage($fraction);
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -61,95 +63,155 @@
 /// @return {String}
 ///
 
-@function fraction-to-text($fraction)
-{
-    @if type-of($fraction)==string {
-        @warn "The function fraction-to-text only accepts unquoted fractions (1/2 and not \"1/2\")";
+// scss-lint:disable SpaceAroundOperator
+@function fraction-to-text($fraction) {
+  @if type-of($fraction) == string {
+    @warn 'The function fraction-to-text only accepts unquoted fractions (1/2 and not \"1/2\")';
+  }
+
+  @if $fraction ==  1/1 { @return "full"; }
+  @if $fraction ==  1/2 { @return "half"; }
+  @if $fraction ==  1/3 { @return "third"; }
+  @if $fraction ==  1/4 { @return "fourth"; }
+  @if $fraction ==  1/5 { @return "fifth"; }
+  @if $fraction ==  1/6 { @return "sixth"; }
+  @if $fraction ==  1/7 { @return "seventh"; }
+  @if $fraction ==  1/8 { @return "eighth"; }
+  @if $fraction ==  1/9 { @return "ninth"; }
+  @if $fraction ==  1/10 { @return "tenth"; }
+  @if $fraction ==  1/11 { @return "eleventh"; }
+  @if $fraction ==  1/12 { @return "twelfth"; }
+  @if $fraction ==  1/13 { @return "thirteenth"; }
+  @if $fraction ==  1/14 { @return "fourteenth"; }
+  @if $fraction ==  1/15 { @return "fifteenth"; }
+  @if $fraction ==  1/16 { @return "sixteenth"; }
+  @if $fraction ==  2/3 { @return "two-third"; }
+  @if $fraction ==  3/4 { @return "three-fourth"; }
+  @if $fraction ==  2/5 { @return "two-fifth"; }
+  @if $fraction ==  3/5 { @return "three-fifth"; }
+  @if $fraction ==  4/5 { @return "four-fifth"; }
+  @if $fraction ==  5/6 { @return "five-sixth"; }
+  @if $fraction ==  2/7 { @return "two-seventh"; }
+  @if $fraction ==  3/7 { @return "three-seventh"; }
+  @if $fraction ==  4/7 { @return "four-seventh"; }
+  @if $fraction ==  5/7 { @return "five-seventh"; }
+  @if $fraction ==  6/7 { @return "six-seventh"; }
+  @if $fraction ==  3/8 { @return "three-eighth"; }
+  @if $fraction ==  5/8 { @return "five-eighth"; }
+  @if $fraction ==  7/8 { @return "seven-eighth"; }
+  @if $fraction ==  2/9 { @return "two-ninth"; }
+  @if $fraction ==  4/9 { @return "four-ninth"; }
+  @if $fraction ==  5/9 { @return "five-ninth"; }
+  @if $fraction ==  7/9 { @return "seven-ninth"; }
+  @if $fraction ==  8/9 { @return "eight-ninth"; }
+  @if $fraction ==  3/10 { @return "three-tenth"; }
+  @if $fraction ==  7/10 { @return "seven-tenth"; }
+  @if $fraction ==  9/10 { @return "nine-tenth"; }
+  @if $fraction ==  2/11 { @return "two-eleventh"; }
+  @if $fraction ==  3/11 { @return "three-eleventh"; }
+  @if $fraction ==  4/11 { @return "four-eleventh"; }
+  @if $fraction ==  5/11 { @return "five-eleventh"; }
+  @if $fraction ==  6/11 { @return "six-eleventh"; }
+  @if $fraction ==  7/11 { @return "seven-eleventh"; }
+  @if $fraction ==  8/11 { @return "eight-eleventh"; }
+  @if $fraction ==  9/11 { @return "nine-eleventh"; }
+  @if $fraction == 10/11 { @return "ten-eleventh"; }
+  @if $fraction ==  5/12 { @return "five-twelfth"; }
+  @if $fraction ==  7/12 { @return "seven-twelfth"; }
+  @if $fraction ==  9/12 { @return "nine-twelfth"; }
+  @if $fraction == 11/12 { @return "eleven-twelfth"; }
+  @if $fraction ==  2/13 { @return "two-thirteenth"; }
+  @if $fraction ==  3/13 { @return "three-thirteenth"; }
+  @if $fraction ==  4/13 { @return "four-thirteenth"; }
+  @if $fraction ==  5/13 { @return "five-thirteenth"; }
+  @if $fraction ==  6/13 { @return "six-thirteenth"; }
+  @if $fraction ==  7/13 { @return "seven-thirteenth"; }
+  @if $fraction ==  8/13 { @return "eight-thirteenth"; }
+  @if $fraction ==  9/13 { @return "nine-thirteenth"; }
+  @if $fraction == 10/13 { @return "ten-thirteenth"; }
+  @if $fraction == 11/13 { @return "twelve-thirteenth"; }
+  @if $fraction == 12/13 { @return "thirteen-thirteenth"; }
+  @if $fraction ==  3/14 { @return "three-fourteenth"; }
+  @if $fraction ==  5/14 { @return "five-fourteenth"; }
+  @if $fraction ==  9/14 { @return "nine-fourteenth"; }
+  @if $fraction == 11/14 { @return "eleven-fourteenth"; }
+  @if $fraction == 13/14 { @return "thirteen-fourteenth"; }
+  @if $fraction ==  2/15 { @return "two-fifteenth"; }
+  @if $fraction ==  4/15 { @return "four-fifteenth"; }
+  @if $fraction ==  7/15 { @return "seven-fifteenth"; }
+  @if $fraction ==  8/15 { @return "eight-fifteenth"; }
+  @if $fraction == 11/15 { @return "eleven-fifteenth"; }
+  @if $fraction == 13/15 { @return "thirteen-fifteenth"; }
+  @if $fraction == 14/15 { @return "fourteen-fifteenth"; }
+  @if $fraction ==  3/16 { @return "three-sixteenth"; }
+  @if $fraction ==  5/16 { @return "five-sixteenth"; }
+  @if $fraction ==  7/16 { @return "seven-sixteenth"; }
+  @if $fraction ==  9/16 { @return "nine-sixteenth"; }
+  @if $fraction == 11/16 { @return "eleven-sixteenth"; }
+  @if $fraction == 13/16 { @return "thirteen-sixteenth"; }
+  @if $fraction == 15/16 { @return "sixteen-sixteenth"; }
+
+  @return "full";
+}
+// scss-lint:enable SpaceAroundOperator
+
+///
+/// Return a value based on the gutter-width. The gutter width is set as a property of the layouts map.
+/// If no breakpoint is set, the function will return the default gutter width.
+///
+/// @param {Arglist} $args - An argument list, may contain 2 values (a fraction and/or a valid breakpoint)
+///
+/// @return {Number} - The resulting value in px
+///
+
+// scss-lint:disable SpaceAroundOperator
+@function gutter($args...) {
+
+  $_fraction: 1/2;
+  $_breakpoint: false;
+
+  // Process arguments
+  @if length($args) {
+    @each $var in $args {
+      @if type-of($var) == number {
+        $_fraction: $var;
+      }
+      @if type-of($var) == list {
+        $_breakpoint: $var;
+      }
     }
+  }
 
-    @if $fraction ==  1/1  { @return "full"; }
-    @if $fraction ==  1/2  { @return "half"; }
-    @if $fraction ==  1/3  { @return "third"; }
-    @if $fraction ==  1/4  { @return "fourth"; }
-    @if $fraction ==  1/5  { @return "fifth"; }
-    @if $fraction ==  1/6  { @return "sixth"; }
-    @if $fraction ==  1/7  { @return "seventh"; }
-    @if $fraction ==  1/8  { @return "eighth"; }
-    @if $fraction ==  1/9  { @return "ninth"; }
-    @if $fraction ==  1/10 { @return "tenth"; }
-    @if $fraction ==  1/11 { @return "eleventh"; }
-    @if $fraction ==  1/12 { @return "twelfth"; }
-    @if $fraction ==  1/13 { @return "thirteenth"; }
-    @if $fraction ==  1/14 { @return "fourteenth"; }
-    @if $fraction ==  1/15 { @return "fifteenth"; }
-    @if $fraction ==  1/16 { @return "sixteenth"; }
-    @if $fraction ==  2/3  { @return "two-third"; }
-    @if $fraction ==  3/4  { @return "three-fourth"; }
-    @if $fraction ==  2/5  { @return "two-fifth"; }
-    @if $fraction ==  3/5  { @return "three-fifth"; }
-    @if $fraction ==  4/5  { @return "four-fifth"; }
-    @if $fraction ==  5/6  { @return "five-sixth"; }
-    @if $fraction ==  2/7  { @return "two-seventh"; }
-    @if $fraction ==  3/7  { @return "three-seventh"; }
-    @if $fraction ==  4/7  { @return "four-seventh"; }
-    @if $fraction ==  5/7  { @return "five-seventh"; }
-    @if $fraction ==  6/7  { @return "six-seventh"; }
-    @if $fraction ==  3/8  { @return "three-eighth"; }
-    @if $fraction ==  5/8  { @return "five-eighth"; }
-    @if $fraction ==  7/8  { @return "seven-eighth"; }
-    @if $fraction ==  2/9  { @return "two-ninth"; }
-    @if $fraction ==  4/9  { @return "four-ninth"; }
-    @if $fraction ==  5/9  { @return "five-ninth"; }
-    @if $fraction ==  7/9  { @return "seven-ninth"; }
-    @if $fraction ==  8/9  { @return "eight-ninth"; }
-    @if $fraction ==  3/10 { @return "three-tenth"; }
-    @if $fraction ==  7/10 { @return "seven-tenth"; }
-    @if $fraction ==  9/10 { @return "nine-tenth"; }
-    @if $fraction ==  2/11 { @return "two-eleventh"; }
-    @if $fraction ==  3/11 { @return "three-eleventh"; }
-    @if $fraction ==  4/11 { @return "four-eleventh"; }
-    @if $fraction ==  5/11 { @return "five-eleventh"; }
-    @if $fraction ==  6/11 { @return "six-eleventh"; }
-    @if $fraction ==  7/11 { @return "seven-eleventh"; }
-    @if $fraction ==  8/11 { @return "eight-eleventh"; }
-    @if $fraction ==  9/11 { @return "nine-eleventh"; }
-    @if $fraction == 10/11 { @return "ten-eleventh"; }
-    @if $fraction ==  5/12 { @return "five-twelfth"; }
-    @if $fraction ==  7/12 { @return "seven-twelfth"; }
-    @if $fraction ==  9/12 { @return "nine-twelfth"; }
-    @if $fraction == 11/12 { @return "eleven-twelfth"; }
-    @if $fraction ==  2/13 { @return "two-thirteenth"; }
-    @if $fraction ==  3/13 { @return "three-thirteenth"; }
-    @if $fraction ==  4/13 { @return "four-thirteenth"; }
-    @if $fraction ==  5/13 { @return "five-thirteenth"; }
-    @if $fraction ==  6/13 { @return "six-thirteenth"; }
-    @if $fraction ==  7/13 { @return "seven-thirteenth"; }
-    @if $fraction ==  8/13 { @return "eight-thirteenth"; }
-    @if $fraction ==  9/13 { @return "nine-thirteenth"; }
-    @if $fraction == 10/13 { @return "ten-thirteenth"; }
-    @if $fraction == 11/13 { @return "twelve-thirteenth"; }
-    @if $fraction == 12/13 { @return "thirteen-thirteenth"; }
-    @if $fraction ==  3/14 { @return "three-fourteenth"; }
-    @if $fraction ==  5/14 { @return "five-fourteenth"; }
-    @if $fraction ==  9/14 { @return "nine-fourteenth"; }
-    @if $fraction == 11/14 { @return "eleven-fourteenth"; }
-    @if $fraction == 13/14 { @return "thirteen-fourteenth"; }
-    @if $fraction ==  2/15 { @return "two-fifteenth"; }
-    @if $fraction ==  4/15 { @return "four-fifteenth"; }
-    @if $fraction ==  7/15 { @return "seven-fifteenth"; }
-    @if $fraction ==  8/15 { @return "eight-fifteenth"; }
-    @if $fraction == 11/15 { @return "eleven-fifteenth"; }
-    @if $fraction == 13/15 { @return "thirteen-fifteenth"; }
-    @if $fraction == 14/15 { @return "fourteen-fifteenth"; }
-    @if $fraction ==  3/16 { @return "three-sixteenth"; }
-    @if $fraction ==  5/16 { @return "five-sixteenth"; }
-    @if $fraction ==  7/16 { @return "seven-sixteenth"; }
-    @if $fraction ==  9/16 { @return "nine-sixteenth"; }
-    @if $fraction == 11/16 { @return "eleven-sixteenth"; }
-    @if $fraction == 13/16 { @return "thirteen-sixteenth"; }
-    @if $fraction == 15/16 { @return "sixteen-sixteenth"; }
+  $gutter-width: get-layout-gutter-width($layouts);
 
-    @return "full";
+  @if $_breakpoint {
+    $gutter-width: get-layout-gutter-width(get-layout($_breakpoint));
+  }
+
+  @return $_fraction * $gutter-width;
+}
+// scss-lint:enable SpaceAroundOperator
+
+
+///
+/// Get layout settings from a layout map
+///
+///
+/// @param {String} $breakpoints - A valid breakpoint
+/// @param {Map} $page - An optional page layout
+///
+/// @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
+///
+
+@function get-layout($breakpoint: null, $page: null) {
+
+  $layout: map-get($layouts, $breakpoint);
+
+  @if $page {
+    $layout: map-get($layout, $page);
+  }
+
+  @return  $layout;
 }
 
 
@@ -163,13 +225,17 @@
 /// @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
 ///
 
-@function get-layout($breakpoint, $page: null) {
-    $layout: map-get($layouts, $breakpoint);
-    @if $page {
-        $layout: map-get($layout, $page);
-    }
-    @return  $layout;
+@function get($key, $breakpoint) {
+
+  @if not( map-has-key($layout, $breakpoint) ) {
+    @error "Unknown breakpoint: #{$breakpoint}";
+  }
+
+  $config: map-get($layout, $breakpoint);
+
+  @return map-get($config, "columns");
 }
+
 
 
 // 2. MIXINS
@@ -180,48 +246,52 @@
 /// Uses padding by default, can be overridden to use margins instead which is especially helpful when assigning backgrounds or borders.
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
 /// @param {Number | Bool} $apply-padding (1/2) - A fraction, e.g. 1/2, or false
 /// @param {Number | Bool} $apply-margin (false) - A fraction, e.g. 1/2, or false
 ///
 
-@mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false)
-{
-    @include column-behavior();
-    @include column-width($fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false) {
 
-    @if $apply-padding {
-        @include gutters($apply-padding);            
-    }
+  @include column-behavior();
+  @include column-width($fraction);
 
-    @if $apply-margin {
-        @include gutters($apply-margin, true);           
-    }
+  @if $apply-padding {
+    @include gutters($apply-padding);
+  }
+
+  @if $apply-margin {
+    @include gutters($apply-margin, true);
+  }
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// Mixin column-behavior: prepares an element to behave as a column. Widths must be set separately with [column-width](./#mixin-column-width).
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Bool} $column-float (false) - If true, render columns as left floated block element. If false, render as inline-blocks.
 /// @param {Bool | Number} $negative-right-margin (false) - If set, applies a negative right margin to force inline-blocks to render without gaps. Only use this if you cannot minify your markup.
 ///
 
-@mixin column-behavior($column-float: $column-float, $negative-right-margin: $negative-right-margin)
-{
-    @if $column-float {
-        display: block;
-        float: left;
+@mixin column-behavior($column-float: $column-float, $negative-right-margin: $negative-right-margin) {
+
+  @if $column-float {
+    display: block;
+    float: left;
+  }
+@else {
+    @include inline-block(top);
+    @if $negative-right-margin {
+      // scss-lint:disable ImportantRule
+      margin-right: $negative-right-margin !important;
+      // scss-lint:enable ImportantRule
     }
-    @else {
-        @include inline-block(top);
-        @if $negative-right-margin {
-            margin-right: $negative-right-margin !important;
-        }
-    }
+  }
 }
 
 
@@ -229,76 +299,80 @@
 /// Mixin column-width. If [$negative-right-margin]() is set, it will automatically remove if from columns that span the full width of their containers.
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
 ///
 
-@mixin column-width($fraction: $column-width-default)
-{
-    width: percentage($fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin column-width($fraction: $column-width-default) {
 
-    // Remove negative margin on elements that span full width of their container
-    @if $fraction == 1/1 and $negative-right-margin {
-        margin-right: 0;
-    }
+  width: percentage($fraction);
+
+  // Remove negative margin on elements that span full width of their container
+  @if $fraction == 1/1 and $negative-right-margin {
+    margin-right: 0;
+  }
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// Mixes in gutter properties. Gutters are declared inside the column (padding) by default, on both sides. Can be overridden to use margins instead, which is helpful when assigning backgrounds or borders
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
 /// @param {Bool} $use-margin (false) - If true, will render gutters outside the column using margins
 ///
 
-@mixin gutters($fraction: 1/2, $use-margin: false)
-{
-    $both: length($fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin gutters($fraction: 1/2, $use-margin: false) {
 
-    $left: $fraction;
-    $right: $fraction;
+  $both: length($fraction);
 
-    @if $both > 1 {
-        $left: nth($fraction,1);
-        $right: nth($fraction,2);
-    }
+  $left: $fraction;
+  $right: $fraction;
 
-    @if ($use-margin) {
-        @if $left != false {
-            margin-left: $gutter-width * $left;
-        }
-        @if $right != false {
-            margin-right: $gutter-width * $right;
-        }
+  @if $both > 1 {
+    $left: nth($fraction, 1);
+    $right: nth($fraction, 2);
+  }
+
+  @if ($use-margin) {
+    @if $left != false {
+      margin-left: $gutter-width * $left;
     }
-    @else {
-        @if $left != false {
-            padding-left: $gutter-width * $left;
-        }
-        @if $right != false {
-            padding-right: $gutter-width * $right;
-        }
+    @if $right != false {
+      margin-right: $gutter-width * $right;
     }
+  }
+@else {
+    @if $left != false {
+      padding-left: $gutter-width * $left;
+    }
+    @if $right != false {
+      padding-right: $gutter-width * $right;
+    }
+  }
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// Fixes content width and aligns in viewport. [$root-position](./#variable-root-position) is defind in grid settings. Centers content inside the viewport by default.
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $root-max-width (72em) - The maximum width of your content
 ///
 
-@mixin root($root-max-width: $root-max-width, $set-display: false)
-{
-    @if $root-position==center {
-        margin: 0 auto;
-    }
+@mixin root($root-max-width: $root-max-width, $set-display: false) {
 
-    max-width: $root-max-width;
+  @if $root-position == center {
+    margin: 0 auto;
+  }
+
+  max-width: $root-max-width;
 }
 
 
@@ -306,20 +380,20 @@
 /// Use it to remove column spacing on columns
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Bool} $use-margin (false)
 ///
 
-@mixin container-behavior($use-margin: false)
-{
-    @if $use-margin {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    @else {
-        padding-left: 0;
-        padding-right: 0;
-    }
+@mixin container-behavior($use-margin: false) {
+
+  @if $use-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+@else {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 
@@ -328,48 +402,52 @@
 /// Use it to remove padded column spacing on columns, helpful when nesting columns and when applying backgrounds.
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
 ///
 
-@mixin bleed($fraction: -1/2)
-{
-    @include gutters($fraction, true);
+// scss-lint:disable SpaceAroundOperator
+@mixin bleed($fraction: -1/2) {
+  @include gutters($fraction, true);
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// Mixin for soure ordering
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
 ///
 
-@mixin move($fraction)
-{
-    left: percentage($fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin move($fraction) {
+  left: percentage($fraction);
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// @alias move
 ///
 
-@mixin push($fraction)
-{
-    @include move($fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin push($fraction) {
+  @include move($fraction);
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// @alias move
 ///
 
-@mixin pull($fraction)
-{
-    @include move(-1*$fraction);
+// scss-lint:disable SpaceAroundOperator
+@mixin pull($fraction) {
+  @include move(-1 * $fraction);
 }
+// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -379,14 +457,14 @@
 /// @since 0.1
 ///
 
-@mixin reset-source-order()
-{
-    @if $column-breakpoint {
-        @include breakpoint( $column-breakpoint ) {
-            position: static;
-            position: initial;
-        }
+@mixin reset-source-order() {
+
+  @if $column-breakpoint {
+    @include breakpoint($column-breakpoint) {
+      position: static;
+      position: initial;
     }
+  }
 }
 
 
@@ -396,28 +474,119 @@
 /// @since 0.1
 ///
 
-@mixin debug-layout($columns: $columns, $color: #000, $gutter-width: $gutter-width)
-{
-    background-size: percentage(1 / $columns) 100%;
-    background-image: 
-        linear-gradient(to right, 
-            rgba($color,.1) 0,
-            rgba($color,.1) $gutter-width / 2,
-            transparent $gutter-width / 2,
-            transparent percentage($columns / $columns)
-        ),
-        linear-gradient(to left, 
-            rgba($color,.1) 0,
-            rgba($color,.1) $gutter-width / 2,
-            transparent $gutter-width / 2,
-            transparent percentage($columns / $columns)
-        ),
-        linear-gradient(to left, 
-            transparent 0%,
-            rgba(0,0,0,.5) 1px,
-            transparent 1px,
-            transparent  percentage($columns / $columns)
-        )
-    ;
+@mixin debug-layout($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
+  background-size: percentage(1 / $columns) 100%;
+  // scss-lint:disable SpaceAfterPropertyColon TrailingWhitespace
+  background-image:
+    linear-gradient(to right,
+      rgba($color, .1) 0,
+      rgba($color, .1) $gutter-width / 2,
+      transparent $gutter-width / 2,
+      transparent percentage($columns / $columns)
+    ),
+    linear-gradient(to left,
+      rgba($color, .1) 0,
+      rgba($color, .1) $gutter-width / 2,
+      transparent $gutter-width / 2,
+      transparent percentage($columns / $columns)
+    ),
+    linear-gradient(to left,
+      transparent 0%,
+      rgba($black, .5) 1px,
+      transparent 1px,
+      transparent  percentage($columns / $columns)
+    );
+  // scss-lint:enable SpaceAfterPropertyColon TrailingWhitespace
 }
 
+
+
+///
+/// Retrieves the layout settings for a specific breakpoint
+///
+/// @since 1.0
+///
+
+@function get-layout($breakpoint) {
+  @return map-get($layouts, $breakpoint);
+}
+
+
+///
+/// Retrieves the column setting for a specific breakpoint
+///
+/// @since 1.0
+///
+
+@function get-layout-columns($breakpoint: false) {
+  @return get-layout-property("columns", $breakpoint);
+}
+
+
+///
+/// Retrieves the gutter-width setting for a specific breakpoint
+///
+/// @since 1.0
+///
+
+@function get-layout-gutter-width($breakpoint: false) {
+  @return get-layout-property("gutter-width", $breakpoint);
+}
+
+
+///
+/// Retrieves the rhythm settings for a specific breakpoint
+///
+/// @since 1.0
+///
+
+@function get-layout-rhythm($breakpoint: false) {
+  @return get-layout-property("rhythm", $breakpoint);
+}
+
+
+///
+/// Retrieves the debug colour settings for a specific breakpoint
+///
+/// @since 1.0
+///
+
+@function get-layout-debug-color($breakpoint: false) {
+  @return get-layout-property("debug-color", $breakpoint);
+}
+
+
+///
+/// Retrieves a property setting for a specific breakpoint
+///
+/// @since 1.0
+///
+/// @example
+/// $columns: get-layout-property($columns);
+///
+/// @param {String} $property - The layout-map property to retrieve
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+///
+/// @return {*}
+///
+
+@function get-layout-property($property, $breakpoint: false, $layouts: $layouts) {
+
+  $_value: null;
+
+  // Retrieve the layout – default values are not nested in a breakpoint
+  $_layout: $layouts;
+
+  @if $breakpoint and map-has-key($layouts, $breakpoint) {
+    $_layout: map-get($layouts, $breakpoint);
+  }
+
+  @if map-has-key($_layout, $property) {
+    $_value: map-get($_layout, $property);
+  }
+@else {
+    @error "Unknown layout property: #{$property}";
+  }
+
+  @return $_value;
+}

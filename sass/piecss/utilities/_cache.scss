@@ -54,21 +54,25 @@ $smart-cache: ();
 
   // Looping through all properties/values from map
   @each $property, $value in $declarations {
+
     // Get the stored values for the current property
     $stored-values: map-get($smart-cache, $property);
- 
+
     // If the value doesn't exist in stored values
     @if not index($stored-values, $value) {
+
       // Add it
       $smart-cache: map-merge($smart-cache, ($property: append($stored-values or (), $value))) !global;
+
       // And create a placeholder at root level
       @at-root %#{$property}-#{length(map-get($smart-cache, $property))} {
         #{$property}: $value;
       }
     }
- 
-    // Extend the placeholder
-    @extend %#{$property}-#{index(map-get($smart-cache, $property), $value)};
-  }
 
+    // Extend the placeholder
+    // scss-lint:disable PlaceholderInExtend
+    @extend "%#{$property}-#{index(map-get($smart-cache, $property), $value)}";
+    // scss-lint:enable PlaceholderInExtend
+  }
 }

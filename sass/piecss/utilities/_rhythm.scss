@@ -12,13 +12,13 @@
 //        hrhythm
 //    2c. Miscellaneaous;
 //        debug-rhythm
- 
+
 
 // 1. Functions
 
 ///
 /// Calculates a value based on the [$rhythm](./#variable-rhythm).
-/// 
+///
 /// @since 0.1
 /// @access private
 ///
@@ -27,58 +27,25 @@
 /// @return {Number} - The calculated span in px
 ///
 
-@function -rhythm-units($units: 1)
-{
-    @return abs($rhythm * $units);
+@function -rhythm-units($units: 1) {
+  @return $rhythm * $units;
 }
-
 
 ///
 /// Find the optimal rhythm units for a given size in px.
-/// If the specified span is too small for the size, find the next best one 
+/// If the specified span is too small for the size, find the next best one
 /// based on a specified increment.
 ///
 /// @since 0.1
-/// 
+///
 /// @param {Number} $units - The number of rhythm units to span (whole or fraction), 1 equals 1 $rhythm
-/// @param {Number} $size-px - The size in px
-/// @param {Number} $increment - The increment in rhythm-units (whole or fraction)
 ///
-/// @return {Number} - The calculated span in px
+/// @return {Number} - The calculated rhythm in px
 ///
 
-@function rhythm($args...)
-{
-    $units: false;
-    $size-px: false;
-    $increment: false;
-
-    @each $var in $args {
-        @if unitless($var) and not($units) {
-            $units: $var;
-        } @elseif unitless($var) and not($increment) {
-            $increment: $var;
-        } @elseif not(unitless($var)) and unit($var)==px {
-            $size-px: $var;
-        }
-    }
-
-    @if not($units) {
-        $units: 1;
-    }
-    @if not($increment) {
-        $increment: 1;
-    }
-
-    @if $size-px {
-        @while $size-px >= -rhythm-units($units) {
-            $units: $units + $increment;
-        }
-    }
-
-    $span: -rhythm-units($units);
-
-    @return $span;
+@function rhythm($units: 1) {
+  // @todo error handling
+  @return -rhythm-units($units);
 }
 
 
@@ -89,7 +56,7 @@
 ///
 /// @example
 ///  @include rhythm(1, padding-left);
-/// 
+///
 /// @since 0.1
 ///
 /// @param {Number} $units - The fraction of the gutter measurement
@@ -97,8 +64,7 @@
 /// @param {Number} $context (16px) - The font-size context
 ///
 
-@mixin rhythm($units, $property, $context: $default-font-size) 
-{
+@mixin rhythm($units, $property, $context: $font-size) {
     // @if strip-unit($units)==0 {
     //     #{$property}: 0;
     // }
@@ -117,20 +83,22 @@
 /// @param {Number} $rhythm - The rhythm height
 ///
 
-@mixin debug-rhythm($rhythm: $rhythm)
-{
-    $to: transparent;
-    $from: rgba(226, 255, 255, .5);
+// scss-lint:disable ImportantRule DuplicateProperty
+@mixin debug-rhythm($rhythm: $rhythm) {
+  $to: transparent;
+  $from: rgba($lightcyan, .5);
 
-    background-image: -webkit-linear-gradient($from 50%, $to 50%);
-    background-image: linear-gradient($from 50%, $to 50%);
-    background-size: 2*$rhythm 2*$rhythm;
+  background-image: linear-gradient($from 50%, $to 50%);
+  background-size: (2 * $rhythm) (2 * $rhythm);
 
-* {
-        background-color: transparent !important;
-        background-image: none !important;
-        outline: rgba(255,0,255,.1) dotted 1px;
-        outline: #D6D6D6 dotted 1px;
-        outline: lighten(rgb(255,0,255),.1) dotted 1px \9;
+  * {
+    background-image: none !important;
+    background-color: transparent !important;
+    outline: rgba($fuchsia, .1) dotted 1px;
+    outline: $lightgray dotted 1px;
+    @include old-ie {
+      outline: lighten($fuchsia, .1) dotted 1px \9;
     }
+  }
 }
+// scss-lint:enable ImportantRule DuplicateProperty

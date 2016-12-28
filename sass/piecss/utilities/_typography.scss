@@ -36,7 +36,7 @@
 ///
 
 @function extract-type-style($type) {
-    @return nth($type, 1);
+  @return nth($type, 1);
 }
 
 
@@ -52,9 +52,8 @@
 /// @return {String} - font-variant property
 ///
 
-@function extract-type-variant($type)
-{
-    @return nth($type, 2);
+@function extract-type-variant($type) {
+  @return nth($type, 2);
 }
 
 
@@ -70,9 +69,8 @@
 /// @return {String} - font-weight property
 ///
 
-@function extract-type-weight($type)
-{
-    @return nth($type, 3);
+@function extract-type-weight($type) {
+  @return nth($type, 3);
 }
 
 
@@ -88,9 +86,8 @@
 /// @return {String} - font-family property
 ///
 
-@function extract-type-family($type)
-{
-    @return nth($type, 4);
+@function extract-type-family($type) {
+  @return nth($type, 4);
 }
 
 
@@ -99,32 +96,31 @@
 /// @deprecated
 ///
 
-@function font-size($target-px, $unit: $unit, $context: $default-font-size)
-{
-    @return to-unit($target-px, $unit, $context);
+@function font-size($target-px, $unit: $unit, $context: $font-size) {
+  @return to-unit($target-px, $unit, $context);
 }
 
 
 ///
-/// Convert a px value to a new unit, within the context of it's containing element
+/// Calculate the optimal line-height
 ///
 /// @since 0.1
 ///
-/// @param {Number} $target-px - the line-height in px
-/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
-/// @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
+/// @param {Number} $font-size - The font-size in px
+/// @param {Number} $min-ratio (Float) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
 ///
 /// @return {Number} - line-height in px
 ///
 
-@function line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
-{
+@function line-height($font-size, $min-ratio: 1.5) {
+  @if  unit($font-size) != "px" {
+    @error "The line-height function expects a font-size in px. If you want the line-height in a different unit, calculate the line-height in px first, and then convert it using to-unit()";
+  }
+  @if $min-ratio == 0 {
+    $min-ratio: 1;
+  }
 
-    @if unitless($unit) {
-        @return strip-unit($target-px/$context);
-    } @else  {
-        @return to-unit($target-px, $unit, $context);
-    }
+  @return ceil($font-size * $min-ratio / $rhythm) * $rhythm;
 }
 
 
@@ -140,21 +136,20 @@
 /// @return {String} - weight, defaults to 'regular'
 ///
 
-@function weight-number-to-string($weight: regular)
-{
-    @if $weight == 100 { @return "ultra-light"; }
-    @if $weight == 200 { @return "light"; }
-    @if $weight == 300 { @return "book"; }
-    @if $weight == 400 { @return "regular"; }
-    @if $weight == 500 { @return "medium"; }
-    @if $weight == 600 { @return "semi-bold"; }
-    @if $weight == 700 { @return "bold"; }
-    @if $weight == 800 { @return "extra-bold"; }
-    @if $weight == 900 { @return "heavy"; }
-    @else {
-        @warn "Not a valid weight";
-        @return false;
-    }
+@function weight-number-to-string($weight: regular) {
+
+  @if $weight == 100 { @return "ultra-light"; }
+  @if $weight == 200 { @return "light"; }
+  @if $weight == 300 { @return "book"; }
+  @if $weight == 400 { @return "regular"; }
+  @if $weight == 500 { @return "medium"; }
+  @if $weight == 600 { @return "semi-bold"; }
+  @if $weight == 700 { @return "bold"; }
+  @if $weight == 800 { @return "extra-bold"; }
+  @if $weight == 900 { @return "heavy"; }
+
+  @warn "Not a valid weight";
+  @return false;
 }
 
 
@@ -163,58 +158,61 @@
 
 ///
 /// Mixes in the shorthand font tag. This is the only mixin that takes the font-size and line-height in their final unit of output.
-/// More info: [$default-font-size](./#variable-default-font-size), [$default-line-height](./#variable-default-line-height)
+/// More info: [$font-size](./#variable-default-font-size), [$line-height](./#variable-default-line-height)
 ///
 /// @since 0.1
 ///
 /// @todo Accept properties in the same way as the default CSS font implementation
-/// 
+///
 /// @param {List | Bool} $type - a valid type array ($style, $variant, $weight, $family) or false to only output font-size and line-height
-/// @param {Number} $font-size ($default-font-size) - font-size in the final unit of output
-/// @param {Number} $line-height ($default-line-height) - line-height in the final unit of output
+/// @param {Number} $font-size ($font-size) - font-size in the final unit of output
+/// @param {Number} $line-height ($line-height) - line-height in the final unit of output
 ///
 
-@mixin font($arguments...)
-{
-    $type: null;
-    $font-size: null;
-    $line-height: null;
+@mixin font($arguments...) {
 
-    @each $argument in $arguments {
+  $type: null;
+  $font-size: null;
+  $line-height: null;
 
-        @if type-of($argument)==list {
-            $type: $argument;
-        } @else {
-            @if not($font-size) {
-                $font-size: $argument;
-            } @elseif not($line-height) {
-                $line-height: $argument;
-            }
-        }
+  @each $argument in $arguments {
+
+    @if type-of($argument) == list {
+      $type: $argument;
+    }
+@else {
+      @if not($font-size) {
+        $font-size: $argument;
+      }
+@elseif not($line-height) {
+        $line-height: $argument;
+      }
+    }
+  }
+
+  @if not(not($type)) {
+
+    $font-style: extract-type-style($type);
+    $font-variant: extract-type-variant($type);
+    $font-weight: extract-type-weight($type);
+    $font-family: extract-type-family($type);
+
+    @if $font-size and unit($unit) == rem {
+      @include font-size($font-size, 1px);
     }
 
-    @if not(not($type)) {
-
-        $font-style: extract-type-style($type);
-        $font-variant: extract-type-variant($type);
-        $font-weight: extract-type-weight($type);
-        $font-family: extract-type-family($type);
-
-        @if $font-size and unit($unit)==rem {
-            @include font-size($font-size, 1px);
-        }
-
-        // Build font arguments
-        $font: #{$font-style} #{$font-variant} #{$font-weight};
-        @if $font-size and $line-height {
-            $font: append($font, #{$font-size}/#{$line-height});
-        } @elseif $font-size {
-            $font: append($font, #{$font-size});
-        }
-        $font: append($font, #{$font-family});
-
-        font: #{$font};
+    // Build font arguments
+    $font: #{$font-style} #{$font-variant} #{$font-weight};
+    @if $font-size and $line-height {
+      $font: append($font, #{$font-size}/#{$line-height});
     }
+@elseif $font-size {
+      $font: append($font, #{$font-size});
+    }
+    $font: append($font, #{$font-family});
+
+    font: #{$font};
+  }
 }
 
 
@@ -226,9 +224,8 @@
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
 
-@mixin font-style($type)
-{
-    font-style: extract-type-style($type);
+@mixin font-style($type) {
+  font-style: extract-type-style($type);
 }
 
 
@@ -240,9 +237,8 @@
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
 
-@mixin font-variant($type)
-{
-    font-variant: extract-type-variant($type);
+@mixin font-variant($type) {
+  font-variant: extract-type-variant($type);
 }
 
 
@@ -254,9 +250,8 @@
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
 
-@mixin font-weight($type)
-{
-    font-weight: extract-type-weight($type);
+@mixin font-weight($type) {
+  font-weight: extract-type-weight($type);
 }
 
 
@@ -268,9 +263,8 @@
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
 
-@mixin font-family($type)
-{
-    font-family: extract-type-family($type);
+@mixin font-family($type) {
+  font-family: extract-type-family($type);
 }
 
 
@@ -281,31 +275,26 @@
 ///
 /// @param {Number} $target-px - The font-size in px
 /// @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
-/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em or %
+/// @param {Number} $context ($font-size) - The context of the targeted element, for calculations to em or %
 ///
 
-@mixin font-size($target-px, $unit: $unit, $context: $default-font-size)
-{
-    @if unit($unit) == rem {
-        font-size: to-unit($target-px, $rem-fallback-unit, $context);
-    }
-    font-size: to-unit($target-px, $unit, $context);
+@mixin font-size($target-px, $unit: $unit, $context: $font-size) {
+  @if unit($unit) == rem {
+    font-size: to-unit($target-px, $rem-fallback-unit, $context);
+  }
+  font-size: to-unit($target-px, $unit, $context);
 }
 
 ///
-/// Mixin for line-height, automatically converts the value to a new unit, within the context of it's containing element
+/// Mixin for line-height
 ///
 /// @since 0.1
 ///
 /// @param {Number} $target-px - the line-height in px
-/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
+/// @param {Number} $context ($font-size) - The context of the targeted element, for calculations to em
 /// @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
 ///
 
-@mixin line-height($target-px, $context: $default-font-size, $unit: $line-height-unit)
-{
-    @if unit($unit)==rem {
-        line-height: line-height($target-px, $context, $unit: $rem-fallback-unit);
-    }    
-    line-height: line-height($target-px, $context, $unit);
+@mixin line-height($font-size, $min-ratio: 1.5) {
+  line-height: line-height($font-size, $min-ratio);
 }
