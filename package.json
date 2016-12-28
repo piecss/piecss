@@ -1,6 +1,6 @@
 {
   "name": "piecss",
-  "version": "0.3.0",
+  "version": "0.3.0.1",
   "description": "SASS Framework for modular design systems.",
   "main": "index.js",
   "directories": {
