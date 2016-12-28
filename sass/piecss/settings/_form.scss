@@ -49,7 +49,7 @@ $form-form-selector: "%form" !default;
 $form-fieldset-selector: "%fieldset" !default;
 
 .fieldset {
-	@extend #{$form-fieldset-selector} !optional;
+  @extend #{$form-fieldset-selector} !optional;
 }
 
 ///
@@ -195,7 +195,7 @@ $form-label-selector: "%field-label" !default;
 // Start collection of element-maps
 
 ///
-/// Collection of form selectors and property maps. For each selector, the corrresponding properties are rendered by the form behavior. 
+/// Collection of form selectors and property maps. For each selector, the corrresponding properties are rendered by the form behavior.
 /// You can override form behavior by a) overriding any of the field settings, or by b) replacing the selector entry in this element collection map.
 ///
 /// @since 0.1
@@ -346,7 +346,7 @@ $field-width: 100% !default;
 /// @type {Number}
 ///
 
-$field-height: $default-line-height + 2 * $field-border-width + $field-padding-top + $field-padding-bottom !default;
+$field-height: $line-height + 2 * $field-border-width + $field-padding-top + $field-padding-bottom !default;
 
 ///
 /// Field line-height, relevant for text-area.
@@ -356,7 +356,7 @@ $field-height: $default-line-height + 2 * $field-border-width + $field-padding-t
 /// @type {Number}
 ///
 
-$field-line-height: $default-line-height !default;
+$field-line-height: $line-height !default;
 
 ///
 /// Field shadow, simple inset shadow by default.
@@ -425,7 +425,7 @@ $field-focussed-outline-color: mix($field-border-color, $field-focussed-backgrou
 /// @type {Number}
 ///
 
-$field-focussed-outline-offset: -1*( $field-focussed-outline-width + 3*$field-border-width) !default; 
+$field-focussed-outline-offset: -1 * ($field-focussed-outline-width + 3 * $field-border-width) !default;
 
 
 // ==========================================================================
@@ -546,7 +546,7 @@ $textarea-height: auto !default;
 /// @type {Number | String}
 ///
 
-$textarea-height-medium: rhythm(5) - 2*$field-border-width !default;
+$textarea-height-medium: rhythm(5) - 2 * $field-border-width !default;
 
 ///
 /// Alternate height of textarea element, large.
@@ -556,7 +556,7 @@ $textarea-height-medium: rhythm(5) - 2*$field-border-width !default;
 /// @type {Number | String}
 ///
 
-$textarea-height-large: rhythm(10) - 2*$field-border-width !default;
+$textarea-height-large: rhythm(10) - 2 * $field-border-width !default;
 
 
 // ==========================================================================
@@ -564,5 +564,3 @@ $textarea-height-large: rhythm(10) - 2*$field-border-width !default;
 // LABEL SETTINGS
 //
 // ==========================================================================
-
-

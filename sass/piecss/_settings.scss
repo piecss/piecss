@@ -6,14 +6,17 @@
 // ==========================================================================
 
 @import "settings/constants";
+@import "settings/colour";
 @import "settings/font";
+@import "settings/typography";
 @import "settings/base";
 
-// All below rely on setting in settings/base
+// All below rely on settings/base
 @import "settings/breakpoint";
 
-// Relies on setting in settings/breakpoint
-@import "settings/grid";
+//  All below rely on settings/breakpoint
+@import "settings/layout";
 @import "settings/form";
 @import "settings/button";
 @import "settings/list";
+@import "settings/miscellaneous";

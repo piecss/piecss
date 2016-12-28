@@ -1,0 +1,37 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// Content:
+// 1. Functions
+//    shade
+
+
+// 1. Functions
+
+
+///
+/// Mixin to force consistent shades in a project.
+/// Set acceptable shades in the colour settings.
+/// If a shade is not acceptable, the function throws an errror
+///
+/// @since 0.1
+///
+/// @throws Only these values are excepted: #{$shades}, assuming 100%
+///
+/// @param {Number} $shade - A percentage
+/// @param {String} $color - A colour
+/// @param {String} $mix-color ($color-highlight) - A colour to mix with
+///
+/// @return {Bool}
+///
+
+@function shade($shade: 100%, $color: $color-body, $mix-color: $color-highlight) {
+
+  // Only these shase values are valid
+  @if not(unit($shade) == "%") or not(index($shades, $shade)) {
+    @error "Only these values are excepted: #{implode($shades)}, assuming 100%";
+    @return $color;
+  }
+
+  @return mix($mix-color, $color, $shade);
+}

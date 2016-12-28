@@ -6,14 +6,14 @@
 // Vertical measurements like line-height and %-top and %-bottom are factors of rhythm
 
 ///
-/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $default-line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $default-line-height.
+/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $line-height.
 ///
 /// @since 0.1
 ///
 /// @type {Number}
 ///
 
-$rhythm: $default-line-height !default;
+$rhythm: 8px !default;
 
 ///
 /// If true,reveals the document's vertical rhythm. Also see: [mixin $debug-rhythm](./#mixin-debug-rhythm).
@@ -43,22 +43,7 @@ $debug-layout: false !default;
 /// @type {List}
 ///
 
-$single-direction-elements: (p,pre,table,hr,article) !default;
-
-///
-/// Column classes are rendered from this map. The first level of each item has a breakpoint string as a key, the value is another Map of classnames/column widths pairs. Column widths are expressed as factors.
-/// Piecss will render these columns by default, unless you override this Map from your project settings.
-///
-/// @since 0.1
-///
-/// @type {Map}
-///
-
-$column-widths: (
-    $small_handheld: (small-1-2: 1/2, small-1-3: 1/3, small-2-3: 2/3),
-    $medium_handheld: (medium-1-2: 1/2, medium-1-3: 1/3, medium-1-4: 1/4, medium-2-3: 2/3, medium-3-4: 3/4),
-    $small_desktop: (default-1-2: 1/2, default-1-3: 1/3, default-1-4: 1/4, default-2-3: 2/3, default-3-4: 3/4),
-) !default;
+$single-direction-elements: (p, pre, table, hr, article) !default;
 
 ///
 /// Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
@@ -68,7 +53,9 @@ $column-widths: (
 /// @type {Number}
 ///
 
+// scss-lint:disable SpaceAroundOperator
 $column-width-default: 1/1 !default;
+// scss-lint:enable SpaceAroundOperator
 
 ///
 /// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld). If you are developing mobile-first, leave this setting to false.
@@ -93,15 +80,15 @@ $column-breakpoint: false !default;
 
 $column-float: false !default; // If you prefer floated columns instead of inline-blocks, set to true.
 
-///
-/// Gutter widths are based on the vertical [rhythm](./#variable-rhythm) and default to 2*$rhythm. Gutters are implemented using the [gutter mixin](./#mixin-gutters) and are expressed in factors of this measure (usually 1/2).
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
+// ///
+// /// Gutter widths are based on the vertical [rhythm](./#variable-rhythm) and default to 2*$rhythm. Gutters are implemented using the [gutter mixin](./#mixin-gutters) and are expressed in factors of this measure (usually 1/2).
+// ///
+// /// @since 0.1
+// ///
+// /// @type {Number}
+// ///
 
-$gutter-width: 2*$rhythm !default;
+// $gutter-width: 2*$rhythm !default;
 
 ///
 /// The final unit of output in which gutter widths are rendered
@@ -143,7 +130,7 @@ $negative-right-margin: false !default;
 
 
 ///
-/// Fixes content maximum width, 72em is 1152px at a 16px [$default-font-size](./#variable-default-font-size). It is used by the [root mixin](./#mixin-root).
+/// Fixes content maximum width, 72em is 1152px at a 16px [$font-size](./#variable-default-font-size). It is used by the [root mixin](./#mixin-root).
 ///
 /// @deprecated
 ///
@@ -177,7 +164,8 @@ $root-position: center !default;
 $columns: 4 !default;
 
 ///
-/// Totally arbitrary default breakpoint layouts.
+/// (Totally arbitrary) Default breakpoint layouts.
+/// Serves as an example layout
 ///
 /// @since 0.1
 ///
@@ -185,19 +173,30 @@ $columns: 4 !default;
 ///
 
 $layouts: (
-    $small_handheld: (
-        columns: 4,
-        color: $orange,
-        pages: (),
-    ),
-    $medium_handheld: (
-        columns: 8,
-        color: $cyan,
-        pages: (),
-    ),
-    $small_desktop: (
-        columns: 12,
-        color: $becca,
-        pages: (),
-    )
-);
+  debug-color: $orange,
+  columns: 4,
+  rhythm: $rhythm, // 8px
+  gutter-width: rhythm(3), // 24px
+  pages: (),
+  $gt-small-handheld: (
+    debug-color: $orange,
+    columns: 4,
+    rhythm: $rhythm,
+    gutter-width: rhythm(3),
+    pages: ()
+  ),
+  $gt-medium-handheld: (
+    debug-color: $cyan,
+    columns: 8,
+    rhythm: $rhythm,
+    gutter-width: rhythm(3),
+    pages: ()
+  ),
+  $gt-small-desktop: (
+    debug-color: $becca,
+    columns: 12,
+    rhythm: $rhythm,
+    gutter-width: rhythm(3),
+    pages: ()
+  )
+) !default;

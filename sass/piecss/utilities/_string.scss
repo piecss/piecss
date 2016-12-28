@@ -1,0 +1,68 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// Content
+//
+// 1. Functions
+//    str-replace
+//    implode
+
+// 1. FUNCTIONS
+
+
+///
+/// Function to replace characters in a string.
+///
+/// @example
+/// @include str-replace('Hello World', 'Hello', 'Yo');
+///
+/// @since 1.0
+///
+/// @param {String} $string - The whole string
+/// @param {String} $search - The string that needs to be replaced
+/// @param {String} $replace - The replacement
+///
+
+@function str-replace($string, $search, $replace: "") {
+
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+
+  @return $string;
+}
+
+///
+/// Function to replace characters in a string.
+/// http://hugogiraudel.com/2013/08/08/advanced-sass-list-functions/#miscellaneous
+///
+/// @example
+/// $list: a, b, c d e, f, g, h;
+/// $new-list: implode($list);      // abcdefgh
+/// $new-list: implode($list, '-'); // a-b-c-d-e-f-g-h
+///
+/// @since 1.0
+///
+/// @param {List} $list - The list to implode
+/// @param {String} $separator (, ) - A separator to join the list items
+/// @param {Bool} $is-nested (false) - Set to true is the list is contains other lists
+///
+
+@function implode($list, $separator: ', ', $is-nested: false) {
+  $string: null;
+
+  @for $i from 1 through length($list) {
+    $e: nth($list, $i);
+
+    @if type-of($e) == list {
+      $string: $string#{to-string($e, $is-nested, true)};
+    }
+@else {
+      $string: if($i != length($list) or $is-nested, $string#{$e}#{$separator}, $string#{$e});
+    }
+  }
+
+  @return $string;
+}

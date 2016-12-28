@@ -11,7 +11,7 @@
 
 
 ///
-/// Calculates the proportions of an element based on its width and height 
+/// Calculates the proportions of an element based on its width and height
 ///
 /// @since 0.1
 ///
@@ -19,15 +19,14 @@
 ///
 /// @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
 ///
-/// @return {Number} 
+/// @return {Number}
 ///
 
-@function proportion($size)
-{
-    $width: map-get($size, width);
-    $height: map-get($size, height);
+@function proportion($size) {
+  $width: map-get($size, width);
+  $height: map-get($size, height);
 
-    @return $width / $height;
+  @return $width / $height;
 }
 
 ///
@@ -37,22 +36,21 @@
 ///
 /// @param {Map} $size - Map of width and height pairs (width: 100px, height: 100px)
 ///
-/// @return {String} 
+/// @return {String}
 ///
 
-@function orientation($size)
-{
-    $proportion: proportion($size);
+@function orientation($size) {
+  $proportion: proportion($size);
 
-    @if $proportion > 1 {
-        @return landscape;
-    }
-    
-    @if $proportion < 1 {
-        @return portrait;
-    }
-    
-    @if $proportion == 1 {
-        @return square;
-    }
+  @if $proportion > 1 {
+    @return landscape;
+  }
+
+  @if $proportion < 1 {
+    @return portrait;
+  }
+
+  @if $proportion == 1 {
+    @return square;
+  }
 }

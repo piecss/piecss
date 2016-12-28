@@ -38,7 +38,7 @@ $button-selector: "%btn" !default;
 
 
 ///
-/// Collection of button selectors and property maps. For each selector, the corrresponding properties are rendered by the button behavior. 
+/// Collection of button selectors and property maps. For each selector, the corrresponding properties are rendered by the button behavior.
 /// You can override button behavior by a) overriding any of the button settings, or by b) replacing the selector entry in this element collection map.
 ///
 /// @since 0.1
@@ -259,4 +259,4 @@ $button-focussed-outline-color: mix($button-border-color, $button-focussed-backg
 /// @type {Number}
 ///
 
-$button-focussed-outline-offset: -1*( $button-focussed-outline-width + 3*$button-border-width) !default;
+$button-focussed-outline-offset: -1 * ($button-focussed-outline-width + 3 * $button-border-width) !default;

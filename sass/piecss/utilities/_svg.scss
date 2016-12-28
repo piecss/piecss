@@ -1,0 +1,47 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// Content
+//
+// 1. Functions
+//    svg-url
+
+
+// 1. FUNCTIONS
+
+
+///
+/// Function to create an optimized svg url
+///
+/// @example
+/// @include svg-url('<svg xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M0 0h10v10H0z"/></svg>');
+///
+/// @since 1.0
+///
+/// @param {String} $svg - The single-line svg xml
+///
+
+
+@function svg-url($svg) {
+  //
+  // Chunk up string in order to avoid
+  // "SystemStackError: stack level too deep"
+  //
+  $encoded: "";
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(str-length($svg) / $slice);
+
+  @for $i from 1 through $loops {
+    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    $chunk: str-replace($chunk, "\"", "'");
+    $chunk: str-replace($chunk, "<", "%3C");
+    $chunk: str-replace($chunk, ">", "%3E");
+    $chunk: str-replace($chunk, "&", "%26");
+    $chunk: str-replace($chunk, "#", "%23");
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+
+  @return url("data:image/svg+xml;charset=utf8, #{$encoded}");
+}

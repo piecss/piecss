@@ -2,26 +2,6 @@
 
 
 ///
-/// Compass has deprecated this value. Piecss is still using it.
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$legacy-support-for-ie: false;
-
-///
-/// Compass has deprecated this value. Piecss is still using it.
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$legacy-support-for-mozilla: true;
-
-///
 /// The unit to which to-unit() will convert px values. Used in various functions and mixins.
 ///
 /// @since 0.1
@@ -53,14 +33,14 @@ $line-height-unit: 1% !default;
 
 ///
 /// Is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
-/// Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px. 
-/// 
+/// Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px.
+///
 /// @since 0.1
 ///
 /// @type {Number}
 ///
 
-$base-font-size: 16px !default;
+$base-font-size: 14px !default;
 
 ///
 /// The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
@@ -70,7 +50,7 @@ $base-font-size: 16px !default;
 /// @type {Number}
 ///
 
-$default-font-size: 16px !default;
+$font-size: 14px !default;
 
 ///
 /// The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
@@ -80,7 +60,7 @@ $default-font-size: 16px !default;
 /// @type {Number}
 ///
 
-$default-line-height: 24px !default;
+$line-height: 21px !default;
 
 ///
 /// The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
