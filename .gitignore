@@ -1,5 +1,4 @@
-piecss-*.gem
-docs
+node_modules
+sassdoc
 assets
 tests
-*.yml
