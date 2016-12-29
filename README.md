@@ -26,6 +26,8 @@ sassdoc sass/piecss
 
 ```
 
+The docs are compiled inside a sassdoc folder in the project root and can be accessed in your browser. For more information on Sassdocs and how to use it, refer to [http://sassdoc.com/](http://sassdoc.com/).
+
 ## Development
 
 If you want to develop for Piecss, you need to also install the linter:
@@ -35,7 +37,7 @@ If you want to develop for Piecss, you need to also install the linter:
 gem install scss_lint
 ```
 
-Refer to [https://github.com/brigade/scss-lint#usage](https://github.com/brigade/scss-lint#usage) for more info on how to use.
+For more information on Scss Lint and how to use it, refer to [https://github.com/brigade/scss-lint](https://github.com/brigade/scss-lint#usage).
 
 ## Unit Tests
 
