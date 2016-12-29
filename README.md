@@ -3,6 +3,7 @@
 gem install piecss
 
 [![Gem Version](https://badge.fury.io/rb/piecss.svg)](http://badge.fury.io/rb/piecss)
+[![npm version](https://badge.fury.io/js/piecss.svg)](https://badge.fury.io/js/piecss)
 
 
 ## Installation
