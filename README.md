@@ -36,11 +36,16 @@ If you want to develop for Piecss, you need to also install the linter:
 ```
 \\ Install scss lint
 gem install scss_lint
+
 ```
 
 For more information on Scss Lint and how to use it, refer to [https://github.com/brigade/scss-lint](https://github.com/brigade/scss-lint#usage).
 
 ## Unit Tests
 
+```
+sass --watch tests/all.scss sass/**/*.scss
+
+```
 
 ## Test project
