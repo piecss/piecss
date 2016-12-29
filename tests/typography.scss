@@ -82,46 +82,15 @@
             "heavy", "Should return heavy" );
     }
 
-    @include test("[function] font-size() | Convert a font-size in px to a unit") {
-
-        @include assert-equal(
-            font-size(16px),
-            1em, "Should return 1em" );
-
-        @include assert-equal(
-            font-size(16px, 1em),
-            1em, "Should return 1em" );
-
-        @include assert-equal(
-            font-size(16px, 1em, 10px),
-            1.6em, "Should return 1.6em" );
-
-        @include assert-equal(
-            font-size(16px, 1em, 32px),
-            .5em, "Should return .5em" );
-
-        @include assert-equal(
-            font-size(16px, 1rem),
-            1rem, "Should return 1rem" );
-
-        @include assert-equal(
-            font-size(16px, 1rem, 10px),
-            1rem, "Should return 1rem" );
-
-        @include assert-equal(
-            font-size(16px, 1%),
-            100%, "Should return 100%" );
-    }
-
     @include test("[function] line-height() | Convert a line-heigh in px to the line-height unit") {
 
         $case1: line-height(16px);
-        $case2: line-height(24px, 10px, 1em);
-        $case3: line-height(24px, 10px, 1);
+        $case2: line-height(24px, 1);
+        $case3: line-height(24px);
 
-        @include assert-equal($case1, 100%, "Should return 100%");
-        @include assert-equal($case2, 2.4em, "Should return 2.4em");
-        @include assert-equal($case3, 2.4, "Should return 2.4");
+        @include assert-equal($case1, 24px, "Should return 24px");
+        @include assert-equal($case2, 24px, "Should return 24px");
+        @include assert-equal($case3, 40px, "Should return 40px");
     }
 
 }

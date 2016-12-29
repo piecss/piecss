@@ -64,7 +64,7 @@
 /// @param {Number} $context (16px) - The font-size context
 ///
 
-@mixin rhythm($units, $property, $context: $font-size) {
+@mixin rhythm($units, $property, $context: $default-font-size) {
     // @if strip-unit($units)==0 {
     //     #{$property}: 0;
     // }

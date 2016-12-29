@@ -4,27 +4,39 @@
 ///
 
 @include test-module("Layout") {
+
     $a: 1/2;
     $b: 2/4;
     $c: "1/2";
     $d: "2/4";
 
     $layouts: (
-        $small_handheld: (
-            columns: 4,
-            color: $orange,
-            pages: (),
-        ),
-        $medium_handheld: (
-            columns: 8,
-            color: $cyan,
-            pages: (),
-        ),
-        $small_desktop: (
-            columns: 12,
-            color: $becca,
-            pages: (),
-        )
+      debug-color: $orange,
+      columns: 4,
+      rhythm: $rhythm, // 8px
+      gutter-width: rhythm(3), // 24px
+      pages: (),
+      $gt-small-handheld: (
+        debug-color: $orange,
+        columns: 4,
+        rhythm: $rhythm,
+        gutter-width: rhythm(3),
+        pages: ()
+      ),
+      $gt-medium-handheld: (
+        debug-color: $cyan,
+        columns: 8,
+        rhythm: $rhythm,
+        gutter-width: rhythm(3),
+        pages: ()
+      ),
+      $gt-small-desktop: (
+        debug-color: $becca,
+        columns: 12,
+        rhythm: $rhythm,
+        gutter-width: rhythm(3),
+        pages: ()
+      )
     );
 
 
@@ -52,12 +64,14 @@
 
     @include test("[function] get-layout() | Get layout settings from a layout map") {
 
-        $layout: get-layout($small_handheld);
+        $layout: get-layout($gt-small-handheld);
 
-        $color: map-get($layout, color);
-        $columns: map-get($layout, columns);
+        $color: get-layout-debug-color();
+        $columns: get-layout-columns();
 
-        @include assert-true( $color==$orange, "#{$color} should be $orange" );
-        @include assert-true( $columns==4, "#{$columns} should be 4" );
+        @include assert-equal( $color, $orange, "#{$color} should be $orange" );
+
+        // @include assert-true( $color==$orange, "#{$color} should be $orange" );
+        // @include assert-true( $columns==4, "#{$columns} should be 4" );
     }
 }

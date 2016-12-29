@@ -1,29 +1,7 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// Rhythm settings
-
-// Vertical measurements like line-height and %-top and %-bottom are factors of rhythm
-
-///
-/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $line-height.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$rhythm: 8px !default;
-
-///
-/// If true,reveals the document's vertical rhythm. Also see: [mixin $debug-rhythm](./#mixin-debug-rhythm).
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$debug-rhythm: false !default;
+// Layout settings
 
 ///
 /// If true,reveals the document's horizontal rhythm. Also see: [mixin $debug-layout](./#mixin-debug-layout).

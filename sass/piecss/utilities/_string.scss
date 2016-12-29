@@ -57,10 +57,10 @@
     $e: nth($list, $i);
 
     @if type-of($e) == list {
-      $string: $string#{to-string($e, $is-nested, true)};
+      $string: unquote("#{$string}#{to-string($e, $is-nested, true)}");
     }
 @else {
-      $string: if($i != length($list) or $is-nested, $string#{$e}#{$separator}, $string#{$e});
+      $string: if($i != length($list) or $is-nested, unquote("$string#{$e}#{$separator}"), unquote("#{$string}#{$e}"));
     }
   }
 

@@ -80,11 +80,12 @@
 ///
 /// @param {List} $values - The value to test, can be a single number or a list
 /// @param {Number} $unit ($unit) - A list of keys to match
+/// @param {Number} $context ($default-font-size) - The context of the targeted element, for calculations to em
 ///
 /// @return {Map}
 ///
 
-@function value-map-to-unit($map, $unit: $unit) {
+@function value-map-to-unit($map, $unit: $unit, $context: $default-font-size) {
 
   @if not(type-of($map) == map) {
     @warn "Argument $map needs to be a map.";
@@ -93,7 +94,7 @@
 
   // Convert to units
   @each $key, $value in $map {
-    $map: map-merge($map, ($key: to-unit($value, $unit)));
+    $map: map-merge($map, ($key: to-unit($value, $unit, $context)));
   }
 
   @return $map;

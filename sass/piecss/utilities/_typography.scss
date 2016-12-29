@@ -92,22 +92,12 @@
 
 
 ///
-/// @alias to-unit
-/// @deprecated
-///
-
-@function font-size($target-px, $unit: $unit, $context: $font-size) {
-  @return to-unit($target-px, $unit, $context);
-}
-
-
-///
 /// Calculate the optimal line-height
 ///
 /// @since 0.1
 ///
 /// @param {Number} $font-size - The font-size in px
-/// @param {Number} $min-ratio (Float) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
+/// @param {Number} $min-ratio (Float) - The minimum line-height ratio to maintain
 ///
 /// @return {Number} - line-height in px
 ///

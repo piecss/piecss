@@ -40,7 +40,7 @@ $line-height-unit: 1% !default;
 /// @type {Number}
 ///
 
-$base-font-size: 14px !default;
+$base-font-size: 16px !default;
 
 ///
 /// The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
@@ -50,7 +50,7 @@ $base-font-size: 14px !default;
 /// @type {Number}
 ///
 
-$font-size: 14px !default;
+$default-font-size: 16px !default;
 
 ///
 /// The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
@@ -60,7 +60,7 @@ $font-size: 14px !default;
 /// @type {Number}
 ///
 
-$line-height: 21px !default;
+$line-height: rhythm(3) !default;
 
 ///
 /// The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
