@@ -83,7 +83,6 @@
 /// @param {Number} $rhythm - The rhythm height
 ///
 
-// scss-lint:disable ImportantRule DuplicateProperty
 @mixin debug-rhythm($rhythm: $rhythm) {
   $to: transparent;
   $from: rgba($lightcyan, .5);
@@ -92,8 +91,10 @@
   background-size: (2 * $rhythm) (2 * $rhythm);
 
   * {
+    // scss-lint:disable ImportantRule DuplicateProperty
     background-image: none !important;
     background-color: transparent !important;
+    // scss-lint:enable ImportantRule DuplicateProperty
     outline: rgba($fuchsia, .1) dotted 1px;
     outline: $lightgray dotted 1px;
     @include old-ie {
@@ -101,4 +102,3 @@
     }
   }
 }
-// scss-lint:enable ImportantRule DuplicateProperty

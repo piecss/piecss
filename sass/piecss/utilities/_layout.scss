@@ -37,11 +37,9 @@
 /// @return {Number} - The resulting percentage value
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @function fraction-to-percentage($fraction: 1/3) {
   @return percentage($fraction);
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -63,7 +61,6 @@
 /// @return {String}
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @function fraction-to-text($fraction) {
   @if type-of($fraction) == string {
     @warn 'The function fraction-to-text only accepts unquoted fractions (1/2 and not \"1/2\")';
@@ -153,7 +150,6 @@
 
   @return "full";
 }
-// scss-lint:enable SpaceAroundOperator
 
 ///
 /// Return a value based on the gutter-width. The gutter width is set as a property of the layouts map.
@@ -164,7 +160,6 @@
 /// @return {Number} - The resulting value in px
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @function gutter($args...) {
 
   $_fraction: 1/2;
@@ -190,7 +185,6 @@
 
   @return $_fraction * $gutter-width;
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -252,7 +246,6 @@
 /// @param {Number | Bool} $apply-margin (false) - A fraction, e.g. 1/2, or false
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false) {
 
   @include column-behavior();
@@ -266,7 +259,6 @@
     @include gutters($apply-margin, true);
   }
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -303,7 +295,6 @@
 /// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin column-width($fraction: $column-width-default) {
 
   width: percentage($fraction);
@@ -313,7 +304,6 @@
     margin-right: 0;
   }
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -325,7 +315,6 @@
 /// @param {Bool} $use-margin (false) - If true, will render gutters outside the column using margins
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin gutters($fraction: 1/2, $use-margin: false) {
 
   $both: length($fraction);
@@ -355,7 +344,6 @@
     }
   }
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -406,11 +394,9 @@
 /// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin bleed($fraction: -1/2) {
   @include gutters($fraction, true);
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -421,33 +407,27 @@
 /// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin move($fraction) {
   left: percentage($fraction);
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// @alias move
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin push($fraction) {
   @include move($fraction);
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
 /// @alias move
 ///
 
-// scss-lint:disable SpaceAroundOperator
 @mixin pull($fraction) {
   @include move(-1 * $fraction);
 }
-// scss-lint:enable SpaceAroundOperator
 
 
 ///
@@ -476,7 +456,7 @@
 
 @mixin debug-layout($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
   background-size: percentage(1 / $columns) 100%;
-  // scss-lint:disable SpaceAfterPropertyColon TrailingWhitespace
+  // scss-lint:disable TrailingWhitespace
   background-image:
     linear-gradient(to right,
       rgba($color, .1) 0,
@@ -496,7 +476,7 @@
       transparent 1px,
       transparent  percentage($columns / $columns)
     );
-  // scss-lint:enable SpaceAfterPropertyColon TrailingWhitespace
+  // scss-lint:enable TrailingWhitespace
 }
 
 

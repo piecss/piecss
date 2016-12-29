@@ -19,10 +19,8 @@
 /// @param {String} $type
 ///
 
-// scss-lint:disable Indentation
 @mixin list-style-type($type) {
 	%list--#{$type} {
 		list-style-type: $type;
 	}
 }
-// scss-lint:enable Indentation

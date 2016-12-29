@@ -53,9 +53,7 @@ $single-direction-elements: (p, pre, table, hr, article) !default;
 /// @type {Number}
 ///
 
-// scss-lint:disable SpaceAroundOperator
 $column-width-default: 1/1 !default;
-// scss-lint:enable SpaceAroundOperator
 
 ///
 /// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld). If you are developing mobile-first, leave this setting to false.

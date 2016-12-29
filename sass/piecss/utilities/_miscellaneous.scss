@@ -183,7 +183,7 @@
 /// @since 0.1
 ///
 /// @example
-/// @include inline-block(baseline);
+///  @include inline-block(baseline);
 ///
 /// @param {String} $vertical-alignment (baseline) - Set $inline-block-alignment to none or false to disable the output of a vertical-align property in the inline-block mixin. Or set it to a legal value for vertical-align to change the default.
 ///
@@ -272,8 +272,6 @@
 ///
 /// @param {String} $selector (&) - The selector to append the pseudo-element to
 /// @param {List | String} $placement (before) - The pseudo-element(s)
-///
-/// @return {Bool}
 ///
 
 @mixin pseudo-element($placements: "before", $selectors: "&") {
