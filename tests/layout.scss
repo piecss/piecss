@@ -1,4 +1,4 @@
-/*
+///
 /// Copyright (C) 2014 Babs Gösgens. All rights reserved.
 /// Licensed under MIT; see LICENSE.txt
 ///
@@ -53,7 +53,7 @@
     @include test("[function] get-layout() | Get layout settings from a layout map") {
 
         $layout: get-layout($small_handheld);
-        
+
         $color: map-get($layout, color);
         $columns: map-get($layout, columns);
 

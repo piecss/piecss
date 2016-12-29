@@ -1,4 +1,4 @@
-/*
+///
 /// Copyright (C) 2014 Babs Gösgens. All rights reserved.
 /// Licensed under MIT; see LICENSE.txt
 ///
@@ -72,44 +72,44 @@
         // 900 heavy, or ultra-bold
 
         @include assert-equal(
-            weight-number-to-string(100), 
+            weight-number-to-string(100),
             "ultra-light", "Should return ultra-light" );
         @include assert-equal(
-            weight-number-to-string(400), 
+            weight-number-to-string(400),
             "regular", "Should return regular" );
         @include assert-equal(
-            weight-number-to-string(900), 
+            weight-number-to-string(900),
             "heavy", "Should return heavy" );
     }
 
     @include test("[function] font-size() | Convert a font-size in px to a unit") {
 
         @include assert-equal(
-            font-size(16px), 
+            font-size(16px),
             1em, "Should return 1em" );
 
         @include assert-equal(
-            font-size(16px, 1em), 
+            font-size(16px, 1em),
             1em, "Should return 1em" );
 
         @include assert-equal(
-            font-size(16px, 1em, 10px), 
+            font-size(16px, 1em, 10px),
             1.6em, "Should return 1.6em" );
 
         @include assert-equal(
-            font-size(16px, 1em, 32px), 
+            font-size(16px, 1em, 32px),
             .5em, "Should return .5em" );
 
         @include assert-equal(
-            font-size(16px, 1rem), 
+            font-size(16px, 1rem),
             1rem, "Should return 1rem" );
 
         @include assert-equal(
-            font-size(16px, 1rem, 10px), 
+            font-size(16px, 1rem, 10px),
             1rem, "Should return 1rem" );
 
         @include assert-equal(
-            font-size(16px, 1%), 
+            font-size(16px, 1%),
             100%, "Should return 100%" );
     }
 

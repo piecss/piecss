@@ -1,4 +1,4 @@
-/*
+///
 /// Copyright (C) 2014 Babs Gösgens. All rights reserved.
 /// Licensed under MIT; see LICENSE.txt
 ///
@@ -6,7 +6,7 @@
 @include test-module("Elements") {
 
     $collection: ();
-    
+
     @include test("[function] add-element() | Add an element to an existing element collection") {
         $collection: add-element($collection, ".selector", (width: 100%));
 

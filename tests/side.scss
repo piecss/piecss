@@ -1,4 +1,4 @@
-/*
+///
 /// Copyright (C) 2014 Babs Gösgens. All rights reserved.
 /// Licensed under MIT; see LICENSE.txt
 ///
@@ -59,7 +59,7 @@
     }
 
     @include test("[function] value-map() | Convert argument to value-map") {
- 
+
         $map-a: value-map($a);
         $map-b: value-map($b);
         $map-c: value-map($c);
@@ -68,7 +68,7 @@
         $map-f: value-map($f);
         $map-g: value-map($g);
         $map-h: value-map($h);
-       
+
         @include assert-equal(map-keys($map-a), (top, right, bottom, left), "Map must contain keys top, right, bottom, left");
 
         @include assert-equal( $map-a, (top: 0, right: 0, bottom: 0, left: 0), "#{$a} should return (top: 0, right: 0, bottom: 0, left: 0)" );
@@ -78,7 +78,7 @@
         @include assert-equal( $map-e, (top: 16px, right: 24px, bottom: 24px, left: 24px), "#{$e} should return (top: 16px, right: 24px, bottom: 24px, left: 24px)" );
         @include assert-equal( $map-f, (top: 16px, right: 24px, bottom: 32px, left: 46px), "#{$f} should return (top: 16px, right: 24px, bottom: 32px, left: 46px)" );
         @include assert-equal( $map-g, (top: 1em, right: 1em, bottom: 1em, left: 1em), "#{$g} should return (top: 1em, right: 1em, bottom: 1em, left: 1em)" );
-        
+
         // Because the assertion is tested inside a @content block, the compiler complains about the in-validity of the map value as a valid CSS value.
         // @include assert-equal( $map-h, (top: 0, left: 0), "#{$h} should return top: 0, left: 0" );
     }
@@ -101,7 +101,7 @@
         @include assert-equal( $map-e, (top: 1em, right: 1.5em, bottom: 1.5em, left: 1.5em), "#{$e} should return (top: 1em, right: 1.5em, bottom: 1.5em, left: 1.5em)" );
         @include assert-equal( $map-f, (top: 1em, right: 1.5em, bottom: 2em, left: 2.875em), "#{$f} should return (top: 1em, right: 1.5em, bottom: 2em, left: 2.88em)" );
         @include assert-equal( $map-g, (top: 1em, right: 1em, bottom: 1em, left: 1em), "#{$g} should return (top: 1em, right: 1em, bottom: 1em, left: 1em)" );
-        
+
         // Because the assertion is tested inside a @content block, the compiler complains about the in-validity of the map value as a valid CSS value.
         // @include assert-equal( $map-h, (top: 0, left: 0), "#{$h} should return top: 0, left: 0" );
     }
@@ -124,7 +124,7 @@
         @include assert-equal( $map-e, (top: 16px, right: 24px, bottom: 24px, left: 24px), "#{$e} should return (top: 16px, right: 24px, bottom: 24px, left: 24px)" );
         @include assert-equal( $map-f, (top: 16px, right: 24px, bottom: 32px, left: 46px), "#{$f} should return (top: 16px, right: 24px, bottom: 32px, left: 46px)" );
         @include assert-equal( $map-g, (top: 16px, right: 16px, bottom: 16px, left: 16px), "#{$g} should return (top: 16px, right: 16px, bottom: 16px, left: 16px)" );
-        
+
         // Because the assertion is tested inside a @content block, the compiler complains about the in-validity of the map value as a valid CSS value.
         // @include assert-equal( $map-h, (top: 0, left: 0), "#{$h} should return top: 0, left: 0" );
     }
