@@ -40,14 +40,15 @@
 ///
 /// @example
 /// $list: a, b, c d e, f, g, h;
-/// $new-list: implode($list);      // abcdefgh
-/// $new-list: implode($list, '-'); // a-b-c-d-e-f-g-h
+/// $new-list: implode($list, "");      // abcdefgh
+/// $new-list: implode($list);      // a, b, c, d, e, f, g, h
+/// $new-list: implode($list, "-"); // a-b-c-d-e-f-g-h
 ///
 /// @since 1.0
 ///
 /// @param {List} $list - The list to implode
 /// @param {String} $separator (, ) - A separator to join the list items
-/// @param {Bool} $is-nested (false) - Set to true is the list is contains other lists
+/// @param {Bool} $is-nested (false) - Set to true if the list contains other lists
 ///
 
 @function implode($list, $separator: ', ', $is-nested: false) {
@@ -57,10 +58,12 @@
     $e: nth($list, $i);
 
     @if type-of($e) == list {
-      $string: unquote("#{$string}#{to-string($e, $is-nested, true)}");
+      $string: unquote("#{$string}#{implode($e, $separator, true)}");
     }
-@else {
-      $string: if($i != length($list) or $is-nested, unquote("$string#{$e}#{$separator}"), unquote("#{$string}#{$e}"));
+    @else {
+      $string: if($i != length($list) or $is-nested,
+        unquote("#{$string}#{$e}#{$separator}"),
+        unquote("#{$string}#{$e}"));
     }
   }
 
