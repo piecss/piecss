@@ -7,6 +7,13 @@
 //    percentage
 //    fraction-to-text
 //    gutters
+//    get-layout
+//    get-layout-property
+//    get-layout-columns
+//    get-layout-gutter-width
+//    get-layout-rhythm
+//    get-layout-debug-color
+
 // 2. Mixins
 //    2a. Columns
 //        column
@@ -174,57 +181,143 @@
     }
   }
 
-  $gutter-width: get-layout-gutter-width($layouts);
-
+  // Retrieve the gutter-width from the settings, but check if one is set in layouts and take that in stead
+  $_gutter-width: $gutter-width;
   @if $_breakpoint {
-    $gutter-width: get-layout-gutter-width(get-layout($_breakpoint));
+    $_gutter-width: if(get-layout-gutter-width(get-layout($_breakpoint)), get-layout-gutter-width(get-layout($_breakpoint)), $_gutter-width);
   }
+
 
   @return $_fraction * $gutter-width;
 }
 
-
 ///
 /// Get layout settings from a layout map
 ///
 ///
 /// @param {String} $breakpoints - A valid breakpoint
-/// @param {Map} $page - An optional page layout
+/// @param {Map} $layouts ($layouts) - A layout map
 ///
 /// @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
 ///
 
-@function get-layout($breakpoint: null, $page: null) {
+@function get-layout($breakpoint, $layouts: $layouts) {
 
-  $layout: map-get($layouts, $breakpoint);
-
-  @if $page {
-    $layout: map-get($layout, $page);
+  @if not( map-has-key($layouts, $breakpoint) ) {
+    @error "Unknown breakpoint: #{$breakpoint}";
   }
 
-  @return  $layout;
+  @return map-get($layouts, $breakpoint);
+}
+
+///
+/// Retrieves a property setting for a specific breakpoint
+///
+/// @since 1.0
+///
+/// @example
+/// $columns: get-layout-property($columns);
+///
+/// @param {String} $property - The layout-map property to retrieve
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+/// @param {Map} $layouts ($layouts) - A layout map
+///
+/// @return {*}
+///
+
+@function get-layout-property($property, $breakpoint: false, $layouts: $layouts) {
+
+  $_value: null;
+
+  // Retrieve the layout – default values are not nested in a breakpoint
+  $_layout: $layouts;
+
+  @if $breakpoint and map-has-key($layouts, $breakpoint) {
+    $_layout: get-layout($breakpoint);
+  }
+
+  @if map-has-key($_layout, $property) {
+    $_value: map-get($_layout, $property);
+  }
+  @else {
+    @error "Unknown layout property: #{$property}";
+  }
+
+  @return $_value;
+}
+
+///
+/// Retrieves the column setting for a specific breakpoint
+///
+/// @since 1.0
+///
+/// @example
+/// $columns: get-layout-columns();
+///
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+/// @param {Map} $layouts ($layouts) - A layout map
+///
+/// @since 1.0
+///
+
+@function get-layout-columns($breakpoint: false, $layouts: $layouts) {
+  @return get-layout-property("columns", $breakpoint);
+}
+
+///
+/// Retrieves the gutter-width setting for a specific breakpoint
+///
+/// @since 1.0
+///
+/// @example
+/// $gutter-width: get-layout-gutter-width();
+///
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+/// @param {Map} $layouts ($layouts) - A layout map
+///
+/// @since 1.0
+///
+
+@function get-layout-gutter-width($breakpoint: false, $layouts: $layouts) {
+  @return get-layout-property("gutter-width", $breakpoint);
 }
 
 
 ///
-/// Get layout settings from a layout map
+/// Retrieves the rhythm settings for a specific breakpoint
 ///
+/// @since 1.0
 ///
-/// @param {String} $breakpoints - A valid breakpoint
-/// @param {Map} $page - An optional page layout
+/// @example
+/// $rhythm: get-layout-rhythm();
 ///
-/// @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+/// @param {Map} $layouts ($layouts) - A layout map
+///
+/// @since 1.0
 ///
 
-@function get($key, $breakpoint) {
+@function get-layout-rhythm($breakpoint: false, $layouts: $layouts) {
+  @return get-layout-property("rhythm", $breakpoint);
+}
 
-  @if not( map-has-key($layout, $breakpoint) ) {
-    @error "Unknown breakpoint: #{$breakpoint}";
-  }
 
-  $config: map-get($layout, $breakpoint);
+///
+/// Retrieves the debug colour settings for a specific breakpoint
+///
+/// @since 1.0
+///
+/// @example
+/// $debug-color: get-layout-debug-color();
+///
+/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
+/// @param {Map} $layouts ($layouts) - A layout map
+///
+/// @since 1.0
+///
 
-  @return map-get($config, "columns");
+@function get-layout-debug-color($breakpoint: false, $layouts: $layouts) {
+  @return get-layout-property("debug-color", $breakpoint);
 }
 
 
@@ -474,96 +567,4 @@
       transparent  percentage($columns / $columns)
     );
   // scss-lint:enable TrailingWhitespace SpaceAfterPropertyColon
-}
-
-
-
-///
-/// Retrieves the layout settings for a specific breakpoint
-///
-/// @since 1.0
-///
-
-@function get-layout($breakpoint) {
-  @return map-get($layouts, $breakpoint);
-}
-
-
-///
-/// Retrieves the column setting for a specific breakpoint
-///
-/// @since 1.0
-///
-
-@function get-layout-columns($breakpoint: false) {
-  @return get-layout-property("columns", $breakpoint);
-}
-
-
-///
-/// Retrieves the gutter-width setting for a specific breakpoint
-///
-/// @since 1.0
-///
-
-@function get-layout-gutter-width($breakpoint: false) {
-  @return get-layout-property("gutter-width", $breakpoint);
-}
-
-
-///
-/// Retrieves the rhythm settings for a specific breakpoint
-///
-/// @since 1.0
-///
-
-@function get-layout-rhythm($breakpoint: false) {
-  @return get-layout-property("rhythm", $breakpoint);
-}
-
-
-///
-/// Retrieves the debug colour settings for a specific breakpoint
-///
-/// @since 1.0
-///
-
-@function get-layout-debug-color($breakpoint: false) {
-  @return get-layout-property("debug-color", $breakpoint);
-}
-
-
-///
-/// Retrieves a property setting for a specific breakpoint
-///
-/// @since 1.0
-///
-/// @example
-/// $columns: get-layout-property($columns);
-///
-/// @param {String} $property - The layout-map property to retrieve
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
-///
-/// @return {*}
-///
-
-@function get-layout-property($property, $breakpoint: false, $layouts: $layouts) {
-
-  $_value: null;
-
-  // Retrieve the layout – default values are not nested in a breakpoint
-  $_layout: $layouts;
-
-  @if $breakpoint and map-has-key($layouts, $breakpoint) {
-    $_layout: map-get($layouts, $breakpoint);
-  }
-
-  @if map-has-key($_layout, $property) {
-    $_value: map-get($_layout, $property);
-  }
-@else {
-    @error "Unknown layout property: #{$property}";
-  }
-
-  @return $_value;
 }
