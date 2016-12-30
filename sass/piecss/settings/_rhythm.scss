@@ -6,7 +6,7 @@
 // Vertical measurements like line-height and %-top and %-bottom are factors of rhythm
 
 ///
-/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to the $line-height but some prefer to set it to a smaller value, like 1/2 or 1/3 times the $line-height.
+/// This measure is used to calculare vertical measurements like line-height and top and bottom paddings and margins. It defaults to 8px which is 1/3 times the $default-line-height.
 ///
 /// @since 0.1
 ///
