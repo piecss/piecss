@@ -41,7 +41,7 @@
 // ==========================================================================
 
 %root {
-	@include root();
+  @include root();
 }
 
 // ==========================================================================
@@ -51,8 +51,8 @@
 // ==========================================================================
 
 %column {
-	@include column-behavior();
-	@include column-width();
+  @include column-behavior();
+  @include column-width();
 }
 
 
@@ -63,7 +63,7 @@
 // ==========================================================================
 
 %gutters {
-	@include gutters();
+  @include gutters();
 }
 
 // ==========================================================================
@@ -73,7 +73,7 @@
 // ==========================================================================
 
 %gutters-right {
-	@include gutters((false 1/2));
+  @include gutters((false 1/2));
 }
 
 // ==========================================================================
@@ -83,7 +83,7 @@
 // ==========================================================================
 
 %gutters-left {
-	@include gutters((1/2 false));
+  @include gutters((1/2 false));
 }
 
 // ==========================================================================
@@ -93,7 +93,7 @@
 // ==========================================================================
 
 %bleed {
-	@include bleed(); 
+  @include bleed(); 
 }
 
 // ==========================================================================
@@ -103,7 +103,7 @@
 // ==========================================================================
 
 %bleed--right {
-	@include bleed((false 1/2)); 
+  @include bleed((false 1/2)); 
 }
 
 // ==========================================================================
@@ -113,7 +113,7 @@
 // ==========================================================================
 
 %bleed-left {
-	@include bleed((1/2 false)); 
+  @include bleed((1/2 false)); 
 }
 
 
@@ -154,19 +154,19 @@
 // ==========================================================================
 
 @each $breakpoint in map-keys($column-widths) {
-	$widths: map-get($column-widths, $breakpoint);
-	@each $selector in map-keys($widths){
-	    %#{$selector} {
-	        @extend %column;
-	    }
-	}
-	@include breakpoint($breakpoint) {
-	    @each $selector in map-keys($widths){
-	        %#{$selector} {
-	            @include column-width( map-get($widths, $selector) );
-	        }
-	    }
-	}
+  $widths: map-get($column-widths, $breakpoint);
+  @each $selector in map-keys($widths){
+      %#{$selector} {
+          @extend %column;
+      }
+  }
+  @include breakpoint($breakpoint) {
+      @each $selector in map-keys($widths){
+          %#{$selector} {
+              @include column-width( map-get($widths, $selector) );
+          }
+      }
+  }
 }
 
 

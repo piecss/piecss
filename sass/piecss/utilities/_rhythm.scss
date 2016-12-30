@@ -94,9 +94,9 @@
     // scss-lint:disable ImportantRule DuplicateProperty
     background-image: none !important;
     background-color: transparent !important;
-    // scss-lint:enable ImportantRule DuplicateProperty
     outline: rgba($fuchsia, .1) dotted 1px;
     outline: $lightgray dotted 1px;
+    // scss-lint:enable ImportantRule DuplicateProperty
     @include old-ie {
       outline: lighten($fuchsia, .1) dotted 1px \9;
     }

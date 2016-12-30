@@ -456,7 +456,7 @@
 
 @mixin debug-layout($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
   background-size: percentage(1 / $columns) 100%;
-  // scss-lint:disable TrailingWhitespace
+  // scss-lint:disable TrailingWhitespace SpaceAfterPropertyColon
   background-image:
     linear-gradient(to right,
       rgba($color, .1) 0,
@@ -476,7 +476,7 @@
       transparent 1px,
       transparent  percentage($columns / $columns)
     );
-  // scss-lint:enable TrailingWhitespace
+  // scss-lint:enable TrailingWhitespace SpaceAfterPropertyColon
 }
 
 

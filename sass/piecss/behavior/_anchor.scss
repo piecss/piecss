@@ -12,18 +12,18 @@ Anchors
 // @include anchor("#{$anchor-base-selector}", $color-anchor, $color-anchor--hover, $color-anchor--active, $color-anchor--visited, $anchor-mixin-states);
 
 %anchor {
-    text-decoration: none;
-    &--incognito {
-        color: inherit;
-        &:hover {
-            color: inherit;
-        }
+  text-decoration: none;
+  &--incognito {
+    color: inherit;
+    &:hover {
+      color: inherit;
     }
+  }
 }
 
 a {
-    @extend %anchor !optional;
-    &:hover {
-        color: $color-anchor--hover;
-    }
+  @extend %anchor !optional;
+  &:hover {
+    color: $color-anchor--hover;
+  }
 }

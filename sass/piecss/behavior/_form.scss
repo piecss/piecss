@@ -29,28 +29,30 @@ Field base
 
 
 #{$form-field-base-selector} {
-    &:focus {
-        @extend #{$form-field-base-selector--focus} !optional;
-    }
+  &:focus {
+    @extend #{$form-field-base-selector--focus} !optional;
+  }
 }
 
 select:not([size]) {
-    @extend #{$form-select-dropdown-selector} !optional;
-    @if to-bool($select-appearance) {
-        @include reset-appearance($select-appearance);
+  @extend #{$form-select-dropdown-selector} !optional;
+  @if to-bool($select-appearance) {
+    @include reset-appearance($select-appearance);
+  }
+  @if $select-webkit {
+    @at-root .webkit {
+      // background: $input-background-color url("/assets/images/icons/icon-sort.svg") no-repeat 1% center;
+      // background-size: 10px auto;
     }
-    @if $select-webkit {
-        @at-root .webkit {
-            // background: $input-background-color url("/assets/images/icons/icon-sort.svg") no-repeat 1% center;
-            // background-size: 10px auto;
-        }
-    }
+  }
 }
 
+// scss-lint:disable QualifyingElement
 select[size] {
-    @extend #{$form-select-box-selector} !optional;
+  @extend #{$form-select-box-selector} !optional;
 }
 select[multiple] {
-    @extend #{$form-select-box-selector} !optional;
-    @extend #{$form-select-multiple-selector} !optional;
+  @extend #{$form-select-box-selector} !optional;
+  @extend #{$form-select-multiple-selector} !optional;
 }
+// scss-lint:enable QualifyingElement
