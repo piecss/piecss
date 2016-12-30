@@ -2,11 +2,11 @@
 
 
 // Content:
-// 1. Functions
+// 1. Mixins
 //    breakpoint
 
 
-// 1. FUNCTIONS
+// 1. Mixins
 
 ///
 /// Expects a valid breakpoint expression like (min-width: 30em)
@@ -22,6 +22,7 @@
 /// @param {String} $breakpoints - A valid breakpoint
 /// @param {Map} $media - The media to which this breakpoint applies
 ///
+
 @mixin breakpoint($breakpoints, $media: "only screen") {
 
   $breakpoints: unquote($breakpoints);
@@ -33,7 +34,7 @@
       $query: append($query, $breakpoint, comma);
     }
   }
-@else {
+  @else {
     $query: append($query, $breakpoints, comma);
   }
 
