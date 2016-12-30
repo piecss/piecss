@@ -62,9 +62,6 @@
 ///
 
 @function fraction-to-text($fraction) {
-  @if type-of($fraction) == string {
-    @warn 'The function fraction-to-text only accepts unquoted fractions (1/2 and not \"1/2\")';
-  }
 
   @if $fraction ==  1/1 { @return "full"; }
   @if $fraction ==  1/2 { @return "half"; }
