@@ -64,7 +64,7 @@ $column-float: false !default; // If you prefer floated columns instead of inlin
 // /// @type {Number}
 // ///
 
-// $gutter-width: 2*$rhythm !default;
+$gutter-width: $default-line-height !default;
 
 ///
 /// The final unit of output in which gutter widths are rendered
@@ -149,27 +149,27 @@ $columns: 4 !default;
 ///
 
 $layouts: (
-  debug-color: $orange,
+  debug-color: $deeppink, // #ff1493
   columns: 4,
   rhythm: $rhythm, // 8px
   gutter-width: rhythm(3), // 24px
   pages: (),
   $gt-small-handheld: (
-    debug-color: $orange,
+    debug-color: $orange, // #ffa500
     columns: 4,
     rhythm: $rhythm,
     gutter-width: rhythm(3),
     pages: ()
   ),
   $gt-medium-handheld: (
-    debug-color: $cyan,
+    debug-color: $cyan, // #0ff
     columns: 8,
     rhythm: $rhythm,
     gutter-width: rhythm(3),
     pages: ()
   ),
   $gt-small-desktop: (
-    debug-color: $becca,
+    debug-color: $becca, // #639
     columns: 12,
     rhythm: $rhythm,
     gutter-width: rhythm(3),
