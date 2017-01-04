@@ -38,7 +38,7 @@ Field base
 select:not([size]) {
   @extend #{$form-select-dropdown-selector} !optional;
   @if to-bool($select-appearance) {
-    @include reset-appearance($select-appearance);
+    appearance: $select-appearance;
   }
   @if $select-webkit {
     @at-root .webkit {

@@ -209,19 +209,6 @@
 
 
 ///
-/// Accepts a string with a valid appearance
-///
-/// @since 0.1
-///
-/// @param {String} $appearance
-///
-
-@mixin reset-appearance($appearance) {
-  appearance: $appearance;
-}
-
-
-///
 ///  Mixin to clear floats
 ///
 /// @since 1.0
