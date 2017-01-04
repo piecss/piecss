@@ -14,16 +14,6 @@
 $debug-layout: false !default;
 
 ///
-/// Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
-///
-/// @since 0.1
-///
-/// @type {List}
-///
-
-$single-direction-elements: (p, pre, table, hr, article) !default;
-
-///
 /// Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
 ///
 /// @since 0.1

@@ -93,7 +93,7 @@
 // ==========================================================================
 
 %bleed {
-  @include bleed(); 
+  @include bleed();
 }
 
 // ==========================================================================
@@ -103,7 +103,7 @@
 // ==========================================================================
 
 %bleed--right {
-  @include bleed((false 1/2)); 
+  @include bleed((false 1/2));
 }
 
 // ==========================================================================
@@ -113,7 +113,7 @@
 // ==========================================================================
 
 %bleed-left {
-  @include bleed((1/2 false)); 
+  @include bleed((1/2 false));
 }
 
 
@@ -124,50 +124,50 @@
 // ==========================================================================
 
 
-// ==========================================================================
-// Column widths
-// --------------------------------------------------------------------------
+// // ==========================================================================
+// // Column widths
+// // --------------------------------------------------------------------------
+// //
+// // Outputs columns for different breakpoints.
+// // Columns and breakpoints can be set from your project's settings:
+// //
+// // $small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
+// // $small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;
+// //
+// // $column-widths: (
+// //     $small_handheld: (main: 1/1, side: 1/1),
+// //     $small_desktop: (main: 2/3, side: 1/3) );
+// //
+// // Will output:
+// //
+// // @media only screen and (max-width: 30em) {
+// //   .main {
+// //     width: 100%; }
+// //   .side {
+// //     width: 100%; } }
+// // @media only screen and (min-width: 64em) {
+// //   .main {
+// //     width: 66.66667%; }
+// //   .side {
+// //     width: 33.33333%; } }
+// //
+// // ==========================================================================
 //
-// Outputs columns for different breakpoints.
-// Columns and breakpoints can be set from your project's settings:
-//
-// $small_handheld: "(max-width: #{to-unit(480px,$unit,$default-font-size)})" !default;
-// $small_desktop: "(min-width: #{to-unit(1024px,$unit,$default-font-size)})" !default;
-//
-// $column-widths: (
-//     $small_handheld: (main: 1/1, side: 1/1),
-//     $small_desktop: (main: 2/3, side: 1/3) );
-//
-// Will output:
-//
-// @media only screen and (max-width: 30em) {
-//   .main {
-//     width: 100%; }
-//   .side {
-//     width: 100%; } }
-// @media only screen and (min-width: 64em) {
-//   .main {
-//     width: 66.66667%; }
-//   .side {
-//     width: 33.33333%; } }
-//
-// ==========================================================================
-
-@each $breakpoint in map-keys($column-widths) {
-  $widths: map-get($column-widths, $breakpoint);
-  @each $selector in map-keys($widths){
-      %#{$selector} {
-          @extend %column;
-      }
-  }
-  @include breakpoint($breakpoint) {
-      @each $selector in map-keys($widths){
-          %#{$selector} {
-              @include column-width( map-get($widths, $selector) );
-          }
-      }
-  }
-}
+// @each $breakpoint in map-keys($column-widths) {
+//   $widths: map-get($column-widths, $breakpoint);
+//   @each $selector in map-keys($widths){
+//       %#{$selector} {
+//           @extend %column;
+//       }
+//   }
+//   @include breakpoint($breakpoint) {
+//       @each $selector in map-keys($widths){
+//           %#{$selector} {
+//               @include column-width( map-get($widths, $selector) );
+//           }
+//       }
+//   }
+// }
 
 
 @if $debug-layout {

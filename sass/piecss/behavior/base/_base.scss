@@ -1,4 +1,15 @@
-//*! normalize.css v3.0.1 | MIT License | git.io/normalize *//
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+@import "settings";
+
+/*
+ * A large part of the behavior below is based on Normalize by Nicholas Gallager.
+ * The difference is that the property values are based on the project settings.
+ * The resulting code is a preset rather than a reset.
+ * Therefor properties do not need to be set again with actual values.
+ *
+ * For more information on Normalize, please visit git.io/normalize
+ */
 
 
 /*
@@ -10,10 +21,10 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
-    margin: 0;
+    box-sizing: border-box; /* 1 */
+    margin: 0; /* 2 */
+    // vertical-align: bottom; this conflicts with radio buttons /* 3 */
     vertical-align: baseline;
-    // vertical-align: bottom; this conflicts with radio buttons
 }
 
 /*
@@ -32,13 +43,13 @@ html {
   $font-family: extract-type-family($default-font);
 
   $font-size: to-unit($default-font-size, 1%, $base-font-size);
-  $line-height: line-height($default-line-height, $default-font-size, $line-height-unit);
+  $line-height: to-unit($default-line-height, $line-height-unit);
 
-  font: #{$font-style} #{$font-variant} #{$font-weight} #{$font-size}/#{$line-height} #{$font-family};
+  font: #{$font-style} #{$font-variant} #{$font-weight} #{$font-size}/#{$line-height} #{$font-family}; /* 1, 2 */
 
   text-size-adjust: 100%; /* 3 */
   width: 100%; /* 3 */
-  
+
   background: $color-background; /* 4 */
 }
 
@@ -163,8 +174,8 @@ dfn {
  */
 
 h1 {
-  @include font-size(32px);
-  @include line-height(2, 32px);
+  font-size: to-unit(32px);
+  @include line-height(32px);
   margin: 0;
 }
 
@@ -452,4 +463,58 @@ table {
 td,
 th {
   padding: 0;
+}
+
+
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+/*
+-----------------------------------------------------------------------------
+Miscellaneous - consider movin to reset
+-----------------------------------------------------------------------------
+*/
+
+abbr[title] {
+    border-bottom: 1px dotted;
+}
+hr {
+    height: 0;
+}
+code,
+kbd,
+pre,
+samp {
+    @include font-family($monospace-regular);
+    font-size: to-unit($default-font-size);
+}
+pre {
+    white-space: pre-wrap;
+}
+small {
+    font-size: 80%;
+}
+sub,
+sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+}
+sup {
+    top: -0.5em;
+}
+sub {
+    bottom: -0.25em;
+}
+
+@if $base-quote-quotes
+{
+    /*
+     * Set consistent quote types.
+     */
+
+    q {
+        quotes: "\201C" "\201D" "\2018" "\2019";
+    }
 }

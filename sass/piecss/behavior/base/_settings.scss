@@ -2,67 +2,6 @@
 
 
 ///
-/// The unit to which to-unit() will convert px values. Used in various functions and mixins.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$unit: 1em !default;
-
-///
-/// If $unit is set to rem, the fallback will be implemented using this unit.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$rem-fallback-unit: 1px !default;
-
-///
-/// The unit line-heights will be expressed in.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$line-height-unit: 1% !default;
-
-///
-/// Is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
-/// Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$base-font-size: 16px !default;
-
-///
-/// The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$default-font-size: 16px !default;
-
-///
-/// The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$default-line-height: rhythm(3) !default;
-
-///
 /// The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
 /// A font-type is a comma separated list of font-type, font-variant, font-weight and font-family.
 ///
@@ -182,17 +121,6 @@ $color-anchor--active: lighten($color-anchor, 15%) !default;
 $color-anchor--visited: darken($color-anchor, 30%) !default;
 
 ///
-/// The default border-radius. Is used for example by the button and form modules for rounder corners.
-/// This ensures that the same border-radius is used accross your project.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$border-radius: 0 !default;
-
-///
 /// If true, consistent quote types will be set.
 ///
 /// @since 0.1
@@ -201,3 +129,17 @@ $border-radius: 0 !default;
 ///
 
 $base-quote-quotes: true !default;
+
+///
+/// Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
+///
+/// @since 0.1
+///
+/// @type {List}
+///
+
+$single-direction-elements: (p, pre, table, hr, article) !default;
+
+
+
+$reset-fieldset: true;

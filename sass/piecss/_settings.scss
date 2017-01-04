@@ -7,17 +7,15 @@
 
 @import "settings/constants";
 @import "settings/colour";
+@import "settings/fallback";
 @import "settings/font";
 @import "settings/rhythm";
+@import "settings/unit";
 @import "settings/typography";
-@import "settings/base";
+@import "settings/miscellaneous";
 
-// All below rely on settings/base
+// settings/breakpoint on settings/unit and settings/typography
 @import "settings/breakpoint";
 
-//  All below rely on settings/breakpoint
+// settings/layout on settings/breakpoint
 @import "settings/layout";
-@import "settings/form";
-@import "settings/button";
-@import "settings/list";
-@import "settings/miscellaneous";

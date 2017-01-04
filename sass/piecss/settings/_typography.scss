@@ -1,0 +1,33 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+///
+/// Is used to calculate the project's base font-size, eg the font-size on which all other calculations are based.
+/// Note that Chrome has [issues](https://code.google.com/p/chromium/issues/detail?id=320754) when the base font size is smaller than 16px.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$base-font-size: 16px !default;
+
+///
+/// The default font-size for your project. This is translated to the final unit of output using the [$unit](./#variable-unit) variable.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$default-font-size: 16px !default;
+
+///
+/// The default line-height for your project. This is translated to the final unit of output using the [$line-height-unit](./#line-height-unit) variable.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$default-line-height: rhythm(3) !default;

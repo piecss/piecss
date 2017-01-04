@@ -5,8 +5,11 @@
 // Behavior
 // ==========================================================================
 
-@import "behavior/base";
-@import "behavior/grid";
-@import "behavior/form";
-@import "behavior/button";
-@import "behavior/list";
+@import "utilities";
+@import "settings";
+
+@import "behavior/base/base";
+@import "behavior/layout/grid";
+@import "behavior/form/form";
+@import "behavior/button/button";
+@import "behavior/list/list";

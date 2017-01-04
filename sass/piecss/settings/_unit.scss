@@ -1,0 +1,32 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+///
+/// The unit to which to-unit() will convert px values. Used in various functions and mixins.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$unit: 1em !default;
+
+///
+/// If $unit is set to rem, the fallback will be implemented using this unit.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$rem-fallback-unit: 1px !default;
+
+///
+/// The unit line-heights will be expressed in.
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$line-height-unit: 1% !default;
