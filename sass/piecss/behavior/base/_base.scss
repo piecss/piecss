@@ -21,11 +21,14 @@
 *,
 *:before,
 *:after {
+  @if $reset-box-model {
     box-sizing: border-box; /* 1 */
     margin: 0; /* 2 */
     // vertical-align: bottom; this conflicts with radio buttons /* 3 */
     vertical-align: baseline;
+  }
 }
+
 
 /*
  * 1. Set base font (family, size, line-height) for conversions to rem and/or em.
@@ -57,7 +60,7 @@ html {
  * Remove default margin.
  */
 
-body {
+#{implode($reset-margin ", ")} {
   margin: 0;
 }
 
@@ -82,7 +85,9 @@ main,
 nav,
 section,
 summary {
-  display: block;
+  @if $normalize-block-display {
+    display: block;
+  }
 }
 
 /*
@@ -127,8 +132,10 @@ template {
  */
 
 a {
-  background: transparent;
-  color: $color-anchor;
+  @if $normalize-anchor {
+    background: transparent; /* 1 */
+  }
+  color: $color-anchor; /* 2 */
 }
 
 /*
@@ -137,7 +144,9 @@ a {
 
 a:active,
 a:hover {
-  outline: 0;
+  @if $normalize-anchor {
+    outline: 0;
+  }
 }
 
 /* Text-level semantics
@@ -148,24 +157,9 @@ a:hover {
  */
 
 abbr[title] {
-  border-bottom: 1px dotted;
-}
-
-/*
- * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
- */
-
-b,
-strong {
-  font-weight: bold;
-}
-
-/*
- * Address styling not present in Safari and Chrome.
- */
-
-dfn {
-  font-style: italic;
+  @if $normalize-abbr {
+    border-bottom: 1px dotted;
+  }
 }
 
 /*
@@ -174,9 +168,42 @@ dfn {
  */
 
 h1 {
-  font-size: to-unit(32px);
-  @include line-height(32px);
-  margin: 0;
+  @if $normalize-h1 and index($reset-font, "h1")==0  {
+    font-size: $h1-font-size;
+    line-height: $h1-line-height;
+  }
+}
+
+/*
+ * Reset or normalize font-weights.
+ */
+
+@if length($reset-font-weight-to-bold)>0 {
+  #{implode($reset-font-weight-to-bold, ", ")} {
+    font-weight: bold;
+  }
+}
+
+@if length($reset-font-weight-to-italic)>0 {
+  #{implode($reset-font-weight-to-italic, ", ")} {
+    font-weight: italic;
+  }
+}
+
+@if length($reset-font-weight-to-regular)>0 {
+  #{implode($reset-font-weight-to-regular, ", ")} {
+    font-weight: regular;
+  }
+}
+
+/*
+ * Full typographic reset
+ */
+
+@if length($reset-font)>0 {
+  #{implode($reset-font ", ")} {
+    font: inherit;
+  }
 }
 
 /*
@@ -184,8 +211,10 @@ h1 {
  */
 
 mark {
-  background: #ff0;
-  color: #000;
+  @if $normalize-mark {
+    background: $mark-background;
+    color: $mark-color;
+  }
 }
 
 /*
@@ -193,7 +222,9 @@ mark {
  */
 
 small {
-  font-size: 80%;
+  @if $normalize-small {
+    font-size: $small-font-size;
+  }
 }
 
 /*
@@ -202,18 +233,24 @@ small {
 
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+  @if $normalize-sup-sub {
+    font-size: $sup-sub-font-size;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
 }
 
 sup {
-  top: -0.5em;
+  @if $normalize-sup-sub {
+    top: $sup-offset-top;
+  }
 }
 
 sub {
-  bottom: -0.25em;
+  @if $normalize-sup-sub {
+    bottom: $sub-offset-bottom;
+  }
 }
 
 /* Embedded content
@@ -224,7 +261,9 @@ sub {
  */
 
 img {
-  border: 0;
+  @if $normalize-img-border {
+    border: 0;
+  }
 }
 
 /*
@@ -232,7 +271,9 @@ img {
  */
 
 svg:not(:root) {
-  overflow: hidden;
+  @if $normalize-svg {
+    overflow: hidden;
+  }
 }
 
 /* Grouping content
@@ -243,7 +284,9 @@ svg:not(:root) {
  */
 
 figure {
-  margin: 1em 40px;
+  @if $normalize-figure-margin {
+    margin: $figure-margin;
+  }
 }
 
 /*
@@ -251,8 +294,10 @@ figure {
  */
 
 hr {
-  box-sizing: content-box;
-  height: 0;
+  @if $normalize-horizontal-rule {
+    box-sizing: content-box;
+    height: 0;
+  }
 }
 
 /*
@@ -260,7 +305,10 @@ hr {
  */
 
 pre {
-  overflow: auto;
+  white-space: pre-wrap;
+  @if $normalize-pre-overflow {
+    overflow: auto;
+  }
 }
 
 /*
@@ -271,8 +319,12 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
+  @if $reset-monospace-elements {
+    font-family: $monospace-family;
+  }
+  @if $normalize-monospace-elements {
+    font-size: $monospace-elements-font-size;
+  }
 }
 
 /* Forms
@@ -286,8 +338,6 @@ samp {
 /*
  * 1. Correct color not being inherited.
  *    Known issue: affects color of disabled elements.
- * 2. Correct font properties not being inherited.
- * 3. Address margins set differently in Firefox 4+, Safari, and Chrome.
  */
 
 button,
@@ -295,9 +345,9 @@ input,
 optgroup,
 select,
 textarea {
-  color: inherit; /* 1 */
-  font: inherit; /* 2 */
-  margin: 0; /* 3 */
+  @if $normalize-form-elements {
+    color: inherit; /* 1 */
+  }
 }
 
 /*
@@ -305,7 +355,9 @@ textarea {
  */
 
 button {
-  overflow: visible;
+  @if $normalize-form-elements {
+    overflow: visible;
+  }
 }
 
 /*
@@ -317,7 +369,9 @@ button {
 
 button,
 select {
-  text-transform: none;
+  @if $normalize-form-elements {
+    text-transform: none;
+  }
 }
 
 /*
@@ -332,8 +386,10 @@ button,
 html input[type="button"], /* 1 */
 input[type="reset"],
 input[type="submit"] {
-  @include reset-appearance(button); /* 2 */
-  cursor: pointer; /* 3 */
+  @if $normalize-form-elements {
+    appearance: button; /* 2 */
+    cursor: pointer; /* 3 */
+  }
 }
 
 /*
@@ -342,7 +398,9 @@ input[type="submit"] {
 
 button[disabled],
 html input[disabled] {
-  cursor: default;
+  @if $normalize-form-elements {
+    cursor: default;
+  }
 }
 
 /*
@@ -351,8 +409,10 @@ html input[disabled] {
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+  @if $normalize-form-elements {
+    border: 0;
+    padding: 0;
+  }
 }
 
 /*
@@ -361,7 +421,9 @@ input::-moz-focus-inner {
  */
 
 input {
-  line-height: normal;
+  @if $normalize-form-elements {
+    line-height: normal;
+  }
 }
 
 /*
@@ -374,8 +436,10 @@ input {
 
 input[type="checkbox"],
 input[type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+  @if $normalize-form-elements {
+    box-sizing: border-box; /* 1 */
+    padding: 0; /* 2 */
+  }
 }
 
 /*
@@ -386,7 +450,9 @@ input[type="radio"] {
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
+  @if $normalize-form-elements {
+    height: auto;
+  }
 }
 
 /*
@@ -396,8 +462,9 @@ input[type="number"]::-webkit-outer-spin-button {
  */
 
 input[type="search"] {
-  @include reset-appearance(textfield); /* 1 */
-  // is already set in wildcard rule /* 2 */
+  @if $normalize-form-elements {
+    appearance: textfield; /* 1 */
+  }
 }
 
 /*
@@ -408,7 +475,9 @@ input[type="search"] {
 
 input[type="search"]::-webkit-search-cancel-button,
 input[type="search"]::-webkit-search-decoration {
-  @include reset-appearance(none);
+  @if $normalize-form-elements {
+    appearance: none;
+  }
 }
 
 /*
@@ -416,9 +485,11 @@ input[type="search"]::-webkit-search-decoration {
  */
 
 fieldset {
-  border: 1px solid #c0c0c0;
-  margin: 0 2px;
-  padding: 0.35em 0.625em 0.75em;
+  @if $normalize-fieldset {
+    border: $fieldset-border;
+    margin: $fieldset-margin;
+    padding: $fieldset-padding;
+  }
 }
 
 /*
@@ -427,8 +498,10 @@ fieldset {
  */
 
 legend {
-  border: 0; /* 1 */
-  padding: 0; /* 2 */
+  @if $normalize-legend {
+    border: 0; /* 1 */
+    padding: 0; /* 2 */
+  }
 }
 
 /*
@@ -436,17 +509,11 @@ legend {
  */
 
 textarea {
-  overflow: auto;
+  @if $normalize-textarea {
+    overflow: auto;
+  }
 }
 
-/*
- * Don't inherit the `font-weight` (applied by a rule above).
- * NOTE: the default cannot safely be changed in Chrome and Safari on OS X.
- */
-
-optgroup {
-  font-weight: bold;
-}
 
 /* Tables
    ========================================================================== */
@@ -456,65 +523,26 @@ optgroup {
  */
 
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+  @if $reset-table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
 }
 
 td,
 th {
-  padding: 0;
+  @if $reset-table {
+    padding: 0;
+  }
 }
-
-
-// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
-
 
 /*
------------------------------------------------------------------------------
-Miscellaneous - consider movin to reset
------------------------------------------------------------------------------
-*/
+ * Set consistent quote types.
+ */
 
-abbr[title] {
-    border-bottom: 1px dotted;
-}
-hr {
-    height: 0;
-}
-code,
-kbd,
-pre,
-samp {
-    @include font-family($monospace-regular);
-    font-size: to-unit($default-font-size);
-}
-pre {
-    white-space: pre-wrap;
-}
-small {
-    font-size: 80%;
-}
-sub,
-sup {
-    font-size: 75%;
-    line-height: 0;
-    position: relative;
-    vertical-align: baseline;
-}
-sup {
-    top: -0.5em;
-}
-sub {
-    bottom: -0.25em;
-}
-
-@if $base-quote-quotes
-{
-    /*
-     * Set consistent quote types.
-     */
-
-    q {
-        quotes: "\201C" "\201D" "\2018" "\2019";
-    }
+q {
+  @if $normalize-quote-quotes
+  {
+    quotes: "\201C" "\201D" "\2018" "\2019";
+  }
 }
