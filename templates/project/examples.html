@@ -1,224 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="utf-8" />
-	<title>Piecss</title>
-	<link href="./stylesheets/piecss.css" rel="stylesheet" media="screen">
-</head>
-<body>
 
+	<head>
+		<meta charset="utf-8" />
+		<title>Piecss - Test Markup</title>
+		<link href="../../sass/piecss/_behavior.css" rel="stylesheet" media="screen">
+		<!-- <link href="./stylesheets/piecss.css" rel="stylesheet" media="screen"> -->
+	</head>
 
-<div class="main">
+	<body>
 
-	<h2>Layout</h2>
+		<nav>
+			<a href="#headings">Headings</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#inline-elements">Inline&nbsp;Elements</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#phrase-tags">Inline&nbsp;Elements</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#block-elements">Block&nbsp;Elements</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#embedded-content">Embedded Content</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#lists">Lists</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#forms">Forms</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+			<a href="#tables">Tables</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+		</nav>
 
-	Please refer to the reference guide on http://www.piecss.com/docs.
-You can also find tutorials on http://www.piecss.com/tutorials.
+		<hr/>
 
+		<section id="headings">
+			<h1>Heading 1</h1>
+			<h2>Heading 2</h2>
+			<h3>Heading 3</h3>
+			<h4>Heading 4</h4>
+			<h5>Heading 5</h5>
+			<h6>Heading 6</h6>
+		</section>
 
-	<div class="column">1</div><!--
-	--><div class="column column--half">2</div><!--
-	--><div class="column column--half">3</div><!--
-	--><div class="column column--half">4</div><!--
-	--><div class="column column--half">5</div><!--
-	--><div class="column column--half">
-		<div class="column column--half">7</div><!--
-	--><div class="column column--half">8</div><!--
-	--></div>
+		<hr/>
 
+		<section id="inline-elements">
+			<p>
+				Paragraph, with <a>anchor (no href)</a> element.
+			</p>
+			<p>
+				Paragraph, with <a href="javascript:void();">link</a> element.
+			</p>
+			<p>
+				Paragraph, with <a href="">visited link</a> element.
+			</p>
+			<p>
+				Paragraph, with <abbr>abbreviation</abbr> element.
+			</p>
+			<p>
+				Paragraph, with <abbr title="explanation">abbreviation
+				(with title)</abbr> element.
+			</p>
+			<p>
+				Paragraph, with <b>bold</b> element.
+			</p>
+			<p>
+				Paragraph, with <bdi>bi-directional isolation</bdi> element.
+			</p>
+			<p>
+				<bdo dir="ltr">Paragraph, with bi-directional override (left-to-right)
+				element</bdo> (bdo element direction left-to-right).
+			</p>
+			<p>
+				<bdo dir="rtl">Paragraph, with bi-directional override (right-to-left)
+				element</bdo> (bdo element direction right-to-left).
+			</p>
+			<p>
+				Paragraph, with <cite>citation</cite> element.
+			</p>
+			<p>
+				Paragraph, with <del>deleted</del> element.
+			</p>
+			<p>
+				Paragraph, with <dfn>definition</dfn> element.
+			</p>
+			<p>
+				Paragraph, with <dfn title="explanation">definition (with title)</dfn>
+				element.
+			</p>
+			<p>
+				Paragraph, with <i>italic</i> element.
+			</p>
+			<p>
+				Paragraph, with <ins>inserted</ins> element.
+			</p>
+			<p>
+				Paragraph, with <mark>highlight</mark> element.
+			</p>
+			<p>
+				Paragraph, with <q>inline quotation</q> element.
+			</p>
+			<p>
+				Paragraph, with incorrect, inaccurate or irrelevant <s>text</s> element.
+			</p>
+			<p>
+				Paragraph, with <strong>strong (important)</strong> element.
+			</p>
+			<p>
+				Paragraph, with superscript<sup>2</sup> element.
+			</p>
+			<p>
+				Paragraph, with subscript<sub>2</sub> element.
+			</p>
+			<p>
+				Paragraph, with subscript<time datetime="2017-01-06 08:00">time</time>
+				element.
+			</p>
+			<p>
+				Paragraph, with misspelled <u>underlined</u> element.
+			</p>
+		</section>
 
-	<h2>Type</h2>
+		<hr/>
 
-	<h1>Heading 1</h1>
-	<h2>Heading 2</h2>
-	<h3>Heading 3</h3>
-	<h4>Heading 4</h4>
-	<h5>Heading 5</h5>
-	<h6>Heading 6</h6>
+		<section id="phrase-tags">
+			<p><code>A piece of computer code</code></p>
+			<p><em>Emphasized text</em></p>
+			<p><kbd>Keyboard input</kbd></p>
+			<p><samp>Sample output from a computer program</samp></p>
+			<p><strong>Strong text</strong></p>
+			<p><var>Variable</var></p>
+		</section>
 
-	<p class="column">Sweet <a href="#cantgothere">gingerbread</a> tiramisu cotton candy sweet roll. Sugar plum sweet sugar plum. Tiramisu bear claw pie tiramisu. Donut candy canes chocolate cake icing gummies. Tiramisu gummi bears danish chocolate cake halvah jelly cake. Marzipan unerdwear.com bonbon apple pie wafer tart cookie. Liquorice cookie jelly-o marzipan muffin. Chocolate bar jujubes ice cream muffin tiramisu pudding. Dragée dessert dessert. Soufflé tiramisu sweet biscuit cheesecake donut. Wafer toffee dessert bonbon muffin toffee. Apple pie marzipan dessert icing gummies tart marshmallow. Biscuit gingerbread cupcake cake cupcake tootsie roll. Brownie cheesecake cupcake halvah.</p>
+		<hr/>
 
+		<section id="block-elements">
+			<p>
+				Paragraph – Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+				aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+				in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+				Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+				officia deserunt mollit anim id est laborum. Donec elementum ligula eu
+				sapien consequat eleifend.
+			</p>
+			<pre>
+				Preformatted – Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+				sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+				enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+				aliquip ex ea commodo consequat.
+			</pre>
+			<blockquote cite="http://www.worldwildlife.org/who/index.html">
+				For 50 years, WWF has been protecting the future of nature. The world's
+				leading conservation organization, WWF works in 100 countries and is
+				supported by 1.2 million members in the United States and close to
+				5 million globally.
+			</blockquote>
+			<address>
+			Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
+			Visit us at:<br>
+			Example.com<br>
+			Box 564, Disneyland<br>
+			USA
+		</address>
+			<details>
+				<summary>Copyright 1999-2014.</summary>
+				<p> - by Refsnes Data. All Rights Reserved.</p>
+				<p>
+					All content and graphics on this web site are the property of the
+					company Refsnes Data.
+				</p>
+			</details>
+			<p>
+				The <code>&lt;dialog&gt;</code> tag defines a dialog box or window.
+				This paragraph contains an open and a closed dialogue box. The
+				<code>&lt;dialog&gt;</code> element makes it easy to create popup
+				dialogs and modals on a web page.
+				<dialog open>This is an open dialog window</dialog>
+				<dialog>This is a closed dialog window</dialog>
+			</p>
+		</section>
 
-	<h2>Lists</h2>
+		<hr/>
 
-	<ul>
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-	</ul>
+		<section id="embedded-content">
+			<object width="400" height="400" data="http://www.w3schools.com/tags/helloworld.swf"></object>
+			<embed src="http://www.w3schools.com/tags/helloworld.swf">
+			<figure>
+				<img src="http://www.w3schools.com/tags/img_pulpit.jpg" alt="The Pulpit Rock" width="304" height="228">
+				<figcaption>Fig1. - A view of the pulpit rock in Norway.</figcaption>
+			</figure>
+			<img src="http://www.w3schools.com/tags/smiley.gif" alt="Smiley face" height="42" width="42">
+			<audio controls>
+				<source src="http://www.w3schools.com/tags/horse.ogg" type="audio/ogg">
+				<source src="http://www.w3schools.com/tags/horse.mp3" type="audio/mpeg">
+				Your browser does not support the audio tag.
+			</audio>
+			<iframe src="http://www.w3schools.com"></iframe>
+		</section>
 
-	<ol>
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-	</ol>
+		<hr/>
 
-	<ul class="list">
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy
-			<ol class="list">
-				<li>Gingerbread</li>
-				<li>Tiramisu</li>
-				<li>Cotton candy
-					<ol class="list list--outside">
-						<li>Gingerbread</li>
-						<li>Tiramisu</li>
-						<li>Cotton candy</li>
+		<section id="lists">
+			<ul>
+				<li>First</li>
+				<li>Second</li>
+				<li>Third</li>
+				<li>
+					Nested
+					<ul>
+						<li>First</li>
+						<li>Second</li>
+						<li>Third</li>
+						<li>
+							Nested
+							<ul>
+								<li>First</li>
+								<li>Second</li>
+								<li>Third</li>
+								<li>
+									Nested
+									<ul>
+										<li>First</li>
+										<li>Second</li>
+										<li>Third</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ol>
+				<li>First</li>
+				<li>Second</li>
+				<li>Third</li>
+				<li>
+					Nested
+					<ol>
+						<li>First</li>
+						<li>Second</li>
+						<li>Third</li>
+						<li>
+							Nested
+							<ul>
+								<li>First</li>
+								<li>Second</li>
+								<li>Third</li>
+								<li>
+									Nested
+									<ul>
+										<li>First</li>
+										<li>Second</li>
+										<li>Third</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
 					</ol>
 				</li>
 			</ol>
+			<dl>
+				<dt>Coffee</dt>
+				<dd>Black hot drink</dd>
+				<dd>Can be drunk with milk</dd>
+				<dt>Milk</dt>
+				<dd>White cold drink</dd>
+				<dd>Can also be hot</dd>
+			</dl>
+		</section>
 
-			<ul class="list">
-				<li>Gingerbread</li>
-				<li>Tiramisu</li>
-				<li>Cotton candy</li>
-			</ul>
-		</li>
-	</ul>
+		<hr/>
 
-	<ol class="list">
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-		<li>Gingerbread</li>
-		<li>Tiramisu</li>
-		<li>Cotton candy</li>
-	</ol>
+		<section id="forms">
+			<form>
+				<fieldset>
+					<legend>Legend</legend>
+				</fieldset>
+				<fieldset>
+					<legend>Buttons</legend>
+					<button type="button">Button</button>
+					<button type="submit">Submit button</button>
+					<button type="reset">Reset button</button>
+					<input type="submit" value="Input submit" />
+					<input type="reset" value="Input reset" />
+				</fieldset>
+				<fieldset>
+					<legend>Data list</legend>
+					<input list="browsers">
+					<datalist id="browsers">
+				  <option value="Internet Explorer">
+				  <option value="Firefox">
+				  <option value="Chrome">
+				  <option value="Opera">
+				  <option value="Safari">
+				</datalist>
+				</fieldset>
+				<progress value="22" max="100"></progress>
+			</form>
+			<meter value="2" min="0" max="10">2 out of 10</meter><br>
+			<meter value="0.6">60%</meter>
+			<form oninput="x.value=parseInt(a.value)+parseInt(b.value)">0
+				<input type="range" id="a" value="50">100 +
+				<input type="number" id="b" value="50"> =
+				<output name="x" for="a b"></output>
+			</form>
+		</section>
 
+		<hr/>
 
-	<h2>Tables</h2>
+		<section id="tables">
+			<table>
+				<caption>Monthly savings</caption>
+				<tr>
+					<th>Month</th>
+					<th>Savings</th>
+				</tr>
+				<tr>
+					<td>January</td>
+					<td>$100</td>
+				</tr>
+			</table>
+			<table>
+				<colgroup>
+					<col span="2" style="background-color:red">
+					<col style="background-color:yellow">
+				</colgroup>
+				<tr>
+					<th>ISBN</th>
+					<th>Title</th>
+					<th>Price</th>
+				</tr>
+				<tr>
+					<td>3476896</td>
+					<td>My first HTML</td>
+					<td>$53</td>
+				</tr>
+			</table>
+			<table>
+				<tr>
+					<th>January
+						<dialog open>This is an open dialog window</dialog>
+					</th>
+					<th>February
+						<dialog>This is a closed dialog window</dialog>
+					</th>
+					<th>March</th>
+				</tr>
+				<tr>
+					<td>31</td>
+					<td>28</td>
+					<td>31</td>
+				</tr>
+			</table>
+			<table>
+				<thead>
+					<tr>
+						<th>Month</th>
+						<th>Savings</th>
+					</tr>
+				</thead>
+				<tfoot>
+					<tr>
+						<td>Sum</td>
+						<td>$180</td>
+					</tr>
+				</tfoot>
+				<tbody>
+					<tr>
+						<td>January</td>
+						<td>$100</td>
+					</tr>
+					<tr>
+						<td>February</td>
+						<td>$80</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
 
-	<table>
-		<caption>Recipees</caption>
-		<colgroup>
-			<col class="name" title="Name">
-			<col class="ingredients" title="Ingredients">
-			<col class="time" title="Cooking Time">
-		</colgroup>
-		<tbody>
-			<tr>
-				<td>Candy sweet roll</td>
-				<td>
-					<ul>
-						<li>Sugar</li>
-						<li>Flour</li>
-						<li>Butter</li>
-					</ul>
-				</td>
-				<td>20 minutes</td>
-			</tr>
-		</tbody>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Ingredients</th>
-				<th>Cooking Time</th>
-			</tr>
-		</thead>
-		<tfoot>
-			<tr>
-				<td id="3">Sugar is bad for you.</td>
-			</tr>
-		</tfoot>
-	</table>
+		<hr />
 
+	</body>
 
-	<h2>Forms</h2>
-
-	<form>
-	<fieldset>
-		<legend>Recipe</legend>
-		<fieldset>
-			<legend>Ingredients</legend>
-			<div>
-				<label for="text">Type</label>
-				<input class="" id="text" type="text" value="">
-			</div>
-			<div>
-				<label for="search">Search</label>
-				<input class="" id="text" type="search" value="">
-			</div>
-			<div>
-				<label for="color">Color</label>
-				<input class="" id="text" type="color" value="">
-			</div>
-			<div>
-				<label for="range">Range</label>
-				<input class="" id="text" type="range" value="">
-			</div>
-			<div>
-				<label for="select1">Select</label>
-				<select name="select1">
-					<option>Pick one</option>
-					<optgroup label="Group">
-						<option>High in calories</option>
-						<option>Low in calories</option>
-					</optgroup>
-				</select>
-			</div>
-			<div>
-				<label for="select2">Select</label>
-				<select name="select2" size="5" multiple="multiple">
-					<option>Pick many</option>
-					<optgroup label="Group">
-						<option>High in calories</option>
-						<option>Low in calories</option>
-					</optgroup>
-				</select>
-			</div>
-			<fieldset>
-				<legend>Choose</legend>
-				<div>
-					<label for="radio1">High in calories</label>
-					<input class="" id="radio1" type="radio" name="radio" value="">
-				</div>
-				<div>
-					<label for="radio2">Low in calories</label>
-					<input class="" id="radio2" type="radio" name="radio" value="">
-				</div>
-			</fieldset>
-			<fieldset>
-				<legend>Check</legend>
-				<div>
-					<label for="check1">High in calories</label>
-					<input class="" id="check1" type="checkbox" name="checkbox" value="">
-				</div>
-				<div>
-					<label for="check2">Low in calories</label>
-					<input class="" id="check2" type="checkbox" name="checkbox" value="">
-				</div>
-			</fieldset>
-		</fieldset>
-		<fieldset>
-			<legend>Preparation</legend>
-			<div>
-				<label for="textarea">Name</label>
-				<textarea class="" id="textarea"></textarea>
-			</div>
-			<div>
-				<label for="textarea">Name</label>
-				<textarea class="editor--medium" id="textarea"></textarea>
-			</div>
-			<div>
-				<label for="textarea">Name</label>
-				<textarea class="editor--large" id="textarea"></textarea>
-			</div>
-		</fieldset>
-	</fieldset>
-	</form>
-
-</div><!--
---><div class="side">
-	<p class="column">Sweet <a href="#cantgothere">gingerbread</a> tiramisu cotton candy sweet roll. Sugar plum sweet sugar plum. Tiramisu bear claw pie tiramisu. Donut candy canes chocolate cake icing gummies. Tiramisu gummi bears danish chocolate cake halvah jelly cake. Marzipan unerdwear.com bonbon apple pie wafer tart cookie. Liquorice cookie jelly-o marzipan muffin. Chocolate bar jujubes ice cream muffin tiramisu pudding. Dragée dessert dessert. Soufflé tiramisu sweet biscuit cheesecake donut. Wafer toffee dessert bonbon muffin toffee. Apple pie marzipan dessert icing gummies tart marshmallow. Biscuit gingerbread cupcake cake cupcake tootsie roll. Brownie cheesecake cupcake halvah.</p>
-</div>
-
-
-</body>
 </html>
