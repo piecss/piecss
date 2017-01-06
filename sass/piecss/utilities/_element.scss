@@ -3,11 +3,11 @@
 
 // Content:
 // 1. Functions
-//    add-element
+//    add-selector
 //    add-properties
 // 2. Mixins
-//    element
-//    elements
+//    get-properties
+//    get-selectors
 
 
 // 1. FUNCTIONS
@@ -26,12 +26,12 @@
 /// @return {Map}
 ///
 
-@function add-element($elements, $selector, $properties: ()) {
+@function add-selector($collection, $selector, $properties: ()) {
   $_: (
     #{$selector}: $properties
   );
-  $elements: map-merge($elements, $_);
-  @return $elements;
+  $collection: map-merge($collection, $_);
+  @return $collection;
 }
 
 ///
@@ -43,54 +43,51 @@
 /// @param {Map} $properties - Map of CSS properties
 /// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
 /// @param {Map} $elements - Map, a collection of $selector: $property pairs
+/// @param {Bool} $force (false) - When true, append properties instead of overwrite properties
 ///
 /// @return {Map}
 ///
 
-@function add-properties($properties, $selector, $elements) {
+@function add-properties($new-properties, $selector, $collection, $force: false) {
 
-  @if not map-has-key($elements, $selector) {
-    $elements: add-element($elements, $selector);
+  @if not map-has-key($collection, $selector) {
+    $collection: add-selector($collection, $selector);
   }
 
   // Merge the nested property-map first
-  $element: map-get($elements, $selector);
-  $element: map-merge($element, $properties);
+  $properties: map-get($collection, $selector);
 
-  // Merge the property-map with the element collection
-  $_: (
-    #{$selector}: $element
-  );
-  $elements: map-merge($elements, $_);
+  // Loop over existing properties
+  $_ps: ();
+  $_vs: ();
+  @each $property in $properties {
+    $_ps: append($_ps, nth($property, 1));
+    $_vs: append($_vs, nth($property, 2));
+  }
 
-  @return $elements;
-}
+  // Loop over new properties to find duplicates
+  @each $_p, $_v in $new-properties {
 
-///
-/// @alias add-properties
-///
-@function add-props($properties, $selector, $elements) {
-  $elements: add-properties($properties, $selector, $elements);
+    @if index($_ps, $_p) {
+      $_old_v: nth($_vs, index($_ps, $_p));
+      @if $_old_v == $_v {
+        // Skip, this property and that value exist already
+      }
+      @if $_old_v != $_v and $force {
+        // Add it, the author may do this purposefully (warn him just in case)
+        @warn "Are you sure you want to declare \"#{$_p}\" again (\"#{$_old_v}\", \"#{$_v}\")?";
+        $_ps: append($_ps, $_p);
+        $_vs: append($_vs, $_v);
+      }
+    } @else {
+      $_ps: append($_ps, $_p);
+      $_vs: append($_vs, $_v);
+    }
+  }
 
-  @return $elements;
-}
+  $collection: map-merge($collection, ($selector: zip($_ps, $_vs)));
 
-///
-/// @alias add-properties
-///
-@function merge-properties($properties, $selector, $elements) {
-  $elements: add-properties($properties, $selector, $elements);
-
-  @return $elements;
-}
-
-///
-/// @alias add-properties
-///
-@function merge-props($properties, $selector, $elements) {
-  $elements: add-properties($properties, $selector, $elements);
-
-  @return $elements;
+  @return $collection;
 }
 
 
@@ -106,55 +103,53 @@
 /// @param {Map} $element - Map of CSS properties
 ///
 
-@mixin properties($element) {
-  // Lift out properties that have their own mixins
-  @if map-has-key($element, margin) {
-    $value: map-get($element, margin);
-    $element: map-remove($element, margin);
-    @include margin($value);
-  }
-  @if map-has-key($element, padding) {
-    $value: map-get($element, padding);
-    $element: map-remove($element, padding);
-    @include padding($value);
-  }
-  /* Using Autoprefix now */
-  // @if map-has-key($element, border-radius) {
-  //     $value: map-get($element, border-radius);
-  //     $element: map-remove($element, border-radius);
-  //     @include border-radius($value);
+@mixin get-properties($selector) {
+  // // Lift out properties that have their own mixins
+  // @if map-has-key($element, margin) {
+  //   $value: map-get($element, margin);
+  //   $element: map-remove($element, margin);
+  //   @include margin($value);
   // }
-  // @if map-has-key($element, box-shadow) {
-  //     $value: map-get($element, box-shadow);
-  //     $element: map-remove($element, box-shadow);
-  //     @include box-shadow($value);
+  // @if map-has-key($element, padding) {
+  //   $value: map-get($element, padding);
+  //   $element: map-remove($element, padding);
+  //   @include padding($value);
   // }
-  @if map-has-key($element, font-type) {
-    $value: ();
-    $value: append($value, map-get($element, font-type));
-    @if map-has-key($element, font-size) {
-      $value: append(($value), map-get($element, font-size));
-    }
-    @if map-has-key($element, line-height) {
-      $value: append($value, map-get($element, line-height));
-    }
-    $element: map-remove($element, font-family);
-    $element: map-remove($element, font-size);
-    $element: map-remove($element, line-height);
-    $element: map-remove($element, font);
+  // /* Using Autoprefix now */
+  // // @if map-has-key($element, border-radius) {
+  // //     $value: map-get($element, border-radius);
+  // //     $element: map-remove($element, border-radius);
+  // //     @include border-radius($value);
+  // // }
+  // // @if map-has-key($element, box-shadow) {
+  // //     $value: map-get($element, box-shadow);
+  // //     $element: map-remove($element, box-shadow);
+  // //     @include box-shadow($value);
+  // // }
+  // @if map-has-key($element, font-type) {
+  //   $value: ();
+  //   $value: append($value, map-get($element, font-type));
+  //   @if map-has-key($element, font-size) {
+  //     $value: append(($value), map-get($element, font-size));
+  //   }
+  //   @if map-has-key($element, line-height) {
+  //     $value: append($value, map-get($element, line-height));
+  //   }
+  //   $element: map-remove($element, font-family);
+  //   $element: map-remove($element, font-size);
+  //   $element: map-remove($element, line-height);
+  //   $element: map-remove($element, font);
+  //
+  //   @include font(nth($value, 1), nth($value, 2), nth($value, 3));
+  // }
+  // @if map-has-key($element, font) {
+  //   $value: map-get($element, font);
+  //   $element: map-remove($element, font);
+  //   @include font(nth($value, 1), nth($value, 2), nth($value, 3));
+  // }
 
-    @include font(nth($value, 1), nth($value, 2), nth($value, 3));
-  }
-  @if map-has-key($element, font) {
-    $value: map-get($element, font);
-    $element: map-remove($element, font);
-    @include font(nth($value, 1), nth($value, 2), nth($value, 3));
-  }
-
-  $properties: map-keys($element);
-
-  @each $property in $properties {
-    #{$property}: map-get($element, $property);
+  @each $property in $selector {
+    #{nth($property, 1)}: unquote(nth($property, 2));
   }
 }
 
@@ -168,13 +163,13 @@
 /// @param {Map} $elements - Map, a collection of $selector: $property pairs
 ///
 
-@mixin elements($elements) {
-  $selectors: map-keys($elements);
+@mixin get-selectors($collection) {
+  $selectors: map-keys($collection);
 
   @each $selector in $selectors {
     #{$selector} {
-      $element: map-get($elements, $selector);
-      @include properties($element);
+      $element: map-get($collection, $selector);
+      @include get-properties($element);
     }
   }
 }
