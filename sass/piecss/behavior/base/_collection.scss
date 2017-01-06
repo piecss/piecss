@@ -91,12 +91,22 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    font-size: 2em,
-    margin: .67em 0
+    font-size: $h1-font-size,
+    margin: $h1-margin
   ),
   "h1",
   $base-collection
 );
+@if to-unit($h1-line-height, $line-height-unit) != to-unit($default-line-height, $line-height-unit) {
+  $base-collection: add-properties(
+    (
+      line-height: to-unit($h1-line-height, $line-height-unit)
+    ),
+    "h1",
+    $base-collection
+  );
+}
+
 
 /* Grouping content
    ========================================================================== */
