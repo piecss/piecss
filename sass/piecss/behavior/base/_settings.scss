@@ -1,15 +1,19 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
+$base-collection: ();
 
 ///
-/// The default font for your project. It is set in a $font-type list, Piecss has a collection of pre-defined font-types that can be augmented.
-/// A font-type is a comma separated list of font-type, font-variant, font-weight and font-family.
+/// The default font for your project. It is set in a $font-type list, Piecss
+/// has a collection of pre-defined font-types that can be augmented.
+/// A font-type is a comma separated list of font-type, font-variant,
+/// font-weight and font-family.
 ///
-/// @todo the comma separated list will be changed to a space separated list, and a Map (both will apply)
+/// @todo the comma separated list will be changed to a space separated list,
+/// and a Map (both will apply)
 ///
 /// @since 0.1
 ///
-/// @type {Number}
+/// @type {Number} (normal normal 400 sans-serif)
 ///
 
 $default-font: $sans-serif-regular !default;
@@ -19,7 +23,7 @@ $default-font: $sans-serif-regular !default;
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#fff)
 ///
 
 $color-background: $white !default;
@@ -29,17 +33,17 @@ $color-background: $white !default;
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#000)
 ///
 
-$color-body: $darkslategray !default;
+$color-body: $black !default;
 
 ///
 /// The primary color for UI elements.
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#ff8c00)
 ///
 
 $color-primary: $orange !default;
@@ -49,7 +53,7 @@ $color-primary: $orange !default;
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#fa8072)
 ///
 
 $color-secondary: $salmon !default;
@@ -62,7 +66,7 @@ $color-secondary: $salmon !default;
 /// @example
 /// mix($color-shadow, $color-primary, 20%);
 ///
-/// @type {Color}
+/// @type {Color} (#000)
 ///
 
 $color-shadow: $black !default;
@@ -75,27 +79,27 @@ $color-shadow: $black !default;
 /// @example
 /// mix($color-highlight, $color-primary, 20%);
 ///
-/// @type {Color}
+/// @type {Color} (#fff)
 ///
 
-$color-highlight: $black !default;
+$color-highlight: $white !default;
 
 ///
 /// The default color for anchors.
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#fa8072)
 ///
 
-$color-anchor: $blue !default;
+$color-anchor: $salmon !default;
 
 ///
 /// The default color for anchor hover state.
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#f7270f)
 ///
 
 $color-anchor--hover: darken($color-anchor, 20%) !default;
@@ -105,7 +109,7 @@ $color-anchor--hover: darken($color-anchor, 20%) !default;
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#fdc3bc)
 ///
 
 $color-anchor--active: lighten($color-anchor, 15%) !default;
@@ -115,7 +119,7 @@ $color-anchor--active: lighten($color-anchor, 15%) !default;
 ///
 /// @since 0.1
 ///
-/// @type {Color}
+/// @type {Color} (#cc1b07)
 ///
 
 $color-anchor--visited: darken($color-anchor, 30%) !default;
@@ -125,28 +129,14 @@ $color-anchor--visited: darken($color-anchor, 30%) !default;
 ///
 /// @since 0.1
 ///
-/// @type {Bool}
+/// @type {Bool} (true)
 ///
 
 $normalize-quote-quotes: true !default;
 
 ///
-/// Based on an idea by [@csswizardry](https://twitter.com/csswizardry): apply a bottom margin of one rhythm height to any element in this comma separated list.
-///
-/// @since 0.1
-///
-/// @type {List}
-///
-
-$single-direction-elements: (p, pre, table, hr, article) !default;
-
-
-
-$reset-fieldset: true !default;
-
-
-///
-/// When true, applies a natural box layout model to all elements.
+/// 1. Apply a natural box layout model to all elements
+/// 2. Experimentally align all elements to bottom
 ///
 /// @since 0.5
 ///
@@ -158,7 +148,8 @@ $reset-box-model: true !default;
 ///
 /// When true:
 /// * Corrects `block` display not defined for any HTML5 element in IE 8/9.
-/// * Corrects `block` display not defined for `details` or `summary` in IE 10/11 and Firefox.
+/// * Corrects `block` display not defined for `details` or `summary` in IE
+///   10/11 and Firefox.
 /// * Corrects `block` display not defined for `main` in IE 11.
 ///
 /// @since 0.5
@@ -179,14 +170,15 @@ $normalize-block-display: true !default;
 $normalize-figure-margin: true !default;
 
 ///
-/// When $normalize-figure-margin equals true, this margin is applied to the figure element.
+/// When $normalize-figure-margin equals true, this margin is applied to the
+/// figure element.
 ///
 /// @since 0.5
 ///
 /// @type {List} (1em 40px)
 ///
 
-$figure-margin: 1em 40px !default;
+$figure-margin: gutter() rhythm(5) !default;
 
 ///
 /// When true, address differences between Firefox and other browsers.
@@ -249,7 +241,8 @@ $sup-offset-top: -.5em !default;
 $sub-offset-bottom: -.25em !default;
 
 ///
-/// When $normalize-sup-sub equals true, sup and sub font-size is set to this value.
+/// When $normalize-sup-sub equals true, sup and sub font-size is set to this
+/// value.
 ///
 /// @since 0.5
 ///
@@ -299,14 +292,15 @@ $normalize-pre-overflow: true !important;
 $normalize-monospace-elements: true !important;
 
 ///
-/// When $normalize-monospace-elements equals true, font-size is set to this value.
+/// When $normalize-monospace-elements equals true, font-size is set to this
+/// value.
 ///
 /// @since 0.5
 ///
 /// @type {Number} (1em)
 ///
 
-$monospace-elements-font-size: 1em !default;
+$monospace-font-size: 1em !default;
 
 ///
 /// When true, presets the monospace font-size.
@@ -319,14 +313,17 @@ $monospace-elements-font-size: 1em !default;
 $reset-monospace-elements: true !important;
 
 ///
-/// When $reset-monospace-elements equals true, font-family is set to this value.
+/// When $reset-monospace-elements equals true, font-family is set to this
+/// value. The font-family: monospace, monospace hack fixes the inheritance and
+/// scaling of font-size for preformatted text. The duplication of monospace is
+/// intentional.
 ///
 /// @since 0.5
 ///
-/// @type {String} (monospace)
+/// @type {String} (monospace, monospace)
 ///
 
-$monospace-elements-font-family: $monospace-family !default;
+$monospace-font-family: #{$monospace-family}, #{$monospace-family} !default;
 
 ///
 /// These elements font-weight will be set to bold
@@ -408,8 +405,18 @@ $h1-font-size: to-unit(32px) !default;
 /// @type {Number} (2em)
 ///
 
-$h1-line-height: to-unit(line-height(32px, 1), $line-height-unit) !default;
+$h1-line-height: line-height(32px, 1) !default;
 
+///
+/// Correct the font size and margin on `h1` elements within `section` and
+/// `article` contexts in Chrome, Firefox, and Safari.
+///
+/// @since 0.5
+///
+/// @type {List} (2em)
+///
+
+$h1-margin: rhythm(1) 0 !default;
 
 ///
 /// When true, addresses inconsistent and variable font size in all browsers.
@@ -543,3 +550,15 @@ $normalize-legend: true !default;
 ///
 
 $normalize-form-elements: true !default;
+
+///
+/// Based on an idea by [@csswizardry](https://twitter.com/csswizardry):
+/// apply a bottom margin of one line-height to any element in this comma
+/// separated list.
+///
+/// @since 0.1
+///
+/// @type {List} (true) (p, pre, table, hr, article)
+///
+
+$single-direction-elements: p, pre, table, hr, article !default;
