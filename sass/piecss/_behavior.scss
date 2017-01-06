@@ -8,8 +8,18 @@
 @import "utilities";
 @import "settings";
 
+/* Base */
+@import "behavior/base/settings";
 @import "behavior/base/base";
+
+/* Layout */
 @import "behavior/layout/grid";
+
+/* Form */
 @import "behavior/form/form";
+
+/* Button */
 @import "behavior/button/button";
+
+/* List */
 @import "behavior/list/list";
