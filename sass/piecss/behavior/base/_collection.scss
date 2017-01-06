@@ -12,14 +12,50 @@
 
 $base-collection: add-properties(
   (
-    font-family: sans-serif /* 1 */,
-    line-height: 1.15, /* 2 */
+    font-family: get-font-family($default-font) /* 1 */,
+    line-height: to-unit($default-line-height, $line-height-unit), /* 2 */
     -ms-text-size-adjust: 100%, /* 3 */
     -webkit-text-size-adjust: 100% /* 3 */
   ),
   "html",
   $base-collection
 );
+@if get-font-style($default-font) != normal {
+  $base-collection: add-properties(
+    (
+      font-style: get-font-style($default-font) /* 1 */
+    ),
+    "html",
+    $base-collection
+  );
+}
+@if get-font-variant($default-font) != normal {
+  $base-collection: add-properties(
+    (
+      font-variant: get-font-variant($default-font) /* 1 */
+    ),
+    "html",
+    $base-collection
+  );
+}
+@if get-font-weight($default-font) != normal {
+  $base-collection: add-properties(
+    (
+      font-weight: get-font-weight($default-font) /* 1 */
+    ),
+    "html",
+    $base-collection
+  );
+}
+@if $default-font-size != $base-font-size {
+  $base-collection: add-properties(
+    (
+      font-size: to-unit($default-font-size, $unit) /* 4 */
+    ),
+    "html",
+    $base-collection
+  );
+}
 
 /* Sections
    ========================================================================== */
