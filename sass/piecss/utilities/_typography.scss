@@ -3,10 +3,10 @@
 
 // Content
 // 1. functions:
-//    extract-type-style
-//    extract-type-variant
-//    extract-type-weight
-//    extract-type-family
+//    get-font-style
+//    get-font-variant
+//    get-font-weight
+//    get-font-family
 //    font-size
 //    line-height
 //    weight-number-to-string
@@ -35,7 +35,7 @@
 /// @return {String} - font-type property
 ///
 
-@function extract-type-style($type) {
+@function get-font-style($type) {
   @return nth($type, 1);
 }
 
@@ -52,7 +52,7 @@
 /// @return {String} - font-variant property
 ///
 
-@function extract-type-variant($type) {
+@function get-font-variant($type) {
   @return nth($type, 2);
 }
 
@@ -69,7 +69,7 @@
 /// @return {String} - font-weight property
 ///
 
-@function extract-type-weight($type) {
+@function get-font-weight($type) {
   @return nth($type, 3);
 }
 
@@ -86,7 +86,7 @@
 /// @return {String} - font-family property
 ///
 
-@function extract-type-family($type) {
+@function get-font-family($type) {
   @return nth($type, 4);
 }
 
@@ -182,10 +182,10 @@
 
   @if not(not($type)) {
 
-    $font-style: extract-type-style($type);
-    $font-variant: extract-type-variant($type);
-    $font-weight: extract-type-weight($type);
-    $font-family: extract-type-family($type);
+    $font-style: get-font-style($type);
+    $font-variant: get-font-variant($type);
+    $font-weight: get-font-weight($type);
+    $font-family: get-font-family($type);
 
     @if $font-size and unit($unit) == rem {
       @include font-size($font-size, 1px);
@@ -215,7 +215,7 @@
 ///
 
 @mixin font-style($type) {
-  font-style: extract-type-style($type);
+  font-style: get-font-style($type);
 }
 
 
@@ -228,7 +228,7 @@
 ///
 
 @mixin font-variant($type) {
-  font-variant: extract-type-variant($type);
+  font-variant: get-font-variant($type);
 }
 
 
@@ -241,7 +241,7 @@
 ///
 
 @mixin font-weight($type) {
-  font-weight: extract-type-weight($type);
+  font-weight: get-font-weight($type);
 }
 
 
@@ -254,7 +254,7 @@
 ///
 
 @mixin font-family($type) {
-  font-family: extract-type-family($type);
+  font-family: get-font-family($type);
 }
 
 
