@@ -6,12 +6,12 @@
 // Relies on settings/fonts
 @include test-module("Typography") {
 
-    @include test("[function] extract-type-style() | Extract the type-variant property") {
+    @include test("[function] get-font-style() | Extract the type-variant property") {
 
-        $regular: extract-type-style( $sans-serif-regular);
-        $medium: extract-type-style( $sans-serif-medium);
-        $bold: extract-type-style( $sans-serif-bold);
-        $regular-italic: extract-type-style( $sans-serif-regular-italic);
+        $regular: get-font-style($sans-serif-regular);
+        $medium: get-font-style($sans-serif-medium);
+        $bold: get-font-style($sans-serif-bold);
+        $regular-italic: get-font-style($sans-serif-regular-italic);
 
         @include assert-equal( $regular, "normal", "Should return normal" );
         @include assert-equal( $medium, "normal", "Should return normal" );
@@ -19,12 +19,12 @@
         @include assert-equal( $regular-italic, "italic", "Should return italic" );
     }
 
-    @include test("[function] extract-type-variant() | Extract the type-style property") {
+    @include test("[function] get-font-variant() | Extract the type-style property") {
 
-        $regular: extract-type-variant( $sans-serif-regular);
-        $medium: extract-type-variant( $sans-serif-medium);
-        $bold: extract-type-variant( $sans-serif-bold);
-        $regular-italic: extract-type-variant( $sans-serif-regular-italic);
+        $regular: get-font-variant( $sans-serif-regular);
+        $medium: get-font-variant( $sans-serif-medium);
+        $bold: get-font-variant( $sans-serif-bold);
+        $regular-italic: get-font-variant( $sans-serif-regular-italic);
 
         @include assert-equal( $regular, "normal", "Should return normal" );
         @include assert-equal( $medium, "normal", "Should return normal" );
@@ -32,12 +32,12 @@
         @include assert-equal( $regular-italic, "normal", "Should return normal" );
     }
 
-    @include test("[function] extract-type-weight() | Extract the type-weight property") {
+    @include test("[function] get-font-weight() | Extract the type-weight property") {
 
-        $regular: extract-type-weight( $sans-serif-regular);
-        $medium: extract-type-weight( $sans-serif-medium);
-        $bold: extract-type-weight( $sans-serif-bold);
-        $regular-italic: extract-type-weight( $sans-serif-regular-italic);
+        $regular: get-font-weight( $sans-serif-regular);
+        $medium: get-font-weight( $sans-serif-medium);
+        $bold: get-font-weight( $sans-serif-bold);
+        $regular-italic: get-font-weight( $sans-serif-regular-italic);
 
         @include assert-equal( $regular, 400, "Should return 400" );
         @include assert-equal( $medium, 600, "Should return 600" );
@@ -45,12 +45,12 @@
         @include assert-equal( $regular-italic, 400, "Should return 400" );
     }
 
-    @include test("[function] extract-type-family() | Extract the type-family property") {
+    @include test("[function] get-font-family() | Extract the type-family property") {
 
-        $regular: extract-type-family( $sans-serif-regular);
-        $medium: extract-type-family( $sans-serif-medium);
-        $bold: extract-type-family( $sans-serif-bold);
-        $regular-italic: extract-type-family( $sans-serif-regular-italic);
+        $regular: get-font-family( $sans-serif-regular);
+        $medium: get-font-family( $sans-serif-medium);
+        $bold: get-font-family( $sans-serif-bold);
+        $regular-italic: get-font-family( $sans-serif-regular-italic);
 
         @include assert-equal( $regular, $sans-serif-family, "Should return #{$sans-serif-family}" );
         @include assert-equal( $medium, $sans-serif-family, "Should return #{$sans-serif-family}" );
