@@ -5,48 +5,88 @@
 
 @include test-module("Elements") {
 
-    $collection: ();
+  $collection: (
+    ".selector": (
+      color red,
+      border (1px solid #000),
+      outline "1px solid #000"
+    )
+  );
+  $empty_collection: ();
 
-    @include test("[function] add-element() | Add an element to an existing element collection") {
-        $collection: add-element($collection, ".selector", (width: 100%));
+    @include test("[function] add-selector() | Add a selector to an existing collection") {
+      $_c: add-selector($empty_collection, ".selector");
 
-        @include assert-true(map-has-key($collection, ".selector"), "Element should be added");
+      @include assert-true(map-has-key($_c, ".selector"), "Selector should be added");
     }
 
-    @include test("[function] add-properties() | Add a properties to an existing element collection") {
+    @include test("[function] add-selector() | Add a compound selector to an existing collection") {
+      $_c: add-selector($empty_collection, "html, body, h1");
 
-        $collection: add-properties(
+      @include assert-true(map-has-key($_c, "html, body, h1"), "Selector should be added");
+    }
+
+    @include test("[function] add-properties() | Add properties to an existing selector in a collection") {
+
+        $_c: add-properties(
+          $empty_collection,
+          ".selector",
             (
                 width: 50%,
                 color: #FFF,
-            ),
-            ".selector",
-            $collection
+                border: 1px solid
+            )
         );
 
-        $properties: map-get($collection, ".selector");
+        $_properties: ();
+        @each $_p in map-get($_c, ".selector") {
+          $_properties: map-merge($_properties, (nth($_p, 1): nth($_p, 2)));
+        }
 
-        $test: map-has-key($properties, color);
-        $test2: map-get($properties, width);
+        $test: map-has-key($_properties, color);
+        $test2: map-get($_properties, width);
 
         @include assert-true($test, "Property should be added");
         @include assert-equal($test2, 50%, "Property should be changed");
     }
 
-    @include test("[function] add-properties() | Add a new selector and properties to an existing element collection") {
+    @include test("[function] remove-selector() | Remove a selector from an existing collection") {
 
-        $collection: add-properties(
-            (
-                position: absolute,
-            ),
-            "%placeholder",
-            $collection
-        );
+      $_c: remove-selector($collection, ".selector");
 
-        $properties: map-get($collection, "%placeholder");
-
-        $test: map-has-key($collection, "%placeholder");
-
-        @include assert-true($test, "Element should be added");
+      @include assert-false(map-has-key($empty_collection, ".selector"), "Selector should be removed");
     }
+
+    @include test("[function] remove-properties() | Remove properties from an existing selector in a collection") {
+
+      $_c: remove-properties($collection, ".selector", ("color"));
+      $_d: remove-properties($collection, ".selector", ("outline"));
+      $_e: remove-properties($collection, ".selector", ("color", "outline", "border"));
+
+      $_pc: ();
+      @each $_p in map-get($_c, ".selector") {
+        $_pc: map-merge($_pc, (nth($_p, 1): nth($_p, 2)));
+      }
+      $_pd: ();
+      @each $_p in map-get($_d, ".selector") {
+        $_pd: map-merge($_pd, (nth($_p, 1): nth($_p, 2)));
+      }
+      $_pe: ();
+      @each $_p in map-get($_e, ".selector") {
+        $_pe: map-merge($_pe, (nth($_p, 1): nth($_p, 2)));
+      }
+
+      @include assert-false(map-has-key($_pc, "color"), "Property should be removed");
+      @include assert-true(map-has-key($_pc, "outline"), "Property should be removed");
+      @include assert-true(map-has-key($_pc, "border"), "Property should be removed");
+
+      @include assert-false(map-has-key($_pd, "outline"), "Property should be removed");
+      @include assert-true(map-has-key($_pd, "color"), "Property should be removed");
+      @include assert-true(map-has-key($_pd, "border"), "Property should be removed");
+
+      @include assert-false(map-has-key($_pe, "color"), "Property should be removed");
+      @include assert-false(map-has-key($_pe, "border"), "Property should be removed");
+      @include assert-false(map-has-key($_pe, "outline"), "Property should be removed");
+    }
+
 }

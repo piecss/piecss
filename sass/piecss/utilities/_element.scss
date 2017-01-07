@@ -5,6 +5,8 @@
 // 1. Functions
 //    add-selector
 //    add-properties
+//    remove-selector
+//    remove-properties
 // 2. Mixins
 //    get-properties
 //    get-selectors
@@ -14,21 +16,21 @@
 
 
 ///
-/// Mixes in a new namespace (selector) and css properties into an elements collection.
+/// Mixes in a new namespace (selector) and css properties into a collection.
 ///
 /// @access public
 /// @since 0.1
 ///
-/// @param {Map} $elements - Map, a collection of $selector: $property pairs
+/// @param {Map} $collection - Map, a collection of $selector: $property pairs
 /// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
 /// @param {Map} $properties (()) - Map of CSS properties
 ///
 /// @return {Map}
 ///
 
-@function add-selector($collection, $selector, $properties: ()) {
+@function add-selector($collection, $selector) {
   $_: (
-    #{$selector}: $properties
+    #{$selector}: ()
   );
   $collection: map-merge($collection, $_);
   @return $collection;
@@ -42,13 +44,13 @@
 ///
 /// @param {Map} $properties - Map of CSS properties
 /// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
-/// @param {Map} $elements - Map, a collection of $selector: $property pairs
+/// @param {Map} $collection - Map, a collection of $selector: $property pairs
 /// @param {Bool} $force (false) - When true, append properties instead of overwrite properties
 ///
 /// @return {Map}
 ///
 
-@function add-properties($new-properties, $selector, $collection, $force: false) {
+@function add-properties($collection, $selector, $new-properties, $force: false) {
 
   @if not map-has-key($collection, $selector) {
     $collection: add-selector($collection, $selector);
@@ -90,6 +92,65 @@
   @return $collection;
 }
 
+///
+/// Remove namespace (selector) and css properties from a collection.
+///
+/// @access public
+/// @since 0.6
+///
+/// @param {Map} $collection - Map, a collection of $selector: $property pairs
+/// @param {Map} $selector - The selector to be removed
+///
+/// @return {Map}
+///
+
+@function remove-selector($collection, $selector) {
+  @return map-remove($collection, $selector);
+}
+
+///
+/// Remove properties from a selector in a collection
+///
+/// @access public
+/// @since 0.6
+///
+/// @param {Map} $collection - Map, a collection of $selector: $property pairs
+/// @param {Map} $selector - The selector under which the properties will be rendered, for example: %placeholder
+/// @param {List} $properties (()) - List of CSS properties, empty to remove all properties
+///
+/// @return {Map}
+///
+
+@function remove-properties($collection, $selector, $obsolete-properties: ()) {
+
+  // Loop over existing properties and convert into a map
+  $_properties: ();
+  @each $_p in map-get($collection, $selector) {
+    $_properties: map-merge($_properties, (nth($_p, 1): nth($_p, 2)));
+  }
+
+  // Remove properties
+  @if length($obsolete-properties) == 0 {
+    // Remove all properties
+    $_properties: ();
+  } @else {
+
+  }
+  @each $property in $obsolete-properties {
+    $_properties: map-remove($_properties, $property);
+  }
+
+  // Convert back into a properties list
+  $_ps: ();
+  $_vs: ();
+  @each $property in $_properties {
+    $_ps: append($_ps, nth($property, 1));
+    $_vs: append($_vs, nth($property, 2));
+  }
+
+  @return map-merge($collection, ($selector: zip($_ps, $_vs)));
+}
+
 
 // 2. MIXINS
 
@@ -104,50 +165,6 @@
 ///
 
 @mixin get-properties($selector) {
-  // // Lift out properties that have their own mixins
-  // @if map-has-key($element, margin) {
-  //   $value: map-get($element, margin);
-  //   $element: map-remove($element, margin);
-  //   @include margin($value);
-  // }
-  // @if map-has-key($element, padding) {
-  //   $value: map-get($element, padding);
-  //   $element: map-remove($element, padding);
-  //   @include padding($value);
-  // }
-  // /* Using Autoprefix now */
-  // // @if map-has-key($element, border-radius) {
-  // //     $value: map-get($element, border-radius);
-  // //     $element: map-remove($element, border-radius);
-  // //     @include border-radius($value);
-  // // }
-  // // @if map-has-key($element, box-shadow) {
-  // //     $value: map-get($element, box-shadow);
-  // //     $element: map-remove($element, box-shadow);
-  // //     @include box-shadow($value);
-  // // }
-  // @if map-has-key($element, font-type) {
-  //   $value: ();
-  //   $value: append($value, map-get($element, font-type));
-  //   @if map-has-key($element, font-size) {
-  //     $value: append(($value), map-get($element, font-size));
-  //   }
-  //   @if map-has-key($element, line-height) {
-  //     $value: append($value, map-get($element, line-height));
-  //   }
-  //   $element: map-remove($element, font-family);
-  //   $element: map-remove($element, font-size);
-  //   $element: map-remove($element, line-height);
-  //   $element: map-remove($element, font);
-  //
-  //   @include font(nth($value, 1), nth($value, 2), nth($value, 3));
-  // }
-  // @if map-has-key($element, font) {
-  //   $value: map-get($element, font);
-  //   $element: map-remove($element, font);
-  //   @include font(nth($value, 1), nth($value, 2), nth($value, 3));
-  // }
-
   @each $property in $selector {
     #{nth($property, 1)}: unquote(nth($property, 2));
   }
