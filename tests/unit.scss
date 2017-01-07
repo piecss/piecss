@@ -44,11 +44,11 @@
       $rf: unit( to-unit($f) );
       $rg: unit( to-unit($g) );
 
-      @include assert-equal($ra, em, "#{$ra} should equal em");
-      @include assert-equal($rb, em, "#{$rb} should equal em");
-      @include assert-equal($rc, em, "#{$rc} should equal em");
-      @include assert-equal($rd, em, "#{$rd} should equal em");
-      @include assert-equal($re, em, "#{$re} should equal em");
+      @include assert-equal($ra, "em", "#{$ra} should equal em");
+      @include assert-equal($rb, "em", "#{$rb} should equal em");
+      @include assert-equal($rc, "em", "#{$rc} should equal em");
+      @include assert-equal($rd, "em", "#{$rd} should equal em");
+      @include assert-equal($re, "em", "#{$re} should equal em");
       @include assert-equal($rf, "", "#{$rf} should be empty string");
       @include assert-equal($rg, "", "#{$rg} should be empty string");
   }
