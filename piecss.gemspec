@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   # Release Specific Information
   s.licenses = ['ISC']
-  s.version = '0.5.0'
+  s.version = '0.6.0'
   s.date = '2016-12-28'
 
   # Gem Details
