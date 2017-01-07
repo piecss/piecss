@@ -72,6 +72,11 @@
     $number: $number / $context * $unit;
   }
 
+  // If the value is 0, just return 0 for good form
+  @if strip-unit($number) == 0 {
+    $number: 0;
+  }
+  
   @return $number;
 }
 
