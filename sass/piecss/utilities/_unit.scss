@@ -43,25 +43,23 @@
 ///
 
 @function to-unit($number, $unit: $unit, $context: $default-font-size) {
-  @if not(type-of($number) == number) {
+
+  @if type-of($number) != number {
     @warn "Argument $number needs to be a number.";
     @return $number;
   }
 
-  @if strip-unit($number) == 0 {
-    @return strip-unit($number);
-  }
-
+  // We're dealing with a rhythm number, convert to px
   @if unitless($number) and not($number == 0) {
-    // We're dealing with a rhythm number, convert to px
     $number: -rhythm-units($number);
   }
 
+  // Convert value to px
   @if unit($number) != px {
-    // Convert the value to px first
     $number: to-px($number);
   }
 
+  // Now, calculate the correct contextual value in requested unit
   @if unit($unit) == "px" {
   }
   @elseif unit($unit) == "%" {
