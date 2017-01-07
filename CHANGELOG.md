@@ -8,6 +8,8 @@
 ## Planned Changes
 
 * *0.7.0 [2017] Refactor behaviour to collections*
-* *0.8.0 [2017] Documentation [rhythm, font, layout, behaviour, colour]*
-* *0.9.0 [2017] … *
+* *0.8.0 [2017] Remove unused utilities:
+         Sides
+         Typography (some unused mixins)*
+* *0.9.0 [2017] Documentation [rhythm, font, layout, behaviour, colour]*
 * *1.0.0 [2017] Yay!*
