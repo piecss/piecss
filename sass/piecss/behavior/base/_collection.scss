@@ -80,7 +80,7 @@ $base-collection: add-properties(
   (
     display: block
   ),
-  "article, aside, footer, header, nav, section",
+  "article, aside, footer, header, nav, section, figcaption, figure, main, details, /* 1 */ menu",
   $base-collection
 );
 
@@ -91,21 +91,12 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    font-size: $h1-font-size,
-    margin: $h1-margin
+    font-size: 2em,
+    margin: .67em 0
   ),
   "h1",
   $base-collection
 );
-@if to-unit($h1-line-height, $line-height-unit) != to-unit($default-line-height, $line-height-unit) {
-  $base-collection: add-properties(
-    (
-      line-height: to-unit($h1-line-height, $line-height-unit)
-    ),
-    "h1",
-    $base-collection
-  );
-}
 
 
 /* Grouping content
@@ -120,7 +111,7 @@ $base-collection: add-properties(
   (
     display: block
   ),
-  "figcaption, figure, main",
+  "article, aside, footer, header, nav, section, figcaption, figure, main, details, /* 1 */ menu",
   $base-collection
 );
 
@@ -159,10 +150,10 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    font-family: "monospace, monospace" /* 1 */,
+    font-family: "#{$monospace-family}, monospace" /* 1 */,
     font-size: 1em /* 2 */
   ),
-  "pre",
+  "code, kbd, samp, pre",
   $base-collection
 );
 
@@ -251,10 +242,10 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    font-family: "monospace, monospace" /* 1 */,
+    font-family: "#{$monospace-family}, monospace" /* 1 */,
     font-size: 1em /* 2 */
   ),
-  "code, kbd, samp",
+  "code, kbd, samp, pre",
   $base-collection
 );
 
@@ -276,8 +267,8 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    background-color: #ff0,
-    color: #000
+    background: $yellow,
+    color: $color-body
   ),
   "mark",
   $base-collection
@@ -389,9 +380,9 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    font-family: sans-serif, /* 1 */
+    font-family: get-font-family($default-font), /* 1 */
     font-size: 100%, /* 1 */
-    line-height: 1.15, /* 1 */
+    line-height: to-unit($default-line-height, $line-height-unit), /* 1 */
     margin: 0 /* 2 */
   ),
   "button, input, optgroup, select, textarea",
@@ -471,7 +462,7 @@ $base-collection: add-properties(
 
 $base-collection: add-properties(
   (
-    border: 1px solid #c0c0c0,
+    border: 1px solid $silver,
     margin: 0 2px,
     padding: .35em .625em .75em
   ),
@@ -606,7 +597,7 @@ $base-collection: add-properties(
   (
     display: block
   ),
-  "details, /* 1 */ menu",
+  "article, aside, footer, header, nav, section, figcaption, figure, main, details, /* 1 */ menu",
   $base-collection
 );
 
@@ -663,3 +654,208 @@ $base-collection: add-properties(
   "[hidden]",
   $base-collection
 );
+
+/* Tables
+   ========================================================================== */
+
+/*
+ * Remove most spacing between table cells.
+ */
+
+$base-collection: add-properties(
+  (
+    border-collapse: collapse,
+    border-spacing: 0
+  ),
+  "table",
+  $base-collection
+);
+
+$base-collection: add-properties(
+  (
+    padding: 0
+  ),
+  "td, th",
+  $base-collection
+);
+
+/* More Piecss base styles
+   ========================================================================== */
+
+/*
+  * Set consistent quote types.
+  */
+
+$base-collection: add-properties(
+  (
+    quotes: "\201C" "\201D" "\2018" "\2019"
+  ),
+  "q",
+  $base-collection
+);
+
+/*
+ * Apply a bottom margin of one line-height to any element in this comma
+ * separated list.
+ */
+
+@if length($single-direction-elements)>0 {
+  $base-collection: add-properties(
+    (
+      margin: 0 0 $default-line-height
+    ),
+    "#{implode($single-direction-elements, ", ")}",
+    $base-collection
+  );
+}
+
+/**
+ * Reset margin.
+ */
+
+@if length($reset-margin)>0 {
+  $base-collection: add-properties(
+    (
+      margin: 0
+    ),
+    "#{implode($reset-margin, ", ")}",
+    $base-collection
+  );
+}
+
+/**
+ * Reset box-model
+ */
+
+@if length($reset-box-model)>0 {
+  $base-collection: add-properties(
+    (
+      box-sizing: border-box
+    ),
+    "#{implode($reset-box-model, ", ")}",
+    $base-collection
+  );
+}
+
+/*
+ * Full typographic reset.
+ */
+
+@if length($reset-font)>0 {
+  $base-collection: add-properties(
+    (
+      font-style: inherit,
+      font-variant: inherit,
+      font-weight: inherit,
+      font-size: 1em,
+      line-height: 100%,
+      font-family: get-font-family($default-font)
+    ),
+    "#{implode($reset-font, ", ")}",
+    $base-collection
+  );
+}
+
+/*
+ * Reset font-weights.
+ */
+
+@if length($reset-font-weight-to-bold)>0 {
+  $base-collection: add-properties(
+    (
+      font-weight: bold
+    ),
+    "#{$reset-font-weight-to-bold}",
+    $base-collection
+  );
+}
+
+@if length($reset-font-weight-to-italic)>0 {
+  $base-collection: add-properties(
+    (
+      font-weight: italic
+    ),
+    "#{implode($reset-font-weight-to-italic, ", ")}",
+    $base-collection
+  );
+
+}
+
+@if length($reset-font-weight-to-regular)>0 {
+  $base-collection: add-properties(
+    (
+      font-weight: regular
+    ),
+    "#{implode($reset-font-weight-to-regular, ", ")}",
+    $base-collection
+  );
+}
+
+/*
+ * Set anchor colours.
+ */
+
+$base-collection: add-properties(
+  (
+    color: $color-anchor
+  ),
+  "a",
+  $base-collection
+);
+$base-collection: add-properties(
+  (
+    color: $color-anchor--visited
+  ),
+  "a:visited",
+  $base-collection
+);
+$base-collection: add-properties(
+  (
+    color: $color-anchor--active
+  ),
+  "a:active",
+  $base-collection
+);
+$base-collection: add-properties(
+  (
+    color: $color-anchor--hover
+  ),
+  "a:hover",
+  $base-collection
+);
+
+/**
+ * Override the fieldset settings above wit more 'Piecss' like behaviour.
+ */
+
+$base-collection: add-properties(
+  (
+    border: 1px solid $silver,
+    margin: 0 rhythm(.5),
+    padding: rhythm(.5) rhythm(1)
+  ),
+  "fieldset",
+  $base-collection
+);
+
+/**
+ * Override the fieldset settings above wit more 'Piecss' like behaviour.
+ */
+
+$base-collection: add-properties(
+  (
+    font-size: to-unit(32px),
+    margin: rhythm(1) 0,
+  ),
+  "h1",
+  $base-collection
+);
+@if to-unit(line-height(32px, 1.2), $line-height-unit, 32px) != to-unit($default-line-height, $line-height-unit) {
+  $base-collection: add-properties(
+    (
+      line-height: to-unit(line-height(32px, 1.2), $line-height-unit, 32px)
+    ),
+    "h1",
+    $base-collection
+  );
+}

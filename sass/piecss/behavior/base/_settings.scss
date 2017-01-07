@@ -1,6 +1,26 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
-$base-collection: ();
+
+// Content:
+// 1. Collection settings
+// 2. Typography settings
+// 3. Colour settings
+// 4. Reset settings
+
+// 1. Collection settings
+
+///
+/// Collection of base selectors.
+///
+/// @since 0.1
+///
+/// @type {Map} () - A map of selectors and properties
+///
+
+$base-collection: () !default;
+
+
+// 2. Typography settings
 
 ///
 /// The default font for your project. It is set in a $font-type list, Piecss
@@ -17,6 +37,9 @@ $base-collection: ();
 ///
 
 $default-font: $sans-serif-regular !default;
+
+
+// 3. Colour settings
 
 ///
 /// The default color for the HTML background.
@@ -125,205 +148,38 @@ $color-anchor--active: lighten($color-anchor, 15%) !default;
 $color-anchor--visited: darken($color-anchor, 30%) !default;
 
 ///
-/// If true, consistent quote types will be set.
-///
-/// @since 0.1
-///
-/// @type {Bool} (true)
-///
-
-$normalize-quote-quotes: true !default;
-
-///
-/// 1. Apply a natural box layout model to all elements
-/// 2. Experimentally align all elements to bottom
+/// These elements font-size, line-height and font-weight will be reset
+/// to their parent's values.
 ///
 /// @since 0.5
 ///
-/// @type {Bool} (true)
+/// @type {List} ((button, input, optgroup, select, textarea))
 ///
 
-$reset-box-model: true !default;
+
+// 4. Reset settings
+
+$reset-font: (button, input, optgroup, select, textarea) !default;
 
 ///
-/// When true:
-/// * Corrects `block` display not defined for any HTML5 element in IE 8/9.
-/// * Corrects `block` display not defined for `details` or `summary` in IE
-///   10/11 and Firefox.
-/// * Corrects `block` display not defined for `main` in IE 11.
+/// These elements margin will be reset to 0.
 ///
 /// @since 0.5
 ///
-/// @type {Bool} (true)
+/// @type {List} ((body, figure))
 ///
 
-$normalize-block-display: true !default;
+$reset-margin: (body, figure) !default;
 
 ///
-/// When true, address margin not present in IE 8/9 and Safari.
+/// Apply a natural box layout model to all elements
 ///
 /// @since 0.5
 ///
-/// @type {Bool} (true)
+/// @type {List} (*)
 ///
 
-$normalize-figure-margin: true !default;
-
-///
-/// When $normalize-figure-margin equals true, this margin is applied to the
-/// figure element.
-///
-/// @since 0.5
-///
-/// @type {List} (1em 40px)
-///
-
-$figure-margin: gutter() rhythm(5) !default;
-
-///
-/// When true, address differences between Firefox and other browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-horizontal-rule: true !default;
-
-///
-/// When true, removes most spacing between table cells.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$reset-table: true !default;
-
-///
-/// When true, removes default vertical scrollbar in IE 8/9/10/11.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-textarea: true !default;
-
-///
-/// Prevent `sub` and `sup` affecting `line-height` in all browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-sup-sub: true !default;
-
-///
-/// When $normalize-sup-sub equals true, sup top offset is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (-.5em)
-///
-
-$sup-offset-top: -.5em !default;
-
-///
-/// When $normalize-sup-sub equals true, sub bottom offset is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (-.25em)
-///
-
-$sub-offset-bottom: -.25em !default;
-
-///
-/// When $normalize-sup-sub equals true, sup and sub font-size is set to this
-/// value.
-///
-/// @since 0.5
-///
-/// @type {Number} (75%)
-///
-
-$sup-sub-font-size: 75% !default;
-
-///
-/// When true, removes border when inside `a` element in IE 8/9/10.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-img-border: true !important;
-
-///
-/// When true, corrects overflow not hidden in IE 9/10/11.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-svg: true !important;
-
-///
-/// When true, contains overflow of pre in all browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-pre-overflow: true !important;
-
-///
-/// When true, addresses odd `em`-unit font size rendering in all browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-monospace-elements: true !important;
-
-///
-/// When $normalize-monospace-elements equals true, font-size is set to this
-/// value.
-///
-/// @since 0.5
-///
-/// @type {Number} (1em)
-///
-
-$monospace-font-size: 1em !default;
-
-///
-/// When true, presets the monospace font-size.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$reset-monospace-elements: true !important;
-
-///
-/// When $reset-monospace-elements equals true, font-family is set to this
-/// value. The font-family: monospace, monospace hack fixes the inheritance and
-/// scaling of font-size for preformatted text. The duplication of monospace is
-/// intentional.
-///
-/// @since 0.5
-///
-/// @type {String} (monospace, monospace)
-///
-
-$monospace-font-family: #{$monospace-family}, #{$monospace-family} !default;
+$reset-box-model: "*" !default;
 
 ///
 /// These elements font-weight will be set to bold
@@ -333,7 +189,7 @@ $monospace-font-family: #{$monospace-family}, #{$monospace-family} !default;
 /// @type {List} ("strong")
 ///
 
-$reset-font-weight-to-bold: ("optgroup", "strong") !default;
+$reset-font-weight-to-bold: optgroupstrong !default;
 
 ///
 /// These elements font-weight will be set to italic
@@ -343,7 +199,7 @@ $reset-font-weight-to-bold: ("optgroup", "strong") !default;
 /// @type {List} ("em", "dfn")
 ///
 
-$reset-font-weight-to-italic: ("em", "dfn") !default;
+$reset-font-weight-to-italic: em, dfn !default;
 
 ///
 /// These elements font-weight will be set to regular
@@ -353,203 +209,7 @@ $reset-font-weight-to-italic: ("em", "dfn") !default;
 /// @type {List} ("i", "b")
 ///
 
-$reset-font-weight-to-regular: ("i", "b") !default;
-
-///
-/// These elements font-size, line-height and font-weight will be reset
-/// to their parent's values.
-///
-/// @since 0.5
-///
-/// @type {List} ((button, input, optgroup, select, textarea))
-///
-
-$reset-font: (button, input, optgroup, select, textarea) !default;
-
-///
-/// These elements margin will be reset to 0.
-///
-/// @since 0.5
-///
-/// @type {List} ((body, button, input, optgroup, select, textarea))
-///
-
-$reset-margin: (body, button, input, optgroup, select, textarea) !default;
-
-///
-/// When true, addresses variable `h1` font-size and margin within `section`
-/// and `article` contexts in Firefox 4+, Safari, and Chrome.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-h1: true !default;
-
-///
-/// When $normalize-h1 equals true, font-size is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (2em)
-///
-
-$h1-font-size: to-unit(32px) !default;
-
-///
-/// When $normalize-h1-font-size equals true, font-size is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (2em)
-///
-
-$h1-line-height: line-height(32px, 1) !default;
-
-///
-/// Correct the font size and margin on `h1` elements within `section` and
-/// `article` contexts in Chrome, Firefox, and Safari.
-///
-/// @since 0.5
-///
-/// @type {List} (2em)
-///
-
-$h1-margin: rhythm(1) 0 !default;
-
-///
-/// When true, addresses inconsistent and variable font size in all browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-small: true !default;
-
-///
-/// When $normalize-small equals true, font-size is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$small-font-size: 80% !default;
-
-///
-/// When true, defines consistent border, margin, and padding.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-fieldset: true !default;
-
-///
-/// When $normalize-fieldset equals true, fieldset border is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$fieldset-border: 1px solid shade(20%) !default;
-
-///
-/// When $normalize-fieldset equals true, fieldset margin is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$fieldset-margin: 0 rhythm(.5) !default;
-
-///
-/// When $normalize-fieldset equals true, fieldset padding is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$fieldset-padding: rhythm(.5) rhythm(1) !default;
-
-///
-/// Address styling not present in IE 8/9.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-mark: true !default;
-
-///
-/// When $normalize-mark equals true, mark background is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$mark-background: $yellow !default;
-
-///
-/// When $normalize-mark equals true, mark text color is set to this value.
-///
-/// @since 0.5
-///
-/// @type {Number} (80%)
-///
-
-$mark-color: $color-body !default;
-
-///
-/// Remove the gray background color from active links in IE 10.
-/// Improve readability when focused and also mouse hovered in all browsers.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-anchor: true !default;
-
-///
-/// Address styling not present in IE 8/9/10/11, Safari, and Chrome.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-abbr: true !default;
-
-///
-/// Correct `color` not being inherited in IE 8/9/10/11.
-/// Remove padding so people aren't caught out if they zero out fieldsets.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-legend: true !default;
-
-///
-/// Known limitation: by default, Chrome and Safari on OS X allow very limited
-/// styling of `select`, unless a `border` property is set.
-///
-/// @since 0.5
-///
-/// @type {Bool} (true)
-///
-
-$normalize-form-elements: true !default;
+$reset-font-weight-to-regular: i, b !default;
 
 ///
 /// Based on an idea by [@csswizardry](https://twitter.com/csswizardry):
