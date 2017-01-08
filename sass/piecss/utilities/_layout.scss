@@ -318,6 +318,8 @@
 /// Shorthand mixin for column.
 /// Uses padding by default, can be overridden to use margins instead which is especially helpful when assigning backgrounds or borders.
 ///
+/// @deprecated
+///
 /// @since 0.1
 ///
 /// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
@@ -342,6 +344,8 @@
 
 ///
 /// Mixin column-behavior: prepares an element to behave as a column. Widths must be set separately with [column-width](./#mixin-column-width).
+///
+/// @deprecated
 ///
 /// @since 0.1
 ///
@@ -368,6 +372,8 @@
 
 ///
 /// Mixin column-width. If [$negative-right-margin]() is set, it will automatically remove if from columns that span the full width of their containers.
+///
+/// @deprecated
 ///
 /// @since 0.1
 ///
@@ -446,6 +452,8 @@
 ///
 /// Use it to remove column spacing on columns
 ///
+/// @deprecated
+///
 /// @since 0.1
 ///
 /// @param {Bool} $use-margin (false)
@@ -512,6 +520,8 @@
 ///
 /// Mixin for soure ordering.
 /// Will reset positioning for smallest breakpoint.
+///
+/// @deprecated
 ///
 /// @since 0.1
 ///
