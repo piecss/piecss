@@ -414,18 +414,18 @@
 
   @if ($use-margin) {
     @if $left != false {
-      margin-left: $gutter-width * $left;
+      margin-left: gutter($fraction) * $left;
     }
     @if $right != false {
-      margin-right: $gutter-width * $right;
+      margin-right: gutter($fraction) * $right;
     }
   }
 @else {
     @if $left != false {
-      padding-left: $gutter-width * $left;
+      padding-left: gutter($fraction) * $left;
     }
     @if $right != false {
-      padding-right: $gutter-width * $right;
+      padding-right: gutter($fraction) * $right;
     }
   }
 }
