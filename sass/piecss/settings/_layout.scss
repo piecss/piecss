@@ -122,7 +122,9 @@ $columns: 4 !default;
 
 ///
 /// (Totally arbitrary) Default breakpoint layouts.
-/// Serves as an example layout
+/// The first breakpoint should be a `$lt-###` breakpoint and will be condiered
+/// the default, smallest breakpoint.
+/// Serves as an example layout.
 ///
 /// @since 0.1
 ///
@@ -130,21 +132,23 @@ $columns: 4 !default;
 ///
 
 $layouts: (
-  debug-color: $deeppink, // #ff1493
-  columns: 4,
-  rhythm: $rhythm, // 8px
-  gutter-width: rhythm(3), // 24px
-  pages: (),
+  $lt-small-handheld: (
+    debug-color: $deeppink, // #ff1493
+    columns: 3,
+    rhythm: $rhythm, // 8px
+    gutter-width: rhythm(3), // 24px
+    pages: (),
+  ),
   $gt-small-handheld: (
     debug-color: $orange, // #ffa500
-    columns: 4,
+    columns: 6,
     rhythm: $rhythm,
     gutter-width: rhythm(3),
     pages: ()
   ),
   $gt-medium-handheld: (
     debug-color: $cyan, // #0ff
-    columns: 8,
+    columns: 9,
     rhythm: $rhythm,
     gutter-width: rhythm(3),
     pages: ()
