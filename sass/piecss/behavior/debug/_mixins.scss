@@ -1,0 +1,127 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+///
+/// Renders columns.
+///
+/// @since 0.7
+///
+/// @param {Number} $columns - The number of columns
+/// @param {String} $color - The debug color
+/// @param {Number} $gutter-width - The gutter-width
+///
+
+@mixin _debug-columns($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
+  background-size: percentage(1 / $columns) 100%;
+  // scss-lint:disable SpaceAfterPropertyColon
+  background-image:
+    linear-gradient(to right,
+      rgba($color, .1) 0,
+      rgba($color, .1) $gutter-width / 2,
+      transparent $gutter-width / 2,
+      transparent percentage($columns / $columns)
+    ),
+    linear-gradient(to left,
+      rgba($color, .1) 0,
+      rgba($color, .1) $gutter-width / 2,
+      transparent $gutter-width / 2,
+      transparent percentage($columns / $columns)
+    ),
+    linear-gradient(to left,
+      transparent 0%,
+      rgba($black, .5) 1px,
+      transparent 1px,
+      transparent  percentage($columns / $columns)
+    );
+  // scss-lint:disable SpaceAfterPropertyColon
+}
+
+
+
+
+///
+/// Reveals the document's horizontal rhythm. Will automatically be mixed in
+/// when [$debug-layout](./#variable-debug-layout) or when
+/// [$debug](./#variable-debug) is set to true.
+///
+/// @since 0.1
+///
+
+@mixin debug-layout() {
+  position: relative;
+  @include pseudo-element("before") {
+    pointer-events: none;
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background-color: transparent;
+    background-repeat: repeat-x;
+    background-position: 0 0;
+
+    @include _debug-columns();
+  }
+  @each $breakpoint, $layout in $layouts {
+    $debug-color: get-layout-debug-color($layout);
+    $columns: get-layout-columns($layout);
+    $gutter-width: get-layout-gutter-width($layout);
+    @include breakpoint($breakpoint) {
+      @include pseudo-element("before") {
+        @include _debug-columns($columns, $debug-color, $gutter-width);
+      }
+    }
+  }
+}
+
+///
+/// Reveals the document's vertical rhythm. Will automatically be mixed in when
+/// [$debug-rhythm](./#variable-debug-rhythm) or when
+/// [$debug](./#variable-debug) is set to true.
+///
+/// @since 0.1
+///
+/// @param {String} $color - The debug color
+///
+
+@mixin debug-rhythm($color) {
+  background-image: linear-gradient($color 50%, transparent 50%);
+  background-size: 2 * $rhythm 2 * $rhythm;
+}
+
+///
+/// Reveals the active breakpoint. Will automatically be mixed in when
+/// [$debug-rhythm](./#variable-debug-breakpoint) or when
+/// [$debug](./#variable-debug) is set to true.
+///
+/// @since 0.7
+///
+
+@mixin debug-breakpoint() {
+  position: relative;
+  @include pseudo-element("after") {
+    position: fixed;
+    z-index: 10;
+    top: rhythm(2);
+    left: rhythm(2);
+    display: inline-block;
+    padding: rhythm(2);
+    background: rgba($white, .9);
+    color: $color-body;
+    font-size: small;
+  }
+  @each $breakpoint, $layout in $layouts {
+    @debug $breakpoint;
+    @debug get-layout-debug-color($layout);
+    @include breakpoint($breakpoint) {
+      @include pseudo-element("after") {
+        content: "#{$breakpoint}, columns: #{get-layout-columns($layout)}";
+        border: 2px solid mix(get-layout-debug-color($layout), $color-shadow, 90%);
+      }
+    }
+  }
+}

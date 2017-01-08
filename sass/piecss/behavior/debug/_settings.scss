@@ -1,0 +1,81 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+///
+/// If true,reveals the document's horizontal rhythm.
+///
+/// @since 0.1
+///
+/// @type {Bool} (false)
+///
+
+$debug-layout: false !default;
+
+///
+/// If true,reveals the document's vertical rhythm.
+///
+/// @since 0.1
+///
+/// @type {Bool} (false)
+///
+
+$debug-rhythm: false !default;
+
+///
+/// If true,reveals the current active breakpoint.
+///
+/// @since 0.1
+///
+/// @type {Bool} (false)
+///
+
+$debug-breakpoint: false !default;
+
+///
+/// Set all debug types to true at once.
+///
+/// @since 0.1
+///
+/// @type {Bool} (false)
+///
+
+$debug: false !default;
+
+///
+/// The selector for the debug class.
+///
+/// @since 0.1
+///
+/// @type {String} (.debug-layout)
+///
+
+$debug-layout-selector: ".debug-layout" !default;
+
+///
+/// The selector for the debug class.
+///
+/// @since 0.1
+///
+/// @type {String} (.debug-rhythm)
+///
+
+$debug-rhythm-selector: ".debug-rhythm" !default;
+
+///
+/// The selector for the debug class.
+///
+/// @since 0.1
+///
+/// @type {String} (.debug-breakpoint)
+///
+
+$debug-breakpoint-selector: ".debug-breakpoint" !default;
+
+///
+/// The selector for the debug class.
+///
+/// @since 0.1
+///
+/// @type {String} (.debug)
+///
+
+$debug-selector: ".debug" !default;

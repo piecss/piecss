@@ -1,0 +1,22 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+@if $debug or $debug-layout {
+  #{$debug},
+  #{$debug-layout-selector} {
+    @include debug-layout();
+  }
+}
+
+@if $debug or $debug-rhythm {
+  #{$debug},
+  #{$debug-rhythm-selector} {
+    @include debug-rhythm(rgba($color-body, .05));
+  }
+}
+
+@if $debug or $debug-breakpoint {
+  #{$debug},
+  #{$debug-breakpoint-selector} {
+    @include debug-breakpoint();
+  }
+}
