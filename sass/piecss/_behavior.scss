@@ -8,6 +8,11 @@
 @import "utilities";
 @import "settings";
 
+$debug-layout: false;
+$debug-rhythm: false;
+$debug-breakpoint: false;
+$debug: true;
+
 /* Base */
 @import "behavior/base/settings";
 @import "behavior/base/base";
@@ -23,3 +28,8 @@
 
 /* List */
 @import "behavior/list/list";
+
+/* Debug */
+@import "behavior/debug/settings";
+@import "behavior/debug/mixins";
+@import "behavior/debug/behavior";

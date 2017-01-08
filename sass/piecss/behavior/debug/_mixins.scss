@@ -64,12 +64,12 @@
     background-repeat: repeat-x;
     background-position: 0 0;
 
-    @include _debug-columns();
+    @include _debug-columns($columns, $debug-color, $gutter-width);
   }
-  @each $breakpoint, $layout in $layouts {
-    $debug-color: get-layout-debug-color($layout);
-    $columns: get-layout-columns($layout);
-    $gutter-width: get-layout-gutter-width($layout);
+  @each $breakpoint, $grid in $grids {
+    $debug-color: get-grid-debug-color($grid);
+    $columns: get-grid-columns($grid);
+    $gutter-width: get-grid-gutter-width($grid);
     @include breakpoint($breakpoint) {
       @include pseudo-element("before") {
         @include _debug-columns($columns, $debug-color, $gutter-width);
@@ -113,14 +113,16 @@
     background: rgba($white, .9);
     color: $color-body;
     font-size: small;
+    content: "no breakpoint, columns: #{$columns}";
+    border: 2px solid mix($debug-color, $color-shadow, 90%);
   }
-  @each $breakpoint, $layout in $layouts {
+  @each $breakpoint, $grid in $grids {
     @debug $breakpoint;
-    @debug get-layout-debug-color($layout);
+    @debug get-grid-debug-color($grid);
     @include breakpoint($breakpoint) {
       @include pseudo-element("after") {
-        content: "#{$breakpoint}, columns: #{get-layout-columns($layout)}";
-        border: 2px solid mix(get-layout-debug-color($layout), $color-shadow, 90%);
+        content: "#{$breakpoint}, columns: #{get-grid-columns($grid)}";
+        border: 2px solid mix(get-grid-debug-color($grid), $color-shadow, 90%);
       }
     }
   }

@@ -7,12 +7,12 @@
 //    percentage
 //    fraction-to-text
 //    gutters
-//    get-layout
-//    get-layout-property
-//    get-layout-columns
-//    get-layout-gutter-width
-//    get-layout-rhythm
-//    get-layout-debug-color
+//    get-grid
+//    get-grid-property
+//    get-grid-columns
+//    get-grid-gutter-width
+//    get-grid-rhythm
+//    get-grid-debug-color
 
 // 2. Mixins
 //    2a. Columns
@@ -156,8 +156,10 @@
 }
 
 ///
-/// Return a value based on the gutter-width. The gutter width is set as a property of the layouts map.
-/// If no breakpoint is set, the function will return the default gutter width.
+/// Return a value based on the gutter-width.
+/// If no breakpoint is set, the function will return the default gutter-width.
+/// If a breakpoint is set, the function will return a gutter-width from the
+/// grids map.
 ///
 /// @param {Arglist} $args - An argument list, may contain 2 values (a fraction and/or a valid breakpoint)
 ///
@@ -181,33 +183,32 @@
     }
   }
 
-  // Retrieve the gutter-width from the settings, but check if one is set in layouts and take that in stead
+  // Retrieve the gutter-width from the settings, but check if one is set in grids and take that in stead
   $_gutter-width: $gutter-width;
   @if $_breakpoint {
-    $_gutter-width: if(get-layout-gutter-width(get-layout($_breakpoint)), get-layout-gutter-width(get-layout($_breakpoint)), $_gutter-width);
+    $_gutter-width: if(get-grid-gutter-width(get-grid($_breakpoint)), get-grid-gutter-width(get-grid($_breakpoint)), $_gutter-width);
   }
-
 
   @return $_fraction * $gutter-width;
 }
 
 ///
-/// Get layout settings from a layout map
+/// Get grid settings from a grid map
 ///
 ///
 /// @param {String} $breakpoints - A valid breakpoint
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {Map} $grids ($grids) - A grid map
 ///
-/// @return {Map} - A breakpoint global layout, or a breakpoint nested page layout from [$layouts map](./#variable-layouts)
+/// @return {Map} - A breakpoint global grid, or a breakpoint nested page grid from [$grids map](./#variable-grids)
 ///
 
-@function get-layout($breakpoint, $layouts: $layouts) {
+@function get-grid($breakpoint, $grids: $grids) {
 
-  @if not( map-has-key($layouts, $breakpoint) ) {
+  @if not( map-has-key($grids, $breakpoint) ) {
     @error "Unknown breakpoint: #{$breakpoint}";
   }
 
-  @return map-get($layouts, $breakpoint);
+  @return map-get($grids, $breakpoint);
 }
 
 ///
@@ -216,23 +217,23 @@
 /// @since 1.0
 ///
 /// @example
-/// $columns: get-layout-property($columns);
+/// $columns: get-grid-property($columns);
 ///
-/// @param {String} $property - The layout-map property to retrieve
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {String} $property - The grid-map property to retrieve
+/// @param {Map} $grids ($grids) - A grid map
 ///
 /// @return {*}
 ///
 
-@function get-layout-property($layout, $property) {
+@function get-grid-property($grid, $property) {
 
   $_value: null;
 
-  @if map-has-key($layout, $property) {
-    $_value: map-get($layout, $property);
+  @if map-has-key($grid, $property) {
+    $_value: map-get($grid, $property);
   }
   @else {
-    @error "Unknown layout property: #{$property}";
+    @error "Unknown grid property: #{$property}";
   }
 
   @return $_value;
@@ -244,15 +245,15 @@
 /// @since 1.0
 ///
 /// @example
-/// $columns: get-layout-columns();
+/// $columns: get-grid-columns();
 ///
-/// @param {Map} $layouts ($layout) - A layout map
+/// @param {Map} $grids ($grid) - A grid map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-columns($layout) {
-  @return get-layout-property($layout, "columns");
+@function get-grid-columns($grid) {
+  @return get-grid-property($grid, "columns");
 }
 
 ///
@@ -261,15 +262,15 @@
 /// @since 1.0
 ///
 /// @example
-/// $gutter-width: get-layout-gutter-width();
+/// $gutter-width: get-grid-gutter-width();
 ///
-/// @param {Map} $layouts ($layout) - A layout map
+/// @param {Map} $grids ($grid) - A grid map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-gutter-width($layout) {
-  @return get-layout-property($layout, "gutter-width");
+@function get-grid-gutter-width($grid) {
+  @return get-grid-property($grid, "gutter-width");
 }
 
 
@@ -279,15 +280,15 @@
 /// @since 1.0
 ///
 /// @example
-/// $rhythm: get-layout-rhythm();
+/// $rhythm: get-grid-rhythm();
 ///
-/// @param {Map} $layouts ($layout) - A layout map
+/// @param {Map} $grids ($grid) - A grid map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-rhythm($layout) {
-  @return get-layout-property($layout, "rhythm");
+@function get-grid-rhythm($grid) {
+  @return get-grid-property($grid, "rhythm");
 }
 
 
@@ -297,15 +298,15 @@
 /// @since 1.0
 ///
 /// @example
-/// $debug-color: get-layout-debug-color();
+/// $debug-color: get-grid-debug-color();
 ///
-/// @param {Map} $layouts ($layout) - A layout map
+/// @param {Map} $grids ($grid) - A grid map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-debug-color($layout) {
-  @return get-layout-property($layout, "debug-color");
+@function get-grid-debug-color($grid) {
+  @return get-grid-property($grid, "debug-color");
 }
 
 

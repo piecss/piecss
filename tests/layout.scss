@@ -12,32 +12,27 @@
 
   $gutter-width: 24px;
 
-  $layouts: (
-    debug-color: $deeppink, // #ff1493
-    columns: 4,
-    rhythm: $rhythm, // 8px
-    gutter-width: rhythm(3), // 24px
-    pages: (),
+  $grids: (
     $gt-small-handheld: (
       debug-color: $orange, // #ffa500
-      columns: 4,
+      columns: 6,
       rhythm: $rhythm,
-      gutter-width: rhythm(3),
-      pages: ()
+      gutter-width: $gutter-width,
+      layouts: ()
     ),
     $gt-medium-handheld: (
       debug-color: $cyan, // #0ff
-      columns: 8,
+      columns: 9,
       rhythm: $rhythm,
-      gutter-width: rhythm(3),
-      pages: ()
+      gutter-width: $gutter-width,
+      layouts: ()
     ),
     $gt-small-desktop: (
       debug-color: $becca, // #639
       columns: 12,
       rhythm: $rhythm,
-      gutter-width: rhythm(3),
-      pages: ()
+      gutter-width: $gutter-width,
+      layouts: ()
     )
   );
 
@@ -72,76 +67,66 @@
     @include assert-equal( gutter(2), 48px, "Should be 48px" );
   }
 
-  @include test("[function] get-layout() | Get a layout map for a breakpoint") {
+  @include test("[function] get-grid() | Get a grid map for a breakpoint") {
 
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    // Test if we have retrieved the right layout by testing its `debug-color` properties
-    @include assert-equal( get-layout-property($layout1, 'debug-color'), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property($layout2, 'debug-color'), $cyan, "`debug-color` should be #{$cyan}" );
-    @include assert-equal( get-layout-property($layout3, 'debug-color'), $becca, "`debug-color` should be #{$becca}" );
+    // Test if we have retrieved the right grid by testing its `debug-color` properties
+    @include assert-equal( get-grid-property($grid1, 'debug-color'), $orange, "`debug-color` should be #{$orange}" );
+    @include assert-equal( get-grid-property($grid2, 'debug-color'), $cyan, "`debug-color` should be #{$cyan}" );
+    @include assert-equal( get-grid-property($grid3, 'debug-color'), $becca, "`debug-color` should be #{$becca}" );
   }
 
-  @include test("[function] get-layout-property() | Get a property from a layout map") {
+  @include test("[function] get-grid-property() | Get a property from a grid map") {
 
-    $layout0: get-layout($lt-small-handheld);
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    @include assert-equal( get-layout-property($layout0, 'debug-color'), $deeppink, "`debug-color` should be #{$deeppink}" );
-    @include assert-equal( get-layout-property($layout1, 'debug-color'), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property($layout2, 'gutter-width'), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
-    @include assert-equal( get-layout-property($layout3,'rhythm'), $rhythm, "`rhythm` should be #{$rhythm}" );
+    @include assert-equal( get-grid-property($grid1, 'debug-color'), $orange, "`debug-color` should be #{$orange}" );
+    @include assert-equal( get-grid-property($grid2, 'gutter-width'), $gutter-width, "`gutter-width` should be #{$gutter-width}" );
+    @include assert-equal( get-grid-property($grid3,'rhythm'), $rhythm, "`rhythm` should be #{$rhythm}" );
   }
 
-  @include test("[function] get-layout-columns() | Get the value of property `column` from a layout map") {
+  @include test("[function] get-grid-columns() | Get the value of property `column` from a grid map") {
 
-    $layout0: get-layout($lt-small-handheld);
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    @include assert-equal( get-layout-columns($layout0), 4, "`columns` should be 4" );
-    @include assert-equal( get-layout-columns($layout1), 4, "`columns` should be 4" );
-    @include assert-equal( get-layout-columns($layout2), 8, "`columns` should be 8" );
-    @include assert-equal( get-layout-columns($layout3), 12, "`columns` should be 12" );
+    @include assert-equal( get-grid-columns($grid1), 6, "`columns` should be 6" );
+    @include assert-equal( get-grid-columns($grid2), 9, "`columns` should be 9" );
+    @include assert-equal( get-grid-columns($grid3), 12, "`columns` should be 12" );
   }
 
-  @include test("[function] get-layout-gutter-width() | Get the value of property `gutter-width` from a layout map") {
+  @include test("[function] get-grid-gutter-width() | Get the value of property `gutter-width` from a grid map") {
 
-    $layout0: get-layout($lt-small-handheld);
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    @include assert-equal( get-layout-gutter-width($layout0), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
-    @include assert-equal( get-layout-gutter-width($layout3), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
+    @include assert-equal( get-grid-gutter-width($grid3), $gutter-width, "`gutter-width` should be #{$gutter-width}" );
   }
 
-  @include test("[function] get-layout-rhythm() | Get the value of property `rhythm` from a layout map") {
+  @include test("[function] get-grid-rhythm() | Get the value of property `rhythm` from a grid map") {
 
-    $layout0: get-layout($lt-small-handheld);
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    @include assert-equal( get-layout-rhythm($layout0), $rhythm, "`rhythm` should be #{$rhythm}" );
-    @include assert-equal( get-layout-rhythm($layout3), $rhythm, "`grhythm` should be #{$rhythm}" );
+    @include assert-equal( get-grid-rhythm($grid3), $rhythm, "`grhythm` should be #{$rhythm}" );
   }
 
-  @include test("[function] get-layout-debug-color() | Get the value of property `debug-color` from a layout map") {
+  @include test("[function] get-grid-debug-color() | Get the value of property `debug-color` from a grid map") {
 
-    $layout0: get-layout($lt-small-handheld);
-    $layout1: get-layout($gt-small-handheld);
-    $layout2: get-layout($gt-medium-handheld);
-    $layout3: get-layout($gt-small-desktop);
+    $grid1: get-grid($gt-small-handheld);
+    $grid2: get-grid($gt-medium-handheld);
+    $grid3: get-grid($gt-small-desktop);
 
-    @include assert-equal( get-layout-debug-color($layout0), $deeppink, "`debug-color` should be #{$deeppink}" );
-    @include assert-equal( get-layout-debug-color($layout1), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-debug-color($layout2), $cyan, "`debug-color` should be #{$cyan}" );
-    @include assert-equal( get-layout-debug-color($layout3), $becca, "`debug-color` should be #{$becca}" );
+    @include assert-equal( get-grid-debug-color($grid1), $orange, "`debug-color` should be #{$orange}" );
+    @include assert-equal( get-grid-debug-color($grid2), $cyan, "`debug-color` should be #{$cyan}" );
+    @include assert-equal( get-grid-debug-color($grid3), $becca, "`debug-color` should be #{$becca}" );
   }
 }

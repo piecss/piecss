@@ -1,11 +1,12 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// Layout settings
+// Grid settings
 
 
 ///
-/// Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
+/// Default column width, all columns implemented with [column()](./#mixin-column)
+/// will have this width unless otherwise specified.
 ///
 /// @since 0.1
 ///
@@ -15,7 +16,9 @@
 $column-width-default: 1/1 !default;
 
 ///
-/// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld). If you are developing mobile-first, leave this setting to false.
+/// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of
+/// all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld).
+/// If you are developing mobile-first, leave this setting to false.
 ///
 /// @deprecated
 ///
@@ -27,8 +30,11 @@ $column-width-default: 1/1 !default;
 $column-breakpoint: false !default;
 
 ///
-/// By default, columns are rendered as inline-blocks. Inline-block elements are much easier to implement than floating elements, but require the invisible space between elements to be minified or obscured.
-/// If you can't minify your markup, then floated columns (or [negative right margin](./#variable-negative-right-margin)) will be helpful. You will have to implement your own clearfix method though.
+/// By default, columns are rendered as inline-blocks. Inline-block elements are
+/// much easier to implement than floating elements, but require the invisible
+/// space between elements to be minified or obscured.
+/// If you can't minify your markup, then floated columns (or [negative right margin](./#variable-negative-right-margin))
+/// will be helpful. You will have to implement your own clearfix method though.
 ///
 /// @since 0.1
 ///
@@ -121,43 +127,58 @@ $root-position: center !default;
 $columns: 4 !default;
 
 ///
-/// (Totally arbitrary) Default breakpoint layouts.
-/// The first breakpoint should be a `$lt-###` breakpoint and will be condiered
-/// the default, smallest breakpoint.
-/// Serves as an example layout.
+/// The color used for debugging
+///
+/// @since 0.7
+///
+/// @type {Color} (#ff1493)
+///
+
+$debug-color: $deeppink;
+
+
+///
+/// Used for setting instructions for page layouts.
 ///
 /// @since 0.1
 ///
 /// @type {Map}
 ///
 
-$layouts: (
-  $lt-small-handheld: (
-    debug-color: $deeppink, // #ff1493
-    columns: 3,
-    rhythm: $rhythm, // 8px
-    gutter-width: rhythm(3), // 24px
-    pages: (),
-  ),
+$layouts: ();
+
+
+///
+/// (Totally arbitrary) Default breakpoint grids.
+/// The first breakpoint should be a `$lt-###` breakpoint and will be condiered
+/// the default, smallest breakpoint.
+/// Serves as an example grid.
+///
+/// @since 0.1
+///
+/// @type {Map}
+///
+
+$grids: (
   $gt-small-handheld: (
     debug-color: $orange, // #ffa500
     columns: 6,
     rhythm: $rhythm,
-    gutter-width: rhythm(3),
-    pages: ()
+    gutter-width: $gutter-width,
+    layouts: ()
   ),
   $gt-medium-handheld: (
     debug-color: $cyan, // #0ff
     columns: 9,
     rhythm: $rhythm,
-    gutter-width: rhythm(3),
-    pages: ()
+    gutter-width: $gutter-width,
+    layouts: ()
   ),
   $gt-small-desktop: (
     debug-color: $becca, // #639
     columns: 12,
     rhythm: $rhythm,
-    gutter-width: rhythm(3),
-    pages: ()
+    gutter-width: $gutter-width,
+    layouts: ()
   )
 ) !default;
