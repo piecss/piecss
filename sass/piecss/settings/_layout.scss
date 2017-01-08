@@ -3,15 +3,6 @@
 
 // Layout settings
 
-///
-/// If true,reveals the document's horizontal rhythm. Also see: [mixin $debug-layout](./#mixin-debug-layout).
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$debug-layout: false !default;
 
 ///
 /// Default column width, all columns implemented with [column()](./#mixin-column) will have this width unless otherwise specified.
