@@ -219,25 +219,17 @@
 /// $columns: get-layout-property($columns);
 ///
 /// @param {String} $property - The layout-map property to retrieve
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
 /// @param {Map} $layouts ($layouts) - A layout map
 ///
 /// @return {*}
 ///
 
-@function get-layout-property($property, $breakpoint: false, $layouts: $layouts) {
+@function get-layout-property($layout, $property) {
 
   $_value: null;
 
-  // Retrieve the layout – default values are not nested in a breakpoint
-  $_layout: $layouts;
-
-  @if $breakpoint and map-has-key($layouts, $breakpoint) {
-    $_layout: get-layout($breakpoint);
-  }
-
-  @if map-has-key($_layout, $property) {
-    $_value: map-get($_layout, $property);
+  @if map-has-key($layout, $property) {
+    $_value: map-get($layout, $property);
   }
   @else {
     @error "Unknown layout property: #{$property}";
@@ -254,14 +246,13 @@
 /// @example
 /// $columns: get-layout-columns();
 ///
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {Map} $layouts ($layout) - A layout map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-columns($breakpoint: false, $layouts: $layouts) {
-  @return get-layout-property("columns", $breakpoint);
+@function get-layout-columns($layout) {
+  @return get-layout-property($layout, "columns");
 }
 
 ///
@@ -272,14 +263,13 @@
 /// @example
 /// $gutter-width: get-layout-gutter-width();
 ///
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {Map} $layouts ($layout) - A layout map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-gutter-width($breakpoint: false, $layouts: $layouts) {
-  @return get-layout-property("gutter-width", $breakpoint);
+@function get-layout-gutter-width($layout) {
+  @return get-layout-property($layout, "gutter-width");
 }
 
 
@@ -291,14 +281,13 @@
 /// @example
 /// $rhythm: get-layout-rhythm();
 ///
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {Map} $layouts ($layout) - A layout map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-rhythm($breakpoint: false, $layouts: $layouts) {
-  @return get-layout-property("rhythm", $breakpoint);
+@function get-layout-rhythm($layout) {
+  @return get-layout-property($layout, "rhythm");
 }
 
 
@@ -310,14 +299,13 @@
 /// @example
 /// $debug-color: get-layout-debug-color();
 ///
-/// @param {String | Bool} $breakpoint (false) - A valid breakpoint string, or false to retrieve the default value
-/// @param {Map} $layouts ($layouts) - A layout map
+/// @param {Map} $layouts ($layout) - A layout map
 ///
 /// @since 1.0
 ///
 
-@function get-layout-debug-color($breakpoint: false, $layouts: $layouts) {
-  @return get-layout-property("debug-color", $breakpoint);
+@function get-layout-debug-color($layout) {
+  @return get-layout-property($layout, "debug-color");
 }
 
 
@@ -535,36 +523,4 @@
       position: initial;
     }
   }
-}
-
-
-///
-/// Reveals the document's horizontal rhythm. Will automatically be mixed in when [$debug-layout](./#variable-debug-layout) is set to true.
-///
-/// @since 0.1
-///
-
-@mixin debug-layout($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
-  background-size: percentage(1 / $columns) 100%;
-  // scss-lint:disable TrailingWhitespace SpaceAfterPropertyColon
-  background-image:
-    linear-gradient(to right,
-      rgba($color, .1) 0,
-      rgba($color, .1) $gutter-width / 2,
-      transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
-    ),
-    linear-gradient(to left,
-      rgba($color, .1) 0,
-      rgba($color, .1) $gutter-width / 2,
-      transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
-    ),
-    linear-gradient(to left,
-      transparent 0%,
-      rgba($black, .5) 1px,
-      transparent 1px,
-      transparent  percentage($columns / $columns)
-    );
-  // scss-lint:enable TrailingWhitespace SpaceAfterPropertyColon
 }
