@@ -117,8 +117,6 @@
     border: 2px solid mix($debug-color, $color-shadow, 90%);
   }
   @each $breakpoint, $grid in $grids {
-    @debug $breakpoint;
-    @debug get-grid-debug-color($grid);
     @include breakpoint($breakpoint) {
       @include pseudo-element("after") {
         content: "#{$breakpoint}, columns: #{get-grid-columns($grid)}";
