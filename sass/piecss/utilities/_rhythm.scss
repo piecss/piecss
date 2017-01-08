@@ -73,32 +73,3 @@
     // }
     // #{$property}: rhythm($units, $context);
 }
-
-
-///
-/// Reveals the document's vertical rhythm. Will automatically be mixed in when [$debug-rhythm](./#variable-debug-rhythm) is set to true.
-///
-/// @since 0.1
-///
-/// @param {Number} $rhythm - The rhythm height
-///
-
-@mixin debug-rhythm($rhythm: $rhythm) {
-  $to: transparent;
-  $from: rgba($lightcyan, .5);
-
-  background-image: linear-gradient($from 50%, $to 50%);
-  background-size: (2 * $rhythm) (2 * $rhythm);
-
-  * {
-    // scss-lint:disable ImportantRule DuplicateProperty
-    background-image: none !important;
-    background-color: transparent !important;
-    outline: rgba($fuchsia, .1) dotted 1px;
-    outline: $lightgray dotted 1px;
-    // scss-lint:enable ImportantRule DuplicateProperty
-    @include old-ie {
-      outline: lighten($fuchsia, .1) dotted 1px \9;
-    }
-  }
-}
