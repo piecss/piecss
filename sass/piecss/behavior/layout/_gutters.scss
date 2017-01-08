@@ -1,0 +1,32 @@
+/*
+Gutter
+
+.gutter--left - Small padding on left side
+.gutter--right - Small padding on right side
+.gutters - Small padding on left and right side
+.gutter-outside--left - Small padding on left side
+.gutter-outside--right - Small padding on right side
+.gutters-outside - Small padding on left and right side
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+*/
+
+.gutter {
+  &s,
+  &--left {
+    padding-left: gutter();
+  }
+  &s,
+  &--right {
+    padding-right: gutter();
+  }
+  &s-outside,
+  &-outside--left {
+    margin-left: gutter();
+  }
+  &-outside,
+  &-outside--right {
+    margin-right: gutter();
+  }
+}
