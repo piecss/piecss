@@ -1,0 +1,57 @@
+/*
+Trailer
+
+.trailer - Adds a margin of 3 rhythms to bottom
+.trailer--tiny - Adds a margin of 1 rhythms to bottom
+.trailer--small - Adds a margin of 2 rhythms to bottom
+.trailer--large - Adds a margin of 4 rhythms to bottom
+.trailer--huge - Adds a margin of 6 rhythms to bottom
+
+markup:
+<div class="{$modifiers}">I am content inside of a semanticless container</div>
+*/
+
+.trailer {
+  margin-bottom: rhythm(3);
+  &--tiny {
+    margin-bottom: rhythm();
+  }
+  &--small {
+    margin-bottom: rhythm(2);
+  }
+  &--large {
+    margin-bottom: rhythm(4);
+  }
+  &--huge {
+    margin-bottom: rhythm(6);
+  }
+}
+
+/*
+Trailer inside
+
+.trailer-inside - Adds a padding of 3 rhythms to bottom
+.trailer-inside--tiny - Adds a padding of 1 rhythms to bottom
+.trailer-inside--small - Adds a padding of 2 rhythms to bottom
+.trailer-inside--large - Adds a padding of 4 rhythms to bottom
+.trailer-inside--huge - Adds a padding of 6 rhythms to bottom
+
+markup:
+<div class="{$modifiers}">I am content inside of a semanticless container</div>
+*/
+
+.trailer-inside {
+  padding-bottom: rhythm(3);
+  &--tiny {
+    padding-bottom: rhythm();
+  }
+  &--small {
+    padding-bottom: rhythm(2);
+  }
+  &--large {
+    padding-bottom: rhythm(4);
+  }
+  &--huge {
+    padding-bottom: rhythm(6);
+  }
+}
