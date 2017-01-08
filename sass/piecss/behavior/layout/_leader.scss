@@ -1,0 +1,57 @@
+/*
+Leader
+
+.leader - Adds a margin of 3 rhythms to top
+.leader--tiny - Adds a margin of 1 rhythms to top
+.leader--small - Adds a margin of 2 rhythms to top
+.leader--large - Adds a margin of 4 rhythms to top
+.leader--hug - Adds a margin of 6 rhythms to top
+
+markup:
+<div class="{$modifiers}">I am content inside of a semanticless container</div>
+*/
+
+.leader {
+  margin-top: rhythm(3);
+  &--tiny {
+    margin-top: rhythm();
+  }
+  &--small {
+    margin-top: rhythm(2);
+  }
+  &--large {
+    margin-top: rhythm(4);
+  }
+  &--huge {
+    margin-top: rhythm(6);
+  }
+}
+
+/*
+Leader inside
+
+.leader-inside - Adds a padding of 3 rhythms to top
+.leader-inside--tiny - Adds a padding of 1 rhythms to top
+.leader-inside--small - Adds a padding of 2 rhythms to top
+.leader-inside--large - Adds a padding of 4 rhythms to top
+.leader-inside--huge - Adds a padding of 6 rhythms to top
+
+markup:
+<div class="{$modifiers}">I am content inside of a semanticless container</div>
+*/
+
+.leader-inside {
+  padding-top: rhythm(3);
+  &--tiny {
+    padding-top: rhythm();
+  }
+  &--small {
+    padding-top: rhythm(2);
+  }
+  &--large {
+    padding-top: rhythm(4);
+  }
+  &--huge {
+    padding-top: rhythm(6);
+  }
+}
