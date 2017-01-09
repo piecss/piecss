@@ -28,6 +28,9 @@
   "homepage": "https://github.com/piecss/piecss",
   "devDependencies": {
     "sass-true": "^2.1.4",
-    "sassdoc": "^2.1.20"
+    "sassdoc": "^2.1.20",
+    "gulp": "*",
+    "sass-lint": "*",
+    "gulp-sass": "*"
   }
 }
