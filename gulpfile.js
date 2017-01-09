@@ -1,9 +1,15 @@
 var gulp = require('gulp'),
     scssLint = require('sass-lint'),
-    sass = require('gulp-sass');
+    sass = require('gulp-sass'),
+    sassdoc = require('sassdoc');
 
 gulp.task('watch', function() {
     gulp.watch(['tests/*.scss', 'sass/**/*.scss'], ['_build']);
+});
+
+gulp.task('sassdoc', function() {
+    return gulp.src('sass/**/*.scss')
+        .pipe(sassdoc());
 });
 
 gulp.task('_build', function() {
