@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("Image") {
 
     $landscape: (width: 400px, height: 200px);

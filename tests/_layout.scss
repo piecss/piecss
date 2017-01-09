@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("Layout") {
 
   $a: 1/2;

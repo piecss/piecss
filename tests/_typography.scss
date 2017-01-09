@@ -3,7 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
-// Relies on settings/fonts
+@import("init");
+
 @include test-module("Typography") {
 
     @include test("[function] get-font-style() | Extract the type-variant property") {

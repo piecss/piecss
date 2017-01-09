@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("Miscellaneous") {
 
     @include test("[function] to-bool()") {

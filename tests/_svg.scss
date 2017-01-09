@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("SVG") {
 
     @include test("[function] svg-url() | Create Data URI from svg object") {

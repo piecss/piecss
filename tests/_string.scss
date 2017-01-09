@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("String") {
 
   @include test("[function] str-replace() | Replace characters in a string") {
