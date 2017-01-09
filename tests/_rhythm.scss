@@ -3,6 +3,8 @@
 /// Licensed under MIT; see LICENSE.txt
 ///
 
+@import("init");
+
 @include test-module("Rhythm") {
 
     @include test("[function] -rhythm-units() | Calculate a height in px based on [$rhythm](./#variable-rhythm) which defaults to #{$rhythm}.") {
