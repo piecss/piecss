@@ -81,16 +81,16 @@
     $layout3: get-layout($gt-small-desktop);
 
     // Test if we have retrieved the right layout by testing its `debug-color` properties
-    @include assert-equal( get-layout-property('debug-color', false, $layout1), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property('debug-color', false, $layout2), $cyan, "`debug-color` should be #{$cyan}" );
-    @include assert-equal( get-layout-property('debug-color', false, $layout3), $becca, "`debug-color` should be #{$becca}" );
+    @include assert-equal( get-layout-property("debug-color", false, $layout1), $orange, "`debug-color` should be #{$orange}" );
+    @include assert-equal( get-layout-property("debug-color", false, $layout2), $cyan, "`debug-color` should be #{$cyan}" );
+    @include assert-equal( get-layout-property("debug-color", false, $layout3), $becca, "`debug-color` should be #{$becca}" );
   }
 
   @include test("[function] get-layout-property() | Get a property from a layout map") {
-    @include assert-equal( get-layout-property('debug-color'), $deeppink, "`debug-color` should be #{$deeppink}" );
-    @include assert-equal( get-layout-property('debug-color', $gt-small-handheld), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property('gutter-width', $gt-small-handheld), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
-    @include assert-equal( get-layout-property('rhythm', $gt-small-handheld), $rhythm, "`rhythm` should be #{$rhythm}" );
+    @include assert-equal( get-layout-property("debug-color"), $deeppink, "`debug-color` should be #{$deeppink}" );
+    @include assert-equal( get-layout-property("debug-color", $gt-small-handheld), $orange, "`debug-color` should be #{$orange}" );
+    @include assert-equal( get-layout-property("gutter-width", $gt-small-handheld), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
+    @include assert-equal( get-layout-property("rhythm", $gt-small-handheld), $rhythm, "`rhythm` should be #{$rhythm}" );
   }
 
   @include test("[function] get-layout-columns() | Get the value of property `column` from a layout map") {

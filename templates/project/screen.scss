@@ -48,7 +48,7 @@ $debug-rhythm: false;
 //
 // ==========================================================================
 
-@import "Compass";
+// @import "Compass";
 
 
 // ==========================================================================
@@ -60,7 +60,7 @@ $debug-rhythm: false;
 //
 // ==========================================================================
 
-@import "piecss/utilities";
+@import "sass/piecss/utilities";
 
 
 // ==========================================================================
@@ -72,7 +72,7 @@ $debug-rhythm: false;
 //
 // ==========================================================================
 
-@import "piecss/settings";
+@import "sass/piecss/settings";
 @import "settings";
 
 
@@ -96,7 +96,7 @@ $debug-rhythm: false;
 //
 // ==========================================================================
 
-@import "piecss/behavior";
+@import "sass/piecss/behavior";
 
 // Or, import individually:
 
