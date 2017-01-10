@@ -13,9 +13,9 @@
 
     @include test("[function] proportion() | Get image proportions") {
 
-        @include assert-true( proportion($landscape) > 1, "Should be greater than 1" );
-        @include assert-true( proportion($portrait) < 1, "Should be smaller than 1" );
-        @include assert-true( proportion($square) == 1, "Should be equal to 1" );
+        @include assert-true(proportion($landscape) > 1, "Should be greater than 1");
+        @include assert-true(proportion($portrait) < 1, "Should be smaller than 1");
+        @include assert-true(proportion($square) == 1, "Should be equal to 1");
     }
 
     @include test("[function] orientation() | Get image orientation") {

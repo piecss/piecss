@@ -203,7 +203,7 @@
 
 @function get-layout($breakpoint, $layouts: $layouts) {
 
-  @if not( map-has-key($layouts, $breakpoint) ) {
+  @if not(map-has-key($layouts, $breakpoint)) {
     @error "Unknown breakpoint: #{$breakpoint}";
   }
 
