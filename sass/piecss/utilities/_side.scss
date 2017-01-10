@@ -125,13 +125,13 @@
     $values: $values $values $values $values;
   }
   @elseif $length == 2 {
-      $values: nth($values, 1) nth($values, 2) nth($values, 1) nth($values, 2);
+    $values: nth($values, 1) nth($values, 2) nth($values, 1) nth($values, 2);
   }
   @elseif $length == 3 {
-      $values: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 2);
+    $values: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 2);
   }
   @elseif $length == 4 {
-      $values: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 4);
+    $values: nth($values, 1) nth($values, 2) nth($values, 3) nth($values, 4);
   }
 
   @return $values;

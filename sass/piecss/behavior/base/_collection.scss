@@ -206,7 +206,7 @@ $base-collection: add-properties(
   (
     text-decoration: dotted /* 2 */
   ),
-  true
+    true
 );
 
 
@@ -218,7 +218,7 @@ $base-collection: add-properties(
   $base-collection,
   "b, strong",
   (
-   font-weight: inherit
+    font-weight: inherit
   )
 );
 
@@ -232,7 +232,7 @@ $base-collection: add-properties(
   (
     font-weight: bolder
   ),
-  true
+    true
 );
 
 /**
