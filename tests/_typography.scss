@@ -14,49 +14,49 @@
         $bold: get-font-style($sans-serif-bold);
         $regular-italic: get-font-style($sans-serif-regular-italic);
 
-        @include assert-equal( $regular, "normal", "Should return normal" );
-        @include assert-equal( $medium, "normal", "Should return normal" );
-        @include assert-equal( $bold, "normal", "Should return normal" );
-        @include assert-equal( $regular-italic, "italic", "Should return italic" );
+        @include assert-equal($regular, "normal", "Should return normal");
+        @include assert-equal($medium, "normal", "Should return normal");
+        @include assert-equal($bold, "normal", "Should return normal");
+        @include assert-equal($regular-italic, "italic", "Should return italic");
     }
 
     @include test("[function] get-font-variant() | Extract the type-style property") {
 
-        $regular: get-font-variant( $sans-serif-regular);
-        $medium: get-font-variant( $sans-serif-medium);
-        $bold: get-font-variant( $sans-serif-bold);
-        $regular-italic: get-font-variant( $sans-serif-regular-italic);
+        $regular: get-font-variant($sans-serif-regular);
+        $medium: get-font-variant($sans-serif-medium);
+        $bold: get-font-variant($sans-serif-bold);
+        $regular-italic: get-font-variant($sans-serif-regular-italic);
 
-        @include assert-equal( $regular, "normal", "Should return normal" );
-        @include assert-equal( $medium, "normal", "Should return normal" );
-        @include assert-equal( $bold, "normal", "Should return normal" );
-        @include assert-equal( $regular-italic, "normal", "Should return normal" );
+        @include assert-equal($regular, "normal", "Should return normal");
+        @include assert-equal($medium, "normal", "Should return normal");
+        @include assert-equal($bold, "normal", "Should return normal");
+        @include assert-equal($regular-italic, "normal", "Should return normal");
     }
 
     @include test("[function] get-font-weight() | Extract the type-weight property") {
 
-        $regular: get-font-weight( $sans-serif-regular);
-        $medium: get-font-weight( $sans-serif-medium);
-        $bold: get-font-weight( $sans-serif-bold);
-        $regular-italic: get-font-weight( $sans-serif-regular-italic);
+        $regular: get-font-weight($sans-serif-regular);
+        $medium: get-font-weight($sans-serif-medium);
+        $bold: get-font-weight($sans-serif-bold);
+        $regular-italic: get-font-weight($sans-serif-regular-italic);
 
-        @include assert-equal( $regular, 400, "Should return 400" );
-        @include assert-equal( $medium, 600, "Should return 600" );
-        @include assert-equal( $bold, 600, "Should return 600" );
-        @include assert-equal( $regular-italic, 400, "Should return 400" );
+        @include assert-equal($regular, 400, "Should return 400");
+        @include assert-equal($medium, 600, "Should return 600");
+        @include assert-equal($bold, 600, "Should return 600");
+        @include assert-equal($regular-italic, 400, "Should return 400");
     }
 
     @include test("[function] get-font-family() | Extract the type-family property") {
 
-        $regular: get-font-family( $sans-serif-regular);
-        $medium: get-font-family( $sans-serif-medium);
-        $bold: get-font-family( $sans-serif-bold);
-        $regular-italic: get-font-family( $sans-serif-regular-italic);
+        $regular: get-font-family($sans-serif-regular);
+        $medium: get-font-family($sans-serif-medium);
+        $bold: get-font-family($sans-serif-bold);
+        $regular-italic: get-font-family($sans-serif-regular-italic);
 
-        @include assert-equal( $regular, $sans-serif-family, "Should return #{$sans-serif-family}" );
-        @include assert-equal( $medium, $sans-serif-family, "Should return #{$sans-serif-family}" );
-        @include assert-equal( $bold, $sans-serif-family, "Should return #{$sans-serif-family}" );
-        @include assert-equal( $regular-italic, $sans-serif-family, "Should return #{$sans-serif-family}" );
+        @include assert-equal($regular, $sans-serif-family, "Should return #{$sans-serif-family}");
+        @include assert-equal($medium, $sans-serif-family, "Should return #{$sans-serif-family}");
+        @include assert-equal($bold, $sans-serif-family, "Should return #{$sans-serif-family}");
+        @include assert-equal($regular-italic, $sans-serif-family, "Should return #{$sans-serif-family}");
     }
 
     @include test("[function] weight-number-to-string() | Convert a weight number to a string") {
@@ -74,13 +74,13 @@
 
         @include assert-equal(
             weight-number-to-string(100),
-            "ultra-light", "Should return ultra-light" );
+            "ultra-light", "Should return ultra-light");
         @include assert-equal(
             weight-number-to-string(400),
-            "regular", "Should return regular" );
+            "regular", "Should return regular");
         @include assert-equal(
             weight-number-to-string(900),
-            "heavy", "Should return heavy" );
+            "heavy", "Should return heavy");
     }
 
     @include test("[function] line-height() | Convert a line-heigh in px to the line-height unit") {

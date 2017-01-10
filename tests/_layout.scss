@@ -50,10 +50,10 @@
     $rc: fraction-to-text($c);
     $rd: fraction-to-text($d);
 
-    @include assert-true( $ra=="half", "#{$a} should be named half" );
-    @include assert-true( $rb=="half", "#{$b} should be named half" );
-    @include assert-true( $rc=="full", "#{$c} should be named full" );
-    @include assert-false( $rd=="half", "#{$d} should be named full" );
+    @include assert-true($ra=="half", "#{$a} should be named half");
+    @include assert-true($rb=="half", "#{$b} should be named half");
+    @include assert-true($rc=="full", "#{$c} should be named full");
+    @include assert-false($rd=="half", "#{$d} should be named full");
   }
 
   @include test("[function] fraction-to-percentage() | Convert fraction to percentage") {
@@ -61,17 +61,17 @@
     $ra: fraction-to-percentage($a);
     $rb: fraction-to-percentage($b);
 
-    @include assert-true( $ra==50%, "#{$a} should be 50%" );
-    @include assert-true( $rb==50%, "#{$b} should be 50%" );
+    @include assert-true($ra==50%, "#{$a} should be 50%");
+    @include assert-true($rb==50%, "#{$b} should be 50%");
   }
 
   @include test("[function] gutter() | Calculate value based on $gutter-width") {
 
-    @include assert-equal( gutter(1), 24px, "Should be 24px" );
-    @include assert-equal( gutter(1/2), 12px, "Should be 12px" );
-    @include assert-equal( gutter(-1), -24px, "Should be -24px" );
-    @include assert-equal( gutter(-1/2), -12px, "Should be -12px" );
-    @include assert-equal( gutter(2), 48px, "Should be 48px" );
+    @include assert-equal(gutter(1), 24px, "Should be 24px");
+    @include assert-equal(gutter(1/2), 12px, "Should be 12px");
+    @include assert-equal(gutter(-1), -24px, "Should be -24px");
+    @include assert-equal(gutter(-1/2), -12px, "Should be -12px");
+    @include assert-equal(gutter(2), 48px, "Should be 48px");
   }
 
   @include test("[function] get-layout() | Get a layout map for a breakpoint") {
@@ -81,39 +81,39 @@
     $layout3: get-layout($gt-small-desktop);
 
     // Test if we have retrieved the right layout by testing its `debug-color` properties
-    @include assert-equal( get-layout-property('debug-color', false, $layout1), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property('debug-color', false, $layout2), $cyan, "`debug-color` should be #{$cyan}" );
-    @include assert-equal( get-layout-property('debug-color', false, $layout3), $becca, "`debug-color` should be #{$becca}" );
+    @include assert-equal(get-layout-property('debug-color', false, $layout1), $orange, "`debug-color` should be #{$orange}");
+    @include assert-equal(get-layout-property('debug-color', false, $layout2), $cyan, "`debug-color` should be #{$cyan}");
+    @include assert-equal(get-layout-property('debug-color', false, $layout3), $becca, "`debug-color` should be #{$becca}");
   }
 
   @include test("[function] get-layout-property() | Get a property from a layout map") {
-    @include assert-equal( get-layout-property('debug-color'), $deeppink, "`debug-color` should be #{$deeppink}" );
-    @include assert-equal( get-layout-property('debug-color', $gt-small-handheld), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-property('gutter-width', $gt-small-handheld), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
-    @include assert-equal( get-layout-property('rhythm', $gt-small-handheld), $rhythm, "`rhythm` should be #{$rhythm}" );
+    @include assert-equal(get-layout-property('debug-color'), $deeppink, "`debug-color` should be #{$deeppink}");
+    @include assert-equal(get-layout-property('debug-color', $gt-small-handheld), $orange, "`debug-color` should be #{$orange}");
+    @include assert-equal(get-layout-property('gutter-width', $gt-small-handheld), rhythm(3), "`gutter-width` should be #{rhythm(3)}");
+    @include assert-equal(get-layout-property('rhythm', $gt-small-handheld), $rhythm, "`rhythm` should be #{$rhythm}");
   }
 
   @include test("[function] get-layout-columns() | Get the value of property `column` from a layout map") {
-    @include assert-equal( get-layout-columns(), 4, "`columns` should be 4" );
-    @include assert-equal( get-layout-columns($gt-small-handheld), 4, "`columns` should be 4" );
-    @include assert-equal( get-layout-columns($gt-medium-handheld), 8, "`columns` should be 8" );
-    @include assert-equal( get-layout-columns($gt-small-desktop), 12, "`columns` should be 12" );
+    @include assert-equal(get-layout-columns(), 4, "`columns` should be 4");
+    @include assert-equal(get-layout-columns($gt-small-handheld), 4, "`columns` should be 4");
+    @include assert-equal(get-layout-columns($gt-medium-handheld), 8, "`columns` should be 8");
+    @include assert-equal(get-layout-columns($gt-small-desktop), 12, "`columns` should be 12");
   }
 
   @include test("[function] get-layout-gutter-width() | Get the value of property `gutter-width` from a layout map") {
-    @include assert-equal( get-layout-gutter-width(), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
-    @include assert-equal( get-layout-gutter-width($gt-small-desktop), rhythm(3), "`gutter-width` should be #{rhythm(3)}" );
+    @include assert-equal(get-layout-gutter-width(), rhythm(3), "`gutter-width` should be #{rhythm(3)}");
+    @include assert-equal(get-layout-gutter-width($gt-small-desktop), rhythm(3), "`gutter-width` should be #{rhythm(3)}");
   }
 
   @include test("[function] get-layout-rhythm() | Get the value of property `rhythm` from a layout map") {
-    @include assert-equal( get-layout-rhythm(), $rhythm, "`rhythm` should be #{$rhythm}" );
-    @include assert-equal( get-layout-rhythm($gt-small-desktop), $rhythm, "`grhythm` should be #{$rhythm}" );
+    @include assert-equal(get-layout-rhythm(), $rhythm, "`rhythm` should be #{$rhythm}");
+    @include assert-equal(get-layout-rhythm($gt-small-desktop), $rhythm, "`grhythm` should be #{$rhythm}");
   }
 
   @include test("[function] get-layout-debug-color() | Get the value of property `debug-color` from a layout map") {
-    @include assert-equal( get-layout-debug-color(), $deeppink, "`debug-color` should be #{$deeppink}" );
-    @include assert-equal( get-layout-debug-color($gt-small-handheld), $orange, "`debug-color` should be #{$orange}" );
-    @include assert-equal( get-layout-debug-color($gt-medium-handheld), $cyan, "`debug-color` should be #{$cyan}" );
-    @include assert-equal( get-layout-debug-color($gt-small-desktop), $becca, "`debug-color` should be #{$becca}" );
+    @include assert-equal(get-layout-debug-color(), $deeppink, "`debug-color` should be #{$deeppink}");
+    @include assert-equal(get-layout-debug-color($gt-small-handheld), $orange, "`debug-color` should be #{$orange}");
+    @include assert-equal(get-layout-debug-color($gt-medium-handheld), $cyan, "`debug-color` should be #{$cyan}");
+    @include assert-equal(get-layout-debug-color($gt-small-desktop), $becca, "`debug-color` should be #{$becca}");
   }
 }
