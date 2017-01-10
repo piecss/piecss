@@ -366,7 +366,7 @@
     display: block;
     float: left;
   }
-@else {
+  @else {
     @include inline-block(top);
     @if $negative-right-margin {
       // scss-lint:disable ImportantRule
@@ -425,7 +425,7 @@
       margin-right: $gutter-width * $right;
     }
   }
-@else {
+  @else {
     @if $left != false {
       padding-left: $gutter-width * $left;
     }
@@ -468,7 +468,7 @@
     margin-left: 0;
     margin-right: 0;
   }
-@else {
+  @else {
     padding-left: 0;
     padding-right: 0;
   }
@@ -548,23 +548,23 @@
   background-size: percentage(1 / $columns) 100%;
   // scss-lint:disable TrailingWhitespace SpaceAfterPropertyColon
   background-image:
-    linear-gradient(to right,
-      rgba($color, .1) 0,
-      rgba($color, .1) $gutter-width / 2,
-      transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
-    ),
-    linear-gradient(to left,
-      rgba($color, .1) 0,
-      rgba($color, .1) $gutter-width / 2,
-      transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
-    ),
-    linear-gradient(to left,
-      transparent 0%,
-      rgba($black, .5) 1px,
-      transparent 1px,
-      transparent  percentage($columns / $columns)
-    );
+  linear-gradient(to right,
+    rgba($color, .1) 0,
+    rgba($color, .1) $gutter-width / 2,
+    transparent $gutter-width / 2,
+    transparent percentage($columns / $columns)
+  ),
+  linear-gradient(to left,
+    rgba($color, .1) 0,
+    rgba($color, .1) $gutter-width / 2,
+    transparent $gutter-width / 2,
+    transparent percentage($columns / $columns)
+  ),
+  linear-gradient(to left,
+    transparent 0%,
+    rgba($black, .5) 1px,
+    transparent 1px,
+    transparent  percentage($columns / $columns)
+  );
   // scss-lint:enable TrailingWhitespace SpaceAfterPropertyColon
 }
