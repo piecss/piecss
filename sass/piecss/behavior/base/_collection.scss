@@ -435,6 +435,7 @@ $base-collection: add-properties(
  * Remove the inner border and padding in Firefox.
  */
 
+// sass-lint:disable quotes
 $base-collection: add-properties(
   $base-collection,
   'button::-moz-focus-inner, [type="button"]::-moz-focus-inner, [type="reset"]::-moz-focus-inner, [type="submit"]::-moz-focus-inner',
@@ -443,6 +444,7 @@ $base-collection: add-properties(
     padding: 0
   )
 );
+// sass-lint:enable StringQuotes
 
 /**
  * Restore the focus styles unset by the previous rule.

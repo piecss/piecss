@@ -51,7 +51,7 @@
 /// @param {Bool} $is-nested (false) - Set to true if the list contains other lists
 ///
 
-@function implode($list, $separator: ', ', $is-nested: false) {
+@function implode($list, $separator: ", ", $is-nested: false) {
   $string: null;
 
   @for $i from 1 through length($list) {
