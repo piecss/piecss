@@ -4,10 +4,10 @@ var gulp = require('gulp'),
     sassdoc = require('sassdoc');
 
 gulp.task('watch', function() {
-    gulp.watch(['tests/*.scss', 'sass/**/*.scss'], ['_build']);
+    gulp.watch(['tests/*.scss', 'sass/**/*.scss', 'templates/project/*.scss'], ['_build']);
 });
 
-gulp.task('sassdoc', function() {
+gulp.task('doc', function() {
     return gulp.src('sass/**/*.scss')
         .pipe(sassdoc());
 });
