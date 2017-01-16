@@ -1,0 +1,57 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+/*
+General reset that can be applied to most elements.
+
+markup:
+<ol>
+  <li>I</li>
+  <li>look</li>
+  <li>like</li>
+  <li>single</li>
+  <li>lines</li>
+</ol>
+*/
+
+@include set-selector(
+  $is-collection,
+  ".is-reset",
+  (
+    margin: 0,
+    padding: 0,
+    border: 0,
+    background: none,
+    box-shadow: 0,
+    list-style-type: none,
+    color: inherit,
+    text-decoration: none,
+    font-style: inherit,
+    font-variant: inherit,
+    font-weight: inherit,
+    font-size: inherit,
+    line-height: inherit,
+    font-family: inherit,
+    text-decoration: none
+  )
+);
+
+/*
+Hides content outside of the viewport while keeping its content accessible to
+screenreaders.
+
+markup:
+<a class="is-narrative" href="javascript(void);">Skiplink</a>
+*/
+
+@include set-selector(
+  $is-collection,
+  ".is-narrative",
+  (
+    margin: 0,
+    padding: 0,
+    border: 0,
+    background: none,
+    box-shadow: 0,
+    text-decoration: none
+  )
+);
