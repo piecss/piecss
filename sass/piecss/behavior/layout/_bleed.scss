@@ -1,0 +1,23 @@
+/*
+bleed
+
+Bleeds a half gutter-width so that elements with gutters can be aligned
+
+.bleed - Bleed both sides
+.bleed--left - Bleed left side
+.bleed--right - Bleed right side
+
+markup:
+<div class="{$modifiers}">{$modifiers}</div>
+*/
+
+.bleed {
+  &,
+  &--left {
+    margin-left: -1 * gutter();
+  }
+  &,
+  &--right {
+    margin-right: -1 * gutter();
+  }
+}

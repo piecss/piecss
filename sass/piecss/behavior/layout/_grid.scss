@@ -1,5 +1,15 @@
-// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+/*
+Grid
 
+Styleguide 3.97.7
+*/
 
-@import "rhythm";
-@import "layout";
+.grid {
+  @include breakpoint($gt-medium-handheld) {
+    column-count: 2;
+    column-gap: 0;
+  }
+  @include breakpoint($gt-small-desktop) {
+    column-count: 4;
+  }
+}

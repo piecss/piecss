@@ -1,0 +1,122 @@
+/*
+Wings
+
+.wings - Wings on an element outside a layout
+
+markup:
+<div class="{$modifiers}  |  gutters  |  txt--l  |  leader">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+*/
+$wing-collection: ();
+$wing-selector: ".wing";
+@if variable-exists($wings) {
+  @if $wings > 0 {
+    @include add-properties(
+      $wing-collection,
+      $wing-selector,
+      (
+        width: percentage(($columns - $wings) / $columns);
+      )
+    );
+  }
+  @each $breakpoint, $grid in $grids {
+    @if $wings > 0 {
+      width: percentage(($columns - $wings) / $columns);
+    }
+  }
+
+  .wings {
+    @if $wings > 0 {
+      width: percentage(($columns - $wings) / $columns);
+    } @else {
+      width: 100%;
+    }
+    @each $breakpoint, $grid in $grids {
+      @if $wings > 0 {
+        width: percentage(($columns - $wings) / $columns);
+      }
+    }
+
+
+    @include breakpoint($gt-medium-handheld) {
+      width: percentage(10 / 12);
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @include breakpoint($gt-large-handheld) {
+      width: percentage(12 / 16);
+    }
+    @include breakpoint($gt-small-desktop) {
+      width: percentage(10 / 18);
+      .layout__cell--main & {
+        width: percentage(10 / 12);
+        .layout--sidebar & {
+          width: percentage(10 / 14);
+        }
+      }
+      .layout__cell--aside & {
+        width: 100%;
+      }
+    }
+    @include breakpoint($gt-medium-desktop) {
+      .layout__cell--aside & {
+        width: percentage(4 / 6);
+        .layout--sidebar & {
+          width: 100%;
+        }
+      }
+    }
+    @include breakpoint($gt-large-desktop) {
+      width: percentage(10 / 20);
+      .layout__cell--main & {
+        width: percentage(10 / 14);
+        .layout--sidebar & {
+          width: percentage(10 / 16);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+/*
+Wings
+
+.wings - Wings on an element in a split layout
+
+markup:
+<div class="layout layout--split  |  trailer">
+  <div class="layout__cell layout__cell--main" style="border-right: 1px solid $color-structure--02;">
+    <div class="{$modifiers}  |  gutters  |  txt--l">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+    <div class="{$modifiers}  |  gutters  |  leader">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+  </div>
+  <div class="layout__cell layout__cell--aside">
+    <div class="{$modifiers}  |  gutters">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+  </div>
+</div>
+
+Styleguide 3.97.2.1
+*/
+
+
+
+/*
+Wings
+
+.wings - Wings on an element in a sidebar layout
+
+markup:
+<div class="layout layout--sidebar  |  leader">
+  <div class="layout__cell layout__cell--main" style="border-right: 1px solid $color-structure--02;">
+    <div class="{$modifiers}  |  gutters  |  txt--l">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+    <div class="{$modifiers}  |  gutters  |  leader">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+  </div>
+  <div class="layout__cell layout__cell--aside">
+    <div class="{$modifiers}  |  gutters">Lorem ipsum dolor sit amet, consectetur adipisici|ng elit, sed do eius|mod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.</div>
+  </div>
+</div>
+
+Styleguide 3.97.2.2
+*/

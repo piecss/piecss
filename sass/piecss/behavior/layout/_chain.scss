@@ -1,0 +1,45 @@
+/*
+Chain
+
+Chain is a more verstatile alternative to the media object.
+* Apply a `chain__item--stretch` to any `chain__item` to make that item take up maximum available space.
+* Apply a `chain__item--nowrap` to any `chain__item` to keep child content on a single line.
+
+.chain - Chains elements horizontally.
+
+markup:
+<div class="{$modifiers}">
+  <div class="chain__item chain__item--stretch">
+    I take up all the space I can
+  </div>
+	<div class="chain__item">
+		<span>I take whatever space is left</span>
+	</div>
+	<div class="chain__item chain__item--nowrap">
+		<span>I claim my space!</span>
+	</div>
+</div>
+
+
+Styleguide 3.97.4
+*/
+
+.chain {
+  display: flex;
+  box-shadow: 0 3px 6px rgba($color-shadow, 0);
+  &__item {
+  }
+  &,
+  &__item--stretch {
+    flex: 1 0 auto;
+  }
+  &__item--nowrap {
+    white-space: nowrap;
+  }
+  &--bottom {
+    align-items: bottom;
+  }
+  &--middle {
+    align-items: center;
+  }
+}
