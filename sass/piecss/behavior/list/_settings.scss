@@ -1,13 +1,7 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-///
-/// If true, the default behavior of lists will be reset (remove padding and list-style-type none).
-///
-/// @type {Bool}
-///
-
-$reset-list: false;
+// 1. Collection settings
 
 ///
 /// The namespace for the list placeholders
@@ -15,24 +9,7 @@ $reset-list: false;
 /// @type {String}
 ///
 
-$list-selector: "list" !default;
-
-///
-/// The default list-style-type for ul lists
-///
-/// @type {String}
-///
-
-$list-ul-default: disc !default;
-
-///
-/// The default list-style-type for ol lists
-///
-/// @type {String}
-///
-
-$list-ol-default: decimal !default;
-
+$list-selector: "%list" !default;
 
 // ==========================================================================
 // List Style Types
