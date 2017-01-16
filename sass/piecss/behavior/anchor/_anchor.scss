@@ -1,29 +1,15 @@
-// /*
-// * @copyright  Copyright (C) 2013 Babs Gösgens. All rights reserved.
-// * @license    GNU General Public License version 2 or later; see LICENSE.txt
-// */
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
-/*
------------------------------------------------------------------------------
-Anchors
------------------------------------------------------------------------------
-*/
-
-// @include anchor("#{$anchor-base-selector}", $color-anchor, $color-anchor--hover, $color-anchor--active, $color-anchor--visited, $anchor-mixin-states);
+// -----------------------------------------------------------------------------
+// Element (Atom): Anchor
+// -----------------------------------------------------------------------------
 
 %anchor {
-  text-decoration: none;
-  &--incognito {
-    color: inherit;
+  &--hush {
+    &,
     &:hover {
+      text-decoration: none;
       color: inherit;
     }
-  }
-}
-
-a {
-  @extend %anchor !optional;
-  &:hover {
-    color: $color-anchor--hover;
   }
 }
