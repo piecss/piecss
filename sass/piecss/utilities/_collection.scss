@@ -166,7 +166,11 @@
 
 @mixin get-properties($selector) {
   @each $property in $selector {
-    #{nth($property, 1)}: unquote(nth($property, 2));
+
+    $_property: nth($property, 1);
+    $_value: unquote(#{nth($property, 2)});
+
+    #{$_property}: $_value;
   }
 }
 
