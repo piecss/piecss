@@ -136,6 +136,16 @@ $columns: 4 !default;
 
 $debug-color: $deeppink;
 
+///
+/// A wing is a whitespace of one or more columns. Use in conjunction with page
+/// layouts.
+///
+/// @since 0.7
+///
+/// @type {Color} (#ff1493)
+///
+
+$wings: 0;
 
 ///
 /// Used for setting instructions for page layouts.
@@ -165,6 +175,7 @@ $grids: (
     columns: 6,
     rhythm: $rhythm,
     gutter-width: $gutter-width,
+    wings: 0,
     layouts: ()
   ),
   $gt-medium-handheld: (
@@ -172,6 +183,7 @@ $grids: (
     columns: 9,
     rhythm: $rhythm,
     gutter-width: $gutter-width,
+    wings: 0,
     layouts: ()
   ),
   $gt-small-desktop: (
@@ -179,6 +191,7 @@ $grids: (
     columns: 12,
     rhythm: $rhythm,
     gutter-width: $gutter-width,
+    wings: 0,
     layouts: ()
   )
 ) !default;
