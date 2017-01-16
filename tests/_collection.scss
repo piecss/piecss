@@ -14,16 +14,16 @@
       outline "1px solid #000"
     )
   );
-  $empty_collection: ();
+  $empty-collection: ();
 
   @include test("[function] add-selector() | Add a selector to an existing collection") {
-    $_c: add-selector($empty_collection, ".selector");
+    $_c: add-selector($empty-collection, ".selector");
 
     @include assert-true(map-has-key($_c, ".selector"), "Selector should be added");
   }
 
   @include test("[function] add-selector() | Add a compound selector to an existing collection") {
-    $_c: add-selector($empty_collection, "html, body, h1");
+    $_c: add-selector($empty-collection, "html, body, h1");
 
     @include assert-true(map-has-key($_c, "html, body, h1"), "Selector should be added");
   }
@@ -31,11 +31,11 @@
   @include test("[function] add-properties() | Add properties to an existing selector in a collection") {
 
     $_c: add-properties(
-      $empty_collection,
+      $empty-collection,
       ".selector",
       (
         width: 50%,
-        color: #FFF,
+        color: #fff,
         border: 1px solid
       )
     );
@@ -56,7 +56,7 @@
 
     $_c: remove-selector($collection, ".selector");
 
-    @include assert-false(map-has-key($empty_collection, ".selector"), "Selector should be removed");
+    @include assert-false(map-has-key($empty-collection, ".selector"), "Selector should be removed");
   }
 
   @include test("[function] remove-properties() | Remove properties from an existing selector in a collection") {
@@ -90,5 +90,4 @@
     @include assert-false(map-has-key($_pe, "border"), "Property should be removed");
     @include assert-false(map-has-key($_pe, "outline"), "Property should be removed");
   }
-
 }

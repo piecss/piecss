@@ -18,7 +18,7 @@
 
   @include test("[function] list-to-map() | Convert a nested list to a map") {
 
-    $test: list-to-map((color #FFF, text-align left));
+    $test: list-to-map((color #fff, text-align left));
 
     @include assert-true(map-has-key($test, color), "Should contain color");
     @include assert-equal(map-get($test, text-align), left, "Should be left");

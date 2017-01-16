@@ -25,26 +25,26 @@
     $rf: strip-unit($f);
     $rg: strip-unit($g);
 
-    @include assert-equal( $ra, 16, "#{$ra} should equal 16" );
-    @include assert-equal( $rb, 2.4, "#{$rb} should equal 2.4" );
-    @include assert-equal( $rc, 1, "#{$rc} should equal 1" );
-    @include assert-equal( $rd, 50, "#{$rd} should equal 5" );
-    @include assert-equal( $re, 1.5, "#{$re} should equal 1.5" );
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0" );
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0" );
+    @include assert-equal($ra, 16, "#{$ra} should equal 16");
+    @include assert-equal($rb, 2.4, "#{$rb} should equal 2.4");
+    @include assert-equal($rc, 1, "#{$rc} should equal 1");
+    @include assert-equal($rd, 50, "#{$rd} should equal 5");
+    @include assert-equal($re, 1.5, "#{$re} should equal 1.5");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to preset unit") {
 
     $unit: 1em !global;
 
-    $ra: unit( to-unit($a) );
-    $rb: unit( to-unit($b) );
-    $rc: unit( to-unit($c) );
-    $rd: unit( to-unit($d) );
-    $re: unit( to-unit($e) );
-    $rf: unit( to-unit($f) );
-    $rg: unit( to-unit($g) );
+    $ra: unit(to-unit($a));
+    $rb: unit(to-unit($b));
+    $rc: unit(to-unit($c));
+    $rd: unit(to-unit($d));
+    $re: unit(to-unit($e));
+    $rf: unit(to-unit($f));
+    $rg: unit(to-unit($g));
 
     @include assert-equal($ra, "em", "#{$ra} should equal em");
     @include assert-equal($rb, "em", "#{$rb} should equal em");
@@ -65,21 +65,21 @@
     $rf: to-unit($f, 1em);
     $rg: to-unit($g, 1em);
 
-    @include assert-equal( unit($ra), em, "#{$ra} should equal em");
-    @include assert-equal( unit($rb), em, "#{$rb} should equal em");
-    @include assert-equal( unit($rc), em, "#{$rc} should equal em");
-    @include assert-equal( unit($rd), em, "#{$rd} should equal em");
-    @include assert-equal( unit($re), em, "#{$re} should equal em");
-    @include assert-equal( unit($rf), "", "#{$rf} should be empty string");
-    @include assert-equal( unit($rg), "", "#{$rg} should be empty string");
+    @include assert-equal(unit($ra), em, "#{$ra} should equal em");
+    @include assert-equal(unit($rb), em, "#{$rb} should equal em");
+    @include assert-equal(unit($rc), em, "#{$rc} should equal em");
+    @include assert-equal(unit($rd), em, "#{$rd} should equal em");
+    @include assert-equal(unit($re), em, "#{$re} should equal em");
+    @include assert-equal(unit($rf), "", "#{$rf} should be empty string");
+    @include assert-equal(unit($rg), "", "#{$rg} should be empty string");
 
-    @include assert-equal( $ra, 1em, "#{$ra} should equal 1em");
-    @include assert-equal( $rb, 2.4em, "#{$rb} should equal 2.4em");
-    @include assert-equal( $rc, 1em, "#{$rc} should equal 1em");
-    @include assert-equal( $rd, .5em, "#{$rd} should equal .5em");
-    @include assert-equal( $re, .75em, "#{$re} should equal .75em");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 1em, "#{$ra} should equal 1em");
+    @include assert-equal($rb, 2.4em, "#{$rb} should equal 2.4em");
+    @include assert-equal($rc, 1em, "#{$rc} should equal 1em");
+    @include assert-equal($rd, .5em, "#{$rd} should equal .5em");
+    @include assert-equal($re, .75em, "#{$re} should equal .75em");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to em in a context of 10px") {
@@ -92,13 +92,13 @@
     $rf: to-unit($f, 1em, 10px);
     $rg: to-unit($g, 1em, 10px);
 
-    @include assert-equal( $ra, 1.6em, "#{$ra} should equal 1.6em");
-    @include assert-equal( $rb, 3.84em, "#{$rb} should equal 3.84em");
-    @include assert-equal( $ra, 1.6em, "#{$rc} should equal 1.6em");
-    @include assert-equal( $rd, 0.8em, "#{$rd} should equal 0.8em");
-    @include assert-equal( $re, 1.2em, "#{$re} should equal 1.2em");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 1.6em, "#{$ra} should equal 1.6em");
+    @include assert-equal($rb, 3.84em, "#{$rb} should equal 3.84em");
+    @include assert-equal($ra, 1.6em, "#{$rc} should equal 1.6em");
+    @include assert-equal($rd, .8em, "#{$rd} should equal 0.8em");
+    @include assert-equal($re, 1.2em, "#{$re} should equal 1.2em");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to em in a context of 20px") {
@@ -111,13 +111,13 @@
     $rf: to-unit($f, 1em, 20px);
     $rg: to-unit($g, 1em, 20px);
 
-    @include assert-equal( $ra, .8em, "#{$ra} should equal 1.6em");
-    @include assert-equal( $rb, 1.92em, "#{$rb} should equal 3.84em");
-    @include assert-equal( $ra, .8em, "#{$rc} should equal 1.6em");
-    @include assert-equal( $rd, 0.4em, "#{$rd} should equal 0.8em");
-    @include assert-equal( $re, .6em, "#{$re} should equal .6em");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, .8em, "#{$ra} should equal 1.6em");
+    @include assert-equal($rb, 1.92em, "#{$rb} should equal 3.84em");
+    @include assert-equal($ra, .8em, "#{$rc} should equal 1.6em");
+    @include assert-equal($rd, .4em, "#{$rd} should equal 0.8em");
+    @include assert-equal($re, .6em, "#{$re} should equal .6em");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to px") {
@@ -130,21 +130,21 @@
     $rf: to-unit($f, 1px);
     $rg: to-unit($g, 1px);
 
-    @include assert-equal( unit($ra), px, "#{unit($ra)} should equal px");
-    @include assert-equal( unit($rb), px, "#{unit($rb)} should equal px");
-    @include assert-equal( unit($rc), px, "#{unit($rc)} should equal px");
-    @include assert-equal( unit($rd), px, "#{unit($rd)} should equal px");
-    @include assert-equal( unit($re), px, "#{unit($re)} should equal px");
-    @include assert-equal( unit($rf), "", "#{unit($rf)} should be empty string");
-    @include assert-equal( unit($rg), "", "#{unit($rg)} should be empty string");
+    @include assert-equal(unit($ra), px, "#{unit($ra)} should equal px");
+    @include assert-equal(unit($rb), px, "#{unit($rb)} should equal px");
+    @include assert-equal(unit($rc), px, "#{unit($rc)} should equal px");
+    @include assert-equal(unit($rd), px, "#{unit($rd)} should equal px");
+    @include assert-equal(unit($re), px, "#{unit($re)} should equal px");
+    @include assert-equal(unit($rf), "", "#{unit($rf)} should be empty string");
+    @include assert-equal(unit($rg), "", "#{unit($rg)} should be empty string");
 
-    @include assert-equal( $ra, 16px, "#{$ra} should equal 16px");
-    @include assert-equal( $rb, 38.4px, "#{$rb} should equal 38.4px");
-    @include assert-equal( $rc, 16px, "#{$rc} should equal 16px");
-    @include assert-equal( $rd, 8px, "#{$rd} should equal 8px");
-    @include assert-equal( $re, 12px, "#{$re} should equal 12px");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 16px, "#{$ra} should equal 16px");
+    @include assert-equal($rb, 38.4px, "#{$rb} should equal 38.4px");
+    @include assert-equal($rc, 16px, "#{$rc} should equal 16px");
+    @include assert-equal($rd, 8px, "#{$rd} should equal 8px");
+    @include assert-equal($re, 12px, "#{$re} should equal 12px");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to rem") {
@@ -157,21 +157,21 @@
     $rf: to-unit($f, 1rem);
     $rg: to-unit($g, 1rem);
 
-    @include assert-equal( unit($ra), rem, "#{$ra} should equal rem");
-    @include assert-equal( unit($rb), rem, "#{$rb} should equal rem");
-    @include assert-equal( unit($rc), rem, "#{$rc} should equal rem");
-    @include assert-equal( unit($rd), rem, "#{$rd} should equal rem");
-    @include assert-equal( unit($re), rem, "#{$re} should equal rem");
-    @include assert-equal( unit($rf), "", "#{$rf} should be empty string");
-    @include assert-equal( unit($rg), "", "#{$rg} should be empty string");
+    @include assert-equal(unit($ra), rem, "#{$ra} should equal rem");
+    @include assert-equal(unit($rb), rem, "#{$rb} should equal rem");
+    @include assert-equal(unit($rc), rem, "#{$rc} should equal rem");
+    @include assert-equal(unit($rd), rem, "#{$rd} should equal rem");
+    @include assert-equal(unit($re), rem, "#{$re} should equal rem");
+    @include assert-equal(unit($rf), "", "#{$rf} should be empty string");
+    @include assert-equal(unit($rg), "", "#{$rg} should be empty string");
 
-    @include assert-equal( $ra, 1rem, "#{$ra} should equal 1em");
-    @include assert-equal( $rb, 2.4rem, "#{$rb} should equal 2.4em");
-    @include assert-equal( $rc, 1rem, "#{$rc} should equal 1em");
-    @include assert-equal( $rd, .5rem, "#{$rd} should equal .5em");
-    @include assert-equal( $re, .75rem, "#{$re} should equal .75em");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 1rem, "#{$ra} should equal 1em");
+    @include assert-equal($rb, 2.4rem, "#{$rb} should equal 2.4em");
+    @include assert-equal($rc, 1rem, "#{$rc} should equal 1em");
+    @include assert-equal($rd, .5rem, "#{$rd} should equal .5em");
+    @include assert-equal($re, .75rem, "#{$re} should equal .75em");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to rem in a context of 10px") {
@@ -184,24 +184,16 @@
     $rf: to-unit($f, 1rem, 10px);
     $rg: to-unit($g, 1rem, 10px);
 
-    @include assert-equal( $ra, 1rem, "#{$ra} should equal 1em");
-    @include assert-equal( $rb, 2.4rem, "#{$rb} should equal 2.4em");
-    @include assert-equal( $rc, 1rem, "#{$rc} should equal 1em");
-    @include assert-equal( $rd, .5rem, "#{$rd} should equal .5em");
-    @include assert-equal( $re, .75rem, "#{$re} should equal .75em");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 1rem, "#{$ra} should equal 1em");
+    @include assert-equal($rb, 2.4rem, "#{$rb} should equal 2.4em");
+    @include assert-equal($rc, 1rem, "#{$rc} should equal 1em");
+    @include assert-equal($rd, .5rem, "#{$rd} should equal .5em");
+    @include assert-equal($re, .75rem, "#{$re} should equal .75em");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 
   @include test("[function] to-unit() | Convert to rem in a context of 20px") {
-
-    $a: 16px;
-    $b: 2.4rem;
-    $c: 1em;
-    $d: 50%;
-    $e: 1.5;
-    $f: 0px;
-    $g: 0;
 
     $ra: to-unit($a, 1rem, 20px);
     $rb: to-unit($b, 1rem, 20px);
@@ -211,12 +203,12 @@
     $rf: to-unit($f, 1rem, 20px);
     $rg: to-unit($g, 1rem, 20px);
 
-    @include assert-equal( $ra, 1rem, "#{$ra} should equal 1rem");
-    @include assert-equal( $rb, 2.4rem, "#{$rb} should equal 2.4rem");
-    @include assert-equal( $rc, 1rem, "#{$rc} should equal 1rem");
-    @include assert-equal( $rd, .5rem, "#{$rd} should equal .5rem");
-    @include assert-equal( $re, .75rem, "#{$re} should equal .75rem");
-    @include assert-equal( $rf, 0, "#{$rf} should equal 0");
-    @include assert-equal( $rg, 0, "#{$rg} should equal 0");
+    @include assert-equal($ra, 1rem, "#{$ra} should equal 1rem");
+    @include assert-equal($rb, 2.4rem, "#{$rb} should equal 2.4rem");
+    @include assert-equal($rc, 1rem, "#{$rc} should equal 1rem");
+    @include assert-equal($rd, .5rem, "#{$rd} should equal .5rem");
+    @include assert-equal($re, .75rem, "#{$re} should equal .75rem");
+    @include assert-equal($rf, 0, "#{$rf} should equal 0");
+    @include assert-equal($rg, 0, "#{$rg} should equal 0");
   }
 }

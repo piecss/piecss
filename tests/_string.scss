@@ -11,16 +11,16 @@
 
     $string: "Hello";
 
-    @include assert-equal( str-replace($string, "o", "o World"), "Hello World", "#{$string} should return Hello World" );
-    @include assert-equal( str-replace($string, "l", "ll"), "Hellllo", "#{$string} should return Hellllo" );
+    @include assert-equal(str-replace($string, "o", "o World"), "Hello World", "#{$string} should return Hello World");
+    @include assert-equal(str-replace($string, "l", "ll"), "Hellllo", "#{$string} should return Hellllo");
   }
 
   @include test("[function] implode() | Implode list") {
 
     $list: a, b, c d e, f, g, h;
 
-    @include assert-equal( implode($list, ""), "abcdefgh", "#{$list} should return abcdefgh" );
-    @include assert-equal( implode($list, "-"), "a-b-c-d-e-f-g-h", "#{$list} should return a-b-c-d-e-f-g-h" );
-    @include assert-equal( implode($list), "a, b, c, d, e, f, g, h", "#{$list} should return a, b, c, d, e, f, g, h" );
+    @include assert-equal(implode($list, ""), "abcdefgh", "#{$list} should return abcdefgh");
+    @include assert-equal(implode($list, "-"), "a-b-c-d-e-f-g-h", "#{$list} should return a-b-c-d-e-f-g-h");
+    @include assert-equal(implode($list), "a, b, c, d, e, f, g, h", "#{$list} should return a, b, c, d, e, f, g, h");
   }
 }

@@ -9,8 +9,8 @@
 
   @include test("[function] svg-url() | Create Data URI from svg object") {
 
-    $svg: '<svg xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M0 0h10v10H0z"/></svg>';
+    $svg: "<svg xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" d=\"M0 0h10v10H0z\"/></svg>";
 
-    @include assert-equal( svg-url($svg), unquote("url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M0 0h10v10H0z'/%3E%3C/svg%3E\")"), "Output should equal url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M0 0h10v10H0z'/%3E%3C/svg%3E\")" );
+    @include assert-equal(svg-url($svg), unquote("url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M0 0h10v10H0z'/%3E%3C/svg%3E\")"), "Output should equal url(\"data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' d='M0 0h10v10H0z'/%3E%3C/svg%3E\")");
   }
 }
