@@ -217,7 +217,7 @@
 /// @since 1.0
 ///
 /// @example
-/// $columns: get-grid-property($columns);
+/// $columns: get-grid-property($columns, $grid);
 ///
 /// @param {String} $property - The grid-map property to retrieve
 /// @param {Map} $grids ($grids) - A grid map
@@ -225,7 +225,7 @@
 /// @return {*}
 ///
 
-@function get-grid-property($grid, $property) {
+@function get-grid-property($property, $grid) {
 
   $_value: null;
 
@@ -253,7 +253,7 @@
 ///
 
 @function get-grid-columns($grid) {
-  @return get-grid-property($grid, "columns");
+  @return get-grid-property("columns", $grid);
 }
 
 ///
@@ -270,7 +270,7 @@
 ///
 
 @function get-grid-gutter-width($grid) {
-  @return get-grid-property($grid, "gutter-width");
+  @return get-grid-property("gutter-width", $grid);
 }
 
 
@@ -288,7 +288,7 @@
 ///
 
 @function get-grid-rhythm($grid) {
-  @return get-grid-property($grid, "rhythm");
+  @return get-grid-property("rhythm", $grid);
 }
 
 
@@ -306,7 +306,7 @@
 ///
 
 @function get-grid-debug-color($grid) {
-  @return get-grid-property($grid, "debug-color");
+  @return get-grid-property("debug-color", $grid);
 }
 
 
