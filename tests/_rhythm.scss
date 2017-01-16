@@ -7,46 +7,46 @@
 
 @include test-module("Rhythm") {
 
-    @include test("[function] -rhythm-units() | Calculate a height in px based on [$rhythm](./#variable-rhythm) which defaults to #{$rhythm}.") {
+  @include test("[function] -rhythm-units() | Calculate a height in px based on [$rhythm](./#variable-rhythm) which defaults to #{$rhythm}.") {
 
-      $r1: rhythm(.5);
-      $r2: rhythm(1);
-      $r3: rhythm(-1);
-      $r4: rhythm(2);
+    $r1: rhythm(.5);
+    $r2: rhythm(1);
+    $r3: rhythm(-1);
+    $r4: rhythm(2);
 
-      @include assert-equal($r1, 4px, "Should return 4px");
-      @include assert-equal($r2, 8px, "Should return 8px");
-      @include assert-equal($r3, -8px, "Should return -8px");
-      @include assert-equal($r4, 16px, "Should return 16px");
+    @include assert-equal($r1, 4px, "Should return 4px");
+    @include assert-equal($r2, 8px, "Should return 8px");
+    @include assert-equal($r3, -8px, "Should return -8px");
+    @include assert-equal($r4, 16px, "Should return 16px");
 
-      $u1: rhythm(2);
-      $u2: rhythm(-2);
-      $u3: rhythm(1/4);
+    $u1: rhythm(2);
+    $u2: rhythm(-2);
+    $u3: rhythm(1/4);
 
-      @include assert-equal($u1, 16px, "Should return 16px");
-      @include assert-equal($u2, -16px, "Should return -16px");
-      @include assert-equal($u3, 2px, "Should return 2px");
-    }
+    @include assert-equal($u1, 16px, "Should return 16px");
+    @include assert-equal($u2, -16px, "Should return -16px");
+    @include assert-equal($u3, 2px, "Should return 2px");
+  }
 
-    @include test("[function] rhythm() | Placeholder function for -rhythm-units") {
+  @include test("[function] rhythm() | Placeholder function for -rhythm-units") {
 
-        $r1: rhythm(.5);
-        $r2: rhythm(1);
-        $r3: rhythm(-1);
-        $r4: rhythm(2);
+    $r1: rhythm(.5);
+    $r2: rhythm(1);
+    $r3: rhythm(-1);
+    $r4: rhythm(2);
 
-        @include assert-equal($r1, 4px, "Should return 4px");
-        @include assert-equal($r2, 8px, "Should return 8px");
-        @include assert-equal($r3, -8px, "Should return -8px");
-        @include assert-equal($r4, 16px, "Should return 16px");
+    @include assert-equal($r1, 4px, "Should return 4px");
+    @include assert-equal($r2, 8px, "Should return 8px");
+    @include assert-equal($r3, -8px, "Should return -8px");
+    @include assert-equal($r4, 16px, "Should return 16px");
 
-        $u1: rhythm(2);
-        $u2: rhythm(-2);
-        $u3: rhythm(1/4);
+    $u1: rhythm(2);
+    $u2: rhythm(-2);
+    $u3: rhythm(1/4);
 
-        @include assert-equal($u1, 16px, "Should return 16px");
-        @include assert-equal($u2, -16px, "Should return -16px");
-        @include assert-equal($u3, 2px, "Should return 2px");
-    }
+    @include assert-equal($u1, 16px, "Should return 16px");
+    @include assert-equal($u2, -16px, "Should return -16px");
+    @include assert-equal($u3, 2px, "Should return 2px");
+  }
 
 }

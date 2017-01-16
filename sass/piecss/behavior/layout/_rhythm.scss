@@ -8,14 +8,14 @@ Debug helpers
 */
 
 %debug-rhythm {
-    /*
-     * Mixin debug-rhythm to display the vertical rhythm units
-     */
-    @include debug-rhythm;
+  /*
+   * Mixin debug-rhythm to display the vertical rhythm units
+   */
+  @include debug-rhythm;
 }
 
 @if $debug-rhythm {
-    .debug-rhythm {
-        @extend %debug-rhythm;         
-    }
+  .debug-rhythm {
+    @extend %debug-rhythm;         
+  }
 }

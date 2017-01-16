@@ -170,11 +170,11 @@
     @if type-of($argument) == list {
       $type: $argument;
     }
-@else {
+    @else {
       @if not($font-size) {
         $font-size: $argument;
       }
-@elseif not($line-height) {
+      @elseif not($line-height) {
         $line-height: $argument;
       }
     }
@@ -196,7 +196,7 @@
     @if $font-size and $line-height {
       $font: append($font, #{$font-size}/#{$line-height});
     }
-@elseif $font-size {
+    @elseif $font-size {
       $font: append($font, #{$font-size});
     }
     $font: append($font, #{$font-family});
