@@ -1,8 +1,6 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
 
-// 1. Collection settings
-
 ///
 /// The namespace for the list placeholders
 ///
@@ -11,10 +9,29 @@
 
 $list-selector: "%list" !default;
 
-// ==========================================================================
-// List Style Types
-// See: http://www.w3schools.com/cssref/pr_list-style-type.asp
-// ==========================================================================
+///
+/// If true, a --inline modifier lists all items inline
+///
+/// @type {String}
+///
+
+$list-inline: true !default;
+
+///
+/// If true, a --outside modifier moves bullets outside of the left text margin
+///
+/// @type {String}
+///
+
+$list-style-position-outside: false !default;
+
+///
+/// If true, a --inside modifier moves bullets inside of the left text margin
+///
+/// @type {String}
+///
+
+$list-style-position-inside: false !default;
 
 ///
 /// If true, Piecss will render a placeholder for this list-style-type (%list--armenian)
@@ -97,14 +114,6 @@ $list-style-type-hiragana: false;
 $list-style-type-hiragana-iroha: false !default;
 
 ///
-/// If true, Piecss will render a placeholder for this list-style-type (%list--inherit)
-///
-/// @type {Bool}
-///
-
-$list-style-type-inherit: true !default;
-
-///
 /// If true, Piecss will render a placeholder for this list-style-type (%list--katakana)
 ///
 /// @type {Bool}
@@ -151,14 +160,6 @@ $list-style-type-lower-latin: true !default;
 ///
 
 $list-style-type-lower-roman: true !default;
-
-///
-/// If true, Piecss will render a placeholder for this list-style-type (%list--none)
-///
-/// @type {Bool}
-///
-
-$list-style-type-none: true !default;
 
 ///
 /// If true, Piecss will render a placeholder for this list-style-type (%list--square)
