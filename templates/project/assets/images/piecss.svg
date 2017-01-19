@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="72px" height="63px" viewBox="0 0 72 63" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Piecss</title>
+    <defs>
+        <linearGradient x1="-2.74688461%" y1="37.7982406%" x2="113.83436%" y2="61.7461769%" id="linearGradient-1">
+            <stop stop-color="#FBEDB6" offset="0%"></stop>
+            <stop stop-color="#FFE02F" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0.00162941669%" y1="49.9980053%" x2="100.000833%" y2="49.9980053%" id="linearGradient-2">
+            <stop stop-color="#68BA99" offset="0%"></stop>
+            <stop stop-color="#20AC92" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.2142662%" y1="27.5563585%" x2="49.5794007%" y2="93.5623381%" id="linearGradient-3">
+            <stop stop-color="#F7AAAB" offset="0%"></stop>
+            <stop stop-color="#F37A88" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="piecss" transform="translate(-1.000000, 0.000000)">
+            <path d="M34.015,56.502 L33.036,56.611 C33.036,56.611 19.086,55.715 11.363,44.779 C1.289,30.513 10.62,18.402 21.142,19.249 L25.145,12.149 C20.378,10.139 14.463,8.612 7.16,7.763 C-15.644,56.621 32.198,62.213 32.198,62.213 L36.669,62.91 L38.399,58.892 L34.015,56.502 Z" id="Shape" fill="url(#linearGradient-1)"></path>
+            <path d="M50.934,19.397 C61.91,17.509 72.33,29.986 61.883,44.779 C54.158,55.715 40.209,56.611 40.209,56.611 L39.232,56.502 L35.422,60.229 L36.576,62.912 L41.047,62.215 C41.047,62.215 88.888,56.623 66.084,7.765 C58.156,8.687 51.867,10.407 46.906,12.675 L50.934,19.397 Z" id="Shape" fill="url(#linearGradient-2)"></path>
+            <path d="M36.629,0.454 C-6.526,32.771 33.018,60.273 33.018,60.273 L36.629,63 L40.05,60.273 C40.051,60.273 82.066,32.012 36.629,0.454 Z M37.313,56.098 L36.4,55.732 C36.4,55.732 24.522,48.361 22.872,35.074 C19.628,8.951 52.948,7.944 50.377,35.244 C48.857,51.402 37.313,56.098 37.313,56.098 Z" id="Shape" fill="url(#linearGradient-3)"></path>
+        </g>
+    </g>
+</svg>

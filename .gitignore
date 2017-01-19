@@ -1,6 +1,5 @@
 node_modules
 sassdoc
-assets
 *.log
 *.css
 *.css.map
