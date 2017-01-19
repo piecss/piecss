@@ -12,12 +12,6 @@
 //    weight-number-to-string
 // 2. mixins:
 //    font
-//    font-style
-//    font-variant
-//    font-weight
-//    font-family
-//    font-size
-//    line-height
 
 
 // 1. FUNCTIONS
@@ -28,7 +22,7 @@
 ///
 /// @since 0.1
 ///
-/// @todo parameter should either be a space separated list, or property map
+/// @todo $type should either be a space separated list, or property map
 ///
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
@@ -45,7 +39,7 @@
 ///
 /// @since 0.1
 ///
-/// @todo parameter should either be a space separated list, or property map
+/// @todo $type should either be a space separated list, or property map
 ///
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
@@ -62,7 +56,7 @@
 ///
 /// @since 0.1
 ///
-/// @todo parameter should either be a space separated list, or property map
+/// @todo $type should either be a space separated list, or property map
 ///
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
@@ -79,7 +73,7 @@
 ///
 /// @since 0.1
 ///
-/// @todo parameter should either be a space separated list, or property map
+/// @todo $type should either be a space separated list, or property map
 ///
 /// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
 ///
@@ -188,7 +182,7 @@
     $font-family: get-font-family($type);
 
     @if $font-size and unit($unit) == rem {
-      @include font-size($font-size, 1px);
+      font-size: to-unit($font-size, 1px)
     }
 
     // Build font arguments
@@ -203,88 +197,4 @@
 
     font: #{$font};
   }
-}
-
-
-///
-/// Extracts the style from a type array and mixes in font-style
-///
-/// @since 0.1
-///
-/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
-///
-
-@mixin font-style($type) {
-  font-style: get-font-style($type);
-}
-
-
-///
-/// Extracts the variant from a type array and mixes in font-variant
-///
-/// @since 0.1
-///
-/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
-///
-
-@mixin font-variant($type) {
-  font-variant: get-font-variant($type);
-}
-
-
-///
-/// Extracts the weight from a type array and mixes in font-weight
-///
-/// @since 0.1
-///
-/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
-///
-
-@mixin font-weight($type) {
-  font-weight: get-font-weight($type);
-}
-
-
-///
-/// Extracts the family from a type array and mixes in font-family
-///
-/// @since 0.1
-///
-/// @param {List} $type: a valid type list ($style, $variant, $weight, $family)
-///
-
-@mixin font-family($type) {
-  font-family: get-font-family($type);
-}
-
-
-///
-/// Takes a size in px and calculates it back to the final font-unit. Provides fallback if the final output is in rem.
-///
-/// @since 0.1
-///
-/// @param {Number} $target-px - The font-size in px
-/// @param {Number} $unit ($unit) - The final unit to which $target-px is converted, e.g.px | rem | em | %
-/// @param {Number} $context ($font-size) - The context of the targeted element, for calculations to em or %
-///
-
-@mixin font-size($target-px, $unit: $unit, $context: $font-size) {
-  @if unit($unit) == rem {
-    font-size: to-unit($target-px, $rem-fallback-unit, $context);
-  }
-  font-size: to-unit($target-px, $unit, $context);
-}
-
-///
-/// Mixin for line-height
-///
-/// @since 0.1
-///
-/// @param {Number} $target-px - the line-height in px
-/// @param {Number} $context ($font-size) - The context of the targeted element, for calculations to em
-/// @param {Number} $unit ($line-height-unit) - The final unit to which $target-px is converted, e.g. 1px, 1rem, 1em, 1% or 1 for unitless
-///
-
-@mixin line-height($font-size, $min-ratio: 1.5) {
-  line-height: line-height($font-size, $min-ratio);
 }
