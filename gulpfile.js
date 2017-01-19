@@ -16,7 +16,7 @@ gulp.task('_build', function() {
     // Build example project.
     gulp.src('templates/project/screen.scss')
         .pipe(sass())
-        .pipe(gulp.dest('templates/project/screen.css'));
+        .pipe(gulp.dest('templates/project/assets/css/'));
 });
 
 gulp.task('lint', function() {
@@ -35,5 +35,5 @@ gulp.task('test', function() {
 });
 
 gulp.task('default', function() {
-    gulp.watch(['tests/*.scss', 'sass/**/*.scss'], ['test', 'lint', '_build']);
+    gulp.watch(['tests/*.scss', 'sass/**/*.scss', 'templates/project/*.scss'], ['test', 'lint', '_build']);
 });
