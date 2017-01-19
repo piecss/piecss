@@ -4,9 +4,8 @@
 // Content
 //
 // 1. Functions
-//    percentage
 //    fraction-to-text
-//    gutters
+//    gutter
 //    get-grid
 //    get-grid-property
 //    get-grid-columns
@@ -15,38 +14,16 @@
 //    get-grid-debug-color
 
 // 2. Mixins
-//    2a. Columns
-//        column
-//        column-behavior
-//        column-width
-//        gutters
-//    2b. Containers
+//    2a. Layout
 //        root
 //        bleed
-//        container-behavior
-//    2c. Source Ordering
+//    2b. Source Ordering
 //        move
 //        pull
 //        push
-//        reset-source-order
 
 
 // 1. FUNCTIONS
-
-
-///
-/// Convert a fraction to a percentage.
-///
-/// @deprecated
-///
-/// @param {Number} $fraction (1/3) - A fraction, e.g. 1/2
-///
-/// @return {Number} - The resulting percentage value
-///
-
-@function fraction-to-percentage($fraction: 1/3) {
-  @return percentage($fraction);
-}
 
 
 ///
@@ -315,123 +292,6 @@
 
 
 ///
-/// Shorthand mixin for column.
-/// Uses padding by default, can be overridden to use margins instead which is especially helpful when assigning backgrounds or borders.
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
-/// @param {Number | Bool} $apply-padding (1/2) - A fraction, e.g. 1/2, or false
-/// @param {Number | Bool} $apply-margin (false) - A fraction, e.g. 1/2, or false
-///
-
-@mixin column($fraction: 1/1, $apply-padding: 1/2, $apply-margin: false) {
-
-  @include column-behavior();
-  @include column-width($fraction);
-
-  @if $apply-padding {
-    @include gutters($apply-padding);
-  }
-
-  @if $apply-margin {
-    @include gutters($apply-margin, true);
-  }
-}
-
-
-///
-/// Mixin column-behavior: prepares an element to behave as a column. Widths must be set separately with [column-width](./#mixin-column-width).
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @param {Bool} $column-float (false) - If true, render columns as left floated block element. If false, render as inline-blocks.
-/// @param {Bool | Number} $negative-right-margin (false) - If set, applies a negative right margin to force inline-blocks to render without gaps. Only use this if you cannot minify your markup.
-///
-
-@mixin column-behavior($column-float: $column-float, $negative-right-margin: $negative-right-margin) {
-
-  @if $column-float {
-    display: block;
-    float: left;
-  }
-@else {
-    @include inline-block(top);
-    @if $negative-right-margin {
-      // scss-lint:disable ImportantRule
-      margin-right: $negative-right-margin !important;
-      // scss-lint:enable ImportantRule
-    }
-  }
-}
-
-
-///
-/// Mixin column-width. If [$negative-right-margin]() is set, it will automatically remove if from columns that span the full width of their containers.
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @param {Number} $fraction (1/1) - A fraction, e.g. 1/2
-///
-
-@mixin column-width($fraction: $column-width-default) {
-
-  width: percentage($fraction);
-
-  // Remove negative margin on elements that span full width of their container
-  @if $fraction == 1/1 and $negative-right-margin {
-    margin-right: 0;
-  }
-}
-
-
-///
-/// Mixes in gutter properties. Gutters are declared inside the column (padding) by default, on both sides. Can be overridden to use margins instead, which is helpful when assigning backgrounds or borders
-///
-/// @since 0.1
-///
-/// @param {Number} $fraction (1/2) - A fraction, e.g. 1/2
-/// @param {Bool} $use-margin (false) - If true, will render gutters outside the column using margins
-///
-
-@mixin gutters($fraction: 1/2, $use-margin: false) {
-
-  $both: length($fraction);
-
-  $left: $fraction;
-  $right: $fraction;
-
-  @if $both > 1 {
-    $left: nth($fraction, 1);
-    $right: nth($fraction, 2);
-  }
-
-  @if ($use-margin) {
-    @if $left != false {
-      margin-left: gutter($fraction) * $left;
-    }
-    @if $right != false {
-      margin-right: gutter($fraction) * $right;
-    }
-  }
-@else {
-    @if $left != false {
-      padding-left: gutter($fraction) * $left;
-    }
-    @if $right != false {
-      padding-right: gutter($fraction) * $right;
-    }
-  }
-}
-
-
-///
 /// Fixes content width and aligns in viewport. [$root-position](./#variable-root-position) is defind in grid settings. Centers content inside the viewport by default.
 ///
 /// @since 0.1
@@ -450,29 +310,6 @@
 
 
 ///
-/// Use it to remove column spacing on columns
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @param {Bool} $use-margin (false)
-///
-
-@mixin container-behavior($use-margin: false) {
-
-  @if $use-margin {
-    margin-left: 0;
-    margin-right: 0;
-  }
-@else {
-    padding-left: 0;
-    padding-right: 0;
-  }
-}
-
-
-///
 /// Mixin to reverse padding on a container.
 /// Use it to remove padded column spacing on columns, helpful when nesting columns and when applying backgrounds.
 ///
@@ -482,7 +319,8 @@
 ///
 
 @mixin bleed($fraction: -1/2) {
-  @include gutters($fraction, true);
+  margin-left: gutter($fraction, true);
+  margin-right: gutter($fraction, true);
 }
 
 
@@ -514,24 +352,4 @@
 
 @mixin pull($fraction) {
   @include move(-1 * $fraction);
-}
-
-
-///
-/// Mixin for soure ordering.
-/// Will reset positioning for smallest breakpoint.
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-
-@mixin reset-source-order() {
-
-  @if $column-breakpoint {
-    @include breakpoint($column-breakpoint) {
-      position: static;
-      position: initial;
-    }
-  }
 }

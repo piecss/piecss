@@ -4,45 +4,6 @@
 // Grid settings
 
 
-///
-/// Default column width, all columns implemented with [column()](./#mixin-column)
-/// will have this width unless otherwise specified.
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$column-width-default: 1/1 !default;
-
-///
-/// If set to true, the [column() mixin](./#mixin-column) will mixin a reset of
-/// all column widths to 100% at the smallest [breakpoint](./#variable-small_handheld).
-/// If you are developing mobile-first, leave this setting to false.
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$column-breakpoint: false !default;
-
-///
-/// By default, columns are rendered as inline-blocks. Inline-block elements are
-/// much easier to implement than floating elements, but require the invisible
-/// space between elements to be minified or obscured.
-/// If you can't minify your markup, then floated columns (or [negative right margin](./#variable-negative-right-margin))
-/// will be helpful. You will have to implement your own clearfix method though.
-///
-/// @since 0.1
-///
-/// @type {Bool}
-///
-
-$column-float: false !default; // If you prefer floated columns instead of inline-blocks, set to true.
-
 // ///
 // /// Gutter widths are based on the vertical [rhythm](./#variable-rhythm) and default to 2*$rhythm. Gutters are implemented using the [gutter mixin](./#mixin-gutters) and are expressed in factors of this measure (usually 1/2).
 // ///
@@ -63,30 +24,6 @@ $gutter-width: $default-line-height !default;
 
 $gutter-width-unit: $unit !default;
 
-///
-/// If false, gutter widths will be halved below the smallest breakpoint.
-///
-/// @deprecated
-///
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$gutter-width-persistent: false !default;
-
-///
-/// If you cannot minify your markup, you can assign a negative right margin to close gaps between columns to make them fit.
-/// You can also set [$column-float](./#variable-column-float) to true to render your columns as floated blocks.  You will have to implement your own clearfix method though.
-/// This is a hack and not necessary when your html (or column markup) is minimized.
-/// @since 0.1
-///
-/// @type {Number}
-///
-
-$negative-right-margin: false !default;
-
-
 // Root settings
 // Set a max width on a root container of your choice, the content will not stretch beyond this width.
 // The root container can be positioned left or center, for alternate position you can provide your own behavior.
@@ -94,8 +31,6 @@ $negative-right-margin: false !default;
 
 ///
 /// Fixes content maximum width, 72em is 1152px at a 16px [$font-size](./#variable-default-font-size). It is used by the [root mixin](./#mixin-root).
-///
-/// @deprecated
 ///
 /// @since 0.1
 ///
@@ -106,8 +41,6 @@ $root-max-width: 72em !default;
 
 ///
 /// Aligns content inside the viewport, center by default. Used by the [root mixin](./#mixin-root).
-///
-/// @deprecated
 ///
 /// @since 0.1
 ///

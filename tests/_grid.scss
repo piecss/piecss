@@ -51,15 +51,6 @@
     @include assert-false($rd == "half", "#{$d} should be named full");
   }
 
-  @include test("[function] fraction-to-percentage() | Convert fraction to percentage") {
-
-    $ra: fraction-to-percentage($a);
-    $rb: fraction-to-percentage($b);
-
-    @include assert-true($ra == 50%, "#{$a} should be 50%");
-    @include assert-true($rb == 50%, "#{$b} should be 50%");
-  }
-
   @include test("[function] gutter() | Calculate value based on $gutter-width") {
 
     @include assert-equal(gutter(1), 24px, "Should be 24px");
