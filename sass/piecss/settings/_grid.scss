@@ -148,17 +148,6 @@ $debug-color: $deeppink;
 $wings: 0;
 
 ///
-/// Used for setting instructions for page layouts.
-///
-/// @since 0.1
-///
-/// @type {Map}
-///
-
-$layouts: ();
-
-
-///
 /// (Totally arbitrary) Default breakpoint grids.
 /// The first breakpoint should be a `$lt-###` breakpoint and will be condiered
 /// the default, smallest breakpoint.

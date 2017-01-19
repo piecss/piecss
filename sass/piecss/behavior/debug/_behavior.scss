@@ -1,21 +1,21 @@
 // Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
 
-@if $debug or $debug-layout {
-  #{$debug},
-  #{$debug-layout-selector} {
-    @include debug-layout();
+@if $debug-grid or $debug-columns {
+  #{$debug-grid-selector},
+  #{$debug-columns-selector} {
+    @include debug-columns();
   }
 }
 
-@if $debug or $debug-rhythm {
-  #{$debug},
+@if $debug-grid or $debug-rhythm {
+  #{$debug-grid-selector},
   #{$debug-rhythm-selector} {
     @include debug-rhythm(rgba($color-body, .05));
   }
 }
 
-@if $debug or $debug-breakpoint {
-  #{$debug},
+@if $debug-grid or $debug-breakpoint {
+  #{$debug-grid-selector},
   #{$debug-breakpoint-selector} {
     @include debug-breakpoint();
   }

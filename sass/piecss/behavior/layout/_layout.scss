@@ -170,7 +170,7 @@
 // }
 
 
-@if $debug-layout {
+@if $debug-columns {
   %debug-layout {
     position: relative;
     &::after {

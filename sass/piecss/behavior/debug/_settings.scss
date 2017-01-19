@@ -8,7 +8,7 @@
 /// @type {Bool} (false)
 ///
 
-$debug-layout: false !default;
+$debug-columns: false !default;
 
 ///
 /// If true,reveals the document's vertical rhythm.
@@ -38,7 +38,7 @@ $debug-breakpoint: false !default;
 /// @type {Bool} (false)
 ///
 
-$debug: false !default;
+$debug-grid: false !default;
 
 ///
 /// The selector for the debug class.
@@ -48,7 +48,7 @@ $debug: false !default;
 /// @type {String} (.debug-layout)
 ///
 
-$debug-layout-selector: ".debug-layout" !default;
+$debug-columns-selector: ".debug-layout" !default;
 
 ///
 /// The selector for the debug class.
@@ -78,4 +78,4 @@ $debug-breakpoint-selector: ".debug-breakpoint" !default;
 /// @type {String} (.debug)
 ///
 
-$debug-selector: ".debug" !default;
+$debug-grid-selector: ".debug-grid" !default;

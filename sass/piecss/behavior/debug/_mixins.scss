@@ -11,7 +11,7 @@
 /// @param {Number} $gutter-width - The gutter-width
 ///
 
-@mixin _debug-columns($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
+@mixin _columns($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
   background-size: percentage(1 / $columns) 100%;
   // scss-lint:disable SpaceAfterPropertyColon
   background-image:
@@ -41,13 +41,13 @@
 
 ///
 /// Reveals the document's horizontal rhythm. Will automatically be mixed in
-/// when [$debug-layout](./#variable-debug-layout) or when
+/// when [$debug-columns](./#variable-debug-layout) or when
 /// [$debug](./#variable-debug) is set to true.
 ///
 /// @since 0.1
 ///
 
-@mixin debug-layout() {
+@mixin debug-columns() {
   position: relative;
   @include pseudo-element("before") {
     pointer-events: none;
@@ -64,7 +64,7 @@
     background-repeat: repeat-x;
     background-position: 0 0;
 
-    @include _debug-columns($columns, $debug-color, $gutter-width);
+    @include _columns($columns, $debug-color, $gutter-width);
   }
   @each $breakpoint, $grid in $grids {
     $debug-color: get-grid-debug-color($grid);
@@ -72,7 +72,7 @@
     $gutter-width: get-grid-gutter-width($grid);
     @include breakpoint($breakpoint) {
       @include pseudo-element("before") {
-        @include _debug-columns($columns, $debug-color, $gutter-width);
+        @include _columns($columns, $debug-color, $gutter-width);
       }
     }
   }

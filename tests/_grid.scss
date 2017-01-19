@@ -5,7 +5,7 @@
 
 @import "init";
 
-@include test-module("Layout") {
+@include test-module("Grid") {
 
   $a: 1/2;
   $b: 2/4;
@@ -20,21 +20,21 @@
       columns: 4,
       rhythm: $rhythm,
       gutter-width: rhythm(3),
-      pages: ()
+      layout: ()
     ),
     $gt-medium-handheld: (
       debug-color: $cyan, // #0ff
       columns: 8,
       rhythm: $rhythm,
       gutter-width: rhythm(3),
-      pages: ()
+      layout: ()
     ),
     $gt-small-desktop: (
       debug-color: $becca, // #639
       columns: 12,
       rhythm: $rhythm,
       gutter-width: rhythm(3),
-      pages: ()
+      layout: ()
     )
   );
 
@@ -69,7 +69,7 @@
     @include assert-equal(gutter(2), 48px, "Should be 48px");
   }
 
-  @include test("[function] get-grid() | Get a layout map for a breakpoint") {
+  @include test("[function] get-grid() | Get a grid map for a breakpoint") {
 
     $layout1: get-grid($gt-small-handheld, $grids);
     $layout2: get-grid($gt-medium-handheld, $grids);
@@ -81,7 +81,7 @@
     @include assert-equal(map-get($layout3, "debug-color"), $becca, "`debug-color` should be #{$becca}");
   }
 
-  @include test("[function] get-grid-property() | Get a property from a layout map") {
+  @include test("[function] get-grid-property() | Get a property from a grid map") {
 
     $layout1: get-grid($gt-small-handheld, $grids);
 
@@ -90,7 +90,7 @@
     @include assert-equal(get-grid-property("rhythm", $layout1), $rhythm, "`rhythm` should be #{$rhythm}");
   }
 
-  @include test("[function] get-grid-columns() | Get the value of property `column` from a layout map") {
+  @include test("[function] get-grid-columns() | Get the value of property `column` from a grid map") {
 
     $layout1: get-grid($gt-small-handheld, $grids);
     $layout2: get-grid($gt-medium-handheld, $grids);
@@ -101,21 +101,21 @@
     @include assert-equal(get-grid-columns($layout3), 12, "`columns` should be 12");
   }
 
-  @include test("[function] get-grid-gutter-width() | Get the value of property `gutter-width` from a layout map") {
+  @include test("[function] get-grid-gutter-width() | Get the value of property `gutter-width` from a grid map") {
 
     $layout3: get-grid($gt-small-desktop, $grids);
 
     @include assert-equal(get-grid-gutter-width($layout3), rhythm(3), "`gutter-width` should be #{rhythm(3)}");
   }
 
-  @include test("[function] get-grid-rhythm() | Get the value of property `rhythm` from a layout map") {
+  @include test("[function] get-grid-rhythm() | Get the value of property `rhythm` from a grid map") {
 
     $layout3: get-grid($gt-small-desktop, $grids);
 
     @include assert-equal(get-grid-rhythm($layout3), $rhythm, "`grhythm` should be #{$rhythm}");
   }
 
-  @include test("[function] get-grid-debug-color() | Get the value of property `debug-color` from a layout map") {
+  @include test("[function] get-grid-debug-color() | Get the value of property `debug-color` from a grid map") {
 
     $layout1: get-grid($gt-small-handheld, $grids);
     $layout2: get-grid($gt-medium-handheld, $grids);
