@@ -1,0 +1,42 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+// Content:
+// 1. Mixins
+//    old-ie
+//    old-mozilla
+
+
+// 1. Mixins
+
+
+///
+/// Support for old-ie, use it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
+///
+/// @since 0.1
+///
+/// @example
+///  @include old-ie() { // properties }
+///
+
+@mixin old-ie() {
+  @if $legacy-support-for-ie {
+    @content;
+  }
+}
+
+
+///
+/// Support for old-mozilla, use it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
+///
+/// @since 0.1
+///
+/// @example
+///  @include old-mozilla() { // properties }
+///
+
+@mixin old-mozilla() {
+  @if $legacy-support-for-mozilla {
+    @content;
+  }
+}

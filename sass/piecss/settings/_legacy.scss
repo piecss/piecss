@@ -1,0 +1,24 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+
+///
+/// Use this to create separate stylesheets for older MSIE browsers.
+/// When false, it will not compile rules wrapped in the [old-ie() mixin](./#mixin-old-ie).
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$legacy-support-for-ie: false !default;
+
+///
+/// Use this to create separate stylesheets for old Firefox browsers.
+/// When false, it will not compile rules wrapped in the [old-ie() mixin](./#mixin-old-mozilla).
+///
+/// @since 0.1
+///
+/// @type {Number}
+///
+
+$legacy-support-for-mozilla: false !default;
