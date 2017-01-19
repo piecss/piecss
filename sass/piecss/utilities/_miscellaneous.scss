@@ -37,7 +37,8 @@
 }
 
 ///
-/// Converts a list of property values to a property map. Use to convert 'old-style' associative arrays to SASS's new Map type.
+/// Converts a list of property values to a property map. Use to convert
+/// 'old-style' associative arrays to SASS's new Map type.
 ///
 /// @example
 /// list-to-map((color $white, text-align left))
@@ -66,54 +67,9 @@
 
 
 ///
-/// Mixin for border properties
-///
-/// @todo: fix line 96: #{$property}-#{$key}
-///
-/// @since 0.1
-///
-/// @param {String | Map | List | Number} $values - The border (or outline) properties
-/// @param {Bool} $outline - If true, will render the values as outline properties
-///
-
-@mixin border($values, $outline: false) {
-
-  // This mixin needs a value-map to work, so convert argument if it is not a value-map;
-  @if not(is-value-map($values, $keys-border)) {
-    $values: value-map($values, $keys-border);
-  }
-
-  $property: if($outline, outline, border);
-
-  // Rem fallback
-  $width: map-get($values, width);
-  @if type-of($width) == number and unit($width) == rem {
-    #{$property}-width: to-px($width);
-  }
-
-  @if map-has-key($values, width) and map-has-key($values, style) and map-has-key($values, color) {
-    #{$property}: map-get($values, width) map-get($values, style) map-get($values, color);
-  }
-@else {
-    @each $key, $value in $values {
-      // styleguide:ignore:start
-      #{$property}-#{$key}: $value;
-      // styleguide:ignore:end
-    }
-  }
-}
-
-///
-/// @alias border
-///
-
-@mixin outline($attributes) {
-  @include border($attributes, true);
-}
-
-
-///
-/// Provides a cross-browser method to implement opacity. This replaces [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin by the same name with a more accessible implementation.
+/// Provides a cross-browser method to implement opacity. This replaces
+/// [Compass's](http://compass-style.org/reference/compass/css3/opacity/) mixin
+/// by the same name with a more accessible implementation.
 ///
 /// @since 0.1
 ///
@@ -145,39 +101,9 @@
 }
 
 ///
-/// Support for old-ie, use it to separate old-ie declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
-///
-/// @since 0.1
-///
-/// @example
-///  @include old-ie() { // properties }
-///
-
-@mixin old-ie() {
-  @if $legacy-support-for-ie {
-    @content;
-  }
-}
-
-
-///
-/// Support for old-mozilla, use it to separate old-mozilla declarations from your other declarations with either a separate stylesheet or added specificity (Modernizr).
-///
-/// @since 0.1
-///
-/// @example
-///  @include old-mozilla() { // properties }
-///
-
-@mixin old-mozilla() {
-  @if $legacy-support-for-mozilla {
-    @content;
-  }
-}
-
-
-///
-/// Provides a cross-browser method to implement display: inline-block;. This replaces [Compass's](http://compass-style.org/reference/compass/css3/inline_block/) mixin by the same name with a more accessible implementation.
+/// Provides a cross-browser method to implement display: inline-block;. This
+/// replaces [Compass's](http://compass-style.org/reference/compass/css3/inline_block/)
+/// mixin by the same name with a more accessible implementation.
 /// See for valid property values: [http://www.w3schools.com/cssref/pr_pos_vertical-align.asp](http://www.w3schools.com/cssref/pr_pos_vertical-align.asp)
 ///
 /// @since 0.1
