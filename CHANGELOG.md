@@ -7,9 +7,10 @@
 
 ## Planned Changes
 
-* *0.7.0 [2017] Refactor behaviour to collections*
-* *0.8.0 [2017] Remove unused utilities:
+* *0.7.0 [2017] Remove unused utilities:
          Sides
-         Typography (some unused mixins)*
+         Typography (some unused mixins)
+         Grid (deprecated Perstistent Grid stuff)*
+* *0.8.0 [2017] Refactor behaviour to collections*
 * *0.9.0 [2017] Documentation [rhythm, font, layout, behaviour, colour]*
 * *1.0.0 [2017] Yay!*
