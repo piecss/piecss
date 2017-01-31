@@ -77,7 +77,7 @@
       }
       @if $_old_v != $_v and $force {
         // Add it, the author may do this purposefully (warn him just in case)
-        @warn "Are you sure you want to declare \"#{$_p}\" again (\"#{$_old_v}\", \"#{$_v}\")?";
+        // @warn "Are you sure you want to declare \"#{$_p}\" again (\"#{$_old_v}\", \"#{$_v}\")?";
         $_ps: append($_ps, $_p);
         $_vs: append($_vs, $_v);
       }
