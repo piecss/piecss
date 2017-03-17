@@ -12,29 +12,30 @@
 ///
 
 @mixin _columns($columns: $columns, $color: $black, $gutter-width: $gutter-width) {
-  background-size: percentage(1 / $columns) 100%;
+  background-size: 1 / $columns * 100vw 100%;
   // scss-lint:disable SpaceAfterPropertyColon
   background-image:
     linear-gradient(to right,
       rgba($color, .1) 0,
       rgba($color, .1) $gutter-width / 2,
       transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
+      transparent 100vw
     ),
     linear-gradient(to left,
       rgba($color, .1) 0,
       rgba($color, .1) $gutter-width / 2,
       transparent $gutter-width / 2,
-      transparent percentage($columns / $columns)
+      transparent 100vw
     ),
     linear-gradient(to left,
       transparent 0%,
       rgba($black, .5) 1px,
       transparent 1px,
-      transparent  percentage($columns / $columns)
+      transparent  100vw
     );
   // scss-lint:disable SpaceAfterPropertyColon
 }
+
 
 
 
@@ -53,8 +54,8 @@
     pointer-events: none;
     content: "";
     display: block;
-    position: fixed;
-    z-index: -1;
+    position: absolute;
+    z-index: 10;
     left: 0;
     top: 0;
     width: 100%;
