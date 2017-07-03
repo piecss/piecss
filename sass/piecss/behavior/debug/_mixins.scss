@@ -91,7 +91,7 @@
 
 @mixin debug-rhythm($color) {
   @each $breakpoint, $grid in $grids {
-    $gutter-width: get-grid-rhythm($grid);
+    $rhythm: get-grid-rhythm($grid);
     @include breakpoint($breakpoint) {
       background-image: linear-gradient($color 50%, transparent 50%);
       background-size: 2 * $rhythm 2 * $rhythm;
