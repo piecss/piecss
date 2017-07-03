@@ -90,8 +90,13 @@
 ///
 
 @mixin debug-rhythm($color) {
-  background-image: linear-gradient($color 50%, transparent 50%);
-  background-size: 2 * $rhythm 2 * $rhythm;
+  @each $breakpoint, $grid in $grids {
+    $gutter-width: get-grid-rhythm($grid);
+    @include breakpoint($breakpoint) {
+      background-image: linear-gradient($color 50%, transparent 50%);
+      background-size: 2 * $rhythm 2 * $rhythm;
+    }
+  }
 }
 
 ///
