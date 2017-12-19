@@ -21,7 +21,7 @@
     "responsive"
   ],
   "author": "Babs Gösgens <babsgosgens@gmail.com (https://teemr.com/babsgosgens)",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/piecss/piecss/issues"
   },
