@@ -168,7 +168,7 @@
   @each $property in $selector {
 
     $_property: nth($property, 1);
-    $_value: unquote(#{nth($property, 2)});
+    $_value: unquote("#{nth($property, 2)}");
 
     #{$_property}: $_value;
   }
