@@ -82,7 +82,7 @@ $wings: 0;
 
 ///
 /// (Totally arbitrary) Default breakpoint grids.
-/// The first breakpoint should be a `$lt-###` breakpoint and will be condiered
+/// The first breakpoint should be a `$lt-###` breakpoint and will be considered
 /// the default, smallest breakpoint.
 /// Serves as an example grid.
 ///
@@ -92,7 +92,7 @@ $wings: 0;
 ///
 
 $grids: (
-  $gt-small-handheld: (
+  $lt-small-handheld: (
     debug-color: $orange, // #ffa500
     columns: 6,
     rhythm: $rhythm,
