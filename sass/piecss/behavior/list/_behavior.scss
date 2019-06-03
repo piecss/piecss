@@ -1,0 +1,149 @@
+// Copyright (C) 2014 Babs Gösgens. Licensed under MIT; see LICENSE.txt
+
+@import "settings";
+
+#{$list-selector} {
+
+  // ==========================================================================
+  // List all items inline
+  // ==========================================================================
+
+  @if $list-inline {
+    &--inline {
+      >li {
+        display: inline;
+      }
+    }
+  }
+
+  // ==========================================================================
+  // Moves bullets outside of the left text margin
+  // ==========================================================================
+
+  @if $list-style-position-outside {
+    &--outside {
+      list-style-position: outside;
+    }
+  }
+
+  // ==========================================================================
+  // Moves bullets inside of the left text margin
+  // ==========================================================================
+
+  @if $list-style-position-inside {
+    &--inside {
+      list-style-position: inside;
+    }
+  }
+
+  // ==========================================================================
+  // List bullet types
+  // --------------------------------------------------------------------------
+  // All bullet types:
+  // %list--circle,
+  // %list--decimal,
+  // %list--lower-alpha,
+  // etc.
+  // ==========================================================================
+
+  @if $list-style-type-armenian {
+    &--armenian {
+      list-style-type: armenian;
+    }
+  }
+  @if $list-style-type-circle {
+    &--circle {
+      list-style-type: circle;
+    }
+  }
+  @if $list-style-type-cjk-ideographic {
+    &--cjk-ideographic {
+      list-style-type: cjk-ideographic;
+    }
+  }
+  @if $list-style-type-decimal {
+    &--decimal {
+      list-style-type: decimal;
+    }
+  }
+  @if $list-style-type-decimal-leading-zero {
+    &--decimal-leading-zero {
+      list-style-type: decimal-leading-zero;
+    }
+  }
+  @if $list-style-type-disc {
+    &--disc {
+      list-style-type: disc;
+    }
+  }
+  @if $list-style-type-georgian {
+    &--georgian {
+      list-style-type: georgian;
+    }
+  }
+  @if $list-style-type-hebrew {
+    &--hebrew {
+      list-style-type: hebrew;
+    }
+  }
+  @if $list-style-type-hiragana {
+    &--hiragana {
+      list-style-type: hiragana;
+    }
+  }
+  @if $list-style-type-hiragana-iroha {
+    &--hiragana-iroha {
+      list-style-type: hiragana-iroha;
+    }
+  }
+  @if $list-style-type-katakana {
+    &--katakana {
+      list-style-type: katakana;
+    }
+  }
+  @if $list-style-type-katakana-iroha {
+    &--katakana-iroha {
+      list-style-type: katakana-iroha;
+    }
+  }
+  @if $list-style-type-lower-alpha {
+    &--lower-alpha {
+      list-style-type: lower-alpha;
+    }
+  }
+  @if $list-style-type-lower-greek {
+    &--lower-greek {
+      list-style-type: lower-greek;
+    }
+  }
+  @if $list-style-type-lower-latin {
+    &--lower-latin {
+      list-style-type: lower-latin;
+    }
+  }
+  @if $list-style-type-lower-roman {
+    &--lower-roman {
+      list-style-type: lower-roman;
+    }
+  }
+  @if $list-style-type-square {
+    &--square {
+      list-style-type: square;
+    }
+  }
+  @if $list-style-type-upper-alpha {
+    &--upper-alpha {
+      list-style-type: upper-alpha;
+    }
+  }
+  @if $list-style-type-upper-latin {
+    &--upper-latin {
+      list-style-type: upper-latin;
+    }
+  }
+  @if $list-style-type-upper-roman {
+    &--upper-roman {
+      list-style-type: upper-roman;
+    }
+  }
+}
