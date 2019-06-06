@@ -63,8 +63,8 @@ are-we-there-yet@~1.1.2:
     readable-stream "^2.0.0 || ^1.1.13"
 
 argparse@^1.0.7:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.9.tgz#73d83bc263f86e97f8cc4f6bae1b0e90a7d22c86"
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/argparse/-/argparse-1.0.10.tgz#bcd6791ea5ae09725e17e5ad988134cd40b3d911"
   dependencies:
     sprintf-js "~1.0.2"
 
@@ -699,9 +699,9 @@ espree@^3.1.6:
     acorn "^4.0.1"
     acorn-jsx "^3.0.0"
 
-esprima@^2.6.0:
-  version "2.7.3"
-  resolved "https://registry.yarnpkg.com/esprima/-/esprima-2.7.3.tgz#96e3b70d5779f6ad49cd032673d1c312767ba581"
+esprima@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/esprima/-/esprima-4.0.1.tgz#13b04cdb3e6c5d19df91ab6987a8695619b0aa71"
 
 esrecurse@^4.1.0:
   version "4.1.0"
@@ -1176,7 +1176,7 @@ graceful-fs@~1.2.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
 
-gulp-sass@*:
+gulp-sass@3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/gulp-sass/-/gulp-sass-3.1.0.tgz#53dc4b68a1f5ddfe4424ab4c247655269a8b74b7"
   dependencies:
@@ -1209,7 +1209,7 @@ gulp-util@^3.0, gulp-util@^3.0.0:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp@*:
+gulp@3.9.1:
   version "3.9.1"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
   dependencies:
@@ -1562,11 +1562,11 @@ jodid25519@^1.0.0:
     jsbn "~0.1.0"
 
 js-yaml@^3.1.0, js-yaml@^3.2.1, js-yaml@^3.4.6, js-yaml@^3.5.1, js-yaml@^3.5.4:
-  version "3.7.0"
-  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.7.0.tgz#5c967ddd837a9bfdca5f2de84253abe8a1c03b80"
+  version "3.13.1"
+  resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.13.1.tgz#aff151b30bfdfa8e49e05da22e7415e9dfa37847"
   dependencies:
     argparse "^1.0.7"
-    esprima "^2.6.0"
+    esprima "^4.0.0"
 
 jsbn@~0.1.0:
   version "0.1.0"
@@ -2749,7 +2749,7 @@ sass-graph@^2.1.1:
     lodash "^4.0.0"
     yargs "^4.7.1"
 
-sass-lint@*:
+sass-lint@1.10.2:
   version "1.10.2"
   resolved "https://registry.yarnpkg.com/sass-lint/-/sass-lint-1.10.2.tgz#825bd6b0da79ddd36a42ffae5b6d44ac4922502b"
   dependencies:
@@ -2767,7 +2767,7 @@ sass-lint@*:
     path-is-absolute "^1.0.0"
     util "^0.10.3"
 
-sass-true@^2.1.4:
+sass-true@2.1.4:
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/sass-true/-/sass-true-2.1.4.tgz#b50fa562e8a689555adfaa8d13b9ea6626c668ac"
   dependencies:
@@ -2796,7 +2796,7 @@ sassdoc-theme-default@^2.3.4:
     swig "1.4.0"
     swig-extras "^0.0.1"
 
-sassdoc@^2.1.20:
+sassdoc@2.1.20:
   version "2.1.20"
   resolved "https://registry.yarnpkg.com/sassdoc/-/sassdoc-2.1.20.tgz#a226d09064f707bad69d6802b2673d69cb128f1b"
   dependencies:
