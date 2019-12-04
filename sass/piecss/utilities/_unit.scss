@@ -62,10 +62,10 @@
   // Now, calculate the correct contextual value in requested unit
   @if unit($unit) == "px" {
   }
-  @elseif unit($unit) == "%" {
+  @else if unit($unit) == "%" {
     $number: percentage($number / $context);
   }
-  @elseif unit($unit) == "rem" {
+  @else if unit($unit) == "rem" {
     $number: $number / $default-font-size * $unit;
   }
   @else {
@@ -124,13 +124,13 @@
 
   @if unit($value) == "px" {
   }
-  @elseif unit($value) == "rem" {
+  @else if unit($value) == "rem" {
     $value: rem-to-px($value);
   }
-  @elseif unit($value) == "em" {
+  @else if unit($value) == "em" {
     $value: em-to-px($value, $context);
   }
-  @elseif unit($value) == "%" {
+  @else if unit($value) == "%" {
     $value: percentage-to-px($value);
   }
 

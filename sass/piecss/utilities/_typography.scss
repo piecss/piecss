@@ -168,7 +168,7 @@
       @if not($font-size) {
         $font-size: $argument;
       }
-      @elseif not($line-height) {
+      @else if not($line-height) {
         $line-height: $argument;
       }
     }
@@ -190,7 +190,7 @@
     @if $font-size and $line-height {
       $font: append($font, #{$font-size}/#{$line-height});
     }
-    @elseif $font-size {
+    @else if $font-size {
       $font: append($font, #{$font-size});
     }
     $font: append($font, #{$font-family});
