@@ -12,6 +12,9 @@ gem install piecss
 \\ Install dependencies
 npm install
 
+\\ Install Sassdoc
+gem install sassdoc
+
 \\ Install scss lint
 gem install scss_lint
 
