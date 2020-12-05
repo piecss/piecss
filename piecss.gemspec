@@ -1,8 +1,8 @@
 Gem::Specification.new do |s|
   # Release Specific Information
   s.licenses = ['MIT']
-  s.version = '0.7.8'
-  s.date = '2018-07-23'
+  s.version = '0.7.9'
+  s.date = '2020-12-05'
 
   # Gem Details
   s.name = 'piecss'
