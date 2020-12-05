@@ -13,4 +13,4 @@
 
 * *0.8.0 [2020] Refactor behaviour to collections*
 * *0.9.0 [2020] Documentation [rhythm, font, layout, behaviour, colour]*
-* *1.0.0 [2020] Yay!*
+* *1.0.0 [2020] Yay!!*
