@@ -112,21 +112,21 @@
   @include pseudo-element("after") {
     position: fixed;
     z-index: 10;
-    top: rhythm(2);
-    left: rhythm(2);
+    top: 1ex;
+    left: 1ex;
     display: inline-block;
-    padding: rhythm(2);
+    padding: 0 1ex;
     background: rgba($white, .9);
-    color: $color-body;
     font-size: small;
     content: "no breakpoint, columns: #{$columns}";
-    border: 2px solid mix($debug-color, $color-shadow, 90%);
+    border: 2px solid;
   }
   @each $breakpoint, $grid in $grids {
     @include breakpoint($breakpoint) {
       @include pseudo-element("after") {
         content: "#{$breakpoint}, columns: #{get-grid-columns($grid)}";
-        border: 2px solid mix(get-grid-debug-color($grid), $color-shadow, 90%);
+        border: 2px solid;
+        color: get-grid-debug-color($grid);
       }
     }
   }
